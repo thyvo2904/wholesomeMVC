@@ -22,3 +22,33 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*------------------------------------------------------------------------------
+    CUSTOM CSS START HERE
+------------------------------------------------------------------------------*/
+
+/* override bootstrap default navbar links */
+.navbar-nav > li > a {
+    line-height: 50px;
+}
+
+/* style image */
+.navbar-brand > img {
+    height: 50px;
+}
+
+/* footer links */
+.footer-link {
+    display: block;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+.footer-link > li {
+    display: inline-block;
+}
+.footer-link > li > a {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+}
