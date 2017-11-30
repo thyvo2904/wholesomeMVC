@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 80px;
     padding-bottom: 20px;
 }
 
@@ -17,15 +17,16 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+/*input,
 select,
 textarea {
     max-width: 280px;
-}
+}*/
 
 /*------------------------------------------------------------------------------
     CUSTOM CSS START HERE
 ------------------------------------------------------------------------------*/
+/* utility classes */
 
 /* override bootstrap default navbar links */
 .navbar-nav > li > a {
@@ -41,8 +42,8 @@ textarea {
 .footer-link {
     display: block;
     list-style-type: none;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
 }
 .footer-link > li {
     display: inline-block;
@@ -51,4 +52,32 @@ textarea {
     display: block;
     padding: 5px;
     text-decoration: none;
+}
+
+/* banner in home.index view */
+#banner {
+    margin: 50px auto;
+    background-image: url(https://source.unsplash.com/1920x600/?food);
+    background-size: cover;
+    min-height: 600px;
+    position: relative;
+}
+#banner > #background-color {
+    background-color: rgba(0, 0, 0, 0.60);
+    min-height: 600px;
+}
+#banner > #background-color > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 30%;
+    width: 70%;
+    margin: -15% 0 0 -35%;
+}
+#banner > #background-color > div > h1 {
+    color: white;
+    font-weight: 300;
+}
+#banner > #background-color > div > #search-panel {
+    margin: 50px auto;
 }
