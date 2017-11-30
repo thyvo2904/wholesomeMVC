@@ -23,7 +23,6 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Nutrient Calculator", "Index", "Home")</li>
                     <li>@Html.ActionLink("Recent", "Index", "Home")</li>
                     <li>@Html.ActionLink("Saved Items", "About", "Home")</li>
@@ -34,21 +33,20 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <ul class="text-center footer-link">
-                <li>@Html.ActionLink("Nutrient Calculator", "Index", "Home")</li>
-                <li>&bull;</li>
-                <li><a href="@Url.Content("~/manual_input.aspx")">hello</a></li>
-                <li>&bull;</li>
-                <li>@Html.ActionLink("Recent", "Index", "Home")</li>
-                <li>&bull;</li>
-                <li>@Html.ActionLink("Saved Items", "About", "Home")</li>
-            </ul>
-            <br />
-            <p class="text-center">&copy; @DateTime.Now.Year - Wholesome Inc. All rights reserved.</p>
-        </footer>
     </div>
+
+    <hr />
+    <footer>
+        <ul class="text-center footer-link">
+            <li>@Html.ActionLink("Nutrient Calculator", "Index", "Home")</li>
+            <li>&bull;</li>
+            <li>@Html.ActionLink("Recent", "Index", "Home")</li>
+            <li>&bull;</li>
+            <li>@Html.ActionLink("Saved Items", "About", "Home")</li>
+        </ul>
+        <br />
+        <p class="text-center">&copy; @DateTime.Now.Year - Wholesome Inc. All rights reserved.</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

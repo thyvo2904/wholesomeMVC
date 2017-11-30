@@ -255,6 +255,13 @@
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.cs" />
+    <Compile Include="index1.aspx.cs">
+      <DependentUpon>index1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index1.aspx.designer.cs">
+      <DependentUpon>index1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="IndexResults.aspx.cs">
       <DependentUpon>IndexResults.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -355,6 +362,13 @@
     <Compile Include="Update_Item.aspx.designer.cs">
       <DependentUpon>update_item.aspx</DependentUpon>
     </Compile>
+    <Compile Include="_layout.Master.cs">
+      <DependentUpon>_layout.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_layout.Master.designer.cs">
+      <DependentUpon>_layout.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="account_management.aspx" />
@@ -363,12 +377,14 @@
     <Content Include="advanced_search.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\index.css" />
     <Content Include="farmers_market.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="index.aspx" />
+    <Content Include="index1.aspx" />
     <Content Include="IndexResults.aspx" />
     <Content Include="inventory_admin.aspx" />
     <Content Include="inventory_purchased.aspx" />
@@ -434,6 +450,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="_layout.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
