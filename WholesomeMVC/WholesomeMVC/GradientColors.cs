@@ -34,7 +34,7 @@ namespace WholesomeMVC
         {
             
 
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -67,7 +67,7 @@ namespace WholesomeMVC
 
         public static void setGreenMidValue(String newColor2)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -100,7 +100,7 @@ namespace WholesomeMVC
 
         public static void setGreenLowValue(String newColor3)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -133,7 +133,7 @@ namespace WholesomeMVC
 
         public static void setYellowHighValue(String newColor4)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -166,7 +166,7 @@ namespace WholesomeMVC
 
         public static void setYellowMidValue(String newColor5)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -199,7 +199,7 @@ namespace WholesomeMVC
 
         public static void setYellowLowValue(String newColor6)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -232,7 +232,7 @@ namespace WholesomeMVC
 
         public static void setRedHighValue(String newColor7)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -265,7 +265,7 @@ namespace WholesomeMVC
 
         public static void setRedMidValue(String newColor8)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -298,7 +298,7 @@ namespace WholesomeMVC
 
         public static void setRedLowValue(String newColor9)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -335,7 +335,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
         };
 
             sc.Open();
@@ -363,7 +363,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
             };
 
             sc.Open();
@@ -392,7 +392,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
         };
 
             sc.Open();
@@ -421,7 +421,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
         };
 
             sc.Open();
@@ -450,7 +450,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
         };
 
             sc.Open();
@@ -479,7 +479,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
         };
 
             sc.Open();
@@ -508,7 +508,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
         };
 
             sc.Open();
@@ -537,7 +537,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
         };
 
             sc.Open();
@@ -566,7 +566,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
             };
 
             sc.Open();

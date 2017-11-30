@@ -117,7 +117,7 @@ namespace WholesomeMVC
             }
 
 
-            string ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            string ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
@@ -202,7 +202,7 @@ namespace WholesomeMVC
         protected void btnSaveItem_Click(object sender, EventArgs e)
         {
 
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
             if (txtCeresNumber.Text == "" || txtCeresDescription.Text == "")
             {
@@ -251,7 +251,7 @@ namespace WholesomeMVC
 
         protected void btnUpdateItem_Click(object sender, EventArgs e)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {

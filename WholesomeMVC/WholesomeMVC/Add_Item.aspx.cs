@@ -217,7 +217,7 @@ namespace WholesomeMVC
 
         protected void btnOldSaveItem_Click(object sender, EventArgs e)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             String description = txtDescription.Text;
 
             if(description.Length > 48)

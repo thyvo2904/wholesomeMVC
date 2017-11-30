@@ -19,7 +19,7 @@ namespace WholesomeMVC
             string prefixText = context.Request.QueryString["term"];
             using (SqlConnection conn = new SqlConnection())
             {
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.CommandText = "select Long_Desc from FOOD_DES where Long_Desc like + @SearchText + '%'";

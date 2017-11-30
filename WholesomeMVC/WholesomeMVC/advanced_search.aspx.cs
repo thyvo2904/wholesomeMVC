@@ -351,7 +351,7 @@ namespace WholesomeMVC
                         IndexResults.dataSearchResults.Columns.Add("ND Score", typeof(double));
 
 
-                        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+                        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                         {
                             System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
 
@@ -390,7 +390,7 @@ namespace WholesomeMVC
                         IndexResults.dataSearchResults.Columns.Add("ND Score", typeof(double));
 
 
-                        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+                        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                         {
                             System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
 

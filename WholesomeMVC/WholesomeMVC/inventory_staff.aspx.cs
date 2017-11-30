@@ -16,7 +16,7 @@ namespace WholesomeMVC
             if (!IsPostBack)
             {
 
-                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                 {
                     System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
 

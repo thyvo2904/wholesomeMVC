@@ -16,7 +16,7 @@ namespace WholesomeMVC
         {
             if (!this.IsPostBack)
             {
-                string constr = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+                string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
                 string activationCode = !string.IsNullOrEmpty(Request.QueryString["ActivationCode"]) ? Request.QueryString["ActivationCode"] : Guid.Empty.ToString();
                 using (SqlConnection con = new SqlConnection(constr))
                 {

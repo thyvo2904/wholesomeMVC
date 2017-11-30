@@ -29,7 +29,7 @@ public partial class recent : System.Web.UI.Page
 
         System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
         {
-            ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+            ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
     };
 
         sc.Open();
@@ -758,7 +758,7 @@ public partial class recent : System.Web.UI.Page
         NRF6 = nR6 - liMT;
 
         FoodItem newFood = new FoodItem();
-        String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+        String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         using (SqlConnection connection = new SqlConnection(ConnectionString))
         {
@@ -810,7 +810,7 @@ public partial class recent : System.Web.UI.Page
 
     protected void btnSaveItem1_Click(object sender, EventArgs e)
     {
-        String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+        String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         try
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -847,7 +847,7 @@ public partial class recent : System.Web.UI.Page
 
     protected void btnSaveItem2_Click(object sender, EventArgs e)
     {
-        String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+        String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         try
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -884,7 +884,7 @@ public partial class recent : System.Web.UI.Page
 
     protected void btnSaveItem3_Click(object sender, EventArgs e)
     {
-        String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+        String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         try
         {
@@ -922,7 +922,7 @@ public partial class recent : System.Web.UI.Page
 
     protected void btnSaveItem4_Click(object sender, EventArgs e)
     {
-        String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+        String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         try
         {
@@ -961,7 +961,7 @@ public partial class recent : System.Web.UI.Page
 
     protected void btnSaveItem5_Click(object sender, EventArgs e)
     {
-        String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+        String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         try
         {
@@ -999,7 +999,7 @@ public partial class recent : System.Web.UI.Page
 
     protected void btnSaveItem6_Click(object sender, EventArgs e)
     {
-        String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+        String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         try
         {
