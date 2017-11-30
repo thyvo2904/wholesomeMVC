@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Farmers_Market.aspx.cs" Inherits="Wholesome.Farmers_Market" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Farmers_Market.aspx.cs" Inherits="WholesomeMVC.Farmers_Market" %>
 
 <!DOCTYPE html>
 

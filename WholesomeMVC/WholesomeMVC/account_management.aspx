@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="account_management.aspx.cs" Inherits="Wholesome.account_management" %>
+﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="account_management.aspx.cs" Inherits="WholesomeMVC.account_management" %>
 
 <!DOCTYPE html>
 <html lang="en">

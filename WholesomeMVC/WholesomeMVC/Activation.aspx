@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Activation.aspx.cs" Inherits="Wholesome.Activation" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Activation.aspx.cs" Inherits="WholesomeMVC.Activation" %>
 
 <!DOCTYPE html>
 

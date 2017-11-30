@@ -293,13 +293,6 @@
       <DependentUpon>Item_Management.aspx</DependentUpon>
     </Compile>
     <Compile Include="List.cs" />
-    <Compile Include="login.aspx.cs">
-      <DependentUpon>login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="login.aspx.designer.cs">
-      <DependentUpon>login.aspx</DependentUpon>
-    </Compile>
     <Compile Include="manual_input.aspx.cs">
       <DependentUpon>manual_input.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -340,20 +333,6 @@
       <DependentUpon>saved_items.aspx</DependentUpon>
     </Compile>
     <Compile Include="Search.cs" />
-    <Compile Include="Settings.aspx.cs">
-      <DependentUpon>Settings.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Settings.aspx.designer.cs">
-      <DependentUpon>Settings.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="signup.aspx.cs">
-      <DependentUpon>signup.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="signup.aspx.designer.cs">
-      <DependentUpon>signup.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Sync_Database.aspx.cs">
       <DependentUpon>Sync_Database.aspx</DependentUpon>
@@ -391,12 +370,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="index.aspx" />
     <Content Include="IndexResults.aspx" />
-    <Content Include="inventory.aspx" />
     <Content Include="inventory_admin.aspx" />
     <Content Include="inventory_purchased.aspx" />
     <Content Include="inventory_staff.aspx" />
     <Content Include="Item_Management.aspx" />
-    <Content Include="login.aspx" />
     <Content Include="manual_input.aspx" />
     <Content Include="Populate_table.aspx" />
     <Content Include="recent.aspx" />
@@ -420,8 +397,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Settings.aspx" />
-    <Content Include="signup.aspx" />
     <Content Include="Sync_Database.aspx" />
     <Content Include="system_settings.aspx" />
     <Content Include="update_item.aspx" />

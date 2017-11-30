@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="True" Inherits="Wholesome.inventory_staff" Codebehind="inventory_staff.aspx.cs" %>
+﻿<%@ Page Language="C#" AutoEventWireup="True" Inherits="WholesomeMVC.inventory_staff" Codebehind="inventory_staff.aspx.cs" %>
 
 <!doctype html>
 <html>
