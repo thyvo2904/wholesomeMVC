@@ -8,7 +8,7 @@ using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
 
-namespace Wholesome
+namespace WholesomeMVC
 {
     public partial class Activation : System.Web.UI.Page
     {

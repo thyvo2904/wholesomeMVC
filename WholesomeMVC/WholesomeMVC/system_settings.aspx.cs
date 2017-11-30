@@ -5,9 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Wholesome;
+using WholesomeMVC;
 
-namespace Wholesome
+namespace WholesomeMVC
 {
     public partial class system_settings : System.Web.UI.Page
     {

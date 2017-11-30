@@ -12,7 +12,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Wholesome
+namespace WholesomeMVC
 {
     public partial class signup : System.Web.UI.Page
     {

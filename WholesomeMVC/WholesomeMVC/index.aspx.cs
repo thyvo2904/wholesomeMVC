@@ -1,7 +1,7 @@
 ﻿
 using System;
 using System.Data.SqlClient;
-using Wholesome;
+using WholesomeMVC;
 
 public partial class index : System.Web.UI.Page
 {

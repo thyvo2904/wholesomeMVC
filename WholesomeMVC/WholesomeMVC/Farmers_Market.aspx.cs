@@ -8,10 +8,10 @@ using System.Net;
 using Newtonsoft.Json;
 using System.Data;
 using System.Data.SqlClient;
-using Wholesome;
+using WholesomeMVC;
 using System.Web.Services;
 
-namespace Wholesome
+namespace WholesomeMVC
 {
     public partial class Farmers_Market : System.Web.UI.Page
     {

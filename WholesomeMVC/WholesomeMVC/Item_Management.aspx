@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="Item_Management.aspx.cs" Inherits="Wholesome.Item_Management" %>
+﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="Item_Management.aspx.cs" Inherits="WholesomeMVC.Item_Management" %>
 
 <!DOCTYPE html>
 

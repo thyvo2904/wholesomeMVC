@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Wholesome;
+using WholesomeMVC;
 
 public partial class inventory_purchased : System.Web.UI.Page
 {

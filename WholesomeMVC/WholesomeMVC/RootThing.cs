@@ -5,7 +5,7 @@ using System.Web;
 
 // It would be root object but I already have another class for json retrieval
 // named root object so the closes thing I got is root thing.
-namespace Wholesome
+namespace WholesomeMVC
 {
     public class RootThing
     {

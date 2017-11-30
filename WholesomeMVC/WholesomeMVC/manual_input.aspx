@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="manual_input.aspx.cs" Inherits="Wholesome.manual_input" %>
+﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="manual_input.aspx.cs" Inherits="WholesomeMVC.manual_input" %>
 
 <!DOCTYPE html>
 <html lang="en">

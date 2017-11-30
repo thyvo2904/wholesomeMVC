@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 using System.Web.Security;
 using System.Security.Cryptography;
 using System.Text;
-using Wholesome;
+using WholesomeMVC;
 using System.Security.Principal;
 
 public partial class login : System.Web.UI.Page

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Wholesome {
+namespace WholesomeMVC {
     
     
     public partial class Item_Management {

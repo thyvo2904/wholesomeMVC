@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Wholesome
+namespace WholesomeMVC
 {
 
 

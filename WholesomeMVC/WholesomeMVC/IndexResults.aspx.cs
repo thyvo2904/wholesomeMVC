@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Configuration;
 
 
-namespace Wholesome
+namespace WholesomeMVC
 {
 
     public partial class IndexResults : System.Web.UI.Page

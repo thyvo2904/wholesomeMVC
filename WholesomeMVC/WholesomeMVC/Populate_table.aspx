@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Populate_table.aspx.cs" Inherits="Wholesome.Populate_table" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Populate_table.aspx.cs" Inherits="WholesomeMVC.Populate_table" %>
 
 <!DOCTYPE html>
 

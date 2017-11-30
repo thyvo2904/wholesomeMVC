@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Globalization;
 using System.Data.SqlClient;
 
-namespace Wholesome
+namespace WholesomeMVC
 {
     public partial class manual_input : System.Web.UI.Page
     {

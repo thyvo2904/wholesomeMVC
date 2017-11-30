@@ -8,12 +8,12 @@ using System.Net;
 using Newtonsoft.Json;
 using System.Data;
 using System.Data.SqlClient;
-using Wholesome;
+using WholesomeMVC;
 using System.Web.Services;
 using System.Drawing;
 
 
-namespace Wholesome
+namespace WholesomeMVC
 {
 
     public class FoodItem

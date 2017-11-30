@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Wholesome
+namespace WholesomeMVC
 {
     public partial class Item_Management : System.Web.UI.Page
     {
