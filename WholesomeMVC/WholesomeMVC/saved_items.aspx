@@ -194,7 +194,7 @@ tr:hover{
                         <asp:ListItem Selected="True">--Select Category--</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-                <asp:SqlDataSource ID="Category" runat="server" ConnectionString="<%$ ConnectionStrings:constr2 %>" SelectCommand="SELECT [FdGrp_Desc] FROM [FD_GROUP]"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="Category" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [FdGrp_Desc] FROM [FD_GROUP]"></asp:SqlDataSource>
                 <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-default" runat="server" onserverclick="btnSearch"><span class="glyphicon glyphicon-search"></span></button>

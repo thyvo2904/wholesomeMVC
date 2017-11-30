@@ -310,7 +310,7 @@
                 
       </asp:DropDownList>
                 </div>
-          <asp:SqlDataSource ID="Category" runat="server" ConnectionString="<%$ ConnectionStrings:constr2 %>" SelectCommand="SELECT [FdGrp_Desc] FROM [FD_GROUP]"></asp:SqlDataSource>
+          <asp:SqlDataSource ID="Category" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [FdGrp_Desc] FROM [FD_GROUP]"></asp:SqlDataSource>
             
       <asp:TextBox ID="txtSearch" runat="server" CssClass="sook form-control"></asp:TextBox>
     <span class="input-group-btn">
