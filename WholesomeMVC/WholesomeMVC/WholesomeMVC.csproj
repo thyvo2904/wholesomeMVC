@@ -258,6 +258,13 @@
       <DependentUpon>IndexResults.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ing.cs" />
+    <Compile Include="inventory_admin.aspx.cs">
+      <DependentUpon>inventory_admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inventory_admin.aspx.designer.cs">
+      <DependentUpon>inventory_admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="inventory_purchased.aspx.cs">
       <DependentUpon>inventory_purchased.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -380,6 +387,7 @@
     <Content Include="index.aspx" />
     <Content Include="IndexResults.aspx" />
     <Content Include="inventory.aspx" />
+    <Content Include="inventory_admin.aspx" />
     <Content Include="inventory_purchased.aspx" />
     <Content Include="inventory_staff.aspx" />
     <Content Include="Item_Management.aspx" />
@@ -394,8 +402,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include=".DS_Store" />
-    <Content Include="account_management.aspx.designer.cs~ef2f65d39542840eb3ceeed5e9e224458c841e5b" />
-    <Content Include="account_management.aspx.designer.cs~ef2f65d39542840eb3ceeed5e9e224458c841e5b_0" />
     <Content Include="AutoComplete.ashx" />
     <Content Include="ClassDiagram.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

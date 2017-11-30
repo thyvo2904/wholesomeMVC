@@ -106,7 +106,7 @@ public partial class login : System.Web.UI.Page
                         switch (AccountType)
                         {
                             case 0:
-                                Server.Transfer("~/Admin/inventory.aspx");
+                                Server.Transfer("~/inventory_admin.aspx");
                                 break;
                             case 1:
                                 Server.Transfer("~/inventory_staff.aspx");
