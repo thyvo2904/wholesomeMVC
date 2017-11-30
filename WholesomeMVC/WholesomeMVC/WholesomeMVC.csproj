@@ -293,18 +293,18 @@
       <DependentUpon>Item_Management.aspx</DependentUpon>
     </Compile>
     <Compile Include="List.cs" />
-    <Compile Include="manual_input.aspx.cs">
-      <DependentUpon>manual_input.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="manual_input.aspx.designer.cs">
-      <DependentUpon>manual_input.aspx</DependentUpon>
-    </Compile>
     <Compile Include="MarketDetails.cs" />
     <Compile Include="Measure.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="webforms\manual_input.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>manual_input.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webforms\manual_input.aspx.designer.cs">
+      <DependentUpon>manual_input.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Nutrient.cs" />
     <Compile Include="Populate_table.aspx.cs">
       <DependentUpon>Populate_table.aspx</DependentUpon>
@@ -374,7 +374,6 @@
     <Content Include="inventory_purchased.aspx" />
     <Content Include="inventory_staff.aspx" />
     <Content Include="Item_Management.aspx" />
-    <Content Include="manual_input.aspx" />
     <Content Include="Populate_table.aspx" />
     <Content Include="recent.aspx" />
     <Content Include="saved_items.aspx" />
@@ -400,6 +399,9 @@
     <Content Include="Sync_Database.aspx" />
     <Content Include="system_settings.aspx" />
     <Content Include="update_item.aspx" />
+    <Content Include="webforms\manual_input.aspx">
+      <BrowseToURL>~/webforms/manual_input.aspx</BrowseToURL>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
