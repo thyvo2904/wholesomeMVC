@@ -335,7 +335,7 @@
   <a href="Add_Item.aspx" class="active">Add Item</a>
   <a href="Update_Item.aspx" >Update Item</a>
   <a href="Sync_Database.aspx">Sync Database</a>
-  <a href="Inventory.aspx">Main Menu</a>
+  <a href="Inventory_admin.aspx">Main Menu</a>
   
 
 </div>    
