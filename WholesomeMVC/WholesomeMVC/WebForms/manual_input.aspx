@@ -10,15 +10,14 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
     <section class="row text-center">
-		<asp:Image ID="image_calculator" runat="server" />
 		<h2><asp:Label ID="body_title" runat="server" /></h2>
-		<h4><asp:Label ID="body_description" runat="server" /></h4>
 		<hr />
     </section>
 
     <section class="row">
-        <section class="col-lg-offset-2 col-lg-8">
-            <asp:HiddenField ID="view_mode" runat="server" ClientIDMode="Static" />
+        <section class="col-lg-offset-3 col-lg-6">
+			<h4><asp:Label ID="body_description" runat="server" /></h4>
+			<asp:HiddenField ID="view_mode" runat="server" ClientIDMode="Static" />
 
 			<!-- switch buttons for old/new view mode -->
             <ul class="nav nav-tabs">
@@ -27,78 +26,78 @@
             </ul>
 
 			<!-- old view mode -->
-            <section id="old_view" class="form-horizontal">
+            <section id="old_view">
 				<!-- result -->
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">
+                    <label class="control-label">
                         <asp:Label ID="label_score" runat="server" />
                     </label>
 
-                    <p class="col-sm-10 form-control-static text-primary">
-                        <strong><asp:Label ID="txtndex" runat="server" Text="0.0" /></strong>
-                    </p>
-
-                    <span class="col-sm-offset-2 col-sm-10 help-block">
+                    <span class="help-block">
                         <asp:Label ID="label_score_help" runat="server" />
                     </span>
+
+                    <h1 class="form-control-static text-primary">
+                        <strong><asp:Label ID="txtndex" runat="server" Text="0.0" /></strong>
+                    </h1>
                 </div>
 
 				<!-- basic info -->
 				<hr />
                 <div class="form-group">
-                    <label for="txtKcal0" class="col-sm-2 control-label">
+                    <label for="txtKcal0" class="control-label">
 						<asp:Label ID="label_txtKcal0" runat="server" />
                     </label>
-					<div class="col-sm-10">
+					<div>
 						<asp:TextBox ID="txtKcal0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
 					</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="txtKcal0" class="col-sm-2 control-label">
+                    <label for="txtKcal0" class="control-label">
 						<asp:Label ID="label_txtsatfat0" runat="server" />
                     </label>
-					<div class="col-sm-10 input-group">
+					<div class="input-group">
 						<span class="input-group-addon">g</span>
 						<asp:TextBox ID="txtsatfat0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
 					</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="txtsodium0" class="col-sm-2 control-label">
+                    <label for="txtsodium0" class="control-label">
 						<asp:Label ID="label_txtsodium0" runat="server" />
                     </label>
-					<div class="col-sm-10 input-group">
+					<div class="input-group">
 						<span class="input-group-addon">mg</span>
 						<asp:TextBox ID="txtsodium0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
 					</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="txtfiber0" class="col-sm-2 control-label">
+                    <label for="txtfiber0" class="control-label">
 						<asp:Label ID="label_txtfiber0" runat="server" />
                     </label>
-					<div class="col-sm-10 input-group">
+					<div class="input-group">
 						<span class="input-group-addon">g</span>
 						<asp:TextBox ID="txtfiber0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
 					</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="txtsugar0" class="col-sm-2 control-label">
+                    <label for="txtsugar0" class="control-label">
 						<asp:Label ID="label_txtsugar0" runat="server" />
                     </label>
-					<div class="col-sm-10 input-group">
+					<div class="input-group">
 						<span class="input-group-addon">g</span>
 						<asp:TextBox ID="txtsugar0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
 					</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="txtprotein0" class="col-sm-2 control-label">
+                    <label for="txtprotein0" class="control-label">
 						<asp:Label ID="label_txtprotein0" runat="server" />
                     </label>
-					<div class="col-sm-10 input-group">
+					<div class="input-group">
 						<span class="input-group-addon">g</span>
 						<asp:TextBox ID="txtprotein0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
 					</div>
@@ -107,40 +106,40 @@
 				<!-- detail info -->
 				<hr />
                 <div class="form-group">
-                    <label for="txtva0" class="col-sm-2 control-label">
+                    <label for="txtva0" class="control-label">
 						<asp:Label ID="label_txtva0" runat="server" />
                     </label>
-					<div class="col-sm-10 input-group">
+					<div class="input-group">
 						<span class="input-group-addon">%</span>
 						<asp:TextBox ID="txtva0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
 					</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="txtvc0" class="col-sm-2 control-label">
+                    <label for="txtvc0" class="control-label">
 						<asp:Label ID="label_txtvc0" runat="server" />
                     </label>
-					<div class="col-sm-10 input-group">
+					<div class="input-group">
 						<span class="input-group-addon">%</span>
 						<asp:TextBox ID="txtvc0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
 					</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="txtcalcium0" class="col-sm-2 control-label">
+                    <label for="txtcalcium0" class="control-label">
 						<asp:Label ID="label_txtcalcium0" runat="server" />
                     </label>
-					<div class="col-sm-10 input-group">
+					<div class="input-group">
 						<span class="input-group-addon">%</span>
 						<asp:TextBox ID="txtcalcium0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
 					</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="txtiron0" class="col-sm-2 control-label">
+                    <label for="txtiron0" class="control-label">
 						<asp:Label ID="label_txtiron0" runat="server" />
                     </label>
-					<div class="col-sm-10 input-group">
+					<div class="input-group">
 						<span class="input-group-addon">%</span>
 						<asp:TextBox ID="txtiron0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
 					</div>

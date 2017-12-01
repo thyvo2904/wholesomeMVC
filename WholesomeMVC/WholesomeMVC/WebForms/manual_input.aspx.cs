@@ -12,17 +12,15 @@ namespace WholesomeMVC
         protected void Page_Load(object sender, EventArgs e)
         {
             // set page variables
-            String strTitle = "Nutrient Calculator.";
+            String strTitle = "Nutrient Calculator";
             String strDescription = @"
                 Manually input the value of each nutrient to calculate
-                a score to compare to the nutrition grade.";
+                a score to compare to the nutrition grade";
 
             page_title.Text = strTitle;
 
             body_title.Text = strTitle;
             body_description.Text = strDescription;
-
-			image_calculator.ImageUrl = "/Content/Images/icons8-calculator-100.png";
 
             label_score.Text = "ND_Score";
             label_score_help.Text = "Calculated based on 100kcal";

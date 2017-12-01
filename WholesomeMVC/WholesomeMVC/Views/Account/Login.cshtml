@@ -14,8 +14,8 @@
 		<hr />
 	</section>
 </section>
+
 <section class="row">
-<div class="row">
 	<div class="col-sm-offset-4 col-sm-4">
         <section id="loginForm">
 			<h4>Use a local account to log in</h4>
@@ -57,11 +57,11 @@
                     </p>*@
             }
         </section>
+
         <section id="socialLoginForm">
             @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
         </section>
     </div>
-</div>
 </section>
 
 @section Scripts {

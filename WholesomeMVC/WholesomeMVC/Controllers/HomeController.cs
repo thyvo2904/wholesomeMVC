@@ -20,5 +20,20 @@ namespace WholesomeMVC.Controllers
 
             Response.Redirect("~/WebForms/index.aspx");
         }
+
+		public void NutrientCalculator()
+		{
+			Response.Redirect("~/WebForms/manual_input.aspx");
+		}
+
+		public void Recent()
+		{
+			Response.Redirect("~/WebForms/recent.aspx");
+		}
+
+		public void SavedItems()
+		{
+			Response.Redirect("~/WebForms/saved_items.aspx");
+		}
     }
 }
