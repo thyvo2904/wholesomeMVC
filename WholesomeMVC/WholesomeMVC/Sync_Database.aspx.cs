@@ -62,7 +62,7 @@ namespace WholesomeMVC
 
                 System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
                 {
-                    ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                    ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
             };
 
                 sc.Open();
@@ -173,7 +173,7 @@ namespace WholesomeMVC
 
                 sc = new System.Data.SqlClient.SqlConnection
                 {
-                    ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                    ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
             };
 
                 sc.Open();
@@ -274,7 +274,7 @@ namespace WholesomeMVC
         {
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
         };
 
             sc.Open();
@@ -326,7 +326,7 @@ namespace WholesomeMVC
 
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
         };
 
             sc.Open();
@@ -451,7 +451,7 @@ namespace WholesomeMVC
             double kCal = Double.Parse(gridArchivedData.SelectedRow.Cells[16].Text);
             double ndscore = Double.Parse(gridArchivedData.SelectedRow.Cells[17].Text);
 
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 

@@ -44,7 +44,7 @@ namespace WholesomeMVC
 
         public static void setValue1(double value)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -94,7 +94,7 @@ namespace WholesomeMVC
 
         public static void setValue2(double value)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -144,7 +144,7 @@ namespace WholesomeMVC
 
         public static void setValue3(double value)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -194,7 +194,7 @@ namespace WholesomeMVC
 
         public static void setValue4(double value)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -244,7 +244,7 @@ namespace WholesomeMVC
 
         public static void setValue5(double value)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -294,7 +294,7 @@ namespace WholesomeMVC
 
         public static void setValue6(double value)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -344,7 +344,7 @@ namespace WholesomeMVC
 
         public static void setValue7(double value)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -394,7 +394,7 @@ namespace WholesomeMVC
 
         public static void setValue8(double value)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -449,7 +449,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
             };
 
             sc.Open();
@@ -476,7 +476,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
             };
 
             sc.Open();
@@ -505,7 +505,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
             };
 
             sc.Open();
@@ -534,7 +534,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
             };
 
             sc.Open();
@@ -563,7 +563,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
             };
 
             sc.Open();
@@ -592,7 +592,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
             };
 
             sc.Open();
@@ -621,7 +621,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
             };
 
             sc.Open();
@@ -650,7 +650,7 @@ namespace WholesomeMVC
             int count = 0;
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
             };
 
             sc.Open();

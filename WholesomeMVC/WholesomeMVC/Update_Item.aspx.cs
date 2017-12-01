@@ -77,7 +77,7 @@ namespace WholesomeMVC
         // This just does the USDA item search / pops up the manual input options
         protected void btnUpdateItem_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
                 System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
                 Boolean findCeresID = false;
@@ -232,7 +232,7 @@ namespace WholesomeMVC
 
         protected void btnOldSaveItem_Click(object sender, EventArgs e)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 
 
@@ -290,7 +290,7 @@ namespace WholesomeMVC
                     connection.Close();
 
                     int count = 0;
-                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                     {
                         System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
 
@@ -345,7 +345,7 @@ namespace WholesomeMVC
 
         protected void btnNewSaveItem_Click(object sender, EventArgs e)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             String description = txtDescription.Text;
 
             if(description.Length > 48)
@@ -398,7 +398,7 @@ namespace WholesomeMVC
                     connection.Close();
 
                     int count = 0;
-                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                     {
                         System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
 
@@ -469,7 +469,7 @@ namespace WholesomeMVC
             double kCal = Double.Parse(gridUSDAChoices.SelectedRow.Cells[11].Text);
             double ndscore = Double.Parse(gridUSDAChoices.SelectedRow.Cells[12].Text);
 
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
             if (ceresDescription.Length > 48)
             {
@@ -527,7 +527,7 @@ namespace WholesomeMVC
 
 
                     int count = 0;
-                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
                     {
                         System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
 
