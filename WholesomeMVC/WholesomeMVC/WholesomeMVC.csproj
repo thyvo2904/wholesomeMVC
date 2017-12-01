@@ -368,8 +368,14 @@
     <Content Include="Activation.aspx" />
     <Content Include="add_item.aspx" />
     <Content Include="advanced_search.aspx" />
+    <Content Include="Content\38121282646_39cba86aa4_o.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\favicon.ico" />
+    <Content Include="Content\icons8-calculator-100.png" />
+    <Content Include="Content\icons8-check-file-100.png" />
+    <Content Include="Content\icons8-time-machine-100.png" />
+    <Content Include="Content\image_brand.png" />
     <Content Include="Content\index.css" />
     <Content Include="farmers_market.aspx" />
     <Content Include="favicon.ico" />
