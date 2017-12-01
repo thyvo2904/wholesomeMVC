@@ -51,8 +51,8 @@
         </div>
     </form>
 
-    <hr />
-    <footer>
+    <footer class="container">
+        <hr />
         <ul class="text-center footer-link">
             <li><a href="manual_input.aspx">Nutrient Calculator</a></li>
             <li>&bull;</li>

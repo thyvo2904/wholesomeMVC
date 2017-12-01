@@ -1,5 +1,5 @@
 ﻿body {
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     padding-top: 80px;
     padding-bottom: 20px;
 }
@@ -46,4 +46,20 @@
     display: block;
     padding: 5px;
     text-decoration: none;
+}
+
+/* oauth buttons */
+.oauth_button {
+    background-color: transparent;
+    border: none;
+}
+.oauth_button > img {
+    width: 50px;
+    height: 50px;
+}
+.oauth_button_list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
 }

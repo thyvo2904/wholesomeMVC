@@ -1,9 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <title>@ViewBag.Title</title>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/Images/favicon.ico">
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -18,7 +22,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="@Url.Action("Index", "Home")" class="navbar-brand">
-                    <img src="https://farm5.staticflickr.com/4468/38145590072_8dd45d4da2_o.png" alt="Wholesome Logo" class="img-responsive">
+                    <img src="~/Content/Images/image_brand.png" alt="Wholesome Logo" class="img-responsive">
                 </a>
             </div>
             <div class="navbar-collapse collapse">
@@ -35,8 +39,8 @@
         @RenderBody()
     </div>
 
-    <hr />
-    <footer>
+    <footer class="container">
+        <hr />
         <ul class="text-center footer-link">
             <li>@Html.ActionLink("Nutrient Calculator", "Index", "Home")</li>
             <li>&bull;</li>
