@@ -11,10 +11,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" type="image/x-icon" href="Content/Images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/Content/Images/favicon.ico">
 
-    <link href="Content/bootstrap.min.css" rel="stylesheet" type="text/css" runat="server" />
-    <link href="Content/Site.css" rel="stylesheet" type="text/css" runat="server" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" runat="server" />
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" runat="server" />
     
     <asp:ContentPlaceHolder ID="style" runat="server"></asp:ContentPlaceHolder>
 </head>
@@ -27,8 +27,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/index.aspx" class="navbar-brand">
-                    <img src="Content/Images/image_brand.png" alt="Wholesome Logo" class="img-responsive">
+                <a href="/WebForms/index.aspx" class="navbar-brand">
+                    <img src="/Content/Images/image_brand.png" alt="Wholesome Logo" class="img-responsive">
                 </a>
             </div>
             <div class="navbar-collapse collapse">
@@ -64,8 +64,8 @@
         <p class="text-center">&copy; <asp:Label runat="server" ID="label_year"></asp:Label> - Wholesome Inc. All rights reserved.</p>
     </footer>
 
-    <script src="Scripts/jquery-1.10.2.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
 
     <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
 </body>

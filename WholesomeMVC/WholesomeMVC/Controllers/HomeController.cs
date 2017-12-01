@@ -18,7 +18,7 @@ namespace WholesomeMVC.Controllers
             ";
             ViewBag.LabelCategoryButton = "Select Category";
 
-            Response.Redirect("~/index.aspx");
+            Response.Redirect("~/WebForms/index.aspx");
         }
     }
 }

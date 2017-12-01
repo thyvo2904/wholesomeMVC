@@ -1,10 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/_layout.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="WholesomeMVC.index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebForms/_layout.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="WholesomeMVC.index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    Home
+    <asp:Literal ID="page_title" runat="server"></asp:Literal>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="style" runat="server">
-    <link href="Content/index.css" rel="stylesheet" type="text/css" runat="server" />
+    <link href="/Content/Custom/index.css" rel="stylesheet" type="text/css" runat="server" />
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
@@ -52,22 +52,22 @@
     <div class="row">
         <div class="col-md-4 text-center">
             <div class="panel panel-default text-center banner-button">
-                <img src="Content/Images/icons8-calculator-100.png" alt="Nutrient Calculator" />
-                <a class="btn btn-success btn-lg btn-block" href="manual_input.aspx" role="button">Nutrient Calculator</a>
+                <asp:Image ID="image_nutrient_calculator" runat="server" />
+                <asp:HyperLink ID="link_nutrient_calculator" runat="server" CssClass="btn btn-success btn-lg btn-block" />
             </div>
         </div>
 
         <div class="col-md-4 text-center">
             <div class="panel panel-default text-center banner-button">
-                <img src="Content/Images/icons8-time-machine-100.png" alt="Nutrient Calculator" />
-                <a class="btn btn-success btn-lg btn-block" href="recent.aspx" role="button">Recent</a>
+                <asp:Image ID="image_recent" runat="server" />
+                <asp:HyperLink ID="link_recent" runat="server" CssClass="btn btn-success btn-lg btn-block" />
             </div>
         </div>
 
         <div class="col-md-4 text-center">
             <div class="panel panel-default text-center banner-button">
-                <img src="Content/Images/icons8-check-file-100.png" alt="Nutrient Calculator" />
-                <a class="btn btn-success btn-lg btn-block" href="saved_items.aspx" role="button">Saved Items</a>
+                <asp:Image ID="image_saved_items" runat="server" />
+                <asp:HyperLink ID="link_saved_items" runat="server" CssClass="btn btn-success btn-lg btn-block" />
             </div>
         </div>
     </div>
