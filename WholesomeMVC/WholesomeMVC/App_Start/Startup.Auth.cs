@@ -58,11 +58,11 @@ namespace WholesomeMVC
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "579145419016-051g2ki8qcf5orcs6ss3cqj3tci94l3i.apps.googleusercontent.com",
+                ClientSecret = "pHG7wHWzhlu3PMDQGOI4ovPG"
+            });
         }
     }
 }
