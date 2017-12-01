@@ -1,20 +1,23 @@
 ﻿/*------------------------------------------------------------------------------
     CUSTOM CSS START HERE
 ------------------------------------------------------------------------------*/
+/* utilities */
+.background-color {
+    background-color: rgba(0, 0, 0, 0.50);
+}
 
 /* banner */
 #banner {
     margin: 50px auto;
-    background-image: url(https://source.unsplash.com/1920x600/?food);
+    background-image: url(https://source.unsplash.com/1140x600/?food);
     background-size: cover;
     min-height: 600px;
     position: relative;
 }
-#banner > #background-color {
-    background-color: rgba(0, 0, 0, 0.60);
+#banner > .background-color {
     min-height: 600px;
 }
-#banner > #background-color > div {
+#banner > .background-color > div {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -22,10 +25,18 @@
     width: 70%;
     margin: -15% 0 0 -35%;
 }
-#banner > #background-color > div > h1 {
+#banner > .background-color > div > h1 {
     color: white;
-    font-weight: 300;
+    font-weight: 600;
 }
-#banner > #background-color > div > #search-panel {
+#banner > .background-color > div > #search-panel {
     margin: 50px auto;
+}
+
+/* banner-button */
+.banner-button {
+    padding: 50px;
+}
+.banner-button > img {
+    padding-bottom: 25px;
 }

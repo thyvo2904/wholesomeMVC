@@ -4,16 +4,19 @@
 
 <html>
 <head runat="server">
-    <title></title>
+    <title>
+        <asp:ContentPlaceHolder ID="title" runat="server"></asp:ContentPlaceHolder>
+    </title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" type="image/x-icon" href="Content/Images/favicon.ico">
+
     <link href="Content/bootstrap.min.css" rel="stylesheet" type="text/css" runat="server" />
     <link href="Content/Site.css" rel="stylesheet" type="text/css" runat="server" />
     
-    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="style" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
@@ -24,8 +27,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="~/index.aspx" class="navbar-brand">
-                    <img src="https://farm5.staticflickr.com/4468/38145590072_8dd45d4da2_o.png" alt="Wholesome Logo" class="img-responsive">
+                <a href="/index.aspx" class="navbar-brand">
+                    <img src="Content/Images/image_brand.png" alt="Wholesome Logo" class="img-responsive">
                 </a>
             </div>
             <div class="navbar-collapse collapse">
@@ -43,7 +46,7 @@
     </div>
 
     <form id="form1" runat="server">
-        <div>
+        <div class="container body-content">
             <asp:ContentPlaceHolder ID="body" runat="server"></asp:ContentPlaceHolder>
         </div>
     </form>
@@ -60,10 +63,6 @@
         <br />
         <p class="text-center">&copy; <asp:Label runat="server" ID="label_year"></asp:Label> - Wholesome Inc. All rights reserved.</p>
     </footer>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script src="Scripts/jquery-1.10.2.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>

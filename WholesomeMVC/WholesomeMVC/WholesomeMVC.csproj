@@ -255,13 +255,6 @@
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.cs" />
-    <Compile Include="index1.aspx.cs">
-      <DependentUpon>index1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="index1.aspx.designer.cs">
-      <DependentUpon>index1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="IndexResults.aspx.cs">
       <DependentUpon>IndexResults.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -384,7 +377,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="index.aspx" />
-    <Content Include="index1.aspx" />
     <Content Include="IndexResults.aspx" />
     <Content Include="inventory_admin.aspx" />
     <Content Include="inventory_purchased.aspx" />
