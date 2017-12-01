@@ -46,17 +46,17 @@ namespace WholesomeMVC
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication(
+                clientId: "84c66061-9eea-4589-9057-26cc447776ee",
+                clientSecret: "dltJGXOZ47]=$xvvlUS097+");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            app.UseTwitterAuthentication(
+               consumerKey: "wgVau30xlM31fMdbYTzmP9A7X",
+               consumerSecret: "1ZhkXhZbuOhy1VVBDAUkjwX6wRBlKwmKImzclF3yavxeN1lFdg");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "166865350581361",
+               appSecret: "c08a77a839e6b5794d46f6969b9e543f");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
