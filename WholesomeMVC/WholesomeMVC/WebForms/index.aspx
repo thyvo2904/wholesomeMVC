@@ -1,14 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebForms/_layout.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="WholesomeMVC.index" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    <asp:Literal ID="page_title" runat="server"></asp:Literal>
-</asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="style" runat="server">
+<asp:Content ContentPlaceHolderID="style" runat="server">
     <link href="/Content/Custom/index.css" rel="stylesheet" type="text/css" runat="server" />
 </asp:Content>
 
-<asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
-
+<asp:Content ContentPlaceHolderID="body" runat="server">
     <section id="banner">
         <div class="background-color">
             <div class="text-center">
@@ -74,5 +70,5 @@
 
 </asp:Content>
 
-<asp:Content ID="Content4" ContentPlaceHolderID="script" runat="server">
+<asp:Content ContentPlaceHolderID="script" runat="server">
 </asp:Content>

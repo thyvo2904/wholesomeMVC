@@ -13,15 +13,6 @@ namespace WholesomeMVC {
     public partial class index {
         
         /// <summary>
-        /// page_title control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal page_title;
-        
-        /// <summary>
         /// banner_message control.
         /// </summary>
         /// <remarks>

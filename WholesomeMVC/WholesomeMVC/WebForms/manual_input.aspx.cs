@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WholesomeMVC
+namespace WholesomeMVC.WebForms
 {
-	public partial class manual_input1 : System.Web.UI.Page
+	public partial class manual_input : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -16,15 +16,17 @@ namespace WholesomeMVC
 			} else {
 				// set page variables
 				String strTitle = "Nutrient Calculator";
-				String strDescription = @"
+
+				Literal page_title = (Literal) Master.FindControl("page_title");
+				page_title.Text = strTitle;
+				Label body_title = (Label) Master.FindControl("body_title");
+				body_title.Text = strTitle;
+
+				body_description.Text = @"
                 Manually input the value of each nutrient to calculate
                 a score to compare to the nutrition grade";
 
-				page_title.Text = strTitle;
-
-				body_title.Text = strTitle;
-				body_description.Text = strDescription;
-
+				// configure forms
 				view_mode.Value = "old";
 
 				String strScoreDefault = "0.0";

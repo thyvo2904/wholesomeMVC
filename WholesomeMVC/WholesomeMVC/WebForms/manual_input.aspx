@@ -1,19 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebForms/_layout.Master" AutoEventWireup="true" CodeBehind="manual_input.aspx.cs" Inherits="WholesomeMVC.manual_input1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebForms/_layout.Master" AutoEventWireup="true" CodeBehind="manual_input.aspx.cs" Inherits="WholesomeMVC.WebForms.manual_input" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    <asp:Literal ID="page_title" runat="server"></asp:Literal>
-</asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="style" runat="server">
+<asp:Content ContentPlaceHolderID="style" runat="server">
     <link href="/Content/Custom/manual_input.css" rel="stylesheet" type="text/css" runat="server" />
 </asp:Content>
 
-<asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
-    <section class="row text-center">
-		<h2><asp:Label ID="body_title" runat="server" /></h2>
-		<hr />
-    </section>
-
+<asp:Content ContentPlaceHolderID="body" runat="server">
     <section class="row">
 		<section class="col-lg-offset-2 col-lg-8">
 			<asp:HiddenField ID="view_mode" runat="server" ClientIDMode="Static" />
@@ -30,7 +21,7 @@
 			<!-- old view mode -->
 			<section id="old_view">
 				<!-- result -->
-				<div class="col-lg-12">
+				<div class="col-sm-12">
 					<div class="form-group">
 						<label class="control-label">
 							<asp:Label ID="label_score0" runat="server" />
@@ -47,7 +38,7 @@
 				</div>
 
 				<!-- basic info -->
-				<div class="col-md-6">
+				<div class="col-sm-6">
 					<hr />
 					<div class="form-group">
 						<label for="txtKcal0" class="control-label">
@@ -110,7 +101,7 @@
 				</div>
 
 				<!-- detail info -->
-				<div class="col-md-6">
+				<div class="col-sm-6">
 					<hr />
 					<div class="form-group">
 						<label for="txtva0" class="control-label">
@@ -297,6 +288,6 @@
 	</section>
 </asp:Content>
 
-<asp:Content ID="Content4" ContentPlaceHolderID="script" runat="server">
+<asp:Content ContentPlaceHolderID="script" runat="server">
     <script type="text/javascript" src="/Scripts/Custom/manual_input.js"></script>
 </asp:Content>

@@ -1,9 +1,11 @@
-﻿/*------------------------------------------------------------------------------
-    CUSTOM CSS START HERE
-------------------------------------------------------------------------------*/
-/* utilities */
+﻿/* utilities */
 .background-color {
     background-color: rgba(0, 0, 0, 0.50);
+}
+
+/* hide body_title_wrapper on index page only */
+#body_title_wrapper {
+	display: none;
 }
 
 /* banner */
