@@ -293,13 +293,6 @@
       <DependentUpon>Item_Management.aspx</DependentUpon>
     </Compile>
     <Compile Include="List.cs" />
-    <Compile Include="manual_input.aspx.cs">
-      <DependentUpon>manual_input.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="manual_input.aspx.designer.cs">
-      <DependentUpon>manual_input.aspx</DependentUpon>
-    </Compile>
     <Compile Include="WebForms\manual_input.aspx.cs">
       <DependentUpon>manual_input.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
