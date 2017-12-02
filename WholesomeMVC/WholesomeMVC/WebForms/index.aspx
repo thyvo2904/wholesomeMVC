@@ -25,7 +25,7 @@
                             DataSourceID="Category"
                             DataTextField="FdGrp_Desc"
                             DataValueField="FdGrp_Desc">
-                            <asp:ListItem Selected="True">Select a catagory</asp:ListItem>
+                            <asp:ListItem Selected="True">Select a category</asp:ListItem>
                         </asp:DropDownList>
                         <asp:SqlDataSource
                             ID="Category"
