@@ -16,8 +16,10 @@
 
     <section class="row">
 		<section class="col-lg-offset-2 col-lg-8">
-			<h4><asp:Label ID="body_description" runat="server" /></h4>
 			<asp:HiddenField ID="view_mode" runat="server" ClientIDMode="Static" />
+			<asp:HiddenField ID="error_message" runat="server" ClientIDMode="Static" />
+
+			<h4><asp:Label ID="body_description" runat="server" /></h4>
 
 			<!-- switch buttons for old/new view mode -->
 			<ul class="nav nav-tabs">
@@ -38,7 +40,7 @@
 							<asp:Label ID="label_score_help0" runat="server" />
 						</span>
 
-						<h1 class="form-control-static text-primary">
+						<h1 id="txtindex0_wrapper" runat="server" class="form-control-static text-primary">
 							<strong><asp:Label ID="txtindex0" runat="server" /></strong>
 						</h1>
 					</div>
@@ -158,6 +160,7 @@
 				</div>
 			</section>
 
+			<!-- new view mode -->
 			<section id="new_view">
 				<!-- result -->
 				<div class="col-lg-12">
@@ -170,7 +173,7 @@
 							<asp:Label ID="label_score_help1" runat="server" />
 						</span>
 
-						<h1 class="form-control-static text-primary">
+						<h1 id="txtindex1_wrapper" runat="server" class="form-control-static text-primary">
 							<strong><asp:Label ID="txtindex1" runat="server" /></strong>
 						</h1>
 					</div>

@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-	console.log($("#view_mode").val())
+	// set default view
 	if ($("#view_mode").val() === "old") {
 		$("#old_li").addClass("active");
 
@@ -15,10 +15,25 @@
 
 		$("#view_mode").val("new");
 	}
+
+	// create error message box when an error message exists
+	if ($("#error_message").val()) {
+		$("#old_view").before(`
+			<!-- alert message for exception handling -->
+			<section id="error_box" class="alert alert-danger alert-dismissable" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				${$("#error_message").val()}
+			</section>
+		`);
+	}
 });
 
+/**
+ * switch view when click nab-tab
+ */
 function switchView() {
-	console.log($("#view_mode").val())
 	if ($("#view_mode").val() === "old") {
 		$("#old_li").removeClass("active");
 		$("#old_view").css("display", "none");

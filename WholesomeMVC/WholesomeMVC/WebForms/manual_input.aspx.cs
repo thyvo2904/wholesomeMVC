@@ -154,28 +154,21 @@ namespace WholesomeMVC
 				NRF6 = Math.Round(nR6 - liMT, 2);
 				txtindex0.Text = Convert.ToString(NRF6);
 
-				if (txtKcal0.Text.Equals(0))
-				{
+				if (txtKcal0.Text.Equals("0")) {
 					txtindex0.Text = "Uncategorized";
-					txtindex0.Attributes["style"] = "font-weight:bold;text-align: center; font-size: 110%";
-				}
-				else if (NRF6 < 4.66)
-				{
-					txtindex0.Attributes["style"] = "color:red; font-weight:bold;text-align: center; font-size: 110%";
-				}
-				else if ((NRF6 >= 4.66) && (NRF6 <= 28))
-				{
-					txtindex0.Attributes["style"] = "background-color:yellow; font-weight:bold;text-align: center; font-size: 110%";
-				}
-				else if (NRF6 > 28)
-				{
-					txtindex0.Attributes["style"] = "color:green; font-weight:bold;text-align: center; font-size: 110%";
-
+				} else if (NRF6 < 4.66) {
+					txtindex0_wrapper.Attributes["class"] = "form-control-static text-danger";
+				} else if ((NRF6 >= 4.66) && (NRF6 <= 28)) {
+					txtindex0_wrapper.Attributes["class"] = "form-control-static text-warning";
+				} else if (NRF6 > 28) {
+					txtindex0_wrapper.Attributes["class"] = "form-control-static text-success";
+				} else {
+					txtindex0.Text = "Uncategorized";
 				}
 			}
 			catch (Exception ex)
 			{
-				Response.Write("<script>alert('Please enter a valid value');</script>");
+				error_message.Value = "Please enter a valid value";
 				Console.WriteLine(ex.ToString());
 			}
 
@@ -258,32 +251,21 @@ namespace WholesomeMVC
 				NRF6 = Math.Round(nR6 - liMT, 2);
 				txtindex1.Text = Convert.ToString(NRF6);
 
-				if (txtKcal1.Text.Equals(0))
-				{
+				if (txtKcal1.Text.Equals("0")) {
 					txtindex1.Text = "Uncategorized";
-					txtindex1.Attributes["style"] = "font-weight:bold;text-align: center; font-size: 110%";
-				}
-				else if (NRF6 < 4.66)
-				{
-					txtindex1.Attributes["style"] = "color:red; font-weight:bold;text-align: center; font-size: 110%";
-				}
-				else if ((NRF6 >= 4.66) && (NRF6 <= 28))
-				{
-					txtindex1.Attributes["style"] = "color:yellow; font-weight:bold;background: black;text-align: center; font-size: 110%";
-				}
-				else if (NRF6 > 28)
-				{
-					txtindex1.Attributes["style"] = "color:green; font-weight:bold;text-align: center; font-size: 110%";
-				}
-				else
-				{
+				} else if (NRF6 < 4.66) {
+					txtindex1_wrapper.Attributes["class"] = "form-control-static text-danger";
+				} else if ((NRF6 >= 4.66) && (NRF6 <= 28)) {
+					txtindex1_wrapper.Attributes["class"] = "form-control-static text-warning";
+				} else if (NRF6 > 28) {
+					txtindex1_wrapper.Attributes["class"] = "form-control-static text-success";
+				} else {
 					txtindex1.Text = "Uncategorized";
-					txtindex1.Attributes["style"] = "font-weight:bold;text-align: center; font-size: 110%";
 				}
 			}
 			catch (Exception ei)
 			{
-				Response.Write("<script>alert('Please enter a valid value');</script>");
+				error_message.Value = "Please enter a valid value";
 				Console.WriteLine(ei.ToString());
 			}
 

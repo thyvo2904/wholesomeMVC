@@ -31,15 +31,6 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.Label body_title;
         
         /// <summary>
-        /// body_description control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label body_description;
-        
-        /// <summary>
         /// view_mode control.
         /// </summary>
         /// <remarks>
@@ -47,6 +38,24 @@ namespace WholesomeMVC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField view_mode;
+        
+        /// <summary>
+        /// error_message control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField error_message;
+        
+        /// <summary>
+        /// body_description control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label body_description;
         
         /// <summary>
         /// label_score0 control.
@@ -65,6 +74,15 @@ namespace WholesomeMVC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label label_score_help0;
+        
+        /// <summary>
+        /// txtindex0_wrapper control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtindex0_wrapper;
         
         /// <summary>
         /// txtindex0 control.
@@ -290,6 +308,15 @@ namespace WholesomeMVC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label label_score_help1;
+        
+        /// <summary>
+        /// txtindex1_wrapper control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtindex1_wrapper;
         
         /// <summary>
         /// txtindex1 control.
