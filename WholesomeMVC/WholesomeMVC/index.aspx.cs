@@ -1,49 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿
+using System;
+using System.Data.SqlClient;
+using WholesomeMVC;
 
-namespace WholesomeMVC
+public partial class index : System.Web.UI.Page
 {
-    public partial class index : System.Web.UI.Page
+
+    public static string foodSearch;
+    protected void Page_Load(object sender, EventArgs e)
     {
-        public static string foodSearch;
+        //cleaning up code--not sure if this will need to be used 
+        //if (!IsPostBack)
+        //{
+        //    if (Application["visits"] == null)
+        //    {
+        //        Application["visits"] = 1;
+        //    }
+        //    else
+        //    {
+        //        int visits = (int)Application["visits"];
+        //        visits++;
+        //        Application["visits"] = visits;
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            // set page variable
-            banner_message.Text = @"
-                Wholesome can quickly find out the different nutritional values of your food options.
-                It's time to decide what works best for you yourself!
-            ";
+        //    }
+        //}
+    }
 
-            //cleaning up code--not sure if this will need to be used 
-            //if (!IsPostBack)
-            //{
-            //    if (Application["visits"] == null)
-            //    {
-            //        Application["visits"] = 1;
-            //    }
-            //    else
-            //    {
-            //        int visits = (int)Application["visits"];
-            //        visits++;
-            //        Application["visits"] = visits;
-
-            //    }
-            //}
-        }
-
-        protected void btnSearch(object sender, EventArgs e)
-        {
-
+    protected void btnSearch(object sender, EventArgs e)
+    {
+     
             if (txtSearch.Text != "" && ddlCategory.SelectedIndex == 0)
             {
                 foodSearch = txtSearch.Text;
                 FoodItem.findNdbno(foodSearch);
-                Server.Transfer("~/IndexResults.aspx");
+                Server.Transfer("~/IndexResults.aspx");     
             }
 
             else if (ddlCategory.SelectedIndex == 1)
@@ -63,7 +53,7 @@ namespace WholesomeMVC
             {
                 foodSearch = txtSearch.Text + "&fg=0300";
                 FoodItem.findNdbno(foodSearch);
-                Server.Transfer("~/IndexResults.aspx");
+                Server.Transfer("~/IndexResults.aspx"); 
 
             }
             else if (ddlCategory.SelectedIndex == 4)
@@ -204,14 +194,14 @@ namespace WholesomeMVC
             {
                 foodSearch = txtSearch.Text + "&fg=2500";
                 FoodItem.findNdbno(foodSearch);
-                Server.Transfer("~/IndexResults.aspx");
+            Server.Transfer("~/IndexResults.aspx");
             }
 
             else if (ddlCategory.SelectedIndex == 24)
             {
                 foodSearch = txtSearch.Text + "&fg=3500";
                 FoodItem.findNdbno(foodSearch);
-                Server.Transfer("~/IndexResults.aspx");
+            Server.Transfer("~/IndexResults.aspx");
             }
 
             else if (ddlCategory.SelectedIndex == 25)
@@ -223,4 +213,5 @@ namespace WholesomeMVC
             }
         }
     }
-}
+
+

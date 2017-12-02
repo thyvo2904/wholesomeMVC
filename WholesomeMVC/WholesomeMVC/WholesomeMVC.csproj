@@ -247,11 +247,11 @@
     </Compile>
     <Compile Include="GradientColors.cs" />
     <Compile Include="GradientValues.cs" />
-    <Compile Include="index.aspx.cs">
+    <Compile Include="WebForms\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="index.aspx.designer.cs">
+    <Compile Include="WebForms\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.cs" />
@@ -298,6 +298,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="manual_input.aspx.designer.cs">
+      <DependentUpon>manual_input.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\manual_input.aspx.cs">
+      <DependentUpon>manual_input.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\manual_input.aspx.designer.cs">
       <DependentUpon>manual_input.aspx</DependentUpon>
     </Compile>
     <Compile Include="MarketDetails.cs" />
@@ -355,11 +362,18 @@
     <Compile Include="Update_Item.aspx.designer.cs">
       <DependentUpon>update_item.aspx</DependentUpon>
     </Compile>
-    <Compile Include="_layout.Master.cs">
+    <Compile Include="WebForms\recent.aspx.cs">
+      <DependentUpon>recent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\recent.aspx.designer.cs">
+      <DependentUpon>recent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\_layout.Master.cs">
       <DependentUpon>_layout.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="_layout.Master.designer.cs">
+    <Compile Include="WebForms\_layout.Master.designer.cs">
       <DependentUpon>_layout.Master</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -368,27 +382,34 @@
     <Content Include="Activation.aspx" />
     <Content Include="add_item.aspx" />
     <Content Include="advanced_search.aspx" />
+    <Content Include="Content\Custom\manual_input.css" />
     <Content Include="Content\Images\38121282646_39cba86aa4_o.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\favicon.ico" />
     <Content Include="Content\Images\icons8-calculator-100.png" />
     <Content Include="Content\Images\icons8-check-file-100.png" />
+    <Content Include="Content\Images\icons8-facebook-100.png" />
+    <Content Include="Content\Images\icons8-google-100.png" />
     <Content Include="Content\Images\icons8-time-machine-100.png" />
+    <Content Include="Content\Images\icons8-twitter-100.png" />
+    <Content Include="Content\Images\icons8-microsoft-100.png" />
     <Content Include="Content\Images\image_brand.png" />
-    <Content Include="Content\index.css" />
+    <Content Include="Content\Custom\index.css" />
     <Content Include="farmers_market.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <Content Include="index.aspx" />
+    <Content Include="Content\site.css" />
+    <Content Include="Scripts\Custom\manual_input.js" />
+    <Content Include="WebForms\index.aspx" />
     <Content Include="IndexResults.aspx" />
     <Content Include="inventory_admin.aspx" />
     <Content Include="inventory_purchased.aspx" />
     <Content Include="inventory_staff.aspx" />
     <Content Include="Item_Management.aspx" />
     <Content Include="manual_input.aspx" />
+    <Content Include="WebForms\manual_input.aspx" />
     <Content Include="Populate_table.aspx" />
     <Content Include="recent.aspx" />
     <Content Include="saved_items.aspx" />
@@ -448,7 +469,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="_layout.Master" />
+    <Content Include="WebForms\recent.aspx" />
+    <Content Include="WebForms\_layout.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

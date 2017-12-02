@@ -12,13 +12,22 @@ namespace WholesomeMVC.Controllers
     {
         public void Index()
         {
-            ViewBag.BannerMessage = @"
-                Wholesome can quickly find out the different nutritional values of your food options.
-                It's time to decide what works best for you yourself!
-            ";
-            ViewBag.LabelCategoryButton = "Select Category";
-
-            Response.Redirect("~/index.aspx");
+            Response.Redirect("~/WebForms/index.aspx");
         }
+
+		public void NutrientCalculator()
+		{
+			Response.Redirect("~/WebForms/manual_input.aspx");
+		}
+
+		public void Recent()
+		{
+			Response.Redirect("~/WebForms/recent.aspx");
+		}
+
+		public void SavedItems()
+		{
+			Response.Redirect("~/WebForms/saved_items.aspx");
+		}
     }
 }

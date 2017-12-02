@@ -1,20 +1,20 @@
 ﻿body {
-    background-color: #ffffff;
-    padding-top: 80px;
-    padding-bottom: 20px;
+	background-color: #ffffff;
+	padding: 0;
+	padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
-    white-space: normal;
+	white-space: normal;
 }
 
 /*------------------------------------------------------------------------------
@@ -24,42 +24,46 @@
 
 /* override bootstrap default navbar links */
 .navbar-nav > li > a {
-    line-height: 50px;
+	line-height: 50px;
 }
 
 /* style image */
 .navbar-brand > img {
-    height: 50px;
+	height: 50px;
 }
 
 /* footer links */
 .footer-link {
-    display: block;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+	display: block;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
 }
+
 .footer-link > li {
-    display: inline-block;
+	display: inline-block;
 }
+
 .footer-link > li > a {
-    display: block;
-    padding: 5px;
-    text-decoration: none;
+	display: block;
+	padding: 5px;
+	text-decoration: none;
 }
 
 /* oauth buttons */
 .oauth_button {
-    background-color: transparent;
-    border: none;
+	background-color: transparent;
+	border: none;
 }
+
 .oauth_button > img {
-    width: 50px;
-    height: 50px;
+	width: 50px;
+	height: 50px;
 }
+
 .oauth_button_list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: inline-block;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
 }

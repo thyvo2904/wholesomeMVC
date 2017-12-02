@@ -1,39 +1,54 @@
-﻿
-using System;
-using System.Data.SqlClient;
-using WholesomeMVC;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
-public partial class index : System.Web.UI.Page
+namespace WholesomeMVC
 {
-
-    public static string foodSearch;
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class index : System.Web.UI.Page
     {
-        //cleaning up code--not sure if this will need to be used 
-        //if (!IsPostBack)
-        //{
-        //    if (Application["visits"] == null)
-        //    {
-        //        Application["visits"] = 1;
-        //    }
-        //    else
-        //    {
-        //        int visits = (int)Application["visits"];
-        //        visits++;
-        //        Application["visits"] = visits;
+        public static string foodSearch;
 
-        //    }
-        //}
-    }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+			if (IsPostBack) {
+				// do nothing
+			} else {
+				// set page variable
+				String strTitle = "Home";
 
-    protected void btnSearch(object sender, EventArgs e)
-    {
-     
+				Literal page_title = (Literal)Master.FindControl("page_title");
+				page_title.Text = strTitle;
+
+				banner_message.Text = @"
+					Wholesome can quickly find out the different nutritional values of your food options.
+					It's time to decide what works best for you yourself!
+				";
+
+				image_nutrient_calculator.ImageUrl = "/Content/Images/icons8-calculator-100.png";
+				link_nutrient_calculator.NavigateUrl = "manual_input.aspx";
+				link_nutrient_calculator.Text = "Nutrient Calculator";
+
+				image_recent.ImageUrl = "/Content/Images/icons8-time-machine-100.png";
+				link_recent.NavigateUrl = "recent.aspx";
+				link_recent.Text = "Recent";
+
+				image_saved_items.ImageUrl = "/Content/Images/icons8-check-file-100.png";
+				link_saved_items.NavigateUrl = "saved_items.aspx";
+				link_saved_items.Text = "Saved Items";
+			}
+        }
+
+        protected void btnSearch(object sender, EventArgs e)
+        {
+
             if (txtSearch.Text != "" && ddlCategory.SelectedIndex == 0)
             {
                 foodSearch = txtSearch.Text;
                 FoodItem.findNdbno(foodSearch);
-                Server.Transfer("~/IndexResults.aspx");     
+                Server.Transfer("~/IndexResults.aspx");
             }
 
             else if (ddlCategory.SelectedIndex == 1)
@@ -53,7 +68,7 @@ public partial class index : System.Web.UI.Page
             {
                 foodSearch = txtSearch.Text + "&fg=0300";
                 FoodItem.findNdbno(foodSearch);
-                Server.Transfer("~/IndexResults.aspx"); 
+                Server.Transfer("~/IndexResults.aspx");
 
             }
             else if (ddlCategory.SelectedIndex == 4)
@@ -194,14 +209,14 @@ public partial class index : System.Web.UI.Page
             {
                 foodSearch = txtSearch.Text + "&fg=2500";
                 FoodItem.findNdbno(foodSearch);
-            Server.Transfer("~/IndexResults.aspx");
+                Server.Transfer("~/IndexResults.aspx");
             }
 
             else if (ddlCategory.SelectedIndex == 24)
             {
                 foodSearch = txtSearch.Text + "&fg=3500";
                 FoodItem.findNdbno(foodSearch);
-            Server.Transfer("~/IndexResults.aspx");
+                Server.Transfer("~/IndexResults.aspx");
             }
 
             else if (ddlCategory.SelectedIndex == 25)
@@ -213,5 +228,4 @@ public partial class index : System.Web.UI.Page
             }
         }
     }
-
-
+}

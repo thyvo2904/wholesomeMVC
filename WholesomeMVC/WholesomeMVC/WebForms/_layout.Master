@@ -5,21 +5,23 @@
 <html>
 <head runat="server">
     <title>
-        <asp:ContentPlaceHolder ID="title" runat="server"></asp:ContentPlaceHolder>
+		<asp:Literal ID="page_title" runat="server"></asp:Literal>
     </title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" type="image/x-icon" href="Content/Images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/Content/Images/favicon.ico">
 
-    <link href="Content/bootstrap.min.css" rel="stylesheet" type="text/css" runat="server" />
-    <link href="Content/Site.css" rel="stylesheet" type="text/css" runat="server" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" runat="server" />
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" runat="server" />
     
     <asp:ContentPlaceHolder ID="style" runat="server"></asp:ContentPlaceHolder>
+
+	<script type="text/javascript" src="/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -27,12 +29,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/index.aspx" class="navbar-brand">
-                    <img src="Content/Images/image_brand.png" alt="Wholesome Logo" class="img-responsive">
+                <a href="index.aspx" class="navbar-brand">
+                    <img src="/Content/Images/image_brand.png" alt="Wholesome Logo" class="img-responsive">
                 </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+					<li><a href="index.aspx">Home</a></li>
                     <li><a href="manual_input.aspx">Nutrient Calculator</a></li>
                     <li><a href="recent.aspx">Recent</a></li>
                     <li><a href="saved_items.aspx">Saved Items</a></li>
@@ -47,25 +50,37 @@
 
     <form id="form1" runat="server">
         <div class="container body-content">
+			<section id="body_title_wrapper" class="row text-center">
+				<h2><asp:Label ID="body_title" runat="server" /></h2>
+				<hr />
+			</section>
             <asp:ContentPlaceHolder ID="body" runat="server"></asp:ContentPlaceHolder>
         </div>
     </form>
 
     <footer class="container">
-        <hr />
-        <ul class="text-center footer-link">
-            <li><a href="manual_input.aspx">Nutrient Calculator</a></li>
-            <li>&bull;</li>
-            <li><a href="recent.aspx">Recent</a></li>
-            <li>&bull;</li>
-            <li><a href="saved_items.aspx">Saved Items</a></li>
-        </ul>
-        <br />
-        <p class="text-center">&copy; <asp:Label runat="server" ID="label_year"></asp:Label> - Wholesome Inc. All rights reserved.</p>
-    </footer>
+		<section class="row">
+			<hr />
+			<ul class="text-center footer-link">
+				<li><a href="index.aspx">Home</a></li>
+				<li>&bull;</li>
+				<li><a href="manual_input.aspx">Nutrient Calculator</a></li>
+				<li>&bull;</li>
+				<li><a href="recent.aspx">Recent</a></li>
+				<li>&bull;</li>
+				<li><a href="saved_items.aspx">Saved Items</a></li>
+			</ul>
+			<br />
+			<p class="text-center">
+				&copy;
+				<asp:Label runat="server" ID="label_year"></asp:Label>
+				- Wholesome Inc. All rights reserved.
+			</p>
+		</section>
+	</footer>
 
-    <script src="Scripts/jquery-1.10.2.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
 
     <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
 </body>

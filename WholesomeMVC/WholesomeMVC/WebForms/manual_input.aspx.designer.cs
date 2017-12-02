@@ -7,567 +7,504 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WholesomeMVC {
+namespace WholesomeMVC.WebForms {
     
     
-    public partial class Add_Item {
+    public partial class manual_input {
         
         /// <summary>
-        /// ddlCategory control.
+        /// view_mode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
+        protected global::System.Web.UI.WebControls.HiddenField view_mode;
         
         /// <summary>
-        /// Category control.
+        /// error_message control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource Category;
+        protected global::System.Web.UI.WebControls.HiddenField error_message;
         
         /// <summary>
-        /// txtSearch control.
+        /// body_description control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::System.Web.UI.WebControls.Label body_description;
         
         /// <summary>
-        /// lblName control.
+        /// label_score0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName;
+        protected global::System.Web.UI.WebControls.Label label_score0;
         
         /// <summary>
-        /// Label10 control.
+        /// label_score_help0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label10;
+        protected global::System.Web.UI.WebControls.Label label_score_help0;
         
         /// <summary>
-        /// ddlMethod control.
+        /// txtindex0_wrapper control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMethod;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtindex0_wrapper;
         
         /// <summary>
-        /// txtNumber control.
+        /// txtindex0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumber;
+        protected global::System.Web.UI.WebControls.Label txtindex0;
         
         /// <summary>
-        /// reqCeresID control.
+        /// label_txtKcal0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqCeresID;
+        protected global::System.Web.UI.WebControls.Label label_txtKcal0;
         
         /// <summary>
-        /// txtDescription control.
+        /// txtKcal0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescription;
+        protected global::System.Web.UI.WebControls.TextBox txtKcal0;
         
         /// <summary>
-        /// reqCeresDescription control.
+        /// label_txtsatfat0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqCeresDescription;
+        protected global::System.Web.UI.WebControls.Label label_txtsatfat0;
         
         /// <summary>
-        /// txtSearchDescription control.
+        /// txtsatfat0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchDescription;
+        protected global::System.Web.UI.WebControls.TextBox txtsatfat0;
         
         /// <summary>
-        /// btnAddItem control.
+        /// label_txtsodium0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddItem;
+        protected global::System.Web.UI.WebControls.Label label_txtsodium0;
         
         /// <summary>
-        /// divmanual control.
+        /// txtsodium0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divmanual;
+        protected global::System.Web.UI.WebControls.TextBox txtsodium0;
         
         /// <summary>
-        /// divold control.
+        /// label_txtfiber0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divold;
+        protected global::System.Web.UI.WebControls.Label label_txtfiber0;
         
         /// <summary>
-        /// txtOldKCal control.
+        /// txtfiber0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOldKCal;
+        protected global::System.Web.UI.WebControls.TextBox txtfiber0;
         
         /// <summary>
-        /// reqOldKCal control.
+        /// label_txtsugar0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldKCal;
+        protected global::System.Web.UI.WebControls.Label label_txtsugar0;
         
         /// <summary>
-        /// txtOldSatFat control.
+        /// txtsugar0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOldSatFat;
+        protected global::System.Web.UI.WebControls.TextBox txtsugar0;
         
         /// <summary>
-        /// reqOldSatFat control.
+        /// label_txtprotein0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldSatFat;
+        protected global::System.Web.UI.WebControls.Label label_txtprotein0;
         
         /// <summary>
-        /// txtOldSodium control.
+        /// txtprotein0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOldSodium;
+        protected global::System.Web.UI.WebControls.TextBox txtprotein0;
         
         /// <summary>
-        /// reqOldSodium control.
+        /// label_txtva0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldSodium;
+        protected global::System.Web.UI.WebControls.Label label_txtva0;
         
         /// <summary>
-        /// txtOldFiber control.
+        /// txtva0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOldFiber;
+        protected global::System.Web.UI.WebControls.TextBox txtva0;
         
         /// <summary>
-        /// reqOldFiber control.
+        /// label_txtvc0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldFiber;
+        protected global::System.Web.UI.WebControls.Label label_txtvc0;
         
         /// <summary>
-        /// txtOldTotalSugar control.
+        /// txtvc0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOldTotalSugar;
+        protected global::System.Web.UI.WebControls.TextBox txtvc0;
         
         /// <summary>
-        /// reqOldSugar control.
+        /// label_txtcalcium0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldSugar;
+        protected global::System.Web.UI.WebControls.Label label_txtcalcium0;
         
         /// <summary>
-        /// txtOldProtein control.
+        /// txtcalcium0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOldProtein;
+        protected global::System.Web.UI.WebControls.TextBox txtcalcium0;
         
         /// <summary>
-        /// reqOldProtein control.
+        /// label_txtiron0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldProtein;
+        protected global::System.Web.UI.WebControls.Label label_txtiron0;
         
         /// <summary>
-        /// txtOldVA control.
+        /// txtiron0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOldVA;
+        protected global::System.Web.UI.WebControls.TextBox txtiron0;
         
         /// <summary>
-        /// reqOldVA control.
+        /// button_calculate0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldVA;
+        protected global::System.Web.UI.WebControls.Button button_calculate0;
         
         /// <summary>
-        /// txtOldVC control.
+        /// button_reset0 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOldVC;
+        protected global::System.Web.UI.WebControls.Button button_reset0;
         
         /// <summary>
-        /// reqOldVC control.
+        /// label_score1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldVC;
+        protected global::System.Web.UI.WebControls.Label label_score1;
         
         /// <summary>
-        /// txtOldCalcium control.
+        /// label_score_help1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOldCalcium;
+        protected global::System.Web.UI.WebControls.Label label_score_help1;
         
         /// <summary>
-        /// reqOldCalcium control.
+        /// txtindex1_wrapper control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldCalcium;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtindex1_wrapper;
         
         /// <summary>
-        /// txtOldIron control.
+        /// txtindex1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOldIron;
+        protected global::System.Web.UI.WebControls.Label txtindex1;
         
         /// <summary>
-        /// reqOldIron control.
+        /// label_txtKcal1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldIron;
+        protected global::System.Web.UI.WebControls.Label label_txtKcal1;
         
         /// <summary>
-        /// btnCalculateOld control.
+        /// txtKcal1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCalculateOld;
+        protected global::System.Web.UI.WebControls.TextBox txtKcal1;
         
         /// <summary>
-        /// btnOldSaveItem control.
+        /// label_txtsatfat1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOldSaveItem;
+        protected global::System.Web.UI.WebControls.Label label_txtsatfat1;
         
         /// <summary>
-        /// lblOldResult control.
+        /// txtsatfat1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOldResult;
+        protected global::System.Web.UI.WebControls.TextBox txtsatfat1;
         
         /// <summary>
-        /// divnew control.
+        /// label_txtsodium1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divnew;
+        protected global::System.Web.UI.WebControls.Label label_txtsodium1;
         
         /// <summary>
-        /// txtNewKCal control.
+        /// txtsodium1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewKCal;
+        protected global::System.Web.UI.WebControls.TextBox txtsodium1;
         
         /// <summary>
-        /// reqNewKCal control.
+        /// label_txtfiber1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewKCal;
+        protected global::System.Web.UI.WebControls.Label label_txtfiber1;
         
         /// <summary>
-        /// txtNewSatFat control.
+        /// txtfiber1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewSatFat;
+        protected global::System.Web.UI.WebControls.TextBox txtfiber1;
         
         /// <summary>
-        /// reqNewSatFat control.
+        /// label_txtsugar1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewSatFat;
+        protected global::System.Web.UI.WebControls.Label label_txtsugar1;
         
         /// <summary>
-        /// txtNewSodium control.
+        /// txtsugar1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewSodium;
+        protected global::System.Web.UI.WebControls.TextBox txtsugar1;
         
         /// <summary>
-        /// reqNewSodium control.
+        /// label_txtprotein1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewSodium;
+        protected global::System.Web.UI.WebControls.Label label_txtprotein1;
         
         /// <summary>
-        /// txtNewFiber control.
+        /// txtprotein1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewFiber;
+        protected global::System.Web.UI.WebControls.TextBox txtprotein1;
         
         /// <summary>
-        /// reqNewFiber control.
+        /// label_txtvd1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewFiber;
+        protected global::System.Web.UI.WebControls.Label label_txtvd1;
         
         /// <summary>
-        /// txtNewAddedSugar control.
+        /// txtvd1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewAddedSugar;
+        protected global::System.Web.UI.WebControls.TextBox txtvd1;
         
         /// <summary>
-        /// reqNewAddedSugar control.
+        /// label_txtcalcium1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewAddedSugar;
+        protected global::System.Web.UI.WebControls.Label label_txtcalcium1;
         
         /// <summary>
-        /// txtNewProtein control.
+        /// txtcalcium1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewProtein;
+        protected global::System.Web.UI.WebControls.TextBox txtcalcium1;
         
         /// <summary>
-        /// reqNewProtein control.
+        /// label_txtiron1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewProtein;
+        protected global::System.Web.UI.WebControls.Label label_txtiron1;
         
         /// <summary>
-        /// txtNewVD control.
+        /// txtiron1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewVD;
+        protected global::System.Web.UI.WebControls.TextBox txtiron1;
         
         /// <summary>
-        /// reqNewVitaminD control.
+        /// label_txtpotassium control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewVitaminD;
+        protected global::System.Web.UI.WebControls.Label label_txtpotassium;
         
         /// <summary>
-        /// txtNewPotassium control.
+        /// txtpotassium control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewPotassium;
+        protected global::System.Web.UI.WebControls.TextBox txtpotassium;
         
         /// <summary>
-        /// reqNewPotassium control.
+        /// button_calculate1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewPotassium;
+        protected global::System.Web.UI.WebControls.Button button_calculate1;
         
         /// <summary>
-        /// txtNewCalcium control.
+        /// button_reset1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewCalcium;
-        
-        /// <summary>
-        /// reqNewCalcium control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewCalcium;
-        
-        /// <summary>
-        /// txtNewIron control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewIron;
-        
-        /// <summary>
-        /// reqNewIron control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewIron;
-        
-        /// <summary>
-        /// btnCalculateNew control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCalculateNew;
-        
-        /// <summary>
-        /// btnNewSaveItem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNewSaveItem;
-        
-        /// <summary>
-        /// lblNewResult control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNewResult;
-        
-        /// <summary>
-        /// gridUSDAChoices control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridUSDAChoices;
+        protected global::System.Web.UI.WebControls.Button button_reset1;
     }
 }
