@@ -50,9 +50,8 @@
 
     <form id="form1" runat="server">
         <div class="container body-content">
-			<section id="body_title_wrapper" class="row text-center">
+			<section id="body_title_wrapper" class="row text-center page-header">
 				<h2><asp:Label ID="body_title" runat="server" /></h2>
-				<hr />
 			</section>
             <asp:ContentPlaceHolder ID="body" runat="server"></asp:ContentPlaceHolder>
         </div>

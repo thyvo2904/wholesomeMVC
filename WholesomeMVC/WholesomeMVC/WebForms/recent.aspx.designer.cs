@@ -11,5 +11,41 @@ namespace WholesomeMVC.WebForms {
     
     
     public partial class recent {
+        
+        /// <summary>
+        /// label_color_scale_legend control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_color_scale_legend;
+        
+        /// <summary>
+        /// image_color_scale_legend control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image image_color_scale_legend;
+        
+        /// <summary>
+        /// label_recent_items control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_recent_items;
+        
+        /// <summary>
+        /// section_recent_items control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl section_recent_items;
     }
 }

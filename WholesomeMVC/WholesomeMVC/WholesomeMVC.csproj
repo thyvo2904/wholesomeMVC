@@ -383,7 +383,7 @@
     <Content Include="add_item.aspx" />
     <Content Include="advanced_search.aspx" />
     <Content Include="Content\Custom\manual_input.css" />
-    <Content Include="Content\Images\38121282646_39cba86aa4_o.png" />
+    <Content Include="Content\Images\image_color_scale_legend.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\favicon.ico" />
