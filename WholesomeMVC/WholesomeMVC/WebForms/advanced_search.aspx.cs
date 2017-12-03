@@ -10,7 +10,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WholesomeMVC
+namespace WholesomeMVC.WebForms
 {
     public partial class advanced_search : System.Web.UI.Page
     {
@@ -201,18 +201,18 @@ namespace WholesomeMVC
 
                 //for (int i = 0; i < IndexResults.dataSearchResults.Rows.Count; i++)
                 //{
-                if (!IndexResults.dataSearchResults.Columns.Contains("NDBno") && !IndexResults.dataSearchResults.Columns.Contains("Name")
-                    && !IndexResults.dataSearchResults.Columns.Contains("ND Score"))
+                if (!indexresult.dataSearchResults.Columns.Contains("NDBno") && !indexresult.dataSearchResults.Columns.Contains("Name")
+                    && !indexresult.dataSearchResults.Columns.Contains("ND Score"))
                 {
-                    IndexResults.dataSearchResults.Columns.Add("NDBno", typeof(string));
-                    IndexResults.dataSearchResults.Columns.Add("Name", typeof(string));
-                    IndexResults.dataSearchResults.Columns.Add("ND Score", typeof(double));
+                    indexresult.dataSearchResults.Columns.Add("NDBno", typeof(string));
+                    indexresult.dataSearchResults.Columns.Add("Name", typeof(string));
+                    indexresult.dataSearchResults.Columns.Add("ND Score", typeof(double));
 
                 }
 
                 else
                 {
-                    IndexResults.dataSearchResults.Clear();
+                    indexresult.dataSearchResults.Clear();
                 }
                 //}
 
@@ -229,7 +229,7 @@ namespace WholesomeMVC
 
                     String ndbno = result.list.item[i].ndbno;
                     string name = result.list.item[i].name;
-                    DataRow row = IndexResults.dataSearchResults.NewRow();
+                    DataRow row = indexresult.dataSearchResults.NewRow();
 
                     row[0] = ndbno;
                     row[1] = name;
@@ -333,7 +333,7 @@ namespace WholesomeMVC
 
                     NRF6 = Math.Round(NRF6, 5);
                     row[2] = NRF6;
-                    IndexResults.dataSearchResults.Rows.Add(row);
+                    indexresult.dataSearchResults.Rows.Add(row);
                 }
                 Response.Redirect("~/IndexResults.aspx");
 
@@ -343,12 +343,12 @@ namespace WholesomeMVC
             {
                 if (txtAdvSearch.Value != "" && DropDownList1.SelectedIndex!=0)
                 {
-                    if (!IndexResults.dataSearchResults.Columns.Contains("NDBno") && !IndexResults.dataSearchResults.Columns.Contains("Name")
-                        && !IndexResults.dataSearchResults.Columns.Contains("ND Score"))
+                    if (!indexresult.dataSearchResults.Columns.Contains("NDBno") && !indexresult.dataSearchResults.Columns.Contains("Name")
+                        && !indexresult.dataSearchResults.Columns.Contains("ND Score"))
                     {
-                        IndexResults.dataSearchResults.Columns.Add("NDBno", typeof(string));
-                        IndexResults.dataSearchResults.Columns.Add("Name", typeof(string));
-                        IndexResults.dataSearchResults.Columns.Add("ND Score", typeof(double));
+                        indexresult.dataSearchResults.Columns.Add("NDBno", typeof(string));
+                        indexresult.dataSearchResults.Columns.Add("Name", typeof(string));
+                        indexresult.dataSearchResults.Columns.Add("ND Score", typeof(double));
 
 
                         using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -366,11 +366,11 @@ namespace WholesomeMVC
                             SqlDataReader readIn = go.ExecuteReader();
                             while (readIn.Read())
                             {
-                                DataRow row = IndexResults.dataSearchResults.NewRow();
+                                DataRow row = indexresult.dataSearchResults.NewRow();
                                 row[0] = readIn["NDB_No"];
                                 row[1] = readIn["Shrt_Desc"].ToString();
                                 row[2] = readIn["NDScore"];
-                                IndexResults.dataSearchResults.Rows.Add(row);
+                                indexresult.dataSearchResults.Rows.Add(row);
 
                             }
 
@@ -382,12 +382,12 @@ namespace WholesomeMVC
                 }
                 else if (txtAdvSearch.Value != "")
                 {
-                    if (!IndexResults.dataSearchResults.Columns.Contains("NDBno") && !IndexResults.dataSearchResults.Columns.Contains("Name")
-                        && !IndexResults.dataSearchResults.Columns.Contains("ND Score"))
+                    if (!indexresult.dataSearchResults.Columns.Contains("NDBno") && !indexresult.dataSearchResults.Columns.Contains("Name")
+                        && !indexresult.dataSearchResults.Columns.Contains("ND Score"))
                     {
-                        IndexResults.dataSearchResults.Columns.Add("NDBno", typeof(string));
-                        IndexResults.dataSearchResults.Columns.Add("Name", typeof(string));
-                        IndexResults.dataSearchResults.Columns.Add("ND Score", typeof(double));
+                        indexresult.dataSearchResults.Columns.Add("NDBno", typeof(string));
+                        indexresult.dataSearchResults.Columns.Add("Name", typeof(string));
+                        indexresult.dataSearchResults.Columns.Add("ND Score", typeof(double));
 
 
                         using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -404,11 +404,11 @@ namespace WholesomeMVC
                             SqlDataReader readIn = go.ExecuteReader();
                             while (readIn.Read())
                             {
-                                DataRow row = IndexResults.dataSearchResults.NewRow();
+                                DataRow row = indexresult.dataSearchResults.NewRow();
                                 row[0] = readIn["NDB_No"];
                                 row[1] = readIn["Shrt_Desc"].ToString();
                                 row[2] = readIn["NDScore"];
-                                IndexResults.dataSearchResults.Rows.Add(row);
+                                indexresult.dataSearchResults.Rows.Add(row);
 
                             }
 

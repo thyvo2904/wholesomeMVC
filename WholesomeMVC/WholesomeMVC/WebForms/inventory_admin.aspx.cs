@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WholesomeMVC;
+using WholesomeMVC.WebForms;
 
 public partial class inventory_admin : System.Web.UI.Page
 {

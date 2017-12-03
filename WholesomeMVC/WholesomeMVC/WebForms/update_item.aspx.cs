@@ -12,7 +12,7 @@ using WholesomeMVC;
 using System.Web.Services;
 using System.Configuration;
 
-namespace WholesomeMVC
+namespace WholesomeMVC.WebForms
 {
     public partial class Update_Item : System.Web.UI.Page
     {
@@ -22,9 +22,9 @@ namespace WholesomeMVC
 
             if (!IsPostBack)
             {
-                if (IndexResults.number != "")
+                if (indexresult.number != "")
                 {
-                    txtNumber.Text = IndexResults.number;
+                    txtNumber.Text = indexresult.number;
                 }
 
                 if (FoodItem.getCeresID() != "" || FoodItem.getDescription() != "")
