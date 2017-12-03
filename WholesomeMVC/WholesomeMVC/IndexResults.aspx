@@ -14,7 +14,7 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <link href="/css/indexresults.css" rel="stylesheet" type="text/css" runat="server"/>
  
-  <style>
+ <style>
       
       ul.ui-autocomplete {
     list-style: none;
@@ -27,20 +27,14 @@
     overflow-x: hidden;
 
       }
-  .image {
-  width: 250px;
-  float: left;
-  margin: 20px;
-}
 
-
+@import "compass/css3";
 .performance-facts {
   border: 1px solid black;
-  margin: 30px;
+  margin: 20px;
   float: right;
-  width: 40%;
+  width: 350px;
   padding: 0.5rem;
-  height:auto;
   
   table {
     border-collapse: collapse;
@@ -61,24 +55,7 @@
     margin: 0;
   }
 }
-      .performance-facts__header_yellow {
-  border-bottom: 10px solid black;
-  padding: 0 0 0.25rem 0;
-  margin: 0 0 0.5rem 0;
-  background-color:yellow;
-  p {
-    margin: 0;
-  }
-}
-      .performance-facts__header_red {
-  border-bottom: 10px solid black;
-  padding: 0 0 0.25rem 0;
-  margin: 0 0 0.5rem 0;
-  background-color:red;
-  p {
-    margin: 0;
-  }
-}
+
 .performance-facts__table {
   width: 100%;
 
@@ -93,7 +70,6 @@
     padding: 0.25rem 0;
     border-top: 1px solid black; 
     white-space: nowrap;
-    font-size:3rem;
   }
 
   td {
@@ -103,7 +79,7 @@
     }
   }
   .blank-cell {
-    width: 4rem;
+    width: 1rem;
     border-top: 0;
   }
   .thick-row {
@@ -113,7 +89,7 @@
   }
 }
 .small-info {
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 
 .performance-facts__table--small {
@@ -128,7 +104,6 @@
   td {
     &:last-child {
       text-align: left;
-      font-size:3rem;
     }
   }
   th, td {
@@ -146,7 +121,7 @@
       &::before {
         content: "•";
         font-weight: bold;
-        margin: 0 0.25rem 0 0;
+        margin: 0 2rem 0 0;
       }
     }
   }
@@ -161,6 +136,9 @@
 .thin-end {
   border-bottom: 1px solid black;
 }
+.right-align{
+    float: right;
+}
 
 .txtceres{
     /*border: 0px solid;*/
@@ -173,10 +151,12 @@
 .txtnutrition{
     background-color: transparent;
     border: 0px solid;
-    height: 20px;
-    color: black;
-    width: 60px;
-   /* font-size:20px;*/
+    font-weight: bold;
+    width: 40px;
+}
+
+.txtpercent{
+    float:right;
 }
         .sookyeown{
           height:32px;
@@ -238,22 +218,7 @@
     {
         display: block; 
         float: none; 
-        width: 75%;
-    }
-    #colorguide{
-        display:none;
-    }
-    #ingredients{
-        display:none;
-    }
-    .txtnutrition{
-        font-size: 12px;
-    }
-    .txtceres{
-        font-size: 12px;
-    }
-    lblingredients{
-        display: none;
+        width: 60%;
     }
 }
       
