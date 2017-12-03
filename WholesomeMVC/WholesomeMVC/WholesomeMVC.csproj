@@ -20,9 +20,12 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44376</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>
+    </IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -293,6 +296,13 @@
       <DependentUpon>Item_Management.aspx</DependentUpon>
     </Compile>
     <Compile Include="List.cs" />
+    <Compile Include="WebForms\indexresult.aspx.cs">
+      <DependentUpon>indexresult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\indexresult.aspx.designer.cs">
+      <DependentUpon>indexresult.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\manual_input.aspx.cs">
       <DependentUpon>manual_input.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -405,6 +415,7 @@
     <Content Include="inventory_staff.aspx" />
     <Content Include="Item_Management.aspx" />
     <Content Include="manual_input.aspx" />
+    <Content Include="WebForms\indexresult.aspx" />
     <Content Include="WebForms\manual_input.aspx" />
     <Content Include="Populate_table.aspx" />
     <Content Include="recent.aspx" />

@@ -13,6 +13,42 @@ namespace WholesomeMVC.WebForms {
     public partial class recent {
         
         /// <summary>
+        /// button_save_item control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button button_save_item;
+        
+        /// <summary>
+        /// hidden_item_index control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidden_item_index;
+        
+        /// <summary>
+        /// error_message control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField error_message;
+        
+        /// <summary>
+        /// success_message control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField success_message;
+        
+        /// <summary>
         /// label_color_scale_legend control.
         /// </summary>
         /// <remarks>
