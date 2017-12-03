@@ -299,29 +299,29 @@ namespace WholesomeMVC.WebForms
 
 
             
-            if (!Add_Item.dataSearchResults.Columns.Contains("NDBno") && !Add_Item.dataSearchResults.Columns.Contains("Name")
-                && !Add_Item.dataSearchResults.Columns.Contains("ND Score"))
+            if (!add_item.dataSearchResults.Columns.Contains("NDBno") && !add_item.dataSearchResults.Columns.Contains("Name")
+                && !add_item.dataSearchResults.Columns.Contains("ND Score"))
             {
-                Add_Item.dataSearchResults.Columns.Add("NDBno", typeof(string)); // Row 0
-                Add_Item.dataSearchResults.Columns.Add("Name", typeof(string)); // Row 1
-                Add_Item.dataSearchResults.Columns.Add("Protein", typeof(double));// Row 2
-                Add_Item.dataSearchResults.Columns.Add("Fiber", typeof(double));// Row 3
-                Add_Item.dataSearchResults.Columns.Add("VitaminA", typeof(double));// Row 4
-                Add_Item.dataSearchResults.Columns.Add("VitaminC", typeof(double));// Row 5
-                Add_Item.dataSearchResults.Columns.Add("Iron", typeof(double));// Row 6
-                Add_Item.dataSearchResults.Columns.Add("Calcium", typeof(double));// Row 7
-                Add_Item.dataSearchResults.Columns.Add("Sat_Fat", typeof(double));// Row 8
-                Add_Item.dataSearchResults.Columns.Add("Total_Sugar", typeof(double));// Row 9
-                Add_Item.dataSearchResults.Columns.Add("Sodium", typeof(double));// Row 10
-                Add_Item.dataSearchResults.Columns.Add("KCal", typeof(double));// Row 11
-                Add_Item.dataSearchResults.Columns.Add("ND Score", typeof(double));// Row 12
+                add_item.dataSearchResults.Columns.Add("NDBno", typeof(string)); // Row 0
+                add_item.dataSearchResults.Columns.Add("Name", typeof(string)); // Row 1
+                add_item.dataSearchResults.Columns.Add("Protein", typeof(double));// Row 2
+                add_item.dataSearchResults.Columns.Add("Fiber", typeof(double));// Row 3
+                add_item.dataSearchResults.Columns.Add("VitaminA", typeof(double));// Row 4
+                add_item.dataSearchResults.Columns.Add("VitaminC", typeof(double));// Row 5
+                add_item.dataSearchResults.Columns.Add("Iron", typeof(double));// Row 6
+                add_item.dataSearchResults.Columns.Add("Calcium", typeof(double));// Row 7
+                add_item.dataSearchResults.Columns.Add("Sat_Fat", typeof(double));// Row 8
+                add_item.dataSearchResults.Columns.Add("Total_Sugar", typeof(double));// Row 9
+                add_item.dataSearchResults.Columns.Add("Sodium", typeof(double));// Row 10
+                add_item.dataSearchResults.Columns.Add("KCal", typeof(double));// Row 11
+                add_item.dataSearchResults.Columns.Add("ND Score", typeof(double));// Row 12
 
 
             }
 
             else
             {
-                Add_Item.dataSearchResults.Clear();
+                add_item.dataSearchResults.Clear();
             }
 
             try
@@ -378,7 +378,7 @@ namespace WholesomeMVC.WebForms
 
                 for (int i = 0; i < result2.foods.Count; i++)
                 {
-                    DataRow row = Add_Item.dataSearchResults.NewRow();
+                    DataRow row = add_item.dataSearchResults.NewRow();
 
 
                     foreach (Nutrient item in result2.foods[i].food.nutrients)
@@ -457,7 +457,7 @@ namespace WholesomeMVC.WebForms
                     row[10] = newFood.sodium;
                     row[11] = newFood.kCal;
                     row[12] = newFood.NRF6;
-                    Add_Item.dataSearchResults.Rows.Add(row);
+                    add_item.dataSearchResults.Rows.Add(row);
                 }
             }
             catch (Exception e)

@@ -13,7 +13,7 @@ using System.Configuration;
 
 namespace WholesomeMVC.WebForms
 {
-    public partial class Add_Item : System.Web.UI.Page
+    public partial class add_item : System.Web.UI.Page
     {
         public static DataTable dataSearchResults = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
@@ -439,7 +439,7 @@ namespace WholesomeMVC.WebForms
             String foodSearch = txtSearchDescription.Text;
             FoodItem.findNdbnoAddItem(foodSearch);
 
-            gridUSDAChoices.DataSource = Add_Item.dataSearchResults;
+            gridUSDAChoices.DataSource = add_item.dataSearchResults;
             gridUSDAChoices.DataBind();
         }
 

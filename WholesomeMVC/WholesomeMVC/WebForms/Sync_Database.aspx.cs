@@ -266,7 +266,7 @@ namespace WholesomeMVC.WebForms
             String sendCeresID = gridUnmatchedCeresIDS.SelectedRow.Cells[0].Text;
             String sendDescription = gridUnmatchedCeresIDS.SelectedRow.Cells[1].Text;
             FoodItem.setCeresData(sendCeresID, sendDescription);
-            Response.Redirect("Add_Item.aspx");
+            Response.Redirect("add_item.aspx");
 
         }
 

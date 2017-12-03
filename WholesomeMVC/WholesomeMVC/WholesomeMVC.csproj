@@ -204,11 +204,11 @@
     <Compile Include="Activation.aspx.designer.cs">
       <DependentUpon>Activation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\Add_Item.aspx.cs">
+    <Compile Include="WebForms\add_item.aspx.cs">
       <DependentUpon>add_item.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\Add_Item.aspx.designer.cs">
+    <Compile Include="WebForms\add_item.aspx.designer.cs">
       <DependentUpon>add_item.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\advanced_search.aspx.cs">

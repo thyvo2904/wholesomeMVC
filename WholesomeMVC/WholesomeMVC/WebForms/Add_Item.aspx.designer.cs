@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WholesomeMVC {
+namespace WholesomeMVC.WebForms {
     
     
-    public partial class Add_Item {
+    public partial class add_item {
         
         /// <summary>
         /// ddlCategory control.
