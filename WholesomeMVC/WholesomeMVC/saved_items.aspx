@@ -278,7 +278,7 @@ tr:hover{
 
 <RowStyle CssClass="rows"></RowStyle>
  </asp:GridView>
-                <asp:SqlDataSource ID="test" runat="server" ConnectionString="<%$ ConnectionStrings:test %>" SelectCommand="SELECT [NDB_No], [Name], [ND_Score], [Ceres_Item_Number], [UserID], [LastUpdatedBy], [LastUpdated] FROM [SavedItems]"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="test" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [NDB_No], [Name], [ND_Score], [Ceres_Item_Number], [UserID], [LastUpdatedBy], [LastUpdated] FROM [SavedItems]"></asp:SqlDataSource>
                 <asp:SqlDataSource ID="savedItems" runat="server"></asp:SqlDataSource>
               <br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="Button3" runat="server" Text="Export" />

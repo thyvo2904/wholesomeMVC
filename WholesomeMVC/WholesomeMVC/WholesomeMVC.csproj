@@ -20,9 +20,12 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44376</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>
+    </IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -320,13 +323,6 @@
       <DependentUpon>Item_Management.aspx</DependentUpon>
     </Compile>
     <Compile Include="List.cs" />
-    <Compile Include="manual_input.aspx.cs">
-      <DependentUpon>manual_input.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="manual_input.aspx.designer.cs">
-      <DependentUpon>manual_input.aspx</DependentUpon>
-    </Compile>
     <Compile Include="WebForms\manual_input.aspx.cs">
       <DependentUpon>manual_input.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -389,6 +385,13 @@
     <Compile Include="Update_Item.aspx.designer.cs">
       <DependentUpon>update_item.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebForms\recent.aspx.cs">
+      <DependentUpon>recent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\recent.aspx.designer.cs">
+      <DependentUpon>recent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\_layout.Master.cs">
       <DependentUpon>_layout.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -403,7 +406,8 @@
     <Content Include="add_item.aspx" />
     <Content Include="advanced_search.aspx" />
     <Content Include="Content\Custom\manual_input.css" />
-    <Content Include="Content\Images\38121282646_39cba86aa4_o.png" />
+    <Content Include="Content\Custom\recent.css" />
+    <Content Include="Content\Images\image_color_scale_legend.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\favicon.ico" />
@@ -491,6 +495,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="WebForms\recent.aspx" />
     <Content Include="WebForms\_layout.Master" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,11 @@
-﻿/*------------------------------------------------------------------------------
-    CUSTOM CSS START HERE
-------------------------------------------------------------------------------*/
-/* utilities */
+﻿/* utilities */
 .background-color {
     background-color: rgba(0, 0, 0, 0.50);
+}
+
+/* hide body_title_wrapper on index page only */
+#body_title_wrapper {
+	display: none;
 }
 
 /* banner */
@@ -11,11 +13,13 @@
     margin: 50px auto;
     background-image: url(https://source.unsplash.com/1140x600/?food);
     background-size: cover;
+	border-radius: 4px;
     min-height: 600px;
     position: relative;
 }
 #banner > .background-color {
     min-height: 600px;
+	border-radius: 4px;
 }
 #banner > .background-color > div {
     position: absolute;

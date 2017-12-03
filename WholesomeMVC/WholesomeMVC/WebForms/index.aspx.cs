@@ -13,26 +13,32 @@ namespace WholesomeMVC
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // set page variable
-            String strTitle = "Home";
-            page_title.Text = strTitle;
+			if (IsPostBack) {
+				// do nothing
+			} else {
+				// set page variable
+				String strTitle = "Home";
 
-            banner_message.Text = @"
-                Wholesome can quickly find out the different nutritional values of your food options.
-                It's time to decide what works best for you yourself!
-            ";
+				Literal page_title = (Literal)Master.FindControl("page_title");
+				page_title.Text = strTitle;
 
-            image_nutrient_calculator.ImageUrl = "/Content/Images/icons8-calculator-100.png";
-            link_nutrient_calculator.NavigateUrl = "manual_input.aspx";
-            link_nutrient_calculator.Text = "Nutrient Calculator";
+				banner_message.Text = @"
+					Wholesome can quickly find out the different nutritional values of your food options.
+					It's time to decide what works best for you yourself!
+				";
 
-            image_recent.ImageUrl = "/Content/Images/icons8-time-machine-100.png";
-            link_recent.NavigateUrl = "recent.aspx";
-            link_recent.Text = "Recent";
+				image_nutrient_calculator.ImageUrl = "/Content/Images/icons8-calculator-100.png";
+				link_nutrient_calculator.NavigateUrl = "manual_input.aspx";
+				link_nutrient_calculator.Text = "Nutrient Calculator";
 
-            image_saved_items.ImageUrl = "/Content/Images/icons8-check-file-100.png";
-            link_saved_items.NavigateUrl = "saved_items.aspx";
-            link_saved_items.Text = "Saved Items";
+				image_recent.ImageUrl = "/Content/Images/icons8-time-machine-100.png";
+				link_recent.NavigateUrl = "recent.aspx";
+				link_recent.Text = "Recent";
+
+				image_saved_items.ImageUrl = "/Content/Images/icons8-check-file-100.png";
+				link_saved_items.NavigateUrl = "saved_items.aspx";
+				link_saved_items.Text = "Saved Items";
+			}
         }
 
         protected void btnSearch(object sender, EventArgs e)
