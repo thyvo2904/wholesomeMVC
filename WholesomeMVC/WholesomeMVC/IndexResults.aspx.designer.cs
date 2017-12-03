@@ -49,15 +49,6 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.GridView gridSearchResults;
         
         /// <summary>
-        /// scorecolor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl scorecolor;
-        
-        /// <summary>
         /// lblFoodName control.
         /// </summary>
         /// <remarks>
@@ -103,6 +94,24 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtcalories;
         
         /// <summary>
+        /// txtfat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtfat;
+        
+        /// <summary>
+        /// txtfatpercent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtfatpercent;
+        
+        /// <summary>
         /// txtsatfat control.
         /// </summary>
         /// <remarks>
@@ -110,6 +119,42 @@ namespace WholesomeMVC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtsatfat;
+        
+        /// <summary>
+        /// txtsatfatpercent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtsatfatpercent;
+        
+        /// <summary>
+        /// txtTransfat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTransfat;
+        
+        /// <summary>
+        /// txtCholesterol control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCholesterol;
+        
+        /// <summary>
+        /// txtCholesterolpercecnt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCholesterolpercecnt;
         
         /// <summary>
         /// txtsodium control.
@@ -121,6 +166,33 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtsodium;
         
         /// <summary>
+        /// txtsodiumpercent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtsodiumpercent;
+        
+        /// <summary>
+        /// txtCarbohydrate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCarbohydrate;
+        
+        /// <summary>
+        /// txtcarbonpercent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtcarbonpercent;
+        
+        /// <summary>
         /// txtfiber control.
         /// </summary>
         /// <remarks>
@@ -128,6 +200,15 @@ namespace WholesomeMVC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtfiber;
+        
+        /// <summary>
+        /// txtfiberpercent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtfiberpercent;
         
         /// <summary>
         /// txtsugar control.
@@ -184,24 +265,6 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtiron;
         
         /// <summary>
-        /// ingredients control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea ingredients;
-        
-        /// <summary>
-        /// lblMatched control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMatched;
-        
-        /// <summary>
         /// txtCeresNumber control.
         /// </summary>
         /// <remarks>
@@ -220,21 +283,12 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtCeresDescription;
         
         /// <summary>
-        /// btnSaveItem control.
+        /// txtCeresQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveItem;
-        
-        /// <summary>
-        /// btnUpdateItem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdateItem;
+        protected global::System.Web.UI.WebControls.TextBox txtCeresQuantity;
     }
 }

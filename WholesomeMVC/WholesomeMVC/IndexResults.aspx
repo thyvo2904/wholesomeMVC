@@ -364,195 +364,194 @@
 
 
 
-<div class="performance-facts" id="section2">
-  <div id="scorecolor" runat="server">
-  <span style="font-weight:bold;font-size:20px"><asp:Label ID="lblFoodName" runat="server" Text=""></asp:Label></span>
-  <header class="performance-facts__header">
-    <h3 class="performance-facts__title">ND_Score&nbsp;
-     <asp:label runat="server" ID="lblIndexResult"></asp:label>
-         <asp:label runat="server" ID="lblName" Visible ="false"></asp:label>
-         <asp:label runat="server" ID="lblNdbno" Visible ="false"></asp:label>
-         
-      </h3>
-    <p>
-    <p></p>
-  </header>
-      </div>
-  <table class="performance-facts__table">
-    <thead>
-        <tr>
-        <th colspan="3" class="small-info">
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th colspan="2">
-           <span style="font-weight:bold;font-size:20px">Nutrition Facts</span>
-        </th>
-      </tr>
-      <tr class="thick-row">
-        <td colspan="3" class="small-info">
-        </td>
-      </tr>
-      <tr>
-        <th colspan="2">
-           <span style="font-size: 17px">Calories</span>
-        </th>
-        <td>
-          <input class="txtnutrition" type="text" id="txtcalories" runat="server" readonly="readonly">
-        </td>
-      </tr>
-      <tr>
-        <td class="blank-cell">
-        </td>
-        <th colspan="2">
-          <span style="font-size: 17px"> Saturated Fat|g</span>
-          <input class="txtnutrition" type="text" id="txtsatfat" runat="server" readonly="readonly" >
-        <td>
-           <b>%</b>
-        </td>
-      </tr>
- <%--     <tr>
-        <td class="blank-cell">
-        </td>
-        <th>
-        </th>
-        <td>
-        </td>
-      </tr>--%>
-<%--      <tr>
-        <th colspan="2">
-        </th>
-        <td>
-        </td>
-      </tr>--%>
-      <tr>
-        <td class="blank-cell">
-        </td>
-        <th colspan="2">
-          <span style="font-size: 17px">Sodium|mg</span>
-        </th>
-        <td>
-           <input class="txtnutrition" type="text" id="txtsodium" runat="server" readonly="readonly">
-        </td>
-      </tr>
-<%--      <tr>
-        <th colspan="2">
-        </th>
-        <td>
-        </td>
-      </tr>--%>
-      <tr>
-        <td class="blank-cell">
-        </td>
-        <th colspan="2">
-        <span style="font-size: 17px">Dietary Fiber|g</span>
-        <input class="txtnutrition" type="text" id="txtfiber" runat="server" readonly="readonly">
-        </th>
-        <td>
-         <b>%</b>
-        </td>
-      </tr>
-      <tr>
-        <td class="blank-cell">
-        </td>
-        <th colspan="2">
-         <span style="font-size: 17px">TotalSugars</span>
-         <input class="txtnutrition" type="text" id="txtsugar" runat="server"  readonly="readonly">
-        </th>
-        <td>
-        <b>%</b>
-        </td>
-      </tr>
-      <tr class="thick-end">
-        <td class="blank-cell">
-        </td>
-        <th colspan="2">
-          <span style="font-size: 17px">Protein|g</span>
-          <input class="txtnutrition" type="text" id="txtprotein" runat="server" readonly="readonly">
-        </th>
-        <td>
-        <b>%</b>   
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  
-  <table class="performance-facts__table--grid">
-    <tbody>
-      <tr>
-        <td colspan="2">
-          Vitamin A|IU <span style="margin-right: 2em;"></span>
-          <input class="txtnutrition" type="text" id="txtva" runat="server" readonly="readonly">
-        </td>
-        <td>
-          Vitamin C|mg <span style="margin-right: 2em;"></span>
-          <input class="txtnutrition" type="text" id="txtvc" runat="server" readonly="readonly">
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          Calcium|mg<span style="margin-right: 2em;"></span>
-          <input class="txtnutrition" type="text" id="txtcalcium" runat="server" readonly="readonly">
-        </td>
-        <td>
-          Iron&nbsp;|mg <span style="margin-right: 2em;"></span>
-         <input class="txtnutrition" type="text" id="txtiron" runat="server" readonly="readonly">
-        </td>
-      </tr>
-    </tbody>
-  </table>
-    <p id="lblingredients"> Ingredients:</p>
-        <textarea id="ingredients" runat="server" rows="3" cols="70" style="border: none" readonly="readonly"></textarea>
-    <br />
-  
-     
+         <div class="performance-facts" id="section2" style="font-family: Times New Roman, Georgia, Serif">
+             <span style="font-weight: bold; font-size: 20px">
+                 <asp:Label ID="lblFoodName" runat="server" Text=""></asp:Label></span>
+             <header class="performance-facts__header">
+                 <h3 class="performance-facts__title">ND_Score&nbsp;
+     <asp:Label runat="server" ID="lblIndexResult"></asp:Label>
+                     <asp:Label runat="server" ID="lblName" Visible="false"></asp:Label>
+                     <asp:Label runat="server" ID="lblNdbno" Visible="false"></asp:Label>
 
-    <table style="width: 100%;">
-        	<tr>
-        <th>
-          <span style="font-size: 17px">Ceres Status:</span>
-        </th>
-        <td>
-           <span style="margin-right:140px;"><asp:Label ID="lblMatched" CssClass="txtceres" runat="server"></asp:Label></span>
-        </td>
-      </tr>
-	<tr>
-        <th>
-          <span style="font-size: 17px">Ceres Number:</span>
-        </th>
-        <td>
-	   <span style="margin-right:140px;"><asp:TextBox ID="txtCeresNumber" CssClass="txtceres" runat="server"></asp:TextBox></span>
-        </td>
-      </tr>
-	<tr>
-        <th>
-          <span style="font-size: 17px">Ceres Description:</span>
-        </th>
-        <td>
-	   <span style="margin-right:140px;"><asp:TextBox ID="txtCeresDescription" CssClass="txtceres" runat="server"></asp:TextBox></span>
-        </td>
-      </tr>
+                 </h3>
+                 <p>
+                 <p></p>
+             </header>
+             <table class="performance-facts__table">
+                 <thead>
+                     <tr>
+                         <th colspan="3" class="small-info"></th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr>
+                         <th colspan="2">
+                             <span style="font-weight: bold; font-size: 20px">Nutrition Facts</span>
+                         </th>
+                     </tr>
+                     <tr>
+                         <td colspan="3" class="small-info"></td>
+                     </tr>
+                     <tr>
+                         <th colspan="2">
+                             <span style="font-size: 28px">Calories</span>
+                         </th>
+                         <td>
+                             <input class="txtnutrition txtpercent" type="text" id="txtcalories" style="font-size: 28px; width: 60px;" runat="server" readonly="readonly">
+                         </td>
+                     </tr>
+                     <tr class="thick-row">
+                         <td colspan="3" class="small-info">
+                             <b style="float: right;">% Daily Value*</b>
+                         </td>
+                     </tr>
+                     <tr>
+                         <th colspan="2">
+                             <b>Total Fat</b>
+                             <input class="txtnutrition" type="text" id="txtfat" runat="server" readonly="readonly">
+                         </th>
+                         <td>
+                             <input class="txtnutrition txtpercent" type="text" id="txtfatpercent" runat="server" readonly="readonly">
+                         </td>
+                     </tr>
+                     <tr>
+                         <td class="blank-cell"></td>
+                         <th>
+                             <b>Saturated Fat</b>
+                             <input class="txtnutrition" type="text" id="txtsatfat" runat="server" readonly="readonly">
 
-    <tr>
-        <td colspan="4">
-            <br>
-           <span style="float:right;"><asp:Button type="submit" ID="btnSaveItem" runat="server" OnClick="btnSaveItem_Click" Text="Save Item" CssClass="btn" Visible ="false"/></span>
-        </td>
-      </tr>
-     <tr>
-        <td colspan="4">
-            <br>
-           <span style="float:right;"><asp:Button type="submit" ID="btnUpdateItem" OnClick="btnUpdateItem_Click" runat="server" Text="Update Item" CssClass="btn" Visible ="false"/></span>
-        </td>
-      </tr>
-       
-</table>
-            <%--<p><asp:Button ID="btnSaveItem" runat="server" OnClick="btnSaveItem_Click" Text="Save Item" CssClass="btn" style="float: right;"/></p>--%>
-    </div>
-   
-  </div>
+                         <td>
+                             <input class="txtnutrition txtpercent" type="text" id="txtsatfatpercent" runat="server" readonly="readonly">
+                         </td>
+                     </tr>
+                     <tr>
+                         <td class="blank-cell"></td>
+                         <th>
+                             <b>Trans Fat</b>
+                             <input class="txtnutrition" type="text" id="txtTransfat" runat="server" readonly="readonly">
+                         </th>
+                         <td></td>
+                     </tr>
+                     <tr>
+                         <th colspan="2">
+                             <b>Cholesterol</b>
+                             <input class="txtnutrition" type="text" id="txtCholesterol" runat="server" readonly="readonly">
+                         </th>
+                         <td>
+                             <input class="txtnutrition txtpercent" type="text" id="txtCholesterolpercecnt" runat="server" readonly="readonly">
+                         </td>
+                     </tr>
+                     <tr>
+                         <td class="blank-cell"></td>
+                         <th>
+                             <b>Sodium</b>
+                             <input class="txtnutrition" type="text" id="txtsodium" runat="server" readonly="readonly">
+                         </th>
+                         <td>
+                             <input class="txtnutrition  txtpercent" type="text" id="txtsodiumpercent" runat="server" readonly="readonly">
+                         </td>
+                     </tr>
+                     <tr>
+                         <th colspan="2">
+                             <b>Total Carbohydrate</b>
+                             <input class="txtnutrition" type="text" id="txtCarbohydrate" runat="server" readonly="readonly">
+                         </th>
+                         <td>
+                             <input class="txtnutrition txtpercent" type="text" id="txtcarbonpercent" runat="server" readonly="readonly">
+                         </td>
+                     </tr>
+                     <tr>
+                         <td class="blank-cell"></td>
+                         <th>
+                             <b>Dietary Fiber</b>
+                             <input class="txtnutrition" type="text" id="txtfiber" runat="server" readonly="readonly">
+                         </th>
+                         <td>
+                             <input class="txtnutrition txtpercent" type="text" id="txtfiberpercent" runat="server" readonly="readonly">
+                         </td>
+                     </tr>
+                     <tr>
+                         <td class="blank-cell"></td>
+                         <th>
+                             <b>Sugars</b>
+                             <input class="txtnutrition" type="text" id="txtsugar" runat="server" readonly="readonly">
+                         </th>
+                         <td></td>
+                     </tr>
+                     <tr class="thick-end">
+                         <td class="blank-cell"></td>
+                         <th colspan="2">
+                             <b>Protein</b>
+                             <input class="txtnutrition" type="text" id="txtprotein" runat="server" readonly="readonly">
+                         </th>
+                         <td></td>
+                     </tr>
+                 </tbody>
+             </table>
+
+             <table class="performance-facts__table--grid">
+                 <tbody>
+                     <tr>
+                         <td colspan="2">Vitamin A&nbsp;
+                             <input class="txtnutrition" type="text" id="txtva" runat="server" readonly="readonly">
+                         </td>
+                         <td><span style="position: relative; left: 100px">Vitamin C&nbsp;
+                             <input class="txtnutrition" type="text" id="txtvc" runat="server" readonly="readonly"></span>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td colspan="2">Calcium&nbsp;
+                             <input class="txtnutrition" type="text" id="txtcalcium" runat="server" readonly="readonly">
+                         </td>
+                         <td><span style="position: relative; left: 100px">Iron&nbsp;
+                             <input class="txtnutrition" type="text" id="txtiron" runat="server" readonly="readonly"></span>
+                         </td>
+                     </tr>
+                 </tbody>
+             </table>
+             <p class="small-info">* The % Daily Value (DV) tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice.</p>
+             <br />
+             <table style="width: 100%;">
+                 <tr>
+                     <th>
+                         <b>Ceres Number:</b>
+                     </th>
+                     <td>
+                         <span style="margin-right: 140px;">
+                             <asp:TextBox ID="txtCeresNumber" CssClass="txtceres" runat="server"></asp:TextBox></span>
+                     </td>
+                 </tr>
+                 <tr>
+                     <th>
+                         <b>Ceres Description:</b>
+                     </th>
+                     <td>
+                         <span style="margin-right: 140px;">
+                             <asp:TextBox ID="txtCeresDescription" CssClass="txtceres" runat="server"></asp:TextBox></span>
+                     </td>
+                 </tr>
+                 <tr>
+                     <th>
+                         <b>Item Quantity:</b>
+                     </th>
+                     <td>
+                         <span style="margin-right: 140px;">
+                             <asp:TextBox ID="txtCeresQuantity" CssClass="txtceres" runat="server"></asp:TextBox></span>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td colspan="4">
+                         <br>
+                         <span style="float: right;">
+                             <%--<button type="button" class="btn btn-sm btn-default" id="btnSaveItem" runat="server" onserverclick="btnSaveItem_Click"><span class="glyphicon glyphicon-floppy-saved"></span>Save</button></span>--%>
+                         <%-- <asp:Button type="submit" ID="btnSaveItem" runat="server" OnClick="btnSaveItem_Click" Text="Save" CssClass="btnindex"/>--%>
+                         <span style="float: right;">
+                             <%--<button type="button" class="btn btn-sm btn-default" id="btnUpdateItem" runat="server"><span class="glyphicon glyphicon-cloud-upload"></span>Update</button></span>--%>
+                     </td>
+                 </tr>
+             </table>
+         </div>
+     </div>
      
      
     
