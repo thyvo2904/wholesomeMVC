@@ -465,17 +465,19 @@ namespace WholesomeMVC
             String ndbno = gridUSDAChoices.SelectedRow.Cells[0].Text;
             String ceresDescription = txtDescription.Text;
             string description = gridUSDAChoices.SelectedRow.Cells[1].Text;
-            double protein = Double.Parse(gridUSDAChoices.SelectedRow.Cells[2].Text);
-            double fiber = Double.Parse(gridUSDAChoices.SelectedRow.Cells[3].Text);
-            double vitaminA = Double.Parse(gridUSDAChoices.SelectedRow.Cells[4].Text);
-            double vitaminC = Double.Parse(gridUSDAChoices.SelectedRow.Cells[5].Text);
-            double iron = Double.Parse(gridUSDAChoices.SelectedRow.Cells[6].Text);
-            double calcium = Double.Parse(gridUSDAChoices.SelectedRow.Cells[7].Text);
-            double saturatedFat = Double.Parse(gridUSDAChoices.SelectedRow.Cells[8].Text);
-            double totalSugar = Double.Parse(gridUSDAChoices.SelectedRow.Cells[9].Text);
-            double sodium = Double.Parse(gridUSDAChoices.SelectedRow.Cells[10].Text);
-            double kCal = Double.Parse(gridUSDAChoices.SelectedRow.Cells[11].Text);
-            double ndscore = Double.Parse(gridUSDAChoices.SelectedRow.Cells[12].Text);
+            string foodGroup = gridUSDAChoices.SelectedRow.Cells[2].Text;
+            //double protein = Double.Parse(gridUSDAChoices.SelectedRow.Cells[2].Text);
+            //double fiber = Double.Parse(gridUSDAChoices.SelectedRow.Cells[3].Text);
+            //double vitaminA = Double.Parse(gridUSDAChoices.SelectedRow.Cells[4].Text);
+            //double vitaminC = Double.Parse(gridUSDAChoices.SelectedRow.Cells[5].Text);
+            //double iron = Double.Parse(gridUSDAChoices.SelectedRow.Cells[6].Text);
+            //double calcium = Double.Parse(gridUSDAChoices.SelectedRow.Cells[7].Text);
+            //double saturatedFat = Double.Parse(gridUSDAChoices.SelectedRow.Cells[8].Text);
+            //double totalSugar = Double.Parse(gridUSDAChoices.SelectedRow.Cells[9].Text);
+            //double sodium = Double.Parse(gridUSDAChoices.SelectedRow.Cells[10].Text);
+            //double kCal = Double.Parse(gridUSDAChoices.SelectedRow.Cells[11].Text);
+            double ndscore = Double.Parse(gridUSDAChoices.SelectedRow.Cells[3].Text);
+            String foodGroupNumber = ""; 
 
             String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
 
@@ -493,21 +495,39 @@ namespace WholesomeMVC
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 {
+                    SqlCommand command = new SqlCommand();
+                    command.Connection = connection;
+                    command.CommandType = System.Data.CommandType.Text;
+
+
+
+                    // ADD SESSION INFO
+                    command.CommandText = @"SELECT FdGrp_CD FROM FD_GROUP WHERE FdGrp_Desc = @FdGrp_Desc";
+                    command.Parameters.Add("@FdGrp_Desc", SqlDbType.NVarChar, 60).Value = foodGroup;
+                    SqlDataReader readIn = command.ExecuteReader();
+                    while (readIn.Read())
+                    {
+                       foodGroupNumber  = readIn["FdGrp_Desc"].ToString();
+                    }
+
+                    connection.Close();
+
+
                     SqlCommand command1 = new SqlCommand();
                     command1.Connection = connection;
                     command1.CommandType = System.Data.CommandType.Text;
 
                     // ADD SESSION INFO
                     command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
-                     + " Description = @Description, nrf6 = @nrf6, "
+                     + " FdGrp_CD = @FdGrp_CD, nrf6 = @nrf6, "
                      + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_";
 
 
                     command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
-                    command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = ndbno;
-                    command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = ceresDescription;
+                    command1.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
                     command1.Parameters.Add("@Description2", SqlDbType.NVarChar, 50).Value = description;
                     command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = ndscore;
+                    command1.Parameters.Add("FdGrp_CD", SqlDbType.NVarChar, 4).Value = foodGroupNumber;
 
 
                     command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = "Charles Moore";
