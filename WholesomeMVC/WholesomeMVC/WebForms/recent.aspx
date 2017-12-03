@@ -16,7 +16,7 @@
 
 	<section>
 		<h4><asp:Label ID="label_recent_items" runat="server" /></h4>
-		<section id="section_recent_items" runat="server" class="row"></section>
+		<section id="section_recent_items" runat="server" class="row equal"></section>
 	</section>
 </asp:Content>
 
