@@ -21,7 +21,7 @@ namespace WholesomeMVC
         {
             if (!IsPostBack)
             {
-                
+
                 if (FoodItem.getCeresID() != "" || FoodItem.getDescription() != "")
                 {
                     txtNumber.Text = FoodItem.getCeresID();
@@ -32,14 +32,14 @@ namespace WholesomeMVC
 
             else
             {
-                if(!String.IsNullOrEmpty(txtNewAddedSugar.Text) && !String.IsNullOrEmpty(txtNewFiber.Text))
+                if (!String.IsNullOrEmpty(txtNewAddedSugar.Text) && !String.IsNullOrEmpty(txtNewFiber.Text))
                 {
                     divnew.Style.Add("display", "block");
                     divold.Style.Add("display", "none");
                     ddlMethod.SelectedIndex = 2;
                 }
 
-                else if(!String.IsNullOrEmpty(txtOldCalcium.Text) && !String.IsNullOrEmpty(txtOldIron.Text))
+                else if (!String.IsNullOrEmpty(txtOldCalcium.Text) && !String.IsNullOrEmpty(txtOldIron.Text))
                 {
                     divold.Style.Add("display", "block");
                     divnew.Style.Add("display", "none");
@@ -83,7 +83,7 @@ namespace WholesomeMVC
                 double nR6;
                 double liMT;
                 double NRF6;
-               
+
 
                 //DV for Vitamin A: 5000UI
                 //DV for Vitamin C: 60mg
@@ -209,7 +209,8 @@ namespace WholesomeMVC
                     lblNewResult.Text = "Uncategorized";
                     lblNewResult.Attributes["style"] = "font-weight:bold;text-align: center; font-size: 110%";
                 }
-            }catch(Exception ei)
+            }
+            catch (Exception ei)
             {
                 Response.Write("<script>alert('Please enter a valid value');</script>");
             }
@@ -217,10 +218,10 @@ namespace WholesomeMVC
 
         protected void btnOldSaveItem_Click(object sender, EventArgs e)
         {
-            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
             String description = txtDescription.Text;
 
-            if(description.Length > 48)
+            if (description.Length > 48)
             {
                 description = description.Substring(0, 48);
             }
@@ -320,7 +321,7 @@ namespace WholesomeMVC
                 }
             }
 
-            catch(Exception a)
+            catch (Exception a)
             {
                 Response.Write("<script>alert('Ceres item already exists!');</script>");
             }
@@ -330,8 +331,8 @@ namespace WholesomeMVC
         {
             String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
             String description = txtDescription.Text;
-            
-            if(description.Length > 48)
+
+            if (description.Length > 48)
             {
                 description = description.Substring(0, 48);
             }
@@ -468,109 +469,109 @@ namespace WholesomeMVC
             if (description.Length > 48)
             {
                 description = description.Substring(0, 48);
-                
+
             }
 
-            if(ceresDescription.Length > 48)
+            if (ceresDescription.Length > 48)
             {
                 ceresDescription = ceresDescription.Substring(0, 48);
             }
 
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
                 {
-                    {
-                        SqlCommand command1 = new SqlCommand();
-                        command1.Connection = connection;
-                        command1.CommandType = System.Data.CommandType.Text;
+                    SqlCommand command1 = new SqlCommand();
+                    command1.Connection = connection;
+                    command1.CommandType = System.Data.CommandType.Text;
 
 
-                        command1.CommandText = @"EXECUTE create_item @No_, @ndb_no, @Description, 
+                    command1.CommandText = @"EXECUTE create_item @No_, @ndb_no, @Description, 
 @Long_Desc, @protein , @fiber, @vitaminA, @VitaminC, @VitaminD, @Potassium, @Calcium, 
 @Iron, @saturatedFat, @TotalSugar, @AddedSugar, @Sodium, @KCal, @nrf6, @lastUpdatedBy, @lastUpdated";
 
 
-                        command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
-                        command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = ndbno;
-                        command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = ceresDescription;
-                        command1.Parameters.Add("@Long_Desc", SqlDbType.NVarChar, 500).Value = description;
-                        command1.Parameters.Add("@protein", SqlDbType.Decimal, 18).Value = protein;
-                        command1.Parameters.Add("@fiber", SqlDbType.Decimal, 18).Value = fiber;
-                        command1.Parameters.Add("@vitaminA", SqlDbType.Decimal, 18).Value = vitaminA;
-                        command1.Parameters.Add("@vitaminC", SqlDbType.Decimal, 18).Value = vitaminC;
-                        command1.Parameters.Add("@vitaminD", SqlDbType.Decimal, 18).Value = 0;
-                        command1.Parameters.Add("@Potassium", SqlDbType.Decimal, 18).Value = 0;
-                        command1.Parameters.Add("@Calcium", SqlDbType.Decimal, 18).Value = calcium;
-                        command1.Parameters.Add("@Iron", SqlDbType.Decimal, 18).Value = iron;
-                        command1.Parameters.Add("@saturatedFat", SqlDbType.Decimal, 18).Value = saturatedFat;
-                        command1.Parameters.Add("@TotalSugar", SqlDbType.Decimal, 18).Value = totalSugar;
-                        command1.Parameters.Add("@AddedSugar", SqlDbType.Decimal, 18).Value = 0;
-                        command1.Parameters.Add("@Sodium", SqlDbType.Decimal, 18).Value = sodium;
-                        command1.Parameters.Add("@KCal", SqlDbType.Decimal, 18).Value = kCal;
-                        command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = ndscore;
-                        command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = "Charles Moore";
-                        command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+                    command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
+                    command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = ndbno;
+                    command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = ceresDescription;
+                    command1.Parameters.Add("@Long_Desc", SqlDbType.NVarChar, 500).Value = description;
+                    command1.Parameters.Add("@protein", SqlDbType.Decimal, 18).Value = protein;
+                    command1.Parameters.Add("@fiber", SqlDbType.Decimal, 18).Value = fiber;
+                    command1.Parameters.Add("@vitaminA", SqlDbType.Decimal, 18).Value = vitaminA;
+                    command1.Parameters.Add("@vitaminC", SqlDbType.Decimal, 18).Value = vitaminC;
+                    command1.Parameters.Add("@vitaminD", SqlDbType.Decimal, 18).Value = 0;
+                    command1.Parameters.Add("@Potassium", SqlDbType.Decimal, 18).Value = 0;
+                    command1.Parameters.Add("@Calcium", SqlDbType.Decimal, 18).Value = calcium;
+                    command1.Parameters.Add("@Iron", SqlDbType.Decimal, 18).Value = iron;
+                    command1.Parameters.Add("@saturatedFat", SqlDbType.Decimal, 18).Value = saturatedFat;
+                    command1.Parameters.Add("@TotalSugar", SqlDbType.Decimal, 18).Value = totalSugar;
+                    command1.Parameters.Add("@AddedSugar", SqlDbType.Decimal, 18).Value = 0;
+                    command1.Parameters.Add("@Sodium", SqlDbType.Decimal, 18).Value = sodium;
+                    command1.Parameters.Add("@KCal", SqlDbType.Decimal, 18).Value = kCal;
+                    command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = ndscore;
+                    command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = "Charles Moore";
+                    command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
 
 
-                        connection.Open();
-                        command1.ExecuteNonQuery();
-                        connection.Close();
+                    connection.Open();
+                    command1.ExecuteNonQuery();
+                    connection.Close();
 
 
-                        int count = 0;
-                        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+                    int count = 0;
+                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+                    {
+                        System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
+
+                        con.Open();
+                        go.Connection = con;
+                        go.CommandText = "SELECT No_ FROM Item WHERE No_ = @No_";
+                        go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+
+
+                        SqlDataReader readIn = go.ExecuteReader();
+                        while (readIn.Read())
                         {
-                            System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
-
-                            con.Open();
-                            go.Connection = con;
-                            go.CommandText = "SELECT No_ FROM Item WHERE No_ = @No_";
-                            go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
-
-
-                            SqlDataReader readIn = go.ExecuteReader();
-                            while (readIn.Read())
-                            {
-                                ++count;
-                            }
-
-                            con.Close();
-
-
+                            ++count;
                         }
 
-                        if (count == 1)
+                        con.Close();
+
+
+                    }
+
+                    if (count == 1)
+                    {
+                        connection.Open();
+
+                        try
                         {
-                            connection.Open();
+                            command1 = new SqlCommand();
+                            command1.Connection = connection;
+                            command1.CommandType = System.Data.CommandType.Text;
 
-                            try
-                            {
-                                command1 = new SqlCommand();
-                                command1.Connection = connection;
-                                command1.CommandType = System.Data.CommandType.Text;
-
-                                command1.CommandText = @"UPDATE item SET [No_ 2] = @No_2,  [Description 2] = @Description2, [CHOP Points] = @CHOPPoints
+                            command1.CommandText = @"UPDATE item SET [No_ 2] = @No_2,  [Description 2] = @Description2, [CHOP Points] = @CHOPPoints
                     WHERE No_ = '" + txtNumber.Text + "'";
 
-                                command1.Parameters.Add("@No_2", SqlDbType.NVarChar, 20).Value = ndbno;
-                                command1.Parameters.Add("@Description2", SqlDbType.NVarChar, 50).Value = description;
-                                command1.Parameters.Add("@CHOPPoints", SqlDbType.Decimal, 18).Value = ndscore;
-                                command1.ExecuteNonQuery();
-                                connection.Close();
-                            }
-
-                            catch (Exception l)
-                            {
-                                Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
-                            }
-
+                            command1.Parameters.Add("@No_2", SqlDbType.NVarChar, 20).Value = ndbno;
+                            command1.Parameters.Add("@Description2", SqlDbType.NVarChar, 50).Value = description;
+                            command1.Parameters.Add("@CHOPPoints", SqlDbType.Decimal, 18).Value = ndscore;
+                            command1.ExecuteNonQuery();
+                            connection.Close();
                         }
 
-                        else
+                        catch (Exception l)
                         {
                             Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
                         }
+
+                    }
+
+                    else
+                    {
+                        Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
                     }
                 }
+            }
         }
 
         protected void OnSelectedIndexChanged(object sender, EventArgs e)
@@ -580,13 +581,13 @@ namespace WholesomeMVC
 
             }
 
-            else if(ddlMethod.SelectedIndex == 1)
+            else if (ddlMethod.SelectedIndex == 1)
             {
                 gridUSDAChoices.Visible = true;
                 divmanual.Visible = false;
             }
 
-            else if(ddlMethod.SelectedIndex == 2)
+            else if (ddlMethod.SelectedIndex == 2)
             {
                 divmanual.Visible = true;
                 gridUSDAChoices.Visible = false;

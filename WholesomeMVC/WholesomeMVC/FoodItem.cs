@@ -30,13 +30,17 @@ namespace WholesomeMVC
         public double satFat { get; set; }
         public double totalSugar { get; set; }
         public double sodium { get; set; }
+        public double totalFat { get; set; }
+        public double transFat { get; set; }
+        public double cholesterol { get; set; }
+        public double carbohydrates { get; set; }
         public double nR6 { get; set; }
         public double liMT { get; set; }
         public double NRF6 { get; set; }
         public String ingredients { get; set; }
 
         public static List<string> names = new List<string>();
-
+        public static List<string> ndbnoList = new List<string>();
         public static FoodItem newFood = new FoodItem();
 
         // Used for transfering ceres ID's on sync database to the add item page
@@ -61,6 +65,7 @@ namespace WholesomeMVC
         {
 
             names.Clear();
+            ndbnoList.Clear();
 
 
             String urlPartOne = "https://api.nal.usda.gov/ndb/search/?format=json&q=";
@@ -92,126 +97,185 @@ namespace WholesomeMVC
                 IndexResults.dataSearchResults.Clear();
             }
 
-            if (result.list.item != null)
+
+
+            for (int i = 0; i < result.list.item.Count; i++)
             {
-                for (int i = 0; i < result.list.item.Count; i++)
+
+                newFood.ndbNo = result.list.item[i].ndbno;
+                //newFood.name = result.list.item[i].name;
+
+                //row[0] = newFood.ndbNo;
+                //row[1] = newFood.name;
+                ndbnoList.Add(newFood.ndbNo);
+            }
+
+            String food = "";
+
+            for (int i = 0; i < ndbnoList.Count; i++)
+            {
+                if (ndbnoList[i] != null)
                 {
-
-                    newFood.ndbNo = result.list.item[i].ndbno;
-                    newFood.name = result.list.item[i].name;
-                    DataRow row = IndexResults.dataSearchResults.NewRow();
-                    row[0] = newFood.ndbNo;
-                    row[1] = newFood.name;
-
-                    String food = (newFood.ndbNo);
-
-                    String urlPartOne2 = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=";
-                    String urlPartTwo2 = "&type=b&format=json&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
-
-                    String url2 = urlPartOne2 + food + urlPartTwo2;
-
-                    var json2 = new WebClient().DownloadString(url2);
-
-                    var result2 = JsonConvert.DeserializeObject<RootObject>(json2);
-
-
-                    // SOME OF THE NUTRIENT ID'S ARE CHANGED W/ VERSION TWO, I FIXED THEM
-                    foreach (Nutrient item in result2.foods[0].food.nutrients)
+                    if (i == 0)
                     {
-                        if (Int32.Parse(item.nutrient_id) == 203)
-                        {
-                            newFood.protein = Double.Parse(item.value);
-                        }
-                        if (Int32.Parse(item.nutrient_id) == 208)
-                        {
-                            newFood.kCal = Double.Parse(item.value);
-                        }
-                        if (Int32.Parse(item.nutrient_id) == 291)
-                        {
-                            newFood.fiber = Double.Parse(item.value);
-                        }
-                        if (Int32.Parse(item.nutrient_id) == 318)
-                        {
-                            newFood.vitaminA = Double.Parse(item.value);
-                        }
-                        if (Int32.Parse(item.nutrient_id) == 401)
-                        {
-                            newFood.vitaminC = Double.Parse(item.value);
-                        }
-                        if (Int32.Parse(item.nutrient_id) == 301)
-                        {
-                            newFood.calcium = Double.Parse(item.value);
-                        }
-                        if (Int32.Parse(item.nutrient_id) == 303)
-                        {
-                            newFood.iron = Double.Parse(item.value);
-                        }
-                        if (Int32.Parse(item.nutrient_id) == 606)
-                        {
-                            newFood.satFat = Double.Parse(item.value);
-                        }
-                        if (Int32.Parse(item.nutrient_id) == 269)
-                        {
-                            newFood.totalSugar = Double.Parse(item.value);
-                        }
-                        if (Int32.Parse(item.nutrient_id) == 307)
-                        {
-                            newFood.sodium = Double.Parse(item.value);
-                        }
-                        if (result2.foods[0].food.ing != null)
-                        {
-                            newFood.ingredients = result2.foods[0].food.ing.desc;
-                        }
-
-                        newFood.nR6 = (newFood.protein / 50) + (newFood.fiber / 25) + (newFood.vitaminA / 5000) + (newFood.vitaminC / 60) + (newFood.calcium / 1000) + (newFood.iron / 18);
-                        newFood.liMT = (newFood.satFat / 20) + (newFood.totalSugar / 125) + (newFood.sodium / 2400);
-
-
-                        double good = ((newFood.nR6 * 100) / newFood.kCal) * 100;
-                        double bad = ((newFood.liMT * 100) / newFood.kCal) * 100;
-
-                        newFood.NRF6 = good - bad;
-                        newFood.NRF6 = Math.Round(newFood.NRF6, 5);
-
-                        row[2] = newFood.NRF6;
-
+                        food += ndbnoList[i].ToString();
                     }
-                    IndexResults.dataSearchResults.Rows.Add(row);
+
+                    else
+                    {
+                        food += "&ndbno=";
+                        food += ndbnoList[i].ToString();
+                    }
                 }
             }
-            else
+
+
+            // End this for loop. Make a string array to hold the ndbno's. Do a for loop like recent items to build the food
+            // part of the report url. copy the for each loop
+
+
+
+            String urlPartOne2 = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=";
+            String urlPartTwo2 = "&type=b&format=json&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
+
+            //String urlPartOne = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=";
+            //String urlPartTwo = "&type=b&format=json&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
+
+            String url2 = urlPartOne2 + food + urlPartTwo2;
+
+            var json2 = new WebClient().DownloadString(url2);
+
+            var result2 = JsonConvert.DeserializeObject<RootObject>(json2);
+
+            for (int i = 0; i < result2.foods.Count; i++)
             {
-            
+                DataRow row = IndexResults.dataSearchResults.NewRow();
+                // SOME OF THE NUTRIENT ID'S ARE CHANGED W/ VERSION TWO, I FIXED THEM
+                foreach (Nutrient item in result2.foods[i].food.nutrients)
+                {
+                    if (Int32.Parse(item.nutrient_id) == 203)
+                    {
+                        newFood.protein = Double.Parse(item.value);
+                        newFood.protein = Math.Round(newFood.protein, 2);
+                    }
+                    else if (Int32.Parse(item.nutrient_id) == 208)
+                    {
+                        newFood.kCal = Double.Parse(item.value);
+                        newFood.kCal = Math.Round(newFood.kCal);
+                    }
+                    else if (Int32.Parse(item.nutrient_id) == 291)
+                    {
+                        newFood.fiber = Double.Parse(item.value);
+                        newFood.fiber = Math.Round(newFood.fiber, 2);
+                    }
+                    else if (Int32.Parse(item.nutrient_id) == 318)
+                    {
+                        newFood.vitaminA = Double.Parse(item.value);
+                        newFood.vitaminA = Math.Round(newFood.vitaminA, 2);
+                    }
+                    else if (Int32.Parse(item.nutrient_id) == 401)
+                    {
+                        newFood.vitaminC = Double.Parse(item.value);
+                        newFood.vitaminC = Math.Round(newFood.vitaminC, 2);
+                    }
+                    else if (Int32.Parse(item.nutrient_id) == 301)
+                    {
+                        newFood.calcium = Double.Parse(item.value);
+                        newFood.calcium = Math.Round(newFood.calcium, 2);
+                    }
+                    else if (Int32.Parse(item.nutrient_id) == 303)
+                    {
+                        newFood.iron = Double.Parse(item.value);
+                        newFood.iron = Math.Round(newFood.iron, 2);
+                    }
+                    else if (Int32.Parse(item.nutrient_id) == 606)
+                    {
+                        newFood.satFat = Double.Parse(item.value);
+                        newFood.satFat = Math.Round(newFood.satFat, 2);
+                    }
+                    else if (Int32.Parse(item.nutrient_id) == 269)
+                    {
+                        newFood.totalSugar = Double.Parse(item.value);
+                        newFood.totalSugar = Math.Round(newFood.totalSugar, 2);
+                    }
+                    else if (Int32.Parse(item.nutrient_id) == 307)
+                    {
+                        newFood.sodium = Double.Parse(item.value);
+                        newFood.sodium = Math.Round(newFood.sodium, 2);
+                    }
+                    else if (Int32.Parse(item.nutrient_id) == 204)
+                    {
+                        newFood.totalFat = Double.Parse(item.value);
+                        newFood.totalFat = Math.Round(newFood.totalFat, 2);
+                    }
+                    else if (Int32.Parse(item.nutrient_id) == 605)
+                    {
+                        newFood.transFat = Double.Parse(item.value);
+                        newFood.transFat = Math.Round(newFood.transFat, 2);
+                    }
+                    else if (Int32.Parse(item.nutrient_id) == 601)
+                    {
+                        newFood.cholesterol = Double.Parse(item.value);
+                        newFood.cholesterol = Math.Round(newFood.cholesterol, 2);
+                    }
+                    else if (Int32.Parse(item.nutrient_id) == 205)
+                    {
+                        newFood.carbohydrates = Double.Parse(item.value);
+                        newFood.carbohydrates = Math.Round(newFood.carbohydrates, 2);
+                    }
+                    if (result2.foods[0].food.ing != null)
+                    {
+                        newFood.ingredients = result2.foods[0].food.ing.desc;
+                    }
+
+                    newFood.nR6 = (newFood.protein / 50) + (newFood.fiber / 25) + (newFood.vitaminA / 5000) + (newFood.vitaminC / 60) + (newFood.calcium / 1000) + (newFood.iron / 18);
+                    newFood.liMT = (newFood.satFat / 20) + (newFood.totalSugar / 125) + (newFood.sodium / 2400);
+
+
+                    double good = ((newFood.nR6 * 100) / newFood.kCal) * 100;
+                    double bad = ((newFood.liMT * 100) / newFood.kCal) * 100;
+
+                    newFood.NRF6 = good - bad;
+                    newFood.NRF6 = Math.Round(newFood.NRF6, 5);
+
+                    row[2] = newFood.NRF6;
+
+                }
+                row[0] = result2.foods[i].food.desc.ndbno;
+                row[1] = result2.foods[i].food.desc.name;
+                IndexResults.dataSearchResults.Rows.Add(row);
+            }
+
+
+        }
+
+
+        protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                TableCell cell = e.Row.Cells[2];
+                int quantity = int.Parse(cell.Text);
+                if (quantity < 4.66)
+                {
+                    cell.BackColor = Color.Red;
+                }
+                if (quantity >= 4.66 && quantity <= 27.99)
+                {
+                    cell.BackColor = Color.Yellow;
+                }
+                if (quantity >= 28)
+                {
+                    cell.BackColor = Color.Green;
+                }
             }
         }
-        
-            
-                                         
-  protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
-    {
-    if (e.Row.RowType == DataControlRowType.DataRow)
-    {
-        TableCell cell = e.Row.Cells[2];
-        int quantity = int.Parse(cell.Text);
-        if (quantity < 4.66)
-        {
-            cell.BackColor = Color.Red;
-        }
-        if (quantity >= 4.66 && quantity <= 27.99)
-        {
-            cell.BackColor = Color.Yellow;
-        }
-        if (quantity >= 28)
-        {
-            cell.BackColor = Color.Green;
-        }
-    }
-}
 
         public static void findNdbnoAddItem(String foodSearch)
         {
 
             names.Clear();
+            ndbnoList.Clear();
 
 
             String urlPartOne = "https://api.nal.usda.gov/ndb/search/?format=json&q=";
@@ -254,27 +318,62 @@ namespace WholesomeMVC
 
             try
             {
+
+
                 for (int i = 0; i < result.list.item.Count; i++)
                 {
 
                     newFood.ndbNo = result.list.item[i].ndbno;
-                    newFood.name = result.list.item[i].name;
+                    //newFood.name = result.list.item[i].name;
+
+                    //row[0] = newFood.ndbNo;
+                    //row[1] = newFood.name;
+                    ndbnoList.Add(newFood.ndbNo);
+                }
+
+                String food = "";
+
+                for (int i = 0; i < ndbnoList.Count; i++)
+                {
+                    if (ndbnoList[i] != null)
+                    {
+                        if (i == 0)
+                        {
+                            food += ndbnoList[i].ToString();
+                        }
+
+                        else
+                        {
+                            food += "&ndbno=";
+                            food += ndbnoList[i].ToString();
+                        }
+                    }
+                }
+
+
+                // End this for loop. Make a string array to hold the ndbno's. Do a for loop like recent items to build the food
+                // part of the report url. copy the for each loop
+
+
+
+                String urlPartOne2 = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=";
+                String urlPartTwo2 = "&type=b&format=json&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
+
+                //String urlPartOne = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=";
+                //String urlPartTwo = "&type=b&format=json&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
+
+                String url2 = urlPartOne2 + food + urlPartTwo2;
+
+                var json2 = new WebClient().DownloadString(url2);
+
+                var result2 = JsonConvert.DeserializeObject<RootObject>(json2);
+
+                for (int i = 0; i < result2.foods.Count; i++)
+                {
                     DataRow row = Add_Item.dataSearchResults.NewRow();
 
-                    row[0] = newFood.ndbNo;
-                    row[1] = newFood.name;
 
-                    String food = Convert.ToString(newFood.ndbNo);
-
-                    String urlPartOne2 = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=";
-                    String urlPartTwo2 = "&type=b&format=json&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
-                    String url2 = urlPartOne2 + food + urlPartTwo2;
-
-                    var json2 = new WebClient().DownloadString(url2);
-
-                    var result2 = JsonConvert.DeserializeObject<RootObject>(json2);
-
-                    foreach (Nutrient item in result2.foods[0].food.nutrients)
+                    foreach (Nutrient item in result2.foods[i].food.nutrients)
                     {
                         if (Int32.Parse(item.nutrient_id) == 203)
                         {
@@ -337,7 +436,8 @@ namespace WholesomeMVC
 
                     newFood.NRF6 = good - bad;
                     newFood.NRF6 = Math.Round(newFood.NRF6, 5);
-
+                    row[0] = result2.foods[i].food.desc.ndbno;
+                    row[1] = result2.foods[i].food.desc.name;
                     row[2] = newFood.protein;
                     row[3] = newFood.fiber;
                     row[4] = newFood.vitaminA;
@@ -362,6 +462,7 @@ namespace WholesomeMVC
         {
 
             names.Clear();
+            ndbnoList.Clear();
 
 
             String urlPartOne = "https://api.nal.usda.gov/ndb/search/?format=json&q=";
@@ -383,6 +484,7 @@ namespace WholesomeMVC
             {
                 Update_Item.dataSearchResults.Columns.Add("NDBno", typeof(int)); // Row 0
                 Update_Item.dataSearchResults.Columns.Add("Name", typeof(string)); // Row 1
+                Update_Item.dataSearchResults.Columns.Add("Food Group", typeof(string)); // Row 1
                 Update_Item.dataSearchResults.Columns.Add("Protein", typeof(double));// Row 2
                 Update_Item.dataSearchResults.Columns.Add("Fiber", typeof(double));// Row 3
                 Update_Item.dataSearchResults.Columns.Add("VitaminA", typeof(double));// Row 4
@@ -404,29 +506,62 @@ namespace WholesomeMVC
 
             try
             {
+
+
                 for (int i = 0; i < result.list.item.Count; i++)
                 {
 
                     newFood.ndbNo = result.list.item[i].ndbno;
-                    newFood.name = result.list.item[i].name;
+                    //newFood.name = result.list.item[i].name;
+
+                    //row[0] = newFood.ndbNo;
+                    //row[1] = newFood.name;
+                    ndbnoList.Add(newFood.ndbNo);
+                }
+
+                String food = "";
+
+                for (int i = 0; i < ndbnoList.Count; i++)
+                {
+                    if (ndbnoList[i] != null)
+                    {
+                        if (i == 0)
+                        {
+                            food += ndbnoList[i].ToString();
+                        }
+
+                        else
+                        {
+                            food += "&ndbno=";
+                            food += ndbnoList[i].ToString();
+                        }
+                    }
+                }
+
+
+                // End this for loop. Make a string array to hold the ndbno's. Do a for loop like recent items to build the food
+                // part of the report url. copy the for each loop
+
+
+
+                String urlPartOne2 = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=";
+                String urlPartTwo2 = "&type=b&format=json&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
+
+                //String urlPartOne = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=";
+                //String urlPartTwo = "&type=b&format=json&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
+
+                String url2 = urlPartOne2 + food + urlPartTwo2;
+
+                var json2 = new WebClient().DownloadString(url2);
+
+                var result2 = JsonConvert.DeserializeObject<RootObject>(json2);
+
+                for (int i = 0; i < result2.foods.Count; i++)
+                {
                     DataRow row = Update_Item.dataSearchResults.NewRow();
 
-                    row[0] = newFood.ndbNo;
-                    row[1] = newFood.name;
 
-                    String food = Convert.ToString(newFood.ndbNo);
-
-                    String urlPartOne2 = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=";
-                    String urlPartTwo2 = "&type=b&format=json&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
-
-
-                    String url2 = urlPartOne2 + food + urlPartTwo2;
-
-                    var json2 = new WebClient().DownloadString(url2);
-
-                    var result2 = JsonConvert.DeserializeObject<RootObject>(json2);
-
-                    foreach (Nutrient item in result2.foods[0].food.nutrients)
+                    foreach (Nutrient item in result2.foods[i].food.nutrients)
                     {
                         if (Int32.Parse(item.nutrient_id) == 203)
                         {
@@ -476,6 +611,7 @@ namespace WholesomeMVC
                         else if (Int32.Parse(item.nutrient_id) == 307)
                         {
                             newFood.sodium = Double.Parse(item.value);
+
                         }
                     }
 
@@ -488,18 +624,20 @@ namespace WholesomeMVC
 
                     newFood.NRF6 = good - bad;
                     newFood.NRF6 = Math.Round(newFood.NRF6, 5);
-
-                    row[2] = newFood.protein;
-                    row[3] = newFood.fiber;
-                    row[4] = newFood.vitaminA;
-                    row[5] = newFood.vitaminC;
-                    row[6] = newFood.iron;
-                    row[7] = newFood.calcium;
-                    row[8] = newFood.satFat;
-                    row[9] = newFood.totalSugar;
-                    row[10] = newFood.sodium;
-                    row[11] = newFood.kCal;
-                    row[12] = newFood.NRF6;
+                    row[0] = result2.foods[i].food.desc.ndbno;
+                    row[1] = result2.foods[i].food.desc.name;
+                    row[2] = result2.foods[i].food.desc.group;
+                    row[3] = newFood.protein;
+                    row[4] = newFood.fiber;
+                    row[5] = newFood.vitaminA;
+                    row[6] = newFood.vitaminC;
+                    row[7] = newFood.iron;
+                    row[8] = newFood.calcium;
+                    row[9] = newFood.satFat;
+                    row[10] = newFood.totalSugar;
+                    row[11] = newFood.sodium;
+                    row[12] = newFood.kCal;
+                    row[13] = newFood.NRF6;
                     Update_Item.dataSearchResults.Rows.Add(row);
                 }
             }

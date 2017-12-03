@@ -13,11 +13,13 @@
     margin: 50px auto;
     background-image: url(https://source.unsplash.com/1140x600/?food);
     background-size: cover;
+	border-radius: 4px;
     min-height: 600px;
     position: relative;
 }
 #banner > .background-color {
     min-height: 600px;
+	border-radius: 4px;
 }
 #banner > .background-color > div {
     position: absolute;
