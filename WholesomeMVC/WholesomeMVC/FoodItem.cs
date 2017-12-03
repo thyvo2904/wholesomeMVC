@@ -38,6 +38,7 @@ namespace WholesomeMVC
         public double liMT { get; set; }
         public double NRF6 { get; set; }
         public String ingredients { get; set; }
+        public String foodGroup { get; set; }
 
         public static List<string> names = new List<string>();
         public static List<string> ndbnoList = new List<string>();
@@ -245,7 +246,10 @@ namespace WholesomeMVC
                 row[1] = result2.foods[i].food.desc.name;
                 IndexResults.dataSearchResults.Rows.Add(row);
             }
-
+            IndexResults.savedNdb_no = newFood.ndbNo;
+            IndexResults.savedItemName = newFood.name;
+            IndexResults.savedFoodGroup = newFood.foodGroup;
+            IndexResults.savedNrf6 = newFood.NRF6;
 
         }
 
@@ -433,7 +437,7 @@ namespace WholesomeMVC
 
                     double good = ((newFood.nR6 * 100) / newFood.kCal) * 100;
                     double bad = ((newFood.liMT * 100) / newFood.kCal) * 100;
-
+                    newFood.foodGroup = result2.foods[i].food.desc.group;
                     newFood.NRF6 = good - bad;
                     newFood.NRF6 = Math.Round(newFood.NRF6, 5);
                     row[0] = result2.foods[i].food.desc.ndbno;

@@ -12,6 +12,11 @@ namespace WholesomeMVC
     public partial class IndexResults : System.Web.UI.Page
     {
         // Counter to keep up with save id's
+        public static String savedNdb_no = "";
+        public static String savedItemName = "";
+        public static double savedNrf6 = 0;
+        public static String savedFoodGroup = "";
+
 
         public static string number;
         public static string ing;
@@ -72,7 +77,9 @@ namespace WholesomeMVC
         {
             string ndbno = gridSearchResults.SelectedRow.Cells[0].Text;
 
+            
             FoodItem.findNdbno(ndbno);
+
 
             lblFoodName.Text = FoodItem.newFood.name;
             lblIndexResult.Text = Convert.ToString(Math.Round(FoodItem.newFood.NRF6, 2));
@@ -238,13 +245,46 @@ namespace WholesomeMVC
 
         protected void btnSaveItem_Click(object sender, EventArgs e)
         {
+            //FoodItem.findNdbno(ndb_no);
 
             String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
 
             if (txtCeresNumber.Text == "" || txtCeresDescription.Text == "")
             {
 
-                Response.Write("<script>alert('Please enter a value for ceres item number and description');</script>");
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    String name = lblName.Text;
+                    {
+                        SqlCommand command1 = new SqlCommand();
+                        command1.Connection = connection;
+                        command1.CommandType = System.Data.CommandType.Text;
+
+                        //if (FoodItem.newFood.name.Length > 48)
+                        //{
+                        //    FoodItem.newFood.name = FoodItem.newFood.name.Substring(0, 48);
+                        //}
+                        if(savedFoodGroup == "")
+                        {
+                            savedFoodGroup = "BRND";
+                        }
+
+
+                        command1.CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([NDB_No], [nrf6], [FdGrp_CD], [LastUpdatedBy], [LastUpdated], [Description 2]) VALUES
+                                      (@ndbno, @nrf6, @FdGrp_CD, @lastupdatedby, @lastupdated, @Description2)";
+
+                        command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = savedNdb_no;
+                        command1.Parameters.Add("@Description2", SqlDbType.NVarChar, 50).Value = lblName.Text;
+                        command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = savedNrf6;
+                        command1.Parameters.Add("@FdGrp_CD", SqlDbType.NVarChar, 4).Value = savedFoodGroup;
+                        command1.Parameters.Add("@lastupdatedby", SqlDbType.NVarChar, 20).Value = "Nathan Hamrick";
+                        command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+
+                        connection.Open();
+                        command1.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
             }
 
 
@@ -262,21 +302,20 @@ namespace WholesomeMVC
                         command1.Connection = connection;
                         command1.CommandType = System.Data.CommandType.Text;
 
-                        if (lblName.Text.Length > 48)
-                        {
-                            name = lblName.Text.Substring(0, 48);
-                        }
+                        //if (FoodItem.newFood.name.Length > 48)
+                        //{
+                        //    FoodItem.newFood.name = FoodItem.newFood.name.Substring(0, 48);
+                        //}
 
 
-                        command1.CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([NDB_No], [Name], [Description], [ND_Score], [Ceres_Item_Number], [UserID], [LastUpdatedBy], [LastUpdated]) VALUES
-                                      (@ndbno, @name,  @ceresdescription, @nrf6, @ceresitemnumber, @userID, @lastupdatedby, @lastupdated)";
+                        command1.CommandText = @"UPDATE [wholesomeDB].[dbo].[Wholesome_Item] SET ndb_no = @ndbno, nrf6 = @nrf6, FdGrp_CD = @FdGrp_CD,"
+                        + " LastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [description 2] = @description2 WHERE No_ = @No_";
 
+                        command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;
                         command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
-                        command1.Parameters.Add("@name", SqlDbType.VarChar, 500).Value = FoodItem.newFood.name;
-                        command1.Parameters.Add("@ceresdescription", SqlDbType.VarChar, 50).Value = FoodItem.newFood.name;
-                        command1.Parameters.Add("@ceresitemnumber", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;
+                        command1.Parameters.Add("@description2", SqlDbType.VarChar, 50).Value = FoodItem.newFood.name;
+                        command1.Parameters.Add("@FdGrp_CD", SqlDbType.VarChar, 4).Value = FoodItem.newFood.foodGroup;
                         command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = FoodItem.newFood.NRF6;
-                        command1.Parameters.Add("@userID", SqlDbType.Int).Value = "1";
                         command1.Parameters.Add("@lastupdatedby", SqlDbType.NVarChar, 20).Value = "Nathan Hamrick";
                         command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
 
@@ -286,6 +325,8 @@ namespace WholesomeMVC
                     }
                 }
             }
+
+            savedNdb_no = "";
         }
 
         protected void btnUpdateItem_Click(object sender, EventArgs e)
