@@ -10,16 +10,7 @@
 namespace WholesomeMVC.WebForms {
     
     
-    public partial class index {
-        
-        /// <summary>
-        /// banner_message control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label banner_message;
+    public partial class Farmers_Market {
         
         /// <summary>
         /// ddlCategory control.
@@ -31,15 +22,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
         
         /// <summary>
-        /// Category control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource Category;
-        
-        /// <summary>
         /// txtSearch control.
         /// </summary>
         /// <remarks>
@@ -49,57 +31,66 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
-        /// image_nutrient_calculator control.
+        /// lblName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_nutrient_calculator;
+        protected global::System.Web.UI.WebControls.Label lblName;
         
         /// <summary>
-        /// link_nutrient_calculator control.
+        /// lblFarmersMarket control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink link_nutrient_calculator;
+        protected global::System.Web.UI.WebControls.Label lblFarmersMarket;
         
         /// <summary>
-        /// image_recent control.
+        /// txtFarmersMarket control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_recent;
+        protected global::System.Web.UI.WebControls.TextBox txtFarmersMarket;
         
         /// <summary>
-        /// link_recent control.
+        /// btnSearchFarmersMarket control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink link_recent;
+        protected global::System.Web.UI.WebControls.Button btnSearchFarmersMarket;
         
         /// <summary>
-        /// image_saved_items control.
+        /// gridFarmersMarket control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_saved_items;
+        protected global::System.Web.UI.WebControls.GridView gridFarmersMarket;
         
         /// <summary>
-        /// link_saved_items control.
+        /// lblFarmersMarketLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink link_saved_items;
+        protected global::System.Web.UI.WebControls.Label lblFarmersMarketLocation;
+        
+        /// <summary>
+        /// farmersMarketIFrame control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlIframe farmersMarketIFrame;
     }
 }

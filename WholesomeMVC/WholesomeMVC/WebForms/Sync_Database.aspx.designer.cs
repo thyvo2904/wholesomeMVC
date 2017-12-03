@@ -10,16 +10,7 @@
 namespace WholesomeMVC.WebForms {
     
     
-    public partial class index {
-        
-        /// <summary>
-        /// banner_message control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label banner_message;
+    public partial class Sync_Database {
         
         /// <summary>
         /// ddlCategory control.
@@ -49,57 +40,93 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
-        /// image_nutrient_calculator control.
+        /// lblName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_nutrient_calculator;
+        protected global::System.Web.UI.WebControls.Label lblName;
         
         /// <summary>
-        /// link_nutrient_calculator control.
+        /// lblMatchedCeresIDS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink link_nutrient_calculator;
+        protected global::System.Web.UI.WebControls.Label lblMatchedCeresIDS;
         
         /// <summary>
-        /// image_recent control.
+        /// gridMatchedCeresIDS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_recent;
+        protected global::System.Web.UI.WebControls.GridView gridMatchedCeresIDS;
         
         /// <summary>
-        /// link_recent control.
+        /// btnSyncDatabase control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink link_recent;
+        protected global::System.Web.UI.WebControls.Button btnSyncDatabase;
         
         /// <summary>
-        /// image_saved_items control.
+        /// btnRetrieveArchivedValues control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_saved_items;
+        protected global::System.Web.UI.WebControls.Button btnRetrieveArchivedValues;
         
         /// <summary>
-        /// link_saved_items control.
+        /// gridArchivedData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink link_saved_items;
+        protected global::System.Web.UI.WebControls.GridView gridArchivedData;
+        
+        /// <summary>
+        /// lblUmatchedCeresIDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUmatchedCeresIDS;
+        
+        /// <summary>
+        /// gridUnmatchedCeresIDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridUnmatchedCeresIDS;
+        
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// gridUnmatchedTestDBIDS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridUnmatchedTestDBIDS;
     }
 }

@@ -10,16 +10,7 @@
 namespace WholesomeMVC.WebForms {
     
     
-    public partial class index {
-        
-        /// <summary>
-        /// banner_message control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label banner_message;
+    public partial class system_settings {
         
         /// <summary>
         /// ddlCategory control.
@@ -49,57 +40,84 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
-        /// image_nutrient_calculator control.
+        /// lblNine control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_nutrient_calculator;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText lblNine;
         
         /// <summary>
-        /// link_nutrient_calculator control.
+        /// lblEight control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink link_nutrient_calculator;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText lblEight;
         
         /// <summary>
-        /// image_recent control.
+        /// lblSeven control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_recent;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText lblSeven;
         
         /// <summary>
-        /// link_recent control.
+        /// lblSix control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink link_recent;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText lblSix;
         
         /// <summary>
-        /// image_saved_items control.
+        /// lblFive control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_saved_items;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText lblFive;
         
         /// <summary>
-        /// link_saved_items control.
+        /// lblFour control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink link_saved_items;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText lblFour;
+        
+        /// <summary>
+        /// lblThree control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText lblThree;
+        
+        /// <summary>
+        /// lblTwo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText lblTwo;
+        
+        /// <summary>
+        /// lblOne control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText lblOne;
     }
 }

@@ -10,11 +10,15 @@ using System.Web.UI.WebControls;
 
 namespace WholesomeMVC.WebForms
 {
-	public partial class IndexResults : System.Web.UI.Page
+	public partial class indexresult : System.Web.UI.Page
 	{
-		// Counter to keep up with save id's
+        // Counter to keep up with save id's
+        public static String savedNdb_no = "";
+        public static String savedItemName = "";
+        public static double savedNrf6 = 0;
+        public static String savedFoodGroup = "";
 
-		public static string number;
+        public static string number;
 		public static string ing;
 		public static int counter = 0;
 		public static DataTable dataSearchResults = new DataTable();
@@ -23,8 +27,8 @@ namespace WholesomeMVC.WebForms
 		{
 			if (IsPostBack)
 			{
-				// do nothing
-			} else
+                
+            } else
 			{
 				// set page variables
 				String strTitle = "Search Results";
@@ -35,7 +39,7 @@ namespace WholesomeMVC.WebForms
 				body_title.Text = strTitle;
 
 				System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection {
-					ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+					ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
 				};
 
 				sc.Open();
@@ -52,9 +56,11 @@ namespace WholesomeMVC.WebForms
 
 				sc.Close();
 
-				gridSearchResults.DataSource = dataSearchResults;
-				gridSearchResults.DataBind();
-			}
+              
+
+                gridSearchResults.DataSource = dataSearchResults;
+                gridSearchResults.DataBind();
+            }
 		}
 	}
 }

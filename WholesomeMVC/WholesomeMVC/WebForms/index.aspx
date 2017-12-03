@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebForms/_layout.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="WholesomeMVC.index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebForms/_layout.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="WholesomeMVC.WebForms.index" %>
 
 <asp:Content ContentPlaceHolderID="style" runat="server">
     <link href="/Content/Custom/index.css" rel="stylesheet" type="text/css" runat="server" />
