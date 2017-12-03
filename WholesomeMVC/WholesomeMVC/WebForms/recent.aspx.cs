@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace WholesomeMVC.WebForms
@@ -61,79 +63,104 @@ namespace WholesomeMVC.WebForms
 		 */
 		protected String GenerateRecentItem(int intItemIndex)
 		{
-			String returnValue = string.Format(@"
+			String returnValue = "";
+			String colorScaleStyle = "";
+
+			if (newFoodArray[intItemIndex].NRF6 < 0) {
+				colorScaleStyle = "color:white; background-color:" + GradientColors.getColor1() + "!important;";
+			} else if ((newFoodArray[intItemIndex].NRF6 >= 0) && (newFoodArray[intItemIndex].NRF6 <= 2.33)) {
+				colorScaleStyle = "color:white; background-color:" + GradientColors.getColor2() + "!important;"; ;
+			} else if ((newFoodArray[intItemIndex].NRF6 > 2.33) && (newFoodArray[intItemIndex].NRF6 <= 4.66)) {
+				colorScaleStyle= "color:white; background-color:" + GradientColors.getColor3() + "!important;";
+			} else if ((newFoodArray[intItemIndex].NRF6 > 4.66) && (newFoodArray[intItemIndex].NRF6 <= 12.44)) {
+				colorScaleStyle = "color:black; background-color:" + GradientColors.getColor4() + "!important;";
+			} else if ((newFoodArray[intItemIndex].NRF6 > 12.44) && (newFoodArray[intItemIndex].NRF6 <= 20.22)) {
+				colorScaleStyle = "color:black; background-color:" + GradientColors.getColor5() + "!important;";
+			} else if ((newFoodArray[intItemIndex].NRF6 > 20.22) && (newFoodArray[intItemIndex].NRF6 <= 28)) {
+				colorScaleStyle = "color:black; background-color:" + GradientColors.getColor6() + "!important;";
+			} else if ((newFoodArray[intItemIndex].NRF6 > 28) && (newFoodArray[intItemIndex].NRF6 <= 35.33)) {
+				colorScaleStyle = "color:white; background-color:" + GradientColors.getColor7() + "!important;";
+			} else if ((newFoodArray[intItemIndex].NRF6 > 35.33) && (newFoodArray[intItemIndex].NRF6 <= 42.67)) {
+				colorScaleStyle = "color:white; background-color:" + GradientColors.getColor8() + "!important;";
+			} else if (newFoodArray[intItemIndex].NRF6 > 42.67) {
+				colorScaleStyle = "color:white; background-color:" + GradientColors.getColor9() + "!important;";
+			} else {
+				// do nothing
+			}
+
+			returnValue = String.Format(@"
 				<div class='col-sm-6 col-md-4 col-lg-3'>
 					<div class='panel panel-default'>
-						<div class='panel-heading'>
-							<h4 class='panel-title'>
-								{0}
-								<br />
-								<br />
-								<strong>ND_Score: {1}</strong>
+						<div class='panel-heading' style='{0}'>
+							<h4 class='panel-title equal-height'>
+								{1}
 							</h4>
+							<h4><strong>ND_Score: {2}</strong></h4>
 						</div>
 
 						<div class='panel-body'>
-							<h4>Nutrient Facts</h4>
-
+							<h4><strong>Nutrition Facts</strong></h4>
 							<table class='table table-condensed table-hover'>
-								<tr>
-									<th>Calories</th>
-									<td>{2}</td>
-									<td></td>
-								</tr>
-								<tr>
-									<th>Saturated Fat</th>
-									<td>{3}</td>
-									<td>g</td>
-								</tr>
-								<tr>
-									<th>Sodium</th>
-									<td>{4}</td>
-									<td>g</td>
-								</tr>
-								<tr>
-									<th>Dietary Fiber</th>
-									<td>{5}</td>
-									<td>g</td>
-								</tr>
-								<tr>
-									<th>Total Sugars</th>
-									<td>{6}</td>
-									<td>g</td>
-								</tr>
-								<tr>
-									<th>Protein</th>
-									<td>{7}</td>
-									<td>g</td>
-								</tr>
-								<tr>
-									<th>Vitamin A</th>
-									<td>{8}</td>
-									<td>IU</td>
-								</tr>
-								<tr>
-									<th>Vitamin C</th>
-									<td>{9}</td>
-									<td>IU</td>
-								</tr>
-								<tr>
-									<th>Calcium</th>
-									<td>{10}</td>
-									<td>mg</td>
-								</tr>
-								<tr>
-									<th>Iron</th>
-									<td>{11}</td>
-									<td>mg</td>
-								</tr>
+								<tbody>
+									<tr class='fatter'>
+										<th>Calories</th>
+										<td>{3}</td>
+										<td></td>
+									</tr>
+									<tr class='fat'>
+										<th>Saturated Fat</th>
+										<td>{4}</td>
+										<td>g</td>
+									</tr>
+									<tr>
+										<th>Sodium</th>
+										<td>{5}</td>
+										<td>g</td>
+									</tr>
+									<tr>
+										<th>Dietary Fiber</th>
+										<td>{6}</td>
+										<td>g</td>
+									</tr>
+									<tr>
+										<th>Total Sugars</th>
+										<td>{7}</td>
+										<td>g</td>
+									</tr>
+									<tr>
+										<th>Protein</th>
+										<td>{8}</td>
+										<td>g</td>
+									</tr>
+									<tr class='fatter'>
+										<th>Vitamin A</th>
+										<td>{9}</td>
+										<td>IU</td>
+									</tr>
+									<tr>
+										<th>Vitamin C</th>
+										<td>{10}</td>
+										<td>IU</td>
+									</tr>
+									<tr>
+										<th>Calcium</th>
+										<td>{11}</td>
+										<td>mg</td>
+									</tr>
+									<tr>
+										<th>Iron</th>
+										<td>{12}</td>
+										<td>mg</td>
+									</tr>
+								</tbody>
 							</table>
 
-							<button class='btn btn-success btn-block'>Save Item</button>
+							<button id='{13}' class='btn btn-success btn-block save-button'>Save Item</button>
 						</div>
 					</div>
 				</div>
 			",
+			colorScaleStyle,
 			newFoodArray[intItemIndex].name.ToString(),
 			newFoodArray[intItemIndex].NRF6.ToString(),
 			newFoodArray[intItemIndex].kCal.ToString(),
@@ -145,7 +172,8 @@ namespace WholesomeMVC.WebForms
 			newFoodArray[intItemIndex].vitaminA.ToString(),
 			newFoodArray[intItemIndex].vitaminC.ToString(),
 			newFoodArray[intItemIndex].calcium.ToString(),
-			newFoodArray[intItemIndex].iron.ToString());
+			newFoodArray[intItemIndex].iron.ToString(),
+			intItemIndex.ToString());
 
 			return returnValue;
 		}
@@ -165,12 +193,19 @@ namespace WholesomeMVC.WebForms
 
 			if (HasNdbno) {
 				for (int i = 0; i < newFoodArray.Length; i++) {
-					strInnerHTML += "\n" + GenerateRecentItem(i);
+					if (newFoodArray[i] == null) {
+						// do nothing
+					} else { 
+						strInnerHTML += "\n" + GenerateRecentItem(i);
+					}
 				}
 			} else {
 				// show error
 			}
+
 			section_recent_items.InnerHtml = strInnerHTML;
+
+			object x = Master.FindControl("button_1");
 		}
 
 		/***
@@ -204,35 +239,31 @@ namespace WholesomeMVC.WebForms
 
 			SqlDataReader newReader = null;
 			newReader = myCommand.ExecuteReader();
-			if (newReader.HasRows)
-			{
+			if (newReader.HasRows) {
 				int counter = 0;
-				while (newReader.Read())
-				{
-					if (counter < ndbnoArray.Length)
-					{
+				while (newReader.Read()) {
+					if (counter < ndbnoArray.Length) {
 						ndbnoArray[counter] = newReader["ndb_no"].ToString();
 						counter++;
 					}
 				}
-			}
-			else
-			{
-				returnValue = false;
-
-				// hard-coded to test, remove when there're real data
-				ndbnoArray[0] = "45136115";
-				ndbnoArray[1] = "45186303";
-				ndbnoArray[2] = "45169417";
-				ndbnoArray[3] = "45169419";
-				ndbnoArray[4] = "45253484";
-				ndbnoArray[5] = "45169416";
-				ndbnoArray[6] = "45094214";
-				ndbnoArray[7] = "45156252";
-				returnValue = true;
+			} else {
+				returnValue = false; 
 			}
 
 			sc.Close();
+
+			//// hard-coded to test, remove when there're real data
+			//ndbnoArray[0] = "45136115";
+			//ndbnoArray[1] = "45186303";
+			//ndbnoArray[2] = "45169417";
+			//ndbnoArray[3] = "45169419";
+			//ndbnoArray[4] = "45253484";
+			//ndbnoArray[5] = "45169416";
+			//ndbnoArray[6] = "45094214";
+			//ndbnoArray[7] = "45156252";
+			//returnValue = true;
+
 			return returnValue;
 		}
 
@@ -268,6 +299,7 @@ namespace WholesomeMVC.WebForms
 
 				foreach (Nutrient item in result.foods[i].food.nutrients) {
 					newFoodItem.name = result.foods[i].food.desc.name;
+					newFoodItem.ndbNo = result.foods[i].food.desc.ndbno;
 
 					// Good nutrients
 					if (Int32.Parse(item.nutrient_id) == 203) { newFoodItem.protein = Double.Parse(item.value); }
@@ -286,6 +318,57 @@ namespace WholesomeMVC.WebForms
 
                 newFoodItem.calculateNRF6();
                 newFoodArray[i] = newFoodItem;
+			}
+		}
+
+		/***
+		 * Save item to SavedItems table.
+		 */
+		protected void SaveItem(object sender, EventArgs e)
+		{
+			int intItemIndex = int.Parse(hidden_item_index.Value);
+
+			String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
+			try
+			{
+				using (SqlConnection connection = new SqlConnection(ConnectionString))
+				{
+					SqlCommand command1 = new SqlCommand();
+					command1.Connection = connection;
+					command1.CommandType = System.Data.CommandType.Text;
+
+					command1.CommandText = @"
+						INSERT INTO [testDB].[dbo].[SavedItems] (
+							[ndb_no],
+							[name],
+							[ND_Score],
+							[saved by],
+							[date saved]
+						) VALUES (
+							@ndb_no,
+							@name,
+							@NRF6,
+							@savedby,
+							@savedate)
+					";
+
+					command1.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = newFoodArray[intItemIndex].ndbNo;
+					command1.Parameters.Add("@name", SqlDbType.NVarChar, 500).Value = newFoodArray[intItemIndex].name;
+					command1.Parameters.Add("@NRF6", SqlDbType.Decimal).Value = newFoodArray[intItemIndex].NRF6;
+					command1.Parameters.Add("@savedby", SqlDbType.VarChar, 50).Value = "Nathan Hamrick";
+					command1.Parameters.Add("@savedate", SqlDbType.Date).Value = DateTime.Now;
+
+					connection.Open();
+					command1.ExecuteNonQuery();
+					connection.Close();
+				}
+
+				success_message.Value = String.Format("Successfully saved {0}", newFoodArray[intItemIndex].name);
+			} catch (Exception q)
+			{
+				error_message.Value = String.Format("{0} is already saved!", newFoodArray[intItemIndex].name);
+				Console.WriteLine(q.ToString());
 			}
 		}
 	}

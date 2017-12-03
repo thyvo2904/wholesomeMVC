@@ -5,7 +5,13 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
-	<section>
+	<!-- hack to make on-server-generated buttons work -->
+	<asp:Button runat="server" ID="button_save_item" ClientIDMode="Static" OnClick="SaveItem" CssClass="hidden" />
+	<asp:HiddenField runat="server" ID="hidden_item_index" ClientIDMode="Static" />
+	<asp:HiddenField runat="server" ID="error_message" ClientIDMode="Static" />
+	<asp:HiddenField runat="server" ID="success_message" ClientIDMode="Static" />
+
+	<section id="content_header">
 		<h4><asp:Label ID="label_color_scale_legend" runat="server" /></h4>
 		<div class="row">
 			<div class="col-md-offset-1 col-md-10">
@@ -16,9 +22,11 @@
 
 	<section>
 		<h4><asp:Label ID="label_recent_items" runat="server" /></h4>
-		<section id="section_recent_items" runat="server" class="row equal"></section>
+		<section id="section_recent_items" runat="server" class="row"></section>
 	</section>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="script" runat="server">
+    <script type="text/javascript" src="/Scripts/Custom/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="/Scripts/Custom/recent.js"></script>
 </asp:Content>
