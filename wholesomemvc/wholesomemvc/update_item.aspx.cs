@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using WholesomeMVC;
 using System.Web.Services;
 using System.Configuration;
+using Microsoft.AspNet.Identity;
 
 namespace WholesomeMVC
 {
@@ -289,7 +290,7 @@ namespace WholesomeMVC
                     command1.Parameters.Add("@Sodium", SqlDbType.Decimal, 18).Value = txtOldSodium.Text;
                     command1.Parameters.Add("@KCal", SqlDbType.Decimal, 18).Value = txtOldKCal.Text;
                     command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
-                    command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = "Charles Moore";
+                    command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value =   User.Identity.GetUserName();
                     command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
 
 
