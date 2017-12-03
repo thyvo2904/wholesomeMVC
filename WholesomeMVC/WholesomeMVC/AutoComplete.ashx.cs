@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
 
-namespace WholesomeMVC
+namespace WholesomeMVC.WebForms
 {
     /// <summary>
     /// Summary description for AutoComplete

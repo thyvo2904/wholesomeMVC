@@ -226,7 +226,6 @@
     <Compile Include="AutoComplete.ashx.cs">
       <DependentUpon>AutoComplete.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
