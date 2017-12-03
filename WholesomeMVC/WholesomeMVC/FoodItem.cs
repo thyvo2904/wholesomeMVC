@@ -484,6 +484,7 @@ namespace WholesomeMVC
             {
                 Update_Item.dataSearchResults.Columns.Add("NDBno", typeof(int)); // Row 0
                 Update_Item.dataSearchResults.Columns.Add("Name", typeof(string)); // Row 1
+                Update_Item.dataSearchResults.Columns.Add("Food Group", typeof(string)); // Row 1
                 Update_Item.dataSearchResults.Columns.Add("Protein", typeof(double));// Row 2
                 Update_Item.dataSearchResults.Columns.Add("Fiber", typeof(double));// Row 3
                 Update_Item.dataSearchResults.Columns.Add("VitaminA", typeof(double));// Row 4
@@ -625,17 +626,18 @@ namespace WholesomeMVC
                     newFood.NRF6 = Math.Round(newFood.NRF6, 5);
                     row[0] = result2.foods[i].food.desc.ndbno;
                     row[1] = result2.foods[i].food.desc.name;
-                    row[2] = newFood.protein;
-                    row[3] = newFood.fiber;
-                    row[4] = newFood.vitaminA;
-                    row[5] = newFood.vitaminC;
-                    row[6] = newFood.iron;
-                    row[7] = newFood.calcium;
-                    row[8] = newFood.satFat;
-                    row[9] = newFood.totalSugar;
-                    row[10] = newFood.sodium;
-                    row[11] = newFood.kCal;
-                    row[12] = newFood.NRF6;
+                    row[2] = result2.foods[i].food.desc.group;
+                    row[3] = newFood.protein;
+                    row[4] = newFood.fiber;
+                    row[5] = newFood.vitaminA;
+                    row[6] = newFood.vitaminC;
+                    row[7] = newFood.iron;
+                    row[8] = newFood.calcium;
+                    row[9] = newFood.satFat;
+                    row[10] = newFood.totalSugar;
+                    row[11] = newFood.sodium;
+                    row[12] = newFood.kCal;
+                    row[13] = newFood.NRF6;
                     Update_Item.dataSearchResults.Rows.Add(row);
                 }
             }

@@ -27,31 +27,43 @@ namespace WholesomeMVC
             if (!IsPostBack)
             {
 
-                
+
             }
 
             if (!IsPostBack)
             {
+                System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
+                {
+                    ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                };
+
+                sc.Open();
+
+
+                SqlCommand myCommand = new SqlCommand("Pull_New_Ceres_Items",
+                                                         sc);
+                myCommand.CommandType = CommandType.StoredProcedure;
+
+                myCommand.ExecuteNonQuery();
+
+                myCommand = new SqlCommand("Update_Ceres_Items",
+                                                         sc);
+                myCommand.ExecuteNonQuery();
+
+                //myCommand = new SqlCommand("Update_Wholesome_Items",
+                //                                         sc);
+                //myCommand.ExecuteNonQuery();
+
+                sc.Close();
+
+
                 if (!matchedCeresIDS.Columns.Contains("NDBno") && !matchedCeresIDS.Columns.Contains("Name")
                 && !matchedCeresIDS.Columns.Contains("ND Score"))
                 {
                     matchedCeresIDS.Columns.Add("CeresID", typeof(string)); // Row 0
                     matchedCeresIDS.Columns.Add("Ceres_Name", typeof(string)); // Row 1
-                    matchedCeresIDS.Columns.Add("NDBno", typeof(string)); // Row 2
+                    matchedCeresIDS.Columns.Add("USDA Number", typeof(string)); // Row 2
                     matchedCeresIDS.Columns.Add("Name", typeof(string)); // Row 3
-                    matchedCeresIDS.Columns.Add("Protein", typeof(double));// Row 4
-                    matchedCeresIDS.Columns.Add("Fiber", typeof(double));// Row 5
-                    matchedCeresIDS.Columns.Add("VitaminA", typeof(double));// Row 6
-                    matchedCeresIDS.Columns.Add("VitaminC", typeof(double));// Row 7
-                    matchedCeresIDS.Columns.Add("VitaminD", typeof(double));// Row 7
-                    matchedCeresIDS.Columns.Add("Potassium", typeof(double));// Row 7
-                    matchedCeresIDS.Columns.Add("Iron", typeof(double));// Row 8
-                    matchedCeresIDS.Columns.Add("Calcium", typeof(double));// Row 9
-                    matchedCeresIDS.Columns.Add("Sat_Fat", typeof(double));// Row 10
-                    matchedCeresIDS.Columns.Add("Total_Sugar", typeof(double));// Row 11
-                    matchedCeresIDS.Columns.Add("Added_Sugar", typeof(double));// Row 7
-                    matchedCeresIDS.Columns.Add("Sodium", typeof(double));// Row 12
-                    matchedCeresIDS.Columns.Add("KCal", typeof(double));// Row 13
                     matchedCeresIDS.Columns.Add("ND Score", typeof(double));// Row 14
                 }
 
@@ -60,45 +72,30 @@ namespace WholesomeMVC
                     matchedCeresIDS.Clear();
                 }
 
-                System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
+                System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection
                 {
-                    ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
-            };
+                    ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                };
 
-                sc.Open();
+                conn.Open();
 
                 SqlDataReader newReader = null;
-                SqlCommand myCommand = new SqlCommand("SELECT Item.No_, item.description, Wholesome_Item.ndb_no, Long_Desc," +
-                    " protein, fiber, vitaminA, vitaminC, vitaminD, potassium, calcium, iron, " +
-                    "saturatedfat, totalsugar, addedsugar, sodium, KCal, nrf6 FROM Wholesome_Item " +
-                    " INNER JOIN item ON Wholesome_item.No_ = item.No_",
-                                                         sc);
-                
-                newReader = myCommand.ExecuteReader();
+                SqlCommand newCommand = new SqlCommand("SELECT Wholesome_Item.No_, Wholesome_Item.description, Wholesome_item.ndb_no, Wholesome_item.[description 2] AS description2, nrf6" +
+                    " FROM Wholesome_Item WHERE nrf6 IS NOT NULL",
+                                                         conn);
+
+                newReader = newCommand.ExecuteReader();
                 if (newReader.HasRows)
                 {
                     while (newReader.Read())
                     {
-                        
+
                         DataRow row = matchedCeresIDS.NewRow();
                         row[0] = newReader["No_"].ToString();
                         row[1] = newReader["description"].ToString();
-                        row[2]= newReader["ndb_no"].ToString();
-                        row[3]= newReader["Long_Desc"].ToString();
-                        row[4]= Double.Parse(newReader["protein"].ToString());
-                        row[5]= Double.Parse(newReader["fiber"].ToString());
-                        row[6]= Double.Parse(newReader["vitaminA"].ToString());
-                        row[7]= Double.Parse(newReader["vitaminC"].ToString());
-                        row[8]= Double.Parse(newReader["vitaminD"].ToString());
-                        row[9] = Double.Parse(newReader["potassium"].ToString());
-                        row[10] = Double.Parse(newReader["iron"].ToString());
-                        row[11] = Double.Parse(newReader["calcium"].ToString());
-                        row[12] = Double.Parse(newReader["saturatedFat"].ToString());
-                        row[13] = Double.Parse(newReader["totalSugar"].ToString());
-                        row[14] = Double.Parse(newReader["addedSugar"].ToString());
-                        row[15] = Double.Parse(newReader["sodium"].ToString());
-                        row[16] = Double.Parse(newReader["KCal"].ToString());
-                        row[17] = Double.Parse(newReader["nrf6"].ToString());
+                        row[2] = newReader["ndb_no"].ToString();
+                        row[3] = newReader["description2"].ToString();
+                        row[4] = Double.Parse(newReader["nrf6"].ToString());
 
                         matchedCeresIDS.Rows.Add(row);
                     }
@@ -106,118 +103,121 @@ namespace WholesomeMVC
                 gridMatchedCeresIDS.DataSource = matchedCeresIDS;
                 gridMatchedCeresIDS.DataBind();
 
-                sc.Close();
+                conn.Close();
 
-                if (!unMatchedCeresIDS.Columns.Contains("CeresID") && !unMatchedCeresIDS.Columns.Contains("Ceres_Name"))
-                {
-                    unMatchedCeresIDS.Columns.Add("CeresID", typeof(string)); // Row 0
-                    unMatchedCeresIDS.Columns.Add("Ceres_Name", typeof(string)); // Row 1
-                    
-                }
+                //    if (!unMatchedCeresIDS.Columns.Contains("CeresID") && !unMatchedCeresIDS.Columns.Contains("Ceres_Name"))
+                //    {
+                //        unMatchedCeresIDS.Columns.Add("CeresID", typeof(string)); // Row 0
+                //        unMatchedCeresIDS.Columns.Add("Ceres_Name", typeof(string)); // Row 1
 
-                else
-                {
-                    unMatchedCeresIDS.Clear();
-                }
+                //    }
 
-                sc.Open();
+                //    else
+                //    {
+                //        unMatchedCeresIDS.Clear();
+                //    }
 
-                newReader = null;
-                myCommand = new SqlCommand("SELECT Item.No_, Item.description FROM Item LEFT JOIN Wholesome_Item ON Item.No_ = Wholesome_Item.No_ WHERE Wholesome_Item.No_ IS null",sc);
-                newReader = myCommand.ExecuteReader();
-                if (newReader.HasRows)
-                {
-                    while (newReader.Read())
-                    {
-                        DataRow row = unMatchedCeresIDS.NewRow();
-                        row[0] = newReader["No_"].ToString();
-                        row[1] = newReader["description"].ToString();
+                //    sc.Open();
 
-
-                        
-                        unMatchedCeresIDS.Rows.Add(row);
-                    }
-                }
-                gridUnmatchedCeresIDS.DataSource = unMatchedCeresIDS;
-                gridUnmatchedCeresIDS.DataBind();
-                sc.Close();
+                //    newReader = null;
+                //    myCommand = new SqlCommand("SELECT Item.No_, Item.description FROM Item LEFT JOIN Wholesome_Item ON Item.No_ = Wholesome_Item.No_ WHERE Wholesome_Item.No_ IS null",sc);
+                //    newReader = myCommand.ExecuteReader();
+                //    if (newReader.HasRows)
+                //    {
+                //        while (newReader.Read())
+                //        {
+                //            DataRow row = unMatchedCeresIDS.NewRow();
+                //            row[0] = newReader["No_"].ToString();
+                //            row[1] = newReader["description"].ToString();
 
 
-                if (!unMatchedTestDBIDS.Columns.Contains("NDBno") && !unMatchedTestDBIDS.Columns.Contains("Name")
-                && !unMatchedTestDBIDS.Columns.Contains("ND Score"))
-                {
-                    unMatchedTestDBIDS.Columns.Add("CeresID", typeof(string)); // Row 0
-                    unMatchedTestDBIDS.Columns.Add("Ceres_Name", typeof(string)); // Row 1
-                    unMatchedTestDBIDS.Columns.Add("NDBno", typeof(string)); // Row 2
-                    unMatchedTestDBIDS.Columns.Add("Name", typeof(string)); // Row 3
-                    unMatchedTestDBIDS.Columns.Add("Protein", typeof(double));// Row 4
-                    unMatchedTestDBIDS.Columns.Add("Fiber", typeof(double));// Row 5
-                    unMatchedTestDBIDS.Columns.Add("VitaminA", typeof(double));// Row 6
-                    unMatchedTestDBIDS.Columns.Add("VitaminC", typeof(double));// Row 7
-                    unMatchedTestDBIDS.Columns.Add("VitaminD", typeof(double));// Row 7
-                    unMatchedTestDBIDS.Columns.Add("Potassium", typeof(double));// Row 7
-                    unMatchedTestDBIDS.Columns.Add("Iron", typeof(double));// Row 8
-                    unMatchedTestDBIDS.Columns.Add("Calcium", typeof(double));// Row 9
-                    unMatchedTestDBIDS.Columns.Add("Sat_Fat", typeof(double));// Row 10
-                    unMatchedTestDBIDS.Columns.Add("Total_Sugar", typeof(double));// Row 11
-                    unMatchedTestDBIDS.Columns.Add("Added_Sugar", typeof(double));// Row 7
-                    unMatchedTestDBIDS.Columns.Add("Sodium", typeof(double));// Row 12
-                    unMatchedTestDBIDS.Columns.Add("KCal", typeof(double));// Row 13
-                    unMatchedTestDBIDS.Columns.Add("ND Score", typeof(double));// Row 14
-                }
 
-                else
-                {
-                    unMatchedTestDBIDS.Clear();
-                }
+                //            unMatchedCeresIDS.Rows.Add(row);
+                //        }
+                //    }
+                //    gridUnmatchedCeresIDS.DataSource = unMatchedCeresIDS;
+                //    gridUnmatchedCeresIDS.DataBind();
+                //    sc.Close();
 
-                sc = new System.Data.SqlClient.SqlConnection
-                {
-                    ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
-            };
 
-                sc.Open();
+                //    if (!unMatchedTestDBIDS.Columns.Contains("NDBno") && !unMatchedTestDBIDS.Columns.Contains("Name")
+                //    && !unMatchedTestDBIDS.Columns.Contains("ND Score"))
+                //    {
+                //        unMatchedTestDBIDS.Columns.Add("CeresID", typeof(string)); // Row 0
+                //        unMatchedTestDBIDS.Columns.Add("Ceres_Name", typeof(string)); // Row 1
+                //        unMatchedTestDBIDS.Columns.Add("NDBno", typeof(string)); // Row 2
+                //        unMatchedTestDBIDS.Columns.Add("Name", typeof(string)); // Row 3
+                //        unMatchedTestDBIDS.Columns.Add("Protein", typeof(double));// Row 4
+                //        unMatchedTestDBIDS.Columns.Add("Fiber", typeof(double));// Row 5
+                //        unMatchedTestDBIDS.Columns.Add("VitaminA", typeof(double));// Row 6
+                //        unMatchedTestDBIDS.Columns.Add("VitaminC", typeof(double));// Row 7
+                //        unMatchedTestDBIDS.Columns.Add("VitaminD", typeof(double));// Row 7
+                //        unMatchedTestDBIDS.Columns.Add("Potassium", typeof(double));// Row 7
+                //        unMatchedTestDBIDS.Columns.Add("Iron", typeof(double));// Row 8
+                //        unMatchedTestDBIDS.Columns.Add("Calcium", typeof(double));// Row 9
+                //        unMatchedTestDBIDS.Columns.Add("Sat_Fat", typeof(double));// Row 10
+                //        unMatchedTestDBIDS.Columns.Add("Total_Sugar", typeof(double));// Row 11
+                //        unMatchedTestDBIDS.Columns.Add("Added_Sugar", typeof(double));// Row 7
+                //        unMatchedTestDBIDS.Columns.Add("Sodium", typeof(double));// Row 12
+                //        unMatchedTestDBIDS.Columns.Add("KCal", typeof(double));// Row 13
+                //        unMatchedTestDBIDS.Columns.Add("ND Score", typeof(double));// Row 14
+                //    }
 
-                newReader = null;
-                myCommand = new SqlCommand("SELECT Wholesome_Item.No_, Wholesome_item.description, Wholesome_Item.ndb_no, Long_Desc," +
-                    " protein, fiber, vitaminA, vitaminC, vitaminD, potassium, calcium, iron, " +
-                    "saturatedfat, totalsugar, addedsugar, sodium, KCal, nrf6 FROM Wholesome_Item " +
-                    " LEFT JOIN item ON Wholesome_item.No_ = item.No_ WHERE item.No_ IS NULL",
-                                                         sc);
+                //    else
+                //    {
+                //        unMatchedTestDBIDS.Clear();
+                //    }
 
-                newReader = myCommand.ExecuteReader();
-                if (newReader.HasRows)
-                {
-                    while (newReader.Read())
-                    {
+                //    sc = new System.Data.SqlClient.SqlConnection
+                //    {
+                //        ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                //};
 
-                        DataRow row = unMatchedTestDBIDS.NewRow();
-                        row[0] = newReader["No_"].ToString();
-                        row[1] = newReader["description"].ToString();
-                        row[2] = newReader["ndb_no"].ToString();
-                        row[3] = newReader["Long_Desc"].ToString();
-                        row[4] = Double.Parse(newReader["protein"].ToString());
-                        row[5] = Double.Parse(newReader["fiber"].ToString());
-                        row[6] = Double.Parse(newReader["vitaminA"].ToString());
-                        row[7] = Double.Parse(newReader["vitaminC"].ToString());
-                        row[8] = Double.Parse(newReader["vitaminD"].ToString());
-                        row[9] = Double.Parse(newReader["potassium"].ToString());
-                        row[10] = Double.Parse(newReader["iron"].ToString());
-                        row[11] = Double.Parse(newReader["calcium"].ToString());
-                        row[12] = Double.Parse(newReader["saturatedFat"].ToString());
-                        row[13] = Double.Parse(newReader["totalSugar"].ToString());
-                        row[14] = Double.Parse(newReader["addedSugar"].ToString());
-                        row[15] = Double.Parse(newReader["sodium"].ToString());
-                        row[16] = Double.Parse(newReader["KCal"].ToString());
-                        row[17] = Double.Parse(newReader["nrf6"].ToString());
+                //    sc.Open();
 
-                        unMatchedTestDBIDS.Rows.Add(row);
-                    }
-                }
-                gridUnmatchedTestDBIDS.DataSource = unMatchedTestDBIDS;
-                gridUnmatchedTestDBIDS.DataBind();
+                //    newReader = null;
+                //    myCommand = new SqlCommand("SELECT Wholesome_Item.No_, Wholesome_item.description, Wholesome_Item.ndb_no, Long_Desc," +
+                //        " protein, fiber, vitaminA, vitaminC, vitaminD, potassium, calcium, iron, " +
+                //        "saturatedfat, totalsugar, addedsugar, sodium, KCal, nrf6 FROM Wholesome_Item " +
+                //        " LEFT JOIN item ON Wholesome_item.No_ = item.No_ WHERE item.No_ IS NULL",
+                //                                             sc);
 
-                sc.Close();
+                //    newReader = myCommand.ExecuteReader();
+                //    if (newReader.HasRows)
+                //    {
+                //        while (newReader.Read())
+                //        {
+
+                //            DataRow row = unMatchedTestDBIDS.NewRow();
+                //            row[0] = newReader["No_"].ToString();
+                //            row[1] = newReader["description"].ToString();
+                //            row[2] = newReader["ndb_no"].ToString();
+                //            row[3] = newReader["Long_Desc"].ToString();
+                //            row[4] = Double.Parse(newReader["protein"].ToString());
+                //            row[5] = Double.Parse(newReader["fiber"].ToString());
+                //            row[6] = Double.Parse(newReader["vitaminA"].ToString());
+                //            row[7] = Double.Parse(newReader["vitaminC"].ToString());
+                //            row[8] = Double.Parse(newReader["vitaminD"].ToString());
+                //            row[9] = Double.Parse(newReader["potassium"].ToString());
+                //            row[10] = Double.Parse(newReader["iron"].ToString());
+                //            row[11] = Double.Parse(newReader["calcium"].ToString());
+                //            row[12] = Double.Parse(newReader["saturatedFat"].ToString());
+                //            row[13] = Double.Parse(newReader["totalSugar"].ToString());
+                //            row[14] = Double.Parse(newReader["addedSugar"].ToString());
+                //            row[15] = Double.Parse(newReader["sodium"].ToString());
+                //            row[16] = Double.Parse(newReader["KCal"].ToString());
+                //            row[17] = Double.Parse(newReader["nrf6"].ToString());
+
+                //            unMatchedTestDBIDS.Rows.Add(row);
+                //        }
+                //    }
+                //    gridUnmatchedTestDBIDS.DataSource = unMatchedTestDBIDS;
+                //    gridUnmatchedTestDBIDS.DataBind();
+
+                //    sc.Close();
+
+
+
             }
         }
 
@@ -272,22 +272,22 @@ namespace WholesomeMVC
 
         protected void btnSyncDatabase_Click(object sender, EventArgs e)
         {
-            System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
-            {
-                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
-        };
+            //    System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
+            //    {
+            //        ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+            //};
 
-            sc.Open();
-            
-            
-            SqlCommand myCommand = new SqlCommand("UPDATE Item SET [CHOP Points] = nrf6, [No_ 2] = ndb_no, [Description 2] = Long_Desc FROM Item" +
-                " INNER JOIN Wholesome_Item ON Item.No_ = Wholesome_Item.No_ WHERE Len(Long_Desc) < 49",
-                                                     sc);
+            //    sc.Open();
 
-            myCommand.ExecuteNonQuery();
-            
 
-            sc.Close();
+            //    SqlCommand myCommand = new SqlCommand("UPDATE Item SET [CHOP Points] = nrf6, [No_ 2] = ndb_no, [Description 2] = Long_Desc FROM Item" +
+            //        " INNER JOIN Wholesome_Item ON Item.No_ = Wholesome_Item.No_ WHERE Len(Long_Desc) < 49",
+            //                                             sc);
+
+            //    myCommand.ExecuteNonQuery();
+
+
+            //    sc.Close();
 
 
         }
@@ -302,20 +302,8 @@ namespace WholesomeMVC
                 archivedData.Columns.Add("Ceres_Name", typeof(string)); // Row 1
                 archivedData.Columns.Add("NDBno", typeof(string)); // Row 2
                 archivedData.Columns.Add("Name", typeof(string)); // Row 3
-                archivedData.Columns.Add("Protein", typeof(double));// Row 4
-                archivedData.Columns.Add("Fiber", typeof(double));// Row 5
-                archivedData.Columns.Add("VitaminA", typeof(double));// Row 6
-                archivedData.Columns.Add("VitaminC", typeof(double));// Row 7
-                archivedData.Columns.Add("VitaminD", typeof(double));// Row 8
-                archivedData.Columns.Add("Potassium", typeof(double));// Row 9
-                archivedData.Columns.Add("Iron", typeof(double));// Row 10
-                archivedData.Columns.Add("Calcium", typeof(double));// Row 11
-                archivedData.Columns.Add("Sat_Fat", typeof(double));// Row 12
-                archivedData.Columns.Add("Total_Sugar", typeof(double));// Row 13
-                archivedData.Columns.Add("Added_Sugar", typeof(double));// Row 14
-                archivedData.Columns.Add("Sodium", typeof(double));// Row 15
-                archivedData.Columns.Add("KCal", typeof(double));// Row 16
-                archivedData.Columns.Add("ND Score", typeof(double));// Row 17
+                archivedData.Columns.Add("ND Score", typeof(double));// Row 4
+                archivedData.Columns.Add("lastupdatedby", typeof(string));
             }
 
             else
@@ -326,15 +314,14 @@ namespace WholesomeMVC
 
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
-        };
+                ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+            };
 
             sc.Open();
 
             SqlDataReader newReader = null;
-            SqlCommand myCommand = new SqlCommand("SELECT No_, description, ndb_no, Long_Desc," +
-                " protein, fiber, vitaminA, vitaminC, vitaminD, potassium, calcium, iron, " +
-                "saturatedfat, totalsugar, addedsugar, sodium, KCal, nrf6 FROM Wholesome_Item_Archive",
+            SqlCommand myCommand = new SqlCommand("SELECT No_, description, ndb_no, [description 2] AS description2, nrf6, lastupdatedby," +
+                " nrf6 FROM Wholesome_Item_Archive",
                                                      sc);
 
             newReader = myCommand.ExecuteReader();
@@ -347,21 +334,10 @@ namespace WholesomeMVC
                     row[0] = newReader["No_"].ToString();
                     row[1] = newReader["description"].ToString();
                     row[2] = newReader["ndb_no"].ToString();
-                    row[3] = newReader["Long_Desc"].ToString();
-                    row[4] = Double.Parse(newReader["protein"].ToString());
-                    row[5] = Double.Parse(newReader["fiber"].ToString());
-                    row[6] = Double.Parse(newReader["vitaminA"].ToString());
-                    row[7] = Double.Parse(newReader["vitaminC"].ToString());
-                    row[8] = Double.Parse(newReader["vitaminD"].ToString());
-                    row[9] = Double.Parse(newReader["potassium"].ToString());
-                    row[10] = Double.Parse(newReader["iron"].ToString());
-                    row[11] = Double.Parse(newReader["calcium"].ToString());
-                    row[12] = Double.Parse(newReader["saturatedFat"].ToString());
-                    row[13] = Double.Parse(newReader["totalSugar"].ToString());
-                    row[14] = Double.Parse(newReader["addedSugar"].ToString());
-                    row[15] = Double.Parse(newReader["sodium"].ToString());
-                    row[16] = Double.Parse(newReader["KCal"].ToString());
-                    row[17] = Double.Parse(newReader["nrf6"].ToString());
+                    row[3] = newReader["description2"].ToString();
+                    row[4] = Double.Parse(newReader["nrf6"].ToString());
+                    row[5] = newReader["lastupdatedby"].ToString();
+
 
                     archivedData.Rows.Add(row);
                 }
@@ -376,7 +352,7 @@ namespace WholesomeMVC
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                TableCell cell = e.Row.Cells[17];
+                TableCell cell = e.Row.Cells[4];
                 foreach (char c in cell.Text)
                 {
                     if (char.IsNumber(c))
@@ -451,7 +427,7 @@ namespace WholesomeMVC
             double kCal = Double.Parse(gridArchivedData.SelectedRow.Cells[16].Text);
             double ndscore = Double.Parse(gridArchivedData.SelectedRow.Cells[17].Text);
 
-            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
 
 
 
@@ -493,7 +469,7 @@ namespace WholesomeMVC
                     command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = "Charles Moore";
                     command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
 
-                    
+
                     connection.Open();
                     command1.ExecuteNonQuery();
                     connection.Close();
