@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace WholesomeMVC.WebForms
@@ -153,7 +155,7 @@ namespace WholesomeMVC.WebForms
 								</tbody>
 							</table>
 
-							<button class='btn btn-success btn-block'>Save Item</button>
+							<button id='{13}' class='btn btn-success btn-block save-button'>Save Item</button>
 						</div>
 					</div>
 				</div>
@@ -170,7 +172,8 @@ namespace WholesomeMVC.WebForms
 			newFoodArray[intItemIndex].vitaminA.ToString(),
 			newFoodArray[intItemIndex].vitaminC.ToString(),
 			newFoodArray[intItemIndex].calcium.ToString(),
-			newFoodArray[intItemIndex].iron.ToString());
+			newFoodArray[intItemIndex].iron.ToString(),
+			intItemIndex.ToString());
 
 			return returnValue;
 		}
@@ -201,6 +204,8 @@ namespace WholesomeMVC.WebForms
 			}
 
 			section_recent_items.InnerHtml = strInnerHTML;
+
+			object x = Master.FindControl("button_1");
 		}
 
 		/***
@@ -294,6 +299,7 @@ namespace WholesomeMVC.WebForms
 
 				foreach (Nutrient item in result.foods[i].food.nutrients) {
 					newFoodItem.name = result.foods[i].food.desc.name;
+					newFoodItem.ndbNo = result.foods[i].food.desc.ndbno;
 
 					// Good nutrients
 					if (Int32.Parse(item.nutrient_id) == 203) { newFoodItem.protein = Double.Parse(item.value); }
@@ -312,6 +318,57 @@ namespace WholesomeMVC.WebForms
 
                 newFoodItem.calculateNRF6();
                 newFoodArray[i] = newFoodItem;
+			}
+		}
+
+		/***
+		 * Save item to SavedItems table.
+		 */
+		protected void SaveItem(object sender, EventArgs e)
+		{
+			int intItemIndex = int.Parse(hidden_item_index.Value);
+
+			String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
+			try
+			{
+				using (SqlConnection connection = new SqlConnection(ConnectionString))
+				{
+					SqlCommand command1 = new SqlCommand();
+					command1.Connection = connection;
+					command1.CommandType = System.Data.CommandType.Text;
+
+					command1.CommandText = @"
+						INSERT INTO [testDB].[dbo].[SavedItems] (
+							[ndb_no],
+							[name],
+							[ND_Score],
+							[saved by],
+							[date saved]
+						) VALUES (
+							@ndb_no,
+							@name,
+							@NRF6,
+							@savedby,
+							@savedate)
+					";
+
+					command1.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = newFoodArray[intItemIndex].ndbNo;
+					command1.Parameters.Add("@name", SqlDbType.NVarChar, 500).Value = newFoodArray[intItemIndex].name;
+					command1.Parameters.Add("@NRF6", SqlDbType.Decimal).Value = newFoodArray[intItemIndex].NRF6;
+					command1.Parameters.Add("@savedby", SqlDbType.VarChar, 50).Value = "Nathan Hamrick";
+					command1.Parameters.Add("@savedate", SqlDbType.Date).Value = DateTime.Now;
+
+					connection.Open();
+					command1.ExecuteNonQuery();
+					connection.Close();
+				}
+
+				success_message.Value = String.Format("Successfully saved {0}", newFoodArray[intItemIndex].name);
+			} catch (Exception q)
+			{
+				error_message.Value = String.Format("{0} is already saved!", newFoodArray[intItemIndex].name);
+				Console.WriteLine(q.ToString());
 			}
 		}
 	}
