@@ -352,6 +352,7 @@
              <Columns>
              <asp:BoundField DataField ="NDBno" HeaderText ="NDBno"/>
              <asp:BoundField DataField ="Name" HeaderText ="Name"/>
+             <asp:BoundField DataField ="Food Group" HeaderText ="Food Group"/>
              <asp:BoundField DataField ="Protein" HeaderText ="Protein"/>
              <asp:BoundField DataField ="Fiber" HeaderText ="Fiber"/>
              <asp:BoundField DataField ="VitaminA" HeaderText ="VitaminA"/>
