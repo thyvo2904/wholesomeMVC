@@ -13,9 +13,10 @@ namespace WholesomeMVC.WebForms
 {
 	public partial class recent : System.Web.UI.Page
 	{
+		private const int SIZE_OF_ARRAY = 8;
 		public static int marker = 0;
-		public static String[] ndbnoArray = new String[8];
-		public static FoodItem[] newFoodArray = new FoodItem[8];
+		public static String[] ndbnoArray = new String[SIZE_OF_ARRAY];
+		public static FoodItem[] newFoodArray = new FoodItem[SIZE_OF_ARRAY];
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -52,13 +53,13 @@ namespace WholesomeMVC.WebForms
 		/***
 		 * Generate html code for an recent item.
 		 * 
-		 * RETURN:
-		 * A string contains the html code.
+		 * ARGS:
+		 * Accept item index in newFoodArray as input.
 		 * 
-		 * TODO:
-		 * - accept new item as input
+		 * RETURN:
+		 * A string contains the html code for the item with input index.
 		 */
-		protected String GenerateRecentItem()
+		protected String GenerateRecentItem(int intItemIndex)
 		{
 			String returnValue = string.Format(@"
 				<div class='col-sm-6 col-md-4 col-lg-3'>
@@ -133,18 +134,18 @@ namespace WholesomeMVC.WebForms
 					</div>
 				</div>
 			",
-			newFoodArray[0].name.ToString(),
-			newFoodArray[0].NRF6.ToString(),
-			newFoodArray[0].kCal.ToString(),
-			newFoodArray[0].satFat.ToString(),
-			newFoodArray[0].sodium.ToString(),
-			newFoodArray[0].fiber.ToString(),
-			newFoodArray[0].totalSugar.ToString(),
-			newFoodArray[0].protein.ToString(),
-			newFoodArray[0].vitaminA.ToString(),
-			newFoodArray[0].vitaminC.ToString(),
-			newFoodArray[0].calcium.ToString(),
-			newFoodArray[0].iron.ToString());
+			newFoodArray[intItemIndex].name.ToString(),
+			newFoodArray[intItemIndex].NRF6.ToString(),
+			newFoodArray[intItemIndex].kCal.ToString(),
+			newFoodArray[intItemIndex].satFat.ToString(),
+			newFoodArray[intItemIndex].sodium.ToString(),
+			newFoodArray[intItemIndex].fiber.ToString(),
+			newFoodArray[intItemIndex].totalSugar.ToString(),
+			newFoodArray[intItemIndex].protein.ToString(),
+			newFoodArray[intItemIndex].vitaminA.ToString(),
+			newFoodArray[intItemIndex].vitaminC.ToString(),
+			newFoodArray[intItemIndex].calcium.ToString(),
+			newFoodArray[intItemIndex].iron.ToString());
 
 			return returnValue;
 		}
@@ -163,8 +164,8 @@ namespace WholesomeMVC.WebForms
 			String strInnerHTML = "";
 
 			if (HasNdbno) {
-				for (int i = 0; i < ndbnoArray.Length; i++) {
-					strInnerHTML += "\n" + GenerateRecentItem();
+				for (int i = 0; i < newFoodArray.Length; i++) {
+					strInnerHTML += "\n" + GenerateRecentItem(i);
 				}
 			} else {
 				// show error
