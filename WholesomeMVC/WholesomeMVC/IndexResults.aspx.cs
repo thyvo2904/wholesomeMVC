@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Configuration;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 
 namespace WholesomeMVC
 {
@@ -95,7 +95,7 @@ namespace WholesomeMVC
             txtCarbohydrate.Value = Math.Round(FoodItem.newFood.carbohydrates, 2).ToString() + "g";
 
             txtfatpercent.Value = Math.Round((FoodItem.newFood.totalFat / 65) * 100).ToString() + "%";
-            //txt.Value = Math.Round(FoodItem.newFood.transFat).ToString();
+            //txtTransfat.Value = Math.Round(FoodItem.newFood.transFat).ToString();
             txtCholesterolpercecnt.Value = Math.Round((FoodItem.newFood.cholesterol / 300) * 100).ToString() + "%";
             txtfiberpercent.Value = Math.Round((FoodItem.newFood.fiber / 25) * 100).ToString() + "%";
             txtsatfatpercent.Value = Math.Round((FoodItem.newFood.satFat / 20) * 100).ToString() + "%";
