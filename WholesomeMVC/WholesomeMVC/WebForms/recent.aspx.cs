@@ -69,62 +69,65 @@ namespace WholesomeMVC.WebForms
 							<h4 class='panel-title equal-height'>
 								{0}
 							</h4>
+							<hr />
+							<h4><strong>ND_Score: {1}</strong></h4>
 						</div>
 
 						<div class='panel-body'>
-							<h4><strong>ND_Score: {1}</strong></h4>
-
+							<h4><strong>Nutrition Facts</strong></h4>
 							<table class='table table-condensed table-hover'>
-								<tr>
-									<th>Calories</th>
-									<td>{2}</td>
-									<td></td>
-								</tr>
-								<tr>
-									<th>Saturated Fat</th>
-									<td>{3}</td>
-									<td>g</td>
-								</tr>
-								<tr>
-									<th>Sodium</th>
-									<td>{4}</td>
-									<td>g</td>
-								</tr>
-								<tr>
-									<th>Dietary Fiber</th>
-									<td>{5}</td>
-									<td>g</td>
-								</tr>
-								<tr>
-									<th>Total Sugars</th>
-									<td>{6}</td>
-									<td>g</td>
-								</tr>
-								<tr>
-									<th>Protein</th>
-									<td>{7}</td>
-									<td>g</td>
-								</tr>
-								<tr>
-									<th>Vitamin A</th>
-									<td>{8}</td>
-									<td>IU</td>
-								</tr>
-								<tr>
-									<th>Vitamin C</th>
-									<td>{9}</td>
-									<td>IU</td>
-								</tr>
-								<tr>
-									<th>Calcium</th>
-									<td>{10}</td>
-									<td>mg</td>
-								</tr>
-								<tr>
-									<th>Iron</th>
-									<td>{11}</td>
-									<td>mg</td>
-								</tr>
+								<tbody>
+									<tr class='fatter'>
+										<th>Calories</th>
+										<td>{2}</td>
+										<td></td>
+									</tr>
+									<tr class='fat'>
+										<th>Saturated Fat</th>
+										<td>{3}</td>
+										<td>g</td>
+									</tr>
+									<tr>
+										<th>Sodium</th>
+										<td>{4}</td>
+										<td>g</td>
+									</tr>
+									<tr>
+										<th>Dietary Fiber</th>
+										<td>{5}</td>
+										<td>g</td>
+									</tr>
+									<tr>
+										<th>Total Sugars</th>
+										<td>{6}</td>
+										<td>g</td>
+									</tr>
+									<tr>
+										<th>Protein</th>
+										<td>{7}</td>
+										<td>g</td>
+									</tr>
+									<tr class='fatter'>
+										<th>Vitamin A</th>
+										<td>{8}</td>
+										<td>IU</td>
+									</tr>
+									<tr>
+										<th>Vitamin C</th>
+										<td>{9}</td>
+										<td>IU</td>
+									</tr>
+									<tr>
+										<th>Calcium</th>
+										<td>{10}</td>
+										<td>mg</td>
+									</tr>
+									<tr>
+										<th>Iron</th>
+										<td>{11}</td>
+										<td>mg</td>
+									</tr>
+								</tbody>
 							</table>
 
 							<button class='btn btn-success btn-block'>Save Item</button>
