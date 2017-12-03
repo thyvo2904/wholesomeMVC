@@ -62,15 +62,38 @@ namespace WholesomeMVC.WebForms
 		protected String GenerateRecentItem(int intItemIndex)
 		{
 			String returnValue = "";
+			String colorScaleStyle = "";
+
+			if (newFoodArray[intItemIndex].NRF6 < 0) {
+				colorScaleStyle = "color:white; background-color:" + GradientColors.getColor1() + "!important;";
+			} else if ((newFoodArray[intItemIndex].NRF6 >= 0) && (newFoodArray[intItemIndex].NRF6 <= 2.33)) {
+				colorScaleStyle = "color:white; background-color:" + GradientColors.getColor2() + "!important;"; ;
+			} else if ((newFoodArray[intItemIndex].NRF6 > 2.33) && (newFoodArray[intItemIndex].NRF6 <= 4.66)) {
+				colorScaleStyle= "color:white; background-color:" + GradientColors.getColor3() + "!important;";
+			} else if ((newFoodArray[intItemIndex].NRF6 > 4.66) && (newFoodArray[intItemIndex].NRF6 <= 12.44)) {
+				colorScaleStyle = "color:black; background-color:" + GradientColors.getColor4() + "!important;";
+			} else if ((newFoodArray[intItemIndex].NRF6 > 12.44) && (newFoodArray[intItemIndex].NRF6 <= 20.22)) {
+				colorScaleStyle = "color:black; background-color:" + GradientColors.getColor5() + "!important;";
+			} else if ((newFoodArray[intItemIndex].NRF6 > 20.22) && (newFoodArray[intItemIndex].NRF6 <= 28)) {
+				colorScaleStyle = "color:black; background-color:" + GradientColors.getColor6() + "!important;";
+			} else if ((newFoodArray[intItemIndex].NRF6 > 28) && (newFoodArray[intItemIndex].NRF6 <= 35.33)) {
+				colorScaleStyle = "color:white; background-color:" + GradientColors.getColor7() + "!important;";
+			} else if ((newFoodArray[intItemIndex].NRF6 > 35.33) && (newFoodArray[intItemIndex].NRF6 <= 42.67)) {
+				colorScaleStyle = "color:white; background-color:" + GradientColors.getColor8() + "!important;";
+			} else if (newFoodArray[intItemIndex].NRF6 > 42.67) {
+				colorScaleStyle = "color:white; background-color:" + GradientColors.getColor9() + "!important;";
+			} else {
+				// do nothing
+			}
+
 			returnValue = String.Format(@"
 				<div class='col-sm-6 col-md-4 col-lg-3'>
 					<div class='panel panel-default'>
-						<div class='panel-heading'>
+						<div class='panel-heading' style='{0}'>
 							<h4 class='panel-title equal-height'>
-								{0}
+								{1}
 							</h4>
-							<hr />
-							<h4><strong>ND_Score: {1}</strong></h4>
+							<h4><strong>ND_Score: {2}</strong></h4>
 						</div>
 
 						<div class='panel-body'>
@@ -79,52 +102,52 @@ namespace WholesomeMVC.WebForms
 								<tbody>
 									<tr class='fatter'>
 										<th>Calories</th>
-										<td>{2}</td>
+										<td>{3}</td>
 										<td></td>
 									</tr>
 									<tr class='fat'>
 										<th>Saturated Fat</th>
-										<td>{3}</td>
-										<td>g</td>
-									</tr>
-									<tr>
-										<th>Sodium</th>
 										<td>{4}</td>
 										<td>g</td>
 									</tr>
 									<tr>
-										<th>Dietary Fiber</th>
+										<th>Sodium</th>
 										<td>{5}</td>
 										<td>g</td>
 									</tr>
 									<tr>
-										<th>Total Sugars</th>
+										<th>Dietary Fiber</th>
 										<td>{6}</td>
 										<td>g</td>
 									</tr>
 									<tr>
-										<th>Protein</th>
+										<th>Total Sugars</th>
 										<td>{7}</td>
+										<td>g</td>
+									</tr>
+									<tr>
+										<th>Protein</th>
+										<td>{8}</td>
 										<td>g</td>
 									</tr>
 									<tr class='fatter'>
 										<th>Vitamin A</th>
-										<td>{8}</td>
-										<td>IU</td>
-									</tr>
-									<tr>
-										<th>Vitamin C</th>
 										<td>{9}</td>
 										<td>IU</td>
 									</tr>
 									<tr>
-										<th>Calcium</th>
+										<th>Vitamin C</th>
 										<td>{10}</td>
+										<td>IU</td>
+									</tr>
+									<tr>
+										<th>Calcium</th>
+										<td>{11}</td>
 										<td>mg</td>
 									</tr>
 									<tr>
 										<th>Iron</th>
-										<td>{11}</td>
+										<td>{12}</td>
 										<td>mg</td>
 									</tr>
 								</tbody>
@@ -135,6 +158,7 @@ namespace WholesomeMVC.WebForms
 					</div>
 				</div>
 			",
+			colorScaleStyle,
 			newFoodArray[intItemIndex].name.ToString(),
 			newFoodArray[intItemIndex].NRF6.ToString(),
 			newFoodArray[intItemIndex].kCal.ToString(),

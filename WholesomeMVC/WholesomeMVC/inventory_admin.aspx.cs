@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -11,14 +13,19 @@ public partial class inventory_admin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        if (Session["name"] == null)
-            Server.TransferRequest("~/login.aspx");
-        else
-            lblName.Text = Session["name"].ToString();
         if (!IsPostBack)
         {
 
+            //System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
+            //{
+            //    ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
+            //};
+
+            //sc.Open();
+            //SqlCommand myCommand = new SqlCommand("Pull_Ceres_Weight",sc);
+            //myCommand.CommandType = CommandType.StoredProcedure;
+            //myCommand.ExecuteNonQuery();
+            //sc.Close();
 
         }
 
