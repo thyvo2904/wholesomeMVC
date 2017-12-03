@@ -13,6 +13,7 @@ using System.Web.Services;
 using System.Drawing;
 
 
+
 namespace WholesomeMVC.WebForms
 {
 
@@ -62,6 +63,7 @@ namespace WholesomeMVC.WebForms
 
 
         }
+        
 
         public static void findNdbno(String foodSearch)
         {
@@ -296,7 +298,7 @@ namespace WholesomeMVC.WebForms
             var result = JsonConvert.DeserializeObject<Search>(json);
 
 
-
+            
             if (!Add_Item.dataSearchResults.Columns.Contains("NDBno") && !Add_Item.dataSearchResults.Columns.Contains("Name")
                 && !Add_Item.dataSearchResults.Columns.Contains("ND Score"))
             {
@@ -313,6 +315,7 @@ namespace WholesomeMVC.WebForms
                 Add_Item.dataSearchResults.Columns.Add("Sodium", typeof(double));// Row 10
                 Add_Item.dataSearchResults.Columns.Add("KCal", typeof(double));// Row 11
                 Add_Item.dataSearchResults.Columns.Add("ND Score", typeof(double));// Row 12
+
 
             }
 
