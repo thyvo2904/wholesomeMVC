@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 using WholesomeMVC;
 using System.Web.Services;
 
-namespace WholesomeMVC
+namespace WholesomeMVC.WebForms
 {
     public partial class Farmers_Market : System.Web.UI.Page
     {

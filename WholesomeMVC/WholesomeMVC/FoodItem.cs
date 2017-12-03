@@ -8,16 +8,17 @@ using System.Net;
 using Newtonsoft.Json;
 using System.Data;
 using System.Data.SqlClient;
-using WholesomeMVC;
+using WholesomeMVC.WebForms;
 using System.Web.Services;
 using System.Drawing;
 
 
-namespace WholesomeMVC
+namespace WholesomeMVC.WebForms
 {
 
     public class FoodItem
     {
+       
         public string name { get; set; }
         public String ndbNo { get; set; }
         public double protein { get; set; }
@@ -84,18 +85,18 @@ namespace WholesomeMVC
 
             //for (int i = 0; i < IndexResults.dataSearchResults.Rows.Count; i++)
             //{
-            if (!IndexResults.dataSearchResults.Columns.Contains("NDBno") && !IndexResults.dataSearchResults.Columns.Contains("Name")
-                && !IndexResults.dataSearchResults.Columns.Contains("ND Score"))
+            if (!indexresult.dataSearchResults.Columns.Contains("NDBno") && !indexresult.dataSearchResults.Columns.Contains("Name")
+                && !indexresult.dataSearchResults.Columns.Contains("ND Score"))
             {
-                IndexResults.dataSearchResults.Columns.Add("NDBno", typeof(string));
-                IndexResults.dataSearchResults.Columns.Add("Name", typeof(string));
-                IndexResults.dataSearchResults.Columns.Add("ND Score", typeof(double));
-
+                indexresult.dataSearchResults.Columns.Add("NDBno", typeof(string));
+                indexresult.dataSearchResults.Columns.Add("Name", typeof(string));
+                indexresult.dataSearchResults.Columns.Add("ND Score", typeof(double));
+                
             }
 
             else
             {
-                IndexResults.dataSearchResults.Clear();
+                indexresult.dataSearchResults.Clear();
             }
 
 
@@ -150,7 +151,7 @@ namespace WholesomeMVC
 
             for (int i = 0; i < result2.foods.Count; i++)
             {
-                DataRow row = IndexResults.dataSearchResults.NewRow();
+                DataRow row = indexresult.dataSearchResults.NewRow();
                 // SOME OF THE NUTRIENT ID'S ARE CHANGED W/ VERSION TWO, I FIXED THEM
                 foreach (Nutrient item in result2.foods[i].food.nutrients)
                 {
@@ -240,16 +241,16 @@ namespace WholesomeMVC
                     newFood.NRF6 = Math.Round(newFood.NRF6, 5);
 
                     row[2] = newFood.NRF6;
-
+                  
                 }
                 row[0] = result2.foods[i].food.desc.ndbno;
                 row[1] = result2.foods[i].food.desc.name;
-                IndexResults.dataSearchResults.Rows.Add(row);
+                indexresult.dataSearchResults.Rows.Add(row);
             }
-            IndexResults.savedNdb_no = newFood.ndbNo;
-            IndexResults.savedItemName = newFood.name;
-            IndexResults.savedFoodGroup = newFood.foodGroup;
-            IndexResults.savedNrf6 = newFood.NRF6;
+            indexresult.savedNdb_no = newFood.ndbNo;
+            indexresult.savedItemName = newFood.name;
+            indexresult.savedFoodGroup = newFood.foodGroup;
+            indexresult.savedNrf6 = newFood.NRF6;
 
         }
 

@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WholesomeMVC
+namespace WholesomeMVC.WebForms
 {
     public partial class inventory_staff : System.Web.UI.Page
     {

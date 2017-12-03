@@ -13,7 +13,7 @@ using System.Web.Services;
 using System.Drawing;
 using System.Configuration;
 
-namespace WholesomeMVC
+namespace WholesomeMVC.WebForms
 {
     public partial class Sync_Database : System.Web.UI.Page
     {

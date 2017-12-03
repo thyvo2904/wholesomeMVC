@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WholesomeMVC;
+using WholesomeMVC.WebForms;
 using System.IO;
 using System.Text;
 using System.Net;

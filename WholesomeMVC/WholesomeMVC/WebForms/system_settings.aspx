@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="system_settings.aspx.cs" Inherits="WholesomeMVC.system_settings" %>
+﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="system_settings.aspx.cs" Inherits="WholesomeMVC.WebForms.system_settings" %>
 
 <!DOCTYPE html>
 <html lang="en">

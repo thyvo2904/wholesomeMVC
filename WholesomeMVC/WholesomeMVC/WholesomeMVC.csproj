@@ -20,12 +20,9 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44376</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>
-    </IISExpressUseClassicPipelineMode>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -193,11 +190,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
-    <Compile Include="account_management.aspx.cs">
+    <Compile Include="WebForms\account_management.aspx.cs">
       <DependentUpon>account_management.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="account_management.aspx.designer.cs">
+    <Compile Include="WebForms\account_management.aspx.designer.cs">
       <DependentUpon>account_management.aspx</DependentUpon>
     </Compile>
     <Compile Include="Activation.aspx.cs">
@@ -207,18 +204,18 @@
     <Compile Include="Activation.aspx.designer.cs">
       <DependentUpon>Activation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Add_Item.aspx.cs">
+    <Compile Include="WebForms\Add_Item.aspx.cs">
       <DependentUpon>add_item.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Add_Item.aspx.designer.cs">
+    <Compile Include="WebForms\Add_Item.aspx.designer.cs">
       <DependentUpon>add_item.aspx</DependentUpon>
     </Compile>
-    <Compile Include="advanced_search.aspx.cs">
+    <Compile Include="WebForms\advanced_search.aspx.cs">
       <DependentUpon>advanced_search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="advanced_search.aspx.designer.cs">
+    <Compile Include="WebForms\advanced_search.aspx.designer.cs">
       <DependentUpon>advanced_search.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -235,11 +232,11 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Desc.cs" />
     <Compile Include="FarmersMarketResult.cs" />
-    <Compile Include="Farmers_Market.aspx.cs">
+    <Compile Include="WebForms\Farmers_Market.aspx.cs">
       <DependentUpon>farmers_market.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Farmers_Market.aspx.designer.cs">
+    <Compile Include="WebForms\Farmers_Market.aspx.designer.cs">
       <DependentUpon>farmers_market.aspx</DependentUpon>
     </Compile>
     <Compile Include="Food.cs" />
@@ -258,41 +255,34 @@
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.cs" />
-    <Compile Include="IndexResults.aspx.cs">
-      <DependentUpon>IndexResults.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="IndexResults.aspx.designer.cs">
-      <DependentUpon>IndexResults.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Ing.cs" />
-    <Compile Include="inventory_admin.aspx.cs">
+    <Compile Include="WebForms\inventory_admin.aspx.cs">
       <DependentUpon>inventory_admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="inventory_admin.aspx.designer.cs">
+    <Compile Include="WebForms\inventory_admin.aspx.designer.cs">
       <DependentUpon>inventory_admin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="inventory_purchased.aspx.cs">
+    <Compile Include="WebForms\inventory_purchased.aspx.cs">
       <DependentUpon>inventory_purchased.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="inventory_purchased.aspx.designer.cs">
+    <Compile Include="WebForms\inventory_purchased.aspx.designer.cs">
       <DependentUpon>inventory_purchased.aspx</DependentUpon>
     </Compile>
-    <Compile Include="inventory_staff.aspx.cs">
+    <Compile Include="WebForms\inventory_staff.aspx.cs">
       <DependentUpon>inventory_staff.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="inventory_staff.aspx.designer.cs">
+    <Compile Include="WebForms\inventory_staff.aspx.designer.cs">
       <DependentUpon>inventory_staff.aspx</DependentUpon>
     </Compile>
     <Compile Include="Item.cs" />
-    <Compile Include="Item_Management.aspx.cs">
+    <Compile Include="WebForms\Item_Management.aspx.cs">
       <DependentUpon>Item_Management.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Item_Management.aspx.designer.cs">
+    <Compile Include="WebForms\Item_Management.aspx.designer.cs">
       <DependentUpon>Item_Management.aspx</DependentUpon>
     </Compile>
     <Compile Include="List.cs" />
@@ -324,45 +314,38 @@
       <DependentUpon>Populate_table.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="recent.aspx.cs">
-      <DependentUpon>recent.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="recent.aspx.designer.cs">
-      <DependentUpon>recent.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Report.cs" />
     <Compile Include="RootMarket.cs" />
     <Compile Include="RootObject.cs" />
     <Compile Include="RootThing.cs" />
-    <Compile Include="saved_items.aspx.cs">
+    <Compile Include="WebForms\saved_items.aspx.cs">
       <DependentUpon>saved_items.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="saved_items.aspx.designer.cs">
+    <Compile Include="WebForms\saved_items.aspx.designer.cs">
       <DependentUpon>saved_items.aspx</DependentUpon>
     </Compile>
     <Compile Include="Search.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Sync_Database.aspx.cs">
+    <Compile Include="WebForms\Sync_Database.aspx.cs">
       <DependentUpon>Sync_Database.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Sync_Database.aspx.designer.cs">
+    <Compile Include="WebForms\Sync_Database.aspx.designer.cs">
       <DependentUpon>Sync_Database.aspx</DependentUpon>
     </Compile>
-    <Compile Include="system_settings.aspx.cs">
+    <Compile Include="WebForms\system_settings.aspx.cs">
       <DependentUpon>system_settings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="system_settings.aspx.designer.cs">
+    <Compile Include="WebForms\system_settings.aspx.designer.cs">
       <DependentUpon>system_settings.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Update_Item.aspx.cs">
+    <Compile Include="WebForms\Update_Item.aspx.cs">
       <DependentUpon>update_item.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Update_Item.aspx.designer.cs">
+    <Compile Include="WebForms\Update_Item.aspx.designer.cs">
       <DependentUpon>update_item.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\recent.aspx.cs">
@@ -381,10 +364,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="account_management.aspx" />
+    <Content Include="WebForms\account_management.aspx" />
     <Content Include="Activation.aspx" />
-    <Content Include="add_item.aspx" />
-    <Content Include="advanced_search.aspx" />
+    <Content Include="WebForms\add_item.aspx" />
+    <Content Include="WebForms\advanced_search.aspx" />
     <Content Include="Content\Custom\manual_input.css" />
     <Content Include="Content\Custom\recent.css" />
     <Content Include="Content\Images\image_color_scale_legend.png" />
@@ -400,7 +383,7 @@
     <Content Include="Content\Images\icons8-microsoft-100.png" />
     <Content Include="Content\Images\image_brand.png" />
     <Content Include="Content\Custom\index.css" />
-    <Content Include="farmers_market.aspx" />
+    <Content Include="WebForms\farmers_market.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -409,17 +392,14 @@
     <Content Include="Scripts\Custom\manual_input.js" />
     <Content Include="Scripts\Custom\recent.js" />
     <Content Include="WebForms\index.aspx" />
-    <Content Include="IndexResults.aspx" />
-    <Content Include="inventory_admin.aspx" />
-    <Content Include="inventory_purchased.aspx" />
-    <Content Include="inventory_staff.aspx" />
-    <Content Include="Item_Management.aspx" />
-    <Content Include="manual_input.aspx" />
+    <Content Include="WebForms\inventory_admin.aspx" />
+    <Content Include="WebForms\inventory_purchased.aspx" />
+    <Content Include="WebForms\inventory_staff.aspx" />
+    <Content Include="WebForms\Item_Management.aspx" />
     <Content Include="WebForms\indexresult.aspx" />
     <Content Include="WebForms\manual_input.aspx" />
     <Content Include="Populate_table.aspx" />
-    <Content Include="recent.aspx" />
-    <Content Include="saved_items.aspx" />
+    <Content Include="WebForms\saved_items.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -439,9 +419,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Sync_Database.aspx" />
-    <Content Include="system_settings.aspx" />
-    <Content Include="update_item.aspx" />
+    <Content Include="WebForms\Sync_Database.aspx" />
+    <Content Include="WebForms\system_settings.aspx" />
+    <Content Include="WebForms\update_item.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

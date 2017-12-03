@@ -7,7 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WholesomeMVC;
 
-namespace WholesomeMVC
+namespace WholesomeMVC.WebForms
 {
     public partial class system_settings : System.Web.UI.Page
     {

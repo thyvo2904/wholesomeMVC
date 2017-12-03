@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WholesomeMVC
+namespace WholesomeMVC.WebForms
 {
-    public partial class Item_Management : System.Web.UI.Page
+    public partial class account_management : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
 
+            }
         }
-
         protected void btnSearch(object sender, EventArgs e)
         {
 
@@ -32,12 +35,7 @@ namespace WholesomeMVC
             }
 
 
-
         }
 
-        protected void btnAddItem_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

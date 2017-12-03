@@ -12,7 +12,7 @@ using WholesomeMVC;
 using System.Web.Services;
 using System.Configuration;
 
-namespace WholesomeMVC
+namespace WholesomeMVC.WebForms
 {
     public class GradientColors
     {
