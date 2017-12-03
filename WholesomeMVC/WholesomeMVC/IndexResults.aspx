@@ -543,10 +543,10 @@
                      <td colspan="4">
                          <br>
                          <span style="float: right;">
-                             <%--<button type="button" class="btn btn-sm btn-default" id="btnSaveItem" runat="server" onserverclick="btnSaveItem_Click"><span class="glyphicon glyphicon-floppy-saved"></span>Save</button></span>--%>
+                             <button type="button" class="btn btn-sm btn-default" runat="server" onserverclick="btnSaveItem_Click" id="btnSaveItem"><span class="glyphicon glyphicon-floppy-saved"></span>Save</button></span>
                          <%-- <asp:Button type="submit" ID="btnSaveItem" runat="server" OnClick="btnSaveItem_Click" Text="Save" CssClass="btnindex"/>--%>
                          <span style="float: right;">
-                             <%--<button type="button" class="btn btn-sm btn-default" id="btnUpdateItem" runat="server"><span class="glyphicon glyphicon-cloud-upload"></span>Update</button></span>--%>
+                             <button type="button" id="btnUpdateItem" class="btn btn-sm btn-default" runat="server"><span class="glyphicon glyphicon-cloud-upload"></span>Update</button></span>
                      </td>
                  </tr>
              </table>

@@ -78,9 +78,9 @@ namespace WholesomeMVC
             lblIndexResult.Text = Convert.ToString(Math.Round(FoodItem.newFood.NRF6, 2));
             lblName.Text = FoodItem.newFood.name;
             lblNdbno.Text = FoodItem.newFood.ndbNo;
-            //txtfat.Value = FoodItem.newFood.totalFat.ToString() + "g";
-            //txtTransfat.Value = FoodItem.newFood.transFat.ToString() + "g";
-            //txtCholesterol.Value = Math.Round(FoodItem.newFood.cholesterol, 2).ToString() + "mg";
+            txtfat.Value = FoodItem.newFood.totalFat.ToString() + "g";
+            txtTransfat.Value = FoodItem.newFood.transFat.ToString() + "g";
+            txtCholesterol.Value = Math.Round(FoodItem.newFood.cholesterol, 2).ToString() + "mg";
 
             txtprotein.Value = Math.Round(FoodItem.newFood.protein, 2).ToString() + "g";
             txtfiber.Value = Math.Round(FoodItem.newFood.fiber, 2).ToString() + "g";
@@ -92,15 +92,15 @@ namespace WholesomeMVC
             txtsatfat.Value = Math.Round(FoodItem.newFood.satFat, 2).ToString() + "g";
             txtsugar.Value = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
             txtsodium.Value = Math.Round(FoodItem.newFood.sodium, 2).ToString() + "mg";
-            //txtCarbohydrate.Value = Math.Round(FoodItem.newFood.carbohydrates, 2).ToString() + "g";
+            txtCarbohydrate.Value = Math.Round(FoodItem.newFood.carbohydrates, 2).ToString() + "g";
 
-            //txtfatpercent.Value = Math.Round((FoodItem.newFood.totalFat / 65) * 100).ToString() + "%";
-            //txt.Value = Math.Round(FoodItem.newFood.transFat).ToString();
-            //txtCholesterolpercecnt.Value = Math.Round((FoodItem.newFood.cholesterol / 300) * 100).ToString() + "%";
-            //txtfiberpercent.Value = Math.Round((FoodItem.newFood.fiber / 25) * 100).ToString() + "%";
-            //txtsatfatpercent.Value = Math.Round((FoodItem.newFood.satFat / 20) * 100).ToString() + "%";
-            //txtsodiumpercent.Value = Math.Round((FoodItem.newFood.fiber / 2400) * 100).ToString() + "%";
-            //txtcarbonpercent.Value = Math.Round((FoodItem.newFood.carbohydrates / 300) * 100).ToString() + "%";
+            txtfatpercent.Value = Math.Round((FoodItem.newFood.totalFat / 65) * 100).ToString() + "%";
+            //txtTransfat.Value = Math.Round(FoodItem.newFood.transFat).ToString();
+            txtCholesterolpercecnt.Value = Math.Round((FoodItem.newFood.cholesterol / 300) * 100).ToString() + "%";
+            txtfiberpercent.Value = Math.Round((FoodItem.newFood.fiber / 25) * 100).ToString() + "%";
+            txtsatfatpercent.Value = Math.Round((FoodItem.newFood.satFat / 20) * 100).ToString() + "%";
+            txtsodiumpercent.Value = Math.Round((FoodItem.newFood.fiber / 2400) * 100).ToString() + "%";
+            txtcarbonpercent.Value = Math.Round((FoodItem.newFood.carbohydrates / 300) * 100).ToString() + "%";
 
             if (FoodItem.newFood.kCal.Equals(0))
             {
