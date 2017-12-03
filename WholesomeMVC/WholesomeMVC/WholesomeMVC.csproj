@@ -401,7 +401,6 @@
     <Content Include="inventory_purchased.aspx" />
     <Content Include="inventory_staff.aspx" />
     <Content Include="Item_Management.aspx" />
-    <Content Include="manual_input.aspx" />
     <Content Include="WebForms\manual_input.aspx" />
     <Content Include="Populate_table.aspx" />
     <Content Include="recent.aspx" />
