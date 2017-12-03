@@ -353,16 +353,6 @@
              <asp:BoundField DataField ="NDBno" HeaderText ="NDBno"/>
              <asp:BoundField DataField ="Name" HeaderText ="Name"/>
              <asp:BoundField DataField ="Food Group" HeaderText ="Food Group"/>
-             <asp:BoundField DataField ="Protein" HeaderText ="Protein"/>
-             <asp:BoundField DataField ="Fiber" HeaderText ="Fiber"/>
-             <asp:BoundField DataField ="VitaminA" HeaderText ="VitaminA"/>
-             <asp:BoundField DataField ="VitaminC" HeaderText ="VitaminC"/>
-             <asp:BoundField DataField ="Iron" HeaderText ="Iron"/>
-             <asp:BoundField DataField ="Calcium" HeaderText ="Calcium"/>
-             <asp:BoundField DataField ="Sat_Fat" HeaderText ="Sat_Fat"/>
-             <asp:BoundField DataField ="Total_Sugar" HeaderText ="Total_Sugar"/> 
-             <asp:BoundField DataField ="Sodium" HeaderText ="Sodium"/>
-             <asp:BoundField DataField ="KCal" HeaderText ="KCal"/>
              <asp:BoundField DataField ="ND score" HeaderText ="ND Score" />
           <asp:commandfield showselectbutton="True" selectText ="Select"/>
          </Columns>
