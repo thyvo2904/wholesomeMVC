@@ -61,20 +61,18 @@ namespace WholesomeMVC.WebForms
 		 */
 		protected String GenerateRecentItem(int intItemIndex)
 		{
-			String returnValue = string.Format(@"
+			String returnValue = "";
+			returnValue = String.Format(@"
 				<div class='col-sm-6 col-md-4 col-lg-3'>
 					<div class='panel panel-default'>
 						<div class='panel-heading'>
-							<h4 class='panel-title'>
+							<h4 class='panel-title equal-height'>
 								{0}
-								<br />
-								<br />
-								<strong>ND_Score: {1}</strong>
 							</h4>
 						</div>
 
 						<div class='panel-body'>
-							<h4>Nutrient Facts</h4>
+							<h4><strong>ND_Score: {1}</strong></h4>
 
 							<table class='table table-condensed table-hover'>
 								<tr>
@@ -165,11 +163,16 @@ namespace WholesomeMVC.WebForms
 
 			if (HasNdbno) {
 				for (int i = 0; i < newFoodArray.Length; i++) {
-					strInnerHTML += "\n" + GenerateRecentItem(i);
+					if (newFoodArray[i] == null) {
+						// do nothing
+					} else { 
+						strInnerHTML += "\n" + GenerateRecentItem(i);
+					}
 				}
 			} else {
 				// show error
 			}
+
 			section_recent_items.InnerHtml = strInnerHTML;
 		}
 
@@ -204,35 +207,31 @@ namespace WholesomeMVC.WebForms
 
 			SqlDataReader newReader = null;
 			newReader = myCommand.ExecuteReader();
-			if (newReader.HasRows)
-			{
+			if (newReader.HasRows) {
 				int counter = 0;
-				while (newReader.Read())
-				{
-					if (counter < ndbnoArray.Length)
-					{
+				while (newReader.Read()) {
+					if (counter < ndbnoArray.Length) {
 						ndbnoArray[counter] = newReader["ndb_no"].ToString();
 						counter++;
 					}
 				}
-			}
-			else
-			{
-				returnValue = false;
-
-				// hard-coded to test, remove when there're real data
-				ndbnoArray[0] = "45136115";
-				ndbnoArray[1] = "45186303";
-				ndbnoArray[2] = "45169417";
-				ndbnoArray[3] = "45169419";
-				ndbnoArray[4] = "45253484";
-				ndbnoArray[5] = "45169416";
-				ndbnoArray[6] = "45094214";
-				ndbnoArray[7] = "45156252";
-				returnValue = true;
+			} else {
+				returnValue = false; 
 			}
 
 			sc.Close();
+
+			//// hard-coded to test, remove when there're real data
+			//ndbnoArray[0] = "45136115";
+			//ndbnoArray[1] = "45186303";
+			//ndbnoArray[2] = "45169417";
+			//ndbnoArray[3] = "45169419";
+			//ndbnoArray[4] = "45253484";
+			//ndbnoArray[5] = "45169416";
+			//ndbnoArray[6] = "45094214";
+			//ndbnoArray[7] = "45156252";
+			//returnValue = true;
+
 			return returnValue;
 		}
 
