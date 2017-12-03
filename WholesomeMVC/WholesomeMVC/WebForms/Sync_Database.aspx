@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Sync_Database.aspx.cs" Inherits="WholesomeMVC.Sync_Database" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Sync_Database.aspx.cs" Inherits="WholesomeMVC.WebForms.Sync_Database" %>
 
 <!DOCTYPE html>
 

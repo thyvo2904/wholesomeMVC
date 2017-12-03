@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WholesomeMVC {
+namespace WholesomeMVC.WebForms {
     
     
-    public partial class Update_Item {
+    public partial class Add_Item {
         
         /// <summary>
         /// ddlCategory control.
@@ -76,13 +76,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtNumber;
         
         /// <summary>
-        /// chkItemNumber control.
+        /// reqCeresID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator chkItemNumber;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqCeresID;
         
         /// <summary>
         /// txtDescription control.
@@ -94,13 +94,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
-        /// chkDescription control.
+        /// reqCeresDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator chkDescription;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqCeresDescription;
         
         /// <summary>
         /// txtSearchDescription control.
@@ -112,13 +112,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtSearchDescription;
         
         /// <summary>
-        /// btnUpdateItem control.
+        /// btnAddItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdateItem;
+        protected global::System.Web.UI.WebControls.Button btnAddItem;
         
         /// <summary>
         /// divmanual control.
@@ -148,13 +148,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtOldKCal;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// reqOldKCal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldKCal;
         
         /// <summary>
         /// txtOldSatFat control.
@@ -166,13 +166,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtOldSatFat;
         
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// reqOldSatFat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldSatFat;
         
         /// <summary>
         /// txtOldSodium control.
@@ -184,13 +184,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtOldSodium;
         
         /// <summary>
-        /// RequiredFieldValidator3 control.
+        /// reqOldSodium control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldSodium;
         
         /// <summary>
         /// txtOldFiber control.
@@ -202,13 +202,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtOldFiber;
         
         /// <summary>
-        /// RequiredFieldValidator4 control.
+        /// reqOldFiber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldFiber;
         
         /// <summary>
         /// txtOldTotalSugar control.
@@ -220,13 +220,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtOldTotalSugar;
         
         /// <summary>
-        /// RequiredFieldValidator5 control.
+        /// reqOldSugar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldSugar;
         
         /// <summary>
         /// txtOldProtein control.
@@ -238,13 +238,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtOldProtein;
         
         /// <summary>
-        /// RequiredFieldValidator6 control.
+        /// reqOldProtein control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldProtein;
         
         /// <summary>
         /// txtOldVA control.
@@ -256,13 +256,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtOldVA;
         
         /// <summary>
-        /// RequiredFieldValidator7 control.
+        /// reqOldVA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldVA;
         
         /// <summary>
         /// txtOldVC control.
@@ -274,13 +274,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtOldVC;
         
         /// <summary>
-        /// RequiredFieldValidator8 control.
+        /// reqOldVC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldVC;
         
         /// <summary>
         /// txtOldCalcium control.
@@ -292,13 +292,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtOldCalcium;
         
         /// <summary>
-        /// RequiredFieldValidator9 control.
+        /// reqOldCalcium control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator9;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldCalcium;
         
         /// <summary>
         /// txtOldIron control.
@@ -310,13 +310,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtOldIron;
         
         /// <summary>
-        /// RequiredFieldValidator10 control.
+        /// reqOldIron control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator10;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqOldIron;
         
         /// <summary>
         /// btnCalculateOld control.
@@ -364,13 +364,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtNewKCal;
         
         /// <summary>
-        /// RequiredFieldValidator11 control.
+        /// reqNewKCal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator11;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewKCal;
         
         /// <summary>
         /// txtNewSatFat control.
@@ -382,13 +382,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtNewSatFat;
         
         /// <summary>
-        /// RequiredFieldValidator12 control.
+        /// reqNewSatFat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator12;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewSatFat;
         
         /// <summary>
         /// txtNewSodium control.
@@ -400,13 +400,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtNewSodium;
         
         /// <summary>
-        /// RequiredFieldValidator13 control.
+        /// reqNewSodium control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator13;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewSodium;
         
         /// <summary>
         /// txtNewFiber control.
@@ -418,13 +418,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtNewFiber;
         
         /// <summary>
-        /// RequiredFieldValidator14 control.
+        /// reqNewFiber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator14;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewFiber;
         
         /// <summary>
         /// txtNewAddedSugar control.
@@ -436,13 +436,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtNewAddedSugar;
         
         /// <summary>
-        /// RequiredFieldValidator15 control.
+        /// reqNewAddedSugar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator15;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewAddedSugar;
         
         /// <summary>
         /// txtNewProtein control.
@@ -454,13 +454,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtNewProtein;
         
         /// <summary>
-        /// RequiredFieldValidator16 control.
+        /// reqNewProtein control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator16;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewProtein;
         
         /// <summary>
         /// txtNewVD control.
@@ -472,13 +472,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtNewVD;
         
         /// <summary>
-        /// RequiredFieldValidator17 control.
+        /// reqNewVitaminD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator17;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewVitaminD;
         
         /// <summary>
         /// txtNewPotassium control.
@@ -490,13 +490,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtNewPotassium;
         
         /// <summary>
-        /// RequiredFieldValidator18 control.
+        /// reqNewPotassium control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator18;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewPotassium;
         
         /// <summary>
         /// txtNewCalcium control.
@@ -508,13 +508,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtNewCalcium;
         
         /// <summary>
-        /// RequiredFieldValidator19 control.
+        /// reqNewCalcium control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator19;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewCalcium;
         
         /// <summary>
         /// txtNewIron control.
@@ -526,13 +526,13 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.TextBox txtNewIron;
         
         /// <summary>
-        /// RequiredFieldValidator20 control.
+        /// reqNewIron control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator20;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqNewIron;
         
         /// <summary>
         /// btnCalculateNew control.

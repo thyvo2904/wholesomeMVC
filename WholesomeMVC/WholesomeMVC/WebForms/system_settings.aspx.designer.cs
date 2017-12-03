@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WholesomeMVC {
+namespace WholesomeMVC.WebForms {
     
     
     public partial class system_settings {

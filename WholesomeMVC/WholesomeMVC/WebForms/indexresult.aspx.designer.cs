@@ -10,7 +10,7 @@
 namespace WholesomeMVC.WebForms {
     
     
-    public partial class IndexResults {
+    public partial class indexresult {
         
         /// <summary>
         /// gridSearchResults control.

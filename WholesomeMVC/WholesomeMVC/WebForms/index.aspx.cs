@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WholesomeMVC
+namespace WholesomeMVC.WebForms
 {
     public partial class index : System.Web.UI.Page
     {
@@ -77,7 +77,7 @@ namespace WholesomeMVC
 			} else {
 				// show error
 			}
-
+            
 			FoodItem.findNdbno(foodSearch);
 			Server.Transfer("/WebForms/indexresult.aspx");
 		}

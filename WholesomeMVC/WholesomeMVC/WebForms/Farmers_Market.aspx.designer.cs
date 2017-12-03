@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WholesomeMVC {
+namespace WholesomeMVC.WebForms {
     
     
-    public partial class Sync_Database {
+    public partial class Farmers_Market {
         
         /// <summary>
         /// ddlCategory control.
@@ -20,15 +20,6 @@ namespace WholesomeMVC {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
-        
-        /// <summary>
-        /// Category control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource Category;
         
         /// <summary>
         /// txtSearch control.
@@ -49,84 +40,57 @@ namespace WholesomeMVC {
         protected global::System.Web.UI.WebControls.Label lblName;
         
         /// <summary>
-        /// lblMatchedCeresIDS control.
+        /// lblFarmersMarket control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMatchedCeresIDS;
+        protected global::System.Web.UI.WebControls.Label lblFarmersMarket;
         
         /// <summary>
-        /// gridMatchedCeresIDS control.
+        /// txtFarmersMarket control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridMatchedCeresIDS;
+        protected global::System.Web.UI.WebControls.TextBox txtFarmersMarket;
         
         /// <summary>
-        /// btnSyncDatabase control.
+        /// btnSearchFarmersMarket control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSyncDatabase;
+        protected global::System.Web.UI.WebControls.Button btnSearchFarmersMarket;
         
         /// <summary>
-        /// btnRetrieveArchivedValues control.
+        /// gridFarmersMarket control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRetrieveArchivedValues;
+        protected global::System.Web.UI.WebControls.GridView gridFarmersMarket;
         
         /// <summary>
-        /// gridArchivedData control.
+        /// lblFarmersMarketLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridArchivedData;
+        protected global::System.Web.UI.WebControls.Label lblFarmersMarketLocation;
         
         /// <summary>
-        /// lblUmatchedCeresIDS control.
+        /// farmersMarketIFrame control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUmatchedCeresIDS;
-        
-        /// <summary>
-        /// gridUnmatchedCeresIDS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridUnmatchedCeresIDS;
-        
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// gridUnmatchedTestDBIDS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridUnmatchedTestDBIDS;
+        protected global::System.Web.UI.HtmlControls.HtmlIframe farmersMarketIFrame;
     }
 }
