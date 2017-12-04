@@ -1,5 +1,5 @@
 ﻿body {
-	background-color: #ffffff;
+	background-color: #fafafa;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -27,6 +27,10 @@
 /* utility classes */
 
 /* override bootstrap default navbar links */
+.navbar.navbar-default {
+	border-top: 5px solid #70C277;
+	background-color: #ffffff;
+}
 .navbar-nav > li > a {
 	line-height: 50px;
 }
@@ -36,7 +40,7 @@
 .navbar-header > button {
 	margin: 24px 15px;
 }
-@media (min-width: 768px) and (max-width: 992px) {
+/*@media (min-width: 768px) and (max-width: 992px) {
 	.navbar-collapse.collapse {
 		display: none !important;
 	}
@@ -49,7 +53,7 @@
 	.navbar-header {
 		float: none;
 	}
-}
+}*/
 
 /* style image */
 .navbar-brand > img {

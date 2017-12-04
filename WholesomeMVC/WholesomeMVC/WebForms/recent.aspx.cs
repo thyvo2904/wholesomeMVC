@@ -66,36 +66,62 @@ namespace WholesomeMVC.WebForms
 			String returnValue = "";
 			String colorScaleStyle = "";
 
-			if (newFoodArray[intItemIndex].NRF6 < 0) {
-				colorScaleStyle = "color:white; background-color:" + GradientColors.getColor1() + "!important;";
-			} else if ((newFoodArray[intItemIndex].NRF6 >= 0) && (newFoodArray[intItemIndex].NRF6 <= 2.33)) {
-				colorScaleStyle = "color:white; background-color:" + GradientColors.getColor2() + "!important;"; ;
-			} else if ((newFoodArray[intItemIndex].NRF6 > 2.33) && (newFoodArray[intItemIndex].NRF6 <= 4.66)) {
-				colorScaleStyle= "color:white; background-color:" + GradientColors.getColor3() + "!important;";
-			} else if ((newFoodArray[intItemIndex].NRF6 > 4.66) && (newFoodArray[intItemIndex].NRF6 <= 12.44)) {
-				colorScaleStyle = "color:black; background-color:" + GradientColors.getColor4() + "!important;";
-			} else if ((newFoodArray[intItemIndex].NRF6 > 12.44) && (newFoodArray[intItemIndex].NRF6 <= 20.22)) {
-				colorScaleStyle = "color:black; background-color:" + GradientColors.getColor5() + "!important;";
-			} else if ((newFoodArray[intItemIndex].NRF6 > 20.22) && (newFoodArray[intItemIndex].NRF6 <= 28)) {
-				colorScaleStyle = "color:black; background-color:" + GradientColors.getColor6() + "!important;";
-			} else if ((newFoodArray[intItemIndex].NRF6 > 28) && (newFoodArray[intItemIndex].NRF6 <= 35.33)) {
-				colorScaleStyle = "color:white; background-color:" + GradientColors.getColor7() + "!important;";
-			} else if ((newFoodArray[intItemIndex].NRF6 > 35.33) && (newFoodArray[intItemIndex].NRF6 <= 42.67)) {
-				colorScaleStyle = "color:white; background-color:" + GradientColors.getColor8() + "!important;";
-			} else if (newFoodArray[intItemIndex].NRF6 > 42.67) {
-				colorScaleStyle = "color:white; background-color:" + GradientColors.getColor9() + "!important;";
+			//if (newFoodArray[intItemIndex].NRF6 < 0) {
+			//	colorScaleStyle = "color:white; border-color:" + GradientColors.getColor1() + "!important;";
+			//} else if ((newFoodArray[intItemIndex].NRF6 >= 0) && (newFoodArray[intItemIndex].NRF6 <= 2.33)) {
+			//	colorScaleStyle = "color:white; border-color:" + GradientColors.getColor2() + "!important;"; ;
+			//} else if ((newFoodArray[intItemIndex].NRF6 > 2.33) && (newFoodArray[intItemIndex].NRF6 <= 4.66)) {
+			//	colorScaleStyle= "color:white; border-color:" + GradientColors.getColor3() + "!important;";
+			//} else if ((newFoodArray[intItemIndex].NRF6 > 4.66) && (newFoodArray[intItemIndex].NRF6 <= 12.44)) {
+			//	colorScaleStyle = "color:black; border-color:" + GradientColors.getColor4() + "!important;";
+			//} else if ((newFoodArray[intItemIndex].NRF6 > 12.44) && (newFoodArray[intItemIndex].NRF6 <= 20.22)) {
+			//	colorScaleStyle = "color:black; border-color:" + GradientColors.getColor5() + "!important;";
+			//} else if ((newFoodArray[intItemIndex].NRF6 > 20.22) && (newFoodArray[intItemIndex].NRF6 <= 28)) {
+			//	colorScaleStyle = "color:black; border-color:" + GradientColors.getColor6() + "!important;";
+			//} else if ((newFoodArray[intItemIndex].NRF6 > 28) && (newFoodArray[intItemIndex].NRF6 <= 35.33)) {
+			//	colorScaleStyle = "color:white; border-color:" + GradientColors.getColor7() + "!important;";
+			//} else if ((newFoodArray[intItemIndex].NRF6 > 35.33) && (newFoodArray[intItemIndex].NRF6 <= 42.67)) {
+			//	colorScaleStyle = "color:white; border-color:" + GradientColors.getColor8() + "!important;";
+			//} else if (newFoodArray[intItemIndex].NRF6 > 42.67) {
+			//	colorScaleStyle = "color:white; border-color:" + GradientColors.getColor9() + "!important;";
+			//} else {
+			//	// do nothing
+			//}
+
+			double score = newFoodArray[intItemIndex].NRF6;
+
+			if (score < 0) {
+				colorScaleStyle = GradientColors.getColor1();
+			} else if ((score >= 0) && (score <= 2.33)) {
+				colorScaleStyle = GradientColors.getColor2();
+			} else if ((score > 2.33) && (score <= 4.66)) {
+				colorScaleStyle = GradientColors.getColor3();
+			} else if ((score > 4.66) && (score <= 12.44)) {
+				colorScaleStyle = GradientColors.getColor4();
+			} else if ((score > 12.44) && (score <= 20.22)) {
+				colorScaleStyle = GradientColors.getColor5();
+			} else if ((score > 20.22) && (score <= 28)) {
+				colorScaleStyle = GradientColors.getColor6();
+			} else if ((score > 28) && (score <= 35.33)) {
+				colorScaleStyle = GradientColors.getColor7();
+			} else if ((score > 35.33) && (score <= 42.67)) {
+				colorScaleStyle = GradientColors.getColor8();
+			} else if (score > 42.67) {
+				colorScaleStyle = GradientColors.getColor9();
 			} else {
 				// do nothing
 			}
 
+			colorScaleStyle += " !important";
+
 			returnValue = String.Format(@"
 				<div class='col-sm-6 col-md-4 col-lg-3'>
 					<div class='panel panel-default'>
-						<div class='panel-heading' style='{0}'>
+						<div class='panel-heading' style='border-bottom: 5px solid {0}'>
 							<h4 class='panel-title equal-height'>
 								{1}
 							</h4>
-							<h4><strong>ND_Score: {2}</strong></h4>
+							<h4><strong>ND_Score: <span style='color: {0}'>{2}</span></strong></h4>
 						</div>
 
 						<div class='panel-body'>
@@ -155,7 +181,7 @@ namespace WholesomeMVC.WebForms
 								</tbody>
 							</table>
 
-							<button id='{13}' class='btn btn-success btn-block save-button'>Save Item</button>
+							<button id='{13}' class='btn btn-default btn-block save-button'>Save Item</button>
 						</div>
 					</div>
 				</div>
