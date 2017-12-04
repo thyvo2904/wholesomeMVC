@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="advanced_search.aspx.cs" Inherits="WholesomeMVC.advanced_search" %>
+﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="advanced_search.aspx.cs" Inherits="WholesomeMVC.WebForms.advanced_search" %>
 
 <!DOCTYPE html>
 <html lang="en">

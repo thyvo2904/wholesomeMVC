@@ -190,6 +190,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CsClass\Account.cs" />
+    <Compile Include="CsClass\Hint.cs" />
+    <Compile Include="CsClass\Parsed.cs" />
     <Compile Include="WebForms\account_management.aspx.cs">
       <DependentUpon>account_management.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -317,20 +319,6 @@
     <Compile Include="CsClass\RootMarket.cs" />
     <Compile Include="CsClass\RootObject.cs" />
     <Compile Include="CsClass\RootThing.cs" />
-    <Compile Include="WebForms\Recipe.aspx.cs">
-      <DependentUpon>Recipe.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForms\Recipe.aspx.designer.cs">
-      <DependentUpon>Recipe.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForms\saved_items.aspx.cs">
-      <DependentUpon>saved_items.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForms\saved_items.aspx.designer.cs">
-      <DependentUpon>saved_items.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CsClass\Search.cs" />
     <Compile Include="CsClass\Startup.cs" />
     <Compile Include="WebForms\Sync_Database.aspx.cs">
@@ -370,11 +358,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Custom\Fb_Category.css" />
+    <Content Include="Content\Custom\Fb_Categories.css" />
+    <Content Include="Content\Custom\indexresult.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\icons8-milk-100.png" />
+    <Content Include="Content\Images\icons8-natural-food-100.png" />
+    <Content Include="Content\Images\icons8-strawberry-100.png" />
+    <Content Include="Content\Images\icons8-teddy-bear-100.png" />
+    <Content Include="Content\Images\icons8-wheat-100.png" />
+    <Content Include="Content\Images\icons8-wine-bottle-100.png" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Scripts\Custom\Fb_categories.js" />
+    <Content Include="Scripts\Custom\indexresult.js" />
     <Content Include="Scripts\Custom\site.js" />
     <Content Include="WebForms\account_management.aspx" />
     <Content Include="Activation.aspx" />
@@ -411,8 +407,6 @@
     <Content Include="WebForms\indexresult.aspx" />
     <Content Include="WebForms\manual_input.aspx" />
     <Content Include="Populate_table.aspx" />
-    <Content Include="WebForms\Recipe.aspx" />
-    <Content Include="WebForms\saved_items.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
