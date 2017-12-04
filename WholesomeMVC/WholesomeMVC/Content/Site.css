@@ -6,6 +6,7 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+	margin-top: 80px;
 	padding-left: 15px;
 	padding-right: 15px;
 }
@@ -25,6 +26,9 @@
 /* override bootstrap default navbar links */
 .navbar-nav > li > a {
 	line-height: 50px;
+}
+.navbar .lead {
+	margin: 0;
 }
 
 /* style image */
@@ -66,4 +70,9 @@
 	padding: 0;
 	margin: 0;
 	display: inline-block;
+}
+
+/* search bar */
+#search-panel {
+	padding: 15px;
 }

@@ -9,8 +9,6 @@ namespace WholesomeMVC.WebForms
 {
     public partial class index : System.Web.UI.Page
     {
-        public static string foodSearch;
-
         protected void Page_Load(object sender, EventArgs e)
         {
 			if (IsPostBack) {
@@ -43,6 +41,8 @@ namespace WholesomeMVC.WebForms
 
         protected void btnSearch(object sender, EventArgs e)
         {
+			String foodSearch = "";
+
 			if (txtSearch.Text != "") {
 				switch (ddlCategory.SelectedIndex)
 				{

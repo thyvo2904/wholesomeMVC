@@ -11,9 +11,10 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <link href="/Content/Site.css" rel="stylesheet" type="text/css" runat="server" />
 </head>
 <body>
-    <div class="navbar navbar-default">
+    @*<div class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -35,24 +36,26 @@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
+    </div>*@
     <div class="container body-content">
         @RenderBody()
     </div>
 
-    <footer class="container">
-        <hr />
-        <ul class="text-center footer-link">
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>&bull;</li>
-			<li>@Html.ActionLink("Nutrient Calculator", "NutrientCalculator", "Home")</li>
-            <li>&bull;</li>
-			<li>@Html.ActionLink("Recent", "Recent", "Home")</li>
-            <li>&bull;</li>
-			<li>@Html.ActionLink("Saved Items", "SavedItems", "Home")</li>
-        </ul>
-        <br />
-        <p class="text-center">&copy; @DateTime.Now.Year - Wholesome Inc. All rights reserved.</p>
+    <footer class="navbar navbar-fixed-bottom">
+		<div class="container">
+			<hr />
+			<ul class="text-center footer-link">
+				<li>@Html.ActionLink("Home", "Index", "Home")</li>
+				<li>&bull;</li>
+				<li>@Html.ActionLink("Nutrient Calculator", "NutrientCalculator", "Home")</li>
+				<li>&bull;</li>
+				<li>@Html.ActionLink("Recent", "Recent", "Home")</li>
+				<li>&bull;</li>
+				<li>@Html.ActionLink("Saved Items", "SavedItems", "Home")</li>
+			</ul>
+			<br />
+			<p class="text-center">&copy; @DateTime.Now.Year - Wholesome Inc. All rights reserved.</p>
+		</div>
     </footer>
 
     @Scripts.Render("~/bundles/jquery")

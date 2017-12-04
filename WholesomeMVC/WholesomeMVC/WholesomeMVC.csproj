@@ -363,6 +363,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Scripts\Custom\site.js" />
     <Content Include="WebForms\account_management.aspx" />
     <Content Include="Activation.aspx" />
     <Content Include="WebForms\add_item.aspx" />
@@ -407,6 +411,11 @@
     <Content Include=".DS_Store" />
     <Content Include="AutoComplete.ashx" />
     <Content Include="ClassDiagram.cd" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
