@@ -317,6 +317,13 @@
     <Compile Include="CsClass\RootMarket.cs" />
     <Compile Include="CsClass\RootObject.cs" />
     <Compile Include="CsClass\RootThing.cs" />
+    <Compile Include="WebForms\Recipe.aspx.cs">
+      <DependentUpon>Recipe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Recipe.aspx.designer.cs">
+      <DependentUpon>Recipe.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\saved_items.aspx.cs">
       <DependentUpon>saved_items.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -363,6 +370,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\FB_Category_PopUpJquery.js" />
+    <Content Include="Scripts\jquery.FB_Category.js" />
     <Content Include="WebForms\account_management.aspx" />
     <Content Include="Activation.aspx" />
     <Content Include="WebForms\add_item.aspx" />
@@ -398,6 +407,7 @@
     <Content Include="WebForms\indexresult.aspx" />
     <Content Include="WebForms\manual_input.aspx" />
     <Content Include="Populate_table.aspx" />
+    <Content Include="WebForms\Recipe.aspx" />
     <Content Include="WebForms\saved_items.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
