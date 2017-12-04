@@ -363,9 +363,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Custom\indexresult.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\icons8-milk-100.png" />
+    <Content Include="Content\Images\icons8-natural-food-100.png" />
+    <Content Include="Content\Images\icons8-strawberry-100.png" />
+    <Content Include="Content\Images\icons8-teddy-bear-100.png" />
+    <Content Include="Content\Images\icons8-wheat-100.png" />
+    <Content Include="Content\Images\icons8-wine-bottle-100.png" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Scripts\Custom\indexresult.js" />
     <Content Include="Scripts\Custom\site.js" />
     <Content Include="WebForms\account_management.aspx" />
     <Content Include="Activation.aspx" />

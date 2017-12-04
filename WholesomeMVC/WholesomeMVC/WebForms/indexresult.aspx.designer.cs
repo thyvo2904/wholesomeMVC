@@ -13,6 +13,33 @@ namespace WholesomeMVC.WebForms {
     public partial class indexresult {
         
         /// <summary>
+        /// search_summary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal search_summary;
+        
+        /// <summary>
+        /// filter_applied control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal filter_applied;
+        
+        /// <summary>
+        /// search_results control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl search_results;
+        
+        /// <summary>
         /// gridSearchResults control.
         /// </summary>
         /// <remarks>
