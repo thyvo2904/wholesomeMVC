@@ -1,13 +1,17 @@
 ﻿body {
 	background-color: #ffffff;
-	padding: 0;
-	padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+	/*padding: 0;
+	padding-bottom: 20px;
 	padding-left: 15px;
-	padding-right: 15px;
+	padding-right: 15px;*/
+	padding: 0 15px 20px 15px;
+}
+.body-content-mvc {
+	margin-top: 102px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -25,6 +29,26 @@
 /* override bootstrap default navbar links */
 .navbar-nav > li > a {
 	line-height: 50px;
+}
+.navbar .lead {
+	margin: 0;
+}
+.navbar-header > button {
+	margin: 24px 15px;
+}
+@media (min-width: 768px) and (max-width: 992px) {
+	.navbar-collapse.collapse {
+		display: none !important;
+	}
+	.navbar-collapse.collapse.in {
+		display: block !important;
+	}
+	.navbar-header .collapse, .navbar-toggle {
+		display: block !important;
+	}
+	.navbar-header {
+		float: none;
+	}
 }
 
 /* style image */
@@ -66,4 +90,9 @@
 	padding: 0;
 	margin: 0;
 	display: inline-block;
+}
+
+/* search bar */
+#search-panel {
+	padding: 23px 15px;
 }

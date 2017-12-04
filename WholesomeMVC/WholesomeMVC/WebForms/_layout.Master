@@ -1,6 +1,4 @@
-﻿
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="_layout.master.cs" Inherits="WholesomeMVC._layout" %>
-
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="_layout.master.cs" Inherits="WholesomeMVC._layout" %>
 
 <!DOCTYPE html>
 
@@ -9,13 +7,14 @@
     <title>
 		<asp:Literal ID="page_title" runat="server"></asp:Literal>
     </title>
-      
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="shortcut icon" type="image/x-icon" href="/Content/Images/favicon.ico">
 
     <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" runat="server" />
+    <link href="/Content/font-awesome.min.css" rel="stylesheet" type="text/css" runat="server" />
     <link href="/Content/Site.css" rel="stylesheet" type="text/css" runat="server" />
     
     <asp:ContentPlaceHolder ID="style" runat="server"></asp:ContentPlaceHolder>
@@ -23,66 +22,111 @@
 	<script type="text/javascript" src="/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="index.aspx" class="navbar-brand">
-                    <img src="/Content/Images/image_brand.png" alt="Wholesome Logo" class="img-responsive">
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-					<li><a href="index.aspx">Home</a></li>
-                    <li><a href="manual_input.aspx">Nutrient Calculator</a></li>
-                    <li><a href="recent.aspx">Recent</a></li>
-                    <li><a href="saved_items.aspx">Saved Items</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/Account/Register">Register</a></li>
-                    <li><a href="/Account/Login">Log in</a></li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-
     <form id="form1" runat="server">
-        <div class="container body-content">
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="index.aspx" class="navbar-brand">
+						<img src="/Content/Images/image_brand.png" alt="Wholesome Logo" class="img-responsive">
+					</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-left">
+						<li>
+							<div class="container-fluid" id="search-panel">
+								<div class="row">
+									<div class="col-sm-4">
+										<asp:DropDownList
+											ID="ddlCategory"
+											runat="server"
+											CssClass="btn btn-default dropdown-toggle"
+											AppendDataBoundItems="True"
+											OnSelectedIndexChanged="Page_Load"
+											DataSourceID="Category"
+											DataTextField="FdGrp_Desc"
+											Style="width: 100%;"
+											DataValueField="FdGrp_Desc">
+											<asp:ListItem Selected="True">Select a category</asp:ListItem>
+										</asp:DropDownList>
+										<asp:SqlDataSource
+											ID="Category"
+											runat="server"
+											ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+											SelectCommand="SELECT [FdGrp_Desc] FROM [FD_GROUP]"></asp:SqlDataSource>
+									</div>
+
+									<div class="col-sm-8">
+										<div class="input-group">
+											<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
+											<span class="input-group-btn">
+												<button type="submit" class="btn btn-default" runat="server" onserverclick="btnSearch">
+													<span class="glyphicon glyphicon-search"></span>
+												</button>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/Account/Register">Register</a></li>
+						<li><a href="/Account/Login">Log in</a></li>
+						<li>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								Menu
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="index.aspx">Home</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="manual_input.aspx">Nutrient Calculator</a></li>
+								<li><a href="recent.aspx">Recent</a></li>
+								<li><a href="saved_items.aspx">Saved Items</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container body-content">
 			<section id="body_title_wrapper" class="row text-center page-header">
 				<h2><asp:Label ID="body_title" runat="server" /></h2>
 			</section>
-            <asp:ContentPlaceHolder ID="body" runat="server"></asp:ContentPlaceHolder>
-        </div>
-    </form>
+			<asp:ContentPlaceHolder ID="body" runat="server"></asp:ContentPlaceHolder>
+		</div>
 
-    <footer class="container">
-		<section class="row">
-			<hr />
-			<ul class="text-center footer-link">
-				<li><a href="index.aspx">Home</a></li>
-				<li>&bull;</li>
-				<li><a href="manual_input.aspx">Nutrient Calculator</a></li>
-				<li>&bull;</li>
-				<li><a href="recent.aspx">Recent</a></li>
-				<li>&bull;</li>
-				<li><a href="saved_items.aspx">Saved Items</a></li>
-			</ul>
-			<br />
-			<p class="text-center">
-				&copy;
+		<footer class="container">
+			<section class="row">
+				<hr />
+				<ul class="text-center footer-link">
+					<li><a href="index.aspx">Home</a></li>
+					<li>&bull;</li>
+					<li><a href="manual_input.aspx">Nutrient Calculator</a></li>
+					<li>&bull;</li>
+					<li><a href="recent.aspx">Recent</a></li>
+					<li>&bull;</li>
+					<li><a href="saved_items.aspx">Saved Items</a></li>
+				</ul>
+				<br />
+				<p class="text-center">
+					&copy;
 				<asp:Label runat="server" ID="label_year"></asp:Label>
-				- Wholesome Inc. All rights reserved.
-			</p>
-		</section>
-	</footer>
+					- Wholesome Inc. All rights reserved.
+				</p>
+			</section>
+		</footer>
+	</form>
 
     <script src="/Scripts/jquery-1.10.2.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/Custom/site.js"></script>
 
     <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
 </body>
