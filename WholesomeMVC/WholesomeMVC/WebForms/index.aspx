@@ -8,18 +8,19 @@
     <section id="banner">
         <div class="background-color">
             <div class="text-center">
-                <h1><asp:Label ID="banner_message" runat="server" /></h1>
+                <h1 class="hidden-xs"><asp:Label ID="banner_message" runat="server" /></h1>
 
-                <div class="row" id="search-panel">
-                    <div>
+                <div class="container-fluid" id="search-panel">
+                    <div class="col-sm-4">
                         <asp:DropDownList
                             ID="ddlCategory"
                             runat="server"
-                            CssClass="col-lg-4 btn btn-default btn-lg dropdown-toggle"
+                            CssClass="btn btn-default btn-lg dropdown-toggle"
                             AppendDataBoundItems="True"
                             OnSelectedIndexChanged="Page_Load"
                             DataSourceID="Category"
                             DataTextField="FdGrp_Desc"
+							style="width: 100%;"
                             DataValueField="FdGrp_Desc">
                             <asp:ListItem Selected="True">Select a category</asp:ListItem>
                         </asp:DropDownList>
@@ -30,7 +31,7 @@
                             SelectCommand="SELECT [FdGrp_Desc] FROM [FD_GROUP]"></asp:SqlDataSource>
                     </div>
 
-                    <div class="col-lg-8">
+                    <div class="col-sm-8">
                         <div class="input-group input-group-lg">
                             <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
                             <span class="input-group-btn">

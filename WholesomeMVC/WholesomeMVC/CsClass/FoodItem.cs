@@ -11,8 +11,7 @@ using System.Data.SqlClient;
 using WholesomeMVC.WebForms;
 using System.Web.Services;
 using System.Drawing;
-
-
+using System.Configuration;
 
 namespace WholesomeMVC.WebForms
 {
@@ -487,8 +486,7 @@ namespace WholesomeMVC.WebForms
 
 
 
-            if (!Update_Item.dataSearchResults.Columns.Contains("NDBno") && !Update_Item.dataSearchResults.Columns.Contains("Name")
-                && !Update_Item.dataSearchResults.Columns.Contains("ND Score"))
+            if (!Update_Item.dataSearchResults.Columns.Contains("NDBno"))
             {
                 Update_Item.dataSearchResults.Columns.Add("NDBno", typeof(string)); // Row 0
                 Update_Item.dataSearchResults.Columns.Add("Name", typeof(string)); // Row 1
@@ -512,8 +510,7 @@ namespace WholesomeMVC.WebForms
                 Update_Item.dataSearchResults.Clear();
             }
 
-            try
-            {
+           
 
 
                 for (int i = 0; i < result.list.item.Count; i++)
@@ -630,11 +627,62 @@ namespace WholesomeMVC.WebForms
                     double good = ((newFood.nR6 * 100) / newFood.kCal) * 100;
                     double bad = ((newFood.liMT * 100) / newFood.kCal) * 100;
 
+                System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
+                {
+                    ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
+                };
+
+                Boolean foodGroup = false;
+                String foodCatNumber = "";
+
+                sc.Open();
+                SqlCommand command = new SqlCommand();
+                            command.Connection = sc;
+                            command.CommandType = System.Data.CommandType.Text;
+
+
+
+                            // ADD SESSION INFO
+                            command.CommandText = @"SELECT FdGrp_CD FROM FOOD_DES WHERE ndb_no = @ndb_no";
+                            command.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 60).Value = result2.foods[i].food.desc.ndbno;
+                            SqlDataReader readIn = command.ExecuteReader();
+                            while (readIn.Read())
+                            {
+                    foodGroup = true;
+                                foodCatNumber = readIn["FdGrp_CD"].ToString();
+                            }
+
+                            sc.Close();
+
+                sc.Open();
+                command = new SqlCommand();
+                command.Connection = sc;
+                command.CommandType = System.Data.CommandType.Text;
+
+
+
+                // ADD SESSION INFO
+                command.CommandText = @"SELECT FdGrp_Desc FROM FD_GROUP WHERE FdGrp_CD = @FdGrp_CD";
+                command.Parameters.Add("FdGrp_CD", SqlDbType.NVarChar, 4).Value = foodCatNumber;
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    row[2] = reader["FdGrp_Desc"].ToString();
+                }
+
+                sc.Close();
+
+                if (foodGroup == false)
+                {
+                    row[2] = "Branded Reference";
+                }
+
                     newFood.NRF6 = good - bad;
                     newFood.NRF6 = Math.Round(newFood.NRF6, 5);
                     row[0] = result2.foods[i].food.desc.ndbno;
                     row[1] = result2.foods[i].food.desc.name;
-                    row[2] = result2.foods[i].food.desc.group;
+                    //row[2] = result2.foods[i].food.desc.group;
                     //row[3] = newFood.protein;
                     //row[4] = newFood.fiber;
                     //row[5] = newFood.vitaminA;
@@ -648,11 +696,7 @@ namespace WholesomeMVC.WebForms
                     row[3] = newFood.NRF6;
                     Update_Item.dataSearchResults.Rows.Add(row);
                 }
-            }
-            catch (Exception e)
-            {
-
-            }
+            
         }
 
         public static void setCeresData(String addCeresID, String addDescription)

@@ -491,30 +491,31 @@ namespace WholesomeMVC.WebForms
                 description = description.Substring(0, 48);
             }
 
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
-                {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
+            };
+            SqlCommand command = new SqlCommand();
+                    command.Connection = sc;
                     command.CommandType = System.Data.CommandType.Text;
-
+            sc.Open();
 
 
                     // ADD SESSION INFO
                     command.CommandText = @"SELECT FdGrp_CD FROM FD_GROUP WHERE FdGrp_Desc = @FdGrp_Desc";
                     command.Parameters.Add("@FdGrp_Desc", SqlDbType.NVarChar, 60).Value = foodGroup;
+
                     SqlDataReader readIn = command.ExecuteReader();
                     while (readIn.Read())
                     {
-                       foodGroupNumber  = readIn["FdGrp_Desc"].ToString();
+                       foodGroupNumber  = readIn["FdGrp_CD"].ToString();
                     }
 
-                    connection.Close();
+                    sc.Close();
 
-
+            sc.Open();
                     SqlCommand command1 = new SqlCommand();
-                    command1.Connection = connection;
+                    command1.Connection = sc;
                     command1.CommandType = System.Data.CommandType.Text;
 
                     // ADD SESSION INFO
@@ -534,9 +535,9 @@ namespace WholesomeMVC.WebForms
                     command1.Parameters.Add("@Lastupdated", SqlDbType.Date).Value = DateTime.Now;
 
 
-                    connection.Open();
+                    
                     command1.ExecuteNonQuery();
-                    connection.Close();
+                    sc.Close();
 
 
                     //int count = 0;
@@ -592,8 +593,7 @@ namespace WholesomeMVC.WebForms
                     //{
                     //    Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
                     //}
-                }
-            }
+                
 
 
         }

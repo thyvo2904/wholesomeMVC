@@ -14,4 +14,6 @@ public class Desc
     public string manu { get; set; }
     public string ru { get; set; }
     public string group { get; set; }
+    public string fg { get; set; }
+
 }
