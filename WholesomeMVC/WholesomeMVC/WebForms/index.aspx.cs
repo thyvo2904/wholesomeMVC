@@ -21,9 +21,10 @@ namespace WholesomeMVC.WebForms
 				page_title.Text = strTitle;
 
 				banner_message.Text = @"
-					Wholesome can quickly find out the different nutritional values of your food options.
-					It's time to decide what works best for you yourself!
-				";
+					Using Wholesome, you can quickly find out the different nutritional values of your 
+                    food options and decide for yourself what works for you and your needs.
+
+                ";
 
 				image_nutrient_calculator.ImageUrl = "/Content/Images/icons8-calculator-100.png";
 				link_nutrient_calculator.NavigateUrl = "manual_input.aspx";
