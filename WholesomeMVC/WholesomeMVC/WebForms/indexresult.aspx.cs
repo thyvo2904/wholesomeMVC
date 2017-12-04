@@ -38,6 +38,20 @@ namespace WholesomeMVC.WebForms
 				Label body_title = (Label) Master.FindControl("body_title");
 				body_title.Text = strTitle;
 
+				image_grain.ImageUrl = "/Content/Images/icons8-wheat-100.png";
+				image_vegetables.ImageUrl = "/Content/Images/icons8-broccoli-100.png";
+				image_fruit.ImageUrl = "/Content/Images/icons8-apple-100.png";
+				image_dairy.ImageUrl = "/Content/Images/icons8-cheese-100.png";
+				image_baby_food.ImageUrl = "/Content/Images/icons8-baby-bottle-100.png";
+				image_beverages.ImageUrl = "/Content/Images/icons8-wine-glass-100.png";
+
+				button_grain.Text = "Grain";
+				button_vegetables.Text = "Vegetables";
+				button_fruit.Text = "Fruit";
+				button_dairy.Text = "Dairy";
+				button_baby_food.Text = "Baby Food";
+				button_beverages.Text = "Beverages";
+
 				BindDataFromDB();
             }
 		}

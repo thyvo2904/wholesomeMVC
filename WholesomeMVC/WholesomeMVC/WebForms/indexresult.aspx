@@ -10,38 +10,38 @@
 		<div class="row">
 			<div class="col-xs-6 col-sm-4 col-md-2 text-center">
 				<div class="panel panel-default text-center filter-button">
-					<asp:Image ImageUrl="/Content/Images/icons8-wheat-100.png" runat="server" />
-					<asp:Button Text="Grain" runat="server" CssClass="btn btn-default btn-block" />
+					<asp:Image ID="image_grain" runat="server" />
+					<asp:Button ID="button_grain" Text="Grain" runat="server" CssClass="btn btn-default btn-block" />
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-2 text-center">
 				<div class="panel panel-default text-center filter-button">
-					<asp:Image ImageUrl="/Content/Images/icons8-natural-food-100.png" runat="server" />
-					<asp:Button Text="Vegetables" runat="server" CssClass="btn btn-default btn-block" />
+					<asp:Image ID="image_vegetables" runat="server" />
+					<asp:Button ID="button_vegetables" Text="Vegetables" runat="server" CssClass="btn btn-default btn-block" />
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-2 text-center">
 				<div class="panel panel-default text-center filter-button">
-					<asp:Image ImageUrl="/Content/Images/icons8-strawberry-100.png" runat="server" />
-					<asp:Button Text="Fruit" runat="server" CssClass="btn btn-default btn-block" />
+					<asp:Image ID="image_fruit" runat="server" />
+					<asp:Button ID="button_fruit" runat="server" CssClass="btn btn-default btn-block" />
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-2 text-center">
 				<div class="panel panel-default text-center filter-button">
-					<asp:Image ImageUrl="/Content/Images/icons8-milk-100.png" runat="server" />
-					<asp:Button Text="Dairy" runat="server" CssClass="btn btn-default btn-block" />
+					<asp:Image ID="image_dairy" runat="server" />
+					<asp:Button ID="button_dairy" runat="server" CssClass="btn btn-default btn-block" />
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-2 text-center">
 				<div class="panel panel-default text-center filter-button">
-					<asp:Image ImageUrl="/Content/Images/icons8-teddy-bear-100.png" runat="server" />
-					<asp:Button Text="Baby Food" runat="server" CssClass="btn btn-default btn-block" />
+					<asp:Image ID="image_baby_food" runat="server" />
+					<asp:Button ID="button_baby_food" runat="server" CssClass="btn btn-default btn-block" />
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-2 text-center">
 				<div class="panel panel-default text-center filter-button">
-					<asp:Image ImageUrl="/Content/Images/icons8-wine-bottle-100.png" runat="server" />
-					<asp:Button Text="Beverages" runat="server" CssClass="btn btn-default btn-block" />
+					<asp:Image ID="image_beverages" runat="server" />
+					<asp:Button ID="button_beverages" runat="server" CssClass="btn btn-default btn-block" />
 				</div>
 			</div>
 		</div>
