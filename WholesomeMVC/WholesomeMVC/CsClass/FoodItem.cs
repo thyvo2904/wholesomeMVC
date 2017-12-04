@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net;
 using Newtonsoft.Json;
 using System.Data;
-using System.Data.SqlClient;
-using WholesomeMVC.WebForms;
-using System.Web.Services;
 using System.Drawing;
 
 
@@ -21,7 +15,7 @@ namespace WholesomeMVC.WebForms
     {
        
         public string name { get; set; }
-        public String ndbNo { get; set; }
+        public string ndbNo { get; set; }
         public double protein { get; set; }
         public double fiber { get; set; }
         public double vitaminA { get; set; }

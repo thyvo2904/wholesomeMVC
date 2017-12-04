@@ -1,4 +1,6 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="_layout.master.cs" Inherits="WholesomeMVC._layout" %>
+﻿
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="_layout.master.cs" Inherits="WholesomeMVC._layout" %>
+
 
 <!DOCTYPE html>
 
@@ -7,7 +9,7 @@
     <title>
 		<asp:Literal ID="page_title" runat="server"></asp:Literal>
     </title>
-
+      
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -43,6 +45,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/Account/Register">Register</a></li>
                     <li><a href="/Account/Login">Log in</a></li>
+
                 </ul>
             </div>
         </div>
