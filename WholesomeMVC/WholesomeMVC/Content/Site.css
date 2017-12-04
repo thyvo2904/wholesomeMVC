@@ -1,10 +1,20 @@
-﻿@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed|Montserrat');
-html {
-	font-family: 'Montserrat', sans-serif !important;
+﻿/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+	white-space: normal;
+}
+
+/*------------------------------------------------------------------------------
+    CUSTOM CSS START HERE
+------------------------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400|Lato');
+html, body {
+	font-family: 'Lato', sans-serif !important;
 }
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-	font-family: 'Fira Sans Condensed', sans-serif !important;
+	font-family: 'Fira Sans', sans-serif !important;
 }
 
 body {
@@ -23,17 +33,9 @@ body {
 	margin-top: 102px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-	white-space: normal;
+#content_header {
+	margin-bottom: 25px;
 }
-
-/*------------------------------------------------------------------------------
-    CUSTOM CSS START HERE
-------------------------------------------------------------------------------*/
-/* utility classes */
 
 /* override bootstrap default navbar links */
 .navbar.navbar-default {
