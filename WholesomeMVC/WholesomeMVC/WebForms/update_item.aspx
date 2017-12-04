@@ -16,7 +16,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="Fb_categories.js"></script>
   <link href="/css/additem.css" rel="stylesheet" type="text/css" runat="server"/>
+    <link href="Fb_category.css" rel="stylesheet" type="text/css" runat="server"/>
   <style>
 
     ul.ui-autocomplete {
@@ -94,6 +96,8 @@
             }
         }
         </script>
+
+    
 </head>
 
 <body>
@@ -209,6 +213,8 @@
     
 
      </div>
+
+         
     
 <br> 
   <div class="wrapper">
@@ -348,7 +354,7 @@
          </div>
 
          <div id="divgridview">
-             <asp:GridView ID="gridUSDAChoices" runat="server" AutoGenerateColumns="false" onselectedindexchanged="gridSearchResults_SelectedIndexChanged" HorizontalAlign="Center">
+             <asp:GridView ID="gridUSDAChoices" runat="server" OnRowDataBound="gridUSDAChoices_RowDataBound" AutoGenerateColumns="false" onselectedindexchanged="gridSearchResults_SelectedIndexChanged" HorizontalAlign="Center">
              <Columns>
              <asp:BoundField DataField ="NDBno" HeaderText ="NDBno"/>
              <asp:BoundField DataField ="Name" HeaderText ="Name"/>
@@ -358,8 +364,44 @@
          </Columns>
                      </asp:GridView>
              </div>
-      
-         <br><br><br><br><br><br>
+         <br>
+         <asp:Label ID="lblFBCategories" visible="false" runat="server" Text="Choose a Food Bank Category"></asp:Label>
+         <br>
+         <asp:DropDownList ID="ddlFBCategories" runat="server" Visible="False">
+             <asp:ListItem>Baby</asp:ListItem>
+             <asp:ListItem>Beverage</asp:ListItem>
+             <asp:ListItem>Bread</asp:ListItem>
+             <asp:ListItem>Cereal/Brk</asp:ListItem>
+             <asp:ListItem>complete</asp:ListItem>
+             <asp:ListItem>Condiment</asp:ListItem>
+             <asp:ListItem>dairy</asp:ListItem>
+             <asp:ListItem>dessert</asp:ListItem>
+             <asp:ListItem>Dough</asp:ListItem>
+             <asp:ListItem>Dressing</asp:ListItem>
+             <asp:ListItem>Entree</asp:ListItem>
+             <asp:ListItem>Fruit/veg</asp:ListItem>
+             <asp:ListItem>Fruits</asp:ListItem>
+             <asp:ListItem>Grain</asp:ListItem>
+             <asp:ListItem>Juice</asp:ListItem>
+             <asp:ListItem>Mixed/Asst</asp:ListItem>
+             <asp:ListItem>NF</asp:ListItem>
+             <asp:ListItem>Non-Dairy</asp:ListItem>
+             <asp:ListItem>Nutrition</asp:ListItem>
+             <asp:ListItem>Pasta</asp:ListItem>
+             <asp:ListItem>Pro-Meat</asp:ListItem>
+             <asp:ListItem>Pro-Non</asp:ListItem>
+             <asp:ListItem>Rice</asp:ListItem>
+             <asp:ListItem>Salvage</asp:ListItem>
+             <asp:ListItem>Snack</asp:ListItem>
+             <asp:ListItem>Vegetables</asp:ListItem>
+         </asp:DropDownList>
+
+         <asp:Button ID="btnSelectFBCategory" runat="server" OnClick="btnSelectFBCategory_Click" Text="Select" Visible="False" />
+
+         <br>
+         
+         
+         <br><br><br><br><br>
     
 
     </form>
