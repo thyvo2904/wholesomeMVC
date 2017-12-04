@@ -114,7 +114,7 @@ namespace WholesomeMVC.WebForms
 
 			returnValue = String.Format(@"
 				<div class='col-sm-6 col-md-4 col-lg-3'>
-					<div class='panel panel-default' style='border-color: {2};'>
+					<div class='panel panel-default' style='border-bottom: 5px solid {2};'>
 						<div class='panel-body'>
 							<h4 class='panel-title equal-height'>{0}</h4>
 							<h4><strong>ND_Score: <span style='color: {2};'>{1}<span></strong></h4>
