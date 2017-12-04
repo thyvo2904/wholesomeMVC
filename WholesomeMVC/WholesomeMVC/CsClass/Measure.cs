@@ -13,4 +13,6 @@ public class Measure
     public string eunit { get; set; }
     public double qty { get; set; }
     public string value { get; set; }
+    public string uri { get; set; }
+ 
 }

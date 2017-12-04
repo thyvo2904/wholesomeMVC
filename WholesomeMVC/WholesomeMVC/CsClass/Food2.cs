@@ -14,5 +14,7 @@ public class Food2
     public Ing ing { get; set; }
     public List<Nutrient> nutrients { get; set; }
     public List<object> footnotes { get; set; }
+    public string uri { get; set; }
+    public string label { get; set; }
 
 }
