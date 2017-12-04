@@ -75,8 +75,7 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/Account/Register">Register</a></li>
-						<li><a href="/Account/Login">Log in</a></li>
+						<li><a href="/Manage/Index">Account</a></li>
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								Menu

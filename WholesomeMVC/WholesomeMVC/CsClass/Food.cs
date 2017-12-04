@@ -13,4 +13,6 @@ using Newtonsoft.Json;
 public class Food
 {
     public Food2 food { get; set; }
+    public string uri { get; set; }
+    public string label { get; set; }
 }
