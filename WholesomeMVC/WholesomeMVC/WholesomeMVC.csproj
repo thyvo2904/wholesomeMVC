@@ -189,7 +189,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CsClass\Account.cs" />
     <Compile Include="CsClass\Hint.cs" />
     <Compile Include="CsClass\Parsed.cs" />
     <Compile Include="WebForms\account_management.aspx.cs">
