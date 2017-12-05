@@ -229,9 +229,6 @@
       <DependentUpon>farmers_market.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\Farmers_Market.aspx.designer.cs">
-      <DependentUpon>farmers_market.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CsClass\Food.cs" />
     <Compile Include="CsClass\Food2.cs" />
     <Compile Include="CsClass\FoodItem.cs" />
@@ -240,6 +237,9 @@
     </Compile>
     <Compile Include="CsClass\GradientColors.cs" />
     <Compile Include="CsClass\GradientValues.cs" />
+    <Compile Include="WebForms\Farmers_Market.aspx.designer.cs">
+      <DependentUpon>farmers_market.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
