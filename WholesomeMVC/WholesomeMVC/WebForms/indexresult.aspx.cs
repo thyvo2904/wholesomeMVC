@@ -310,20 +310,20 @@ namespace WholesomeMVC.WebForms
             					@calories
             				)
             			";
-                			command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = savedNdb_no;
-                			command1.Parameters.Add("@nrf6", SqlDbType.NVarChar, 50).Value = lblName.Value;
-                			command1.Parameters.Add("@name", SqlDbType.Decimal).Value = savedNrf6;
-                			command1.Parameters.Add("@loginid", SqlDbType.NVarChar, 4).Value = savedFoodGroup;
-                			command1.Parameters.Add("@protein", SqlDbType.NVarChar, 20).Value = "Nathan Hamrick";
-                			command1.Parameters.Add("@fiber", SqlDbType.Date).Value = DateTime.Now;
-                            command1.Parameters.Add("@va", SqlDbType.Decimal, 8).Value = savedNdb_no;
-                            command1.Parameters.Add("@vc", SqlDbType.Decimal, 50).Value = lblName.Value;
-                            command1.Parameters.Add("@calcium", SqlDbType.Decimal).Value = savedNrf6;
-                            command1.Parameters.Add("@iron", SqlDbType.Decimal, 4).Value = savedFoodGroup;
-                            command1.Parameters.Add("@satfat", SqlDbType.Decimal, 20).Value = "Nathan Hamrick";
-                            command1.Parameters.Add("@sugar", SqlDbType.Decimal).Value = DateTime.Now;
-                            command1.Parameters.Add("@sodium", SqlDbType.Decimal).Value = savedNrf6;
-                            command1.Parameters.Add("@calories", SqlDbType.NVarChar, 4).Value = savedFoodGroup;
+                			command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
+                			command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult;
+                			command1.Parameters.Add("@name", SqlDbType.VarChar,50).Value = lblName.Value;
+                			command1.Parameters.Add("@loginid", SqlDbType.Int).Value = savedFoodGroup; // adminloginid
+                			command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
+                			command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
+                            command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;
+                            command1.Parameters.Add("@vc", SqlDbType.Decimal).Value = txtvc.Text;
+                            command1.Parameters.Add("@calcium", SqlDbType.Decimal).Value = txtcalcium.Text;
+                            command1.Parameters.Add("@iron", SqlDbType.Decimal).Value = txtiron.Text;
+                            command1.Parameters.Add("@satfat", SqlDbType.Decimal, 20).Value = txtsatfat.Text;
+                            command1.Parameters.Add("@sugar", SqlDbType.Decimal).Value = txtsugar.Text;
+                            command1.Parameters.Add("@sodium", SqlDbType.Decimal).Value = txtsodium.Text;
+                            command1.Parameters.Add("@calories", SqlDbType.Decimal).Value = txtcalories.Text;
 
                             connection.Open();
                 			command1.ExecuteNonQuery();
