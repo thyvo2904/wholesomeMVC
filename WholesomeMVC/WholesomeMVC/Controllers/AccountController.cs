@@ -58,8 +58,8 @@ namespace WholesomeMVC.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = "~/WebForms/index.aspx";
-            return View();
+            ViewBag.ReturnUrl = returnUrl;
+            return View(returnUrl);
         }
 
         //

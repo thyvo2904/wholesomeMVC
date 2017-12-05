@@ -13,13 +13,13 @@ namespace WholesomeMVC.WebForms
         {
             label_year.Text = DateTime.Now.Year.ToString();
 
-            if (Request.IsAuthenticated)
+            //if (Request.IsAuthenticated)
         
               
-                {
-                    login.Text = "Account";
-                    login.NavigateUrl = "~/Manage/Index";
-                }
+            //    {
+            //        login.Text = "Account";
+            //        login.NavigateUrl = "~/Manage/Index";
+            //    }
             
         }
 
