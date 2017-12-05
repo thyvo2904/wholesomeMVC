@@ -55,6 +55,12 @@ namespace WholesomeMVC.WebForms
             }
 		}
 
+		/***
+		 * Use Pull_New_Ceres_Items and Update_Ceres_Items stored procedure to fetch data.
+		 * Loop through the data set.
+		 * For each row in the data set, call GenerateHtmlForEachItem() to generate HTML code.
+		 * Render generated HTML to search_results section.
+		 */
 		protected void BindDataFromDB()
 		{
 			System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection {
@@ -141,6 +147,12 @@ namespace WholesomeMVC.WebForms
 			return returnValue;
 		}
 
+		/***
+		 * Get the ndbno from a hidden field in front-end.
+		 * Get data using FoodItem.findNdbno method and ndbno.
+		 * Style the NR Score accordingly.
+		 * Update data to modal section in front-end.
+		 */
 		protected void ExpandItem(object sender, EventArgs e)
 		{
 			string ndbno = lblNdbno.Value;
@@ -189,6 +201,94 @@ namespace WholesomeMVC.WebForms
 			txtvc.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
 			txtcalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
 			txtiron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+		}
+
+		/***
+		 * Using the static saved data in this class, update Wholesome_Item table.
+		 * 
+		 * TODO: 
+		 * Check if the ceres item is null.
+		 * If ceres item doesn't exist prompt the user to open ceres and enter it there first.
+		 */
+		protected void SaveItem(object sender, EventArgs e)
+		{
+			//FoodItem.findNdbno(ndb_no);
+
+			String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+			String name = lblName.Value;
+
+			// Check if the ceres item is null. If ceres item doesn't exist prompt the user to open ceres and enter it there first
+			if (txtCeresNumber.Text == "" || txtCeresDescription.Text == "") {
+				using (SqlConnection connection = new SqlConnection(ConnectionString)) {
+					SqlCommand command1 = new SqlCommand();
+					command1.Connection = connection;
+					command1.CommandType = System.Data.CommandType.Text;
+
+					//if (FoodItem.newFood.name.Length > 48)
+					//{
+					//    FoodItem.newFood.name = FoodItem.newFood.name.Substring(0, 48);
+					//}
+					if (savedFoodGroup == "") { savedFoodGroup = "BRND"; }
+
+					command1.CommandText = @"
+						INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] (
+							[NDB_No],
+							[nrf6],
+							[FdGrp_CD],
+							[LastUpdatedBy],
+							[LastUpdated],
+							[Description 2]
+						) VALUES (
+							@ndbno,
+							@nrf6,
+							@FdGrp_CD,
+							@lastupdatedby,
+							@lastupdated,
+							@Description2
+						)
+					";
+					command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = savedNdb_no;
+					command1.Parameters.Add("@Description2", SqlDbType.NVarChar, 50).Value = lblName.Value;
+					command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = savedNrf6;
+					command1.Parameters.Add("@FdGrp_CD", SqlDbType.NVarChar, 4).Value = savedFoodGroup;
+					command1.Parameters.Add("@lastupdatedby", SqlDbType.NVarChar, 20).Value = "Nathan Hamrick";
+					command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+
+					connection.Open();
+					command1.ExecuteNonQuery();
+					connection.Close();
+				}
+			} else {
+				using (SqlConnection connection = new SqlConnection(ConnectionString))
+				{
+					SqlCommand command1 = new SqlCommand();
+					command1.Connection = connection;
+					command1.CommandType = System.Data.CommandType.Text;
+
+					//if (FoodItem.newFood.name.Length > 48)
+					//{
+					//    FoodItem.newFood.name = FoodItem.newFood.name.Substring(0, 48);
+					//}
+
+
+					command1.CommandText = @"UPDATE [wholesomeDB].[dbo].[Wholesome_Item] SET ndb_no = @ndbno, nrf6 = @nrf6, FdGrp_CD = @FdGrp_CD,"
+					+ " LastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [description 2] = @description2 WHERE No_ = @No_";
+
+					command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;
+					command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
+					command1.Parameters.Add("@description2", SqlDbType.VarChar, 50).Value = FoodItem.newFood.name;
+					command1.Parameters.Add("@FdGrp_CD", SqlDbType.VarChar, 4).Value = FoodItem.newFood.foodGroup;
+					command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = FoodItem.newFood.NRF6;
+					command1.Parameters.Add("@lastupdatedby", SqlDbType.NVarChar, 20).Value = "Nathan Hamrick";
+					command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+
+					connection.Open();
+					command1.ExecuteNonQuery();
+					connection.Close();
+				}
+			}
+
+			savedNdb_no = "";
 		}
 	}
 }
