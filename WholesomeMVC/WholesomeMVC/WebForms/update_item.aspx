@@ -5,7 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" 
+
+    content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
 <title>Wholesome | Update Item</title>
 
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="screen">
@@ -16,7 +18,17 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="scripts/jquery.responsivetable.min.js"></script> 
     <script src="Fb_categories.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/css/footable.min.css"
+    rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/js/footable.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('[id*=gridMatchedCeresIDS]').footable();
+    });
+</script>
   <link href="/css/additem.css" rel="stylesheet" type="text/css" runat="server"/>
     <link href="Fb_category.css" rel="stylesheet" type="text/css" runat="server"/>
   <style>
@@ -113,7 +125,18 @@
             }
         }
         </script>
-
+    <script>
+$(document).ready(function() {
+    
+    // Custom settings
+    $('.matchedCeresIDS').responsiveTable({
+        staticColumns: 2, 
+        scrollRight: true, 
+        scrollHintEnabled: true, 
+        scrollHintDuration: 2000
+    });
+});  
+    </script>
     
 </head>
 
@@ -247,9 +270,19 @@
     <td>Matched Items </td>
     <%--<td><asp:TextBox ID="txtNumber" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNumber" ID="chkItemNumber" runat="server" ValidationGroup="UpdateItem" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
   </tr>--%>
-  <select id="ddlMatchedCeresID" runat="server" name="Matched Ceres ID's">
-
-  </select>
+  <%--<select id="ddlMatchedCeresID" runat="server" name="Matched Ceres ID's">--%>
+         <asp:GridView ID="gridMatchedCeresIDS" runat="server" CssClass="footable" Style="max-width: 500px" OnRowDataBound="ceresMatchedOnRowDataBound" AutoGenerateColumns="False" RowStyle-Wrap="false">
+             <Columns>
+             <asp:BoundField DataField ="CeresID" HeaderText ="CeresID"/>
+             <asp:BoundField DataField ="Ceres_Name" HeaderText ="Ceres_Name"/>
+             <asp:BoundField DataField ="USDA Number" HeaderText ="NDBno"/>
+             <asp:BoundField DataField ="Name" HeaderText ="Name"/>
+             <asp:BoundField DataField ="ND score" HeaderText ="ND Score" />
+          <asp:commandfield showselectbutton="true" selectText ="Update"/>
+         </Columns>
+                     </asp:GridView>
+         <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+  <%--</select>--%>
       
   <tr>
     <td></td>
