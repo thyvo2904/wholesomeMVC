@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="add_item.aspx.cs" Inherits="WholesomeMVC.WebForms.add_item" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/WebForms/_layout.Master"  AutoEventWireup="True" CodeBehind="add_item.aspx.cs" Inherits="WholesomeMVC.WebForms.add_item" %>
 
 <!DOCTYPE html>
 
