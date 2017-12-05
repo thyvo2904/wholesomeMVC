@@ -178,7 +178,7 @@ namespace WholesomeMVC.WebForms
 			lblIndexResult.Text = Convert.ToString(Math.Round(score, 2));
 			lblNdbno.Value = FoodItem.newFood.ndbNo;
 			lblName.Value = FoodItem.newFood.name;
-
+            
 			txtcalories.Text = FoodItem.newFood.kCal.ToString();
 			txtsatfat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
 			txtsodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();

@@ -102,7 +102,7 @@ namespace WholesomeMVC.WebForms
                 {
 
                     newFood.ndbNo = result.list.item[i].ndbno;
-                    //newFood.name = result.list.item[i].name;
+                    newFood.name = result.list.item[i].name;
 
                     //row[0] = newFood.ndbNo;
                     //row[1] = newFood.name;
