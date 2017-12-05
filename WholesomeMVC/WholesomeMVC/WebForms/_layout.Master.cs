@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.AspNet.Identity;
 
 namespace WholesomeMVC.WebForms
 {
@@ -13,15 +14,13 @@ namespace WholesomeMVC.WebForms
         {
             label_year.Text = DateTime.Now.Year.ToString();
 
-            //if (Request.IsAuthenticated)
-        
-              
-            //    {
-            //        login.Text = "Account";
-            //        login.NavigateUrl = "~/Manage/Index";
-            //    }
-            
-        }
+            if (Request.IsAuthenticated) {
+				login.Text = "Account";
+				login.NavigateUrl = "~/Manage/Index";
+			}
+
+			label_user.Text = HttpContext.Current.User.Identity.GetUserName();
+		}
 
 		protected void btnSearch(object sender, EventArgs e)
 		{

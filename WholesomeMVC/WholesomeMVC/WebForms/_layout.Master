@@ -100,6 +100,7 @@
 								<li><a href="Comparison.aspx">Comparison</a></li>
 							</ul>
 						</li>
+						<li><asp:Label ID="label_user" runat="server" /></li>
 					</ul>
 				</div>
 			</div>

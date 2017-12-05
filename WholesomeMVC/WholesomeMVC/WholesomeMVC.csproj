@@ -354,6 +354,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Scripts\Custom\Fb_categories.js" />
     <Content Include="Scripts\Custom\indexresult.js" />
+    <Content Include="Scripts\Custom\inventory_admin.js" />
     <Content Include="Scripts\Custom\site.js" />
     <Content Include="WebForms\add_item.aspx" />
     <Content Include="WebForms\advanced_search.aspx" />
