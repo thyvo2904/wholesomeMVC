@@ -76,7 +76,7 @@
 <asp:Content ContentPlaceHolderID="script" runat="server">
     <script type="text/javascript">
         $(document).ready(function () {
-            $("[id*=txtSearch]").autocomplete({ source: '<%=ResolveUrl("~/WebForms/AutoComplete.ashx" ) %>' });
+            $("[id*=txtSearch]").autocomplete({ source: '<%=ResolveUrl("/AutoComplete.ashx" ) %>' });
         });
     </script>
 </asp:Content>
