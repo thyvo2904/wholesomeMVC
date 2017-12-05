@@ -149,7 +149,7 @@
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
-								<asp:Button Text="Save Item" runat="server" CssClass="btn btn-success" OnClick="SaveItem" />
+								<asp:Button Text="Compare Item" runat="server" CssClass="btn btn-success" OnClick="SaveItem" />
 							</div>
 							<!-- hack to make on-server-generated buttons work -->
 							<asp:HiddenField runat="server" ID="lblNdbno" ClientIDMode="Static"></asp:HiddenField>
