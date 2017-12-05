@@ -85,6 +85,15 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.HyperLink register;
         
         /// <summary>
+        /// label_user control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_user;
+        
+        /// <summary>
         /// body_title control.
         /// </summary>
         /// <remarks>
