@@ -35,8 +35,8 @@ namespace WholesomeMVC.WebForms
 				link_recent.Text = "Recent";
 
 				image_saved_items.ImageUrl = "/Content/Images/icons8-save-100.png";
-				link_saved_items.NavigateUrl = "saved_items.aspx";
-				link_saved_items.Text = "Saved Items";
+				link_saved_items.NavigateUrl = "Comparison.aspx";
+				link_saved_items.Text = "Comparison";
 			}       
         }
 
