@@ -69,37 +69,38 @@ namespace WholesomeMVC.WebForms
 			double score = newFoodArray[intItemIndex].NRF6;
 
 			if (score < 0) {
-				colorScaleStyle = GradientColors.getColor1();
+				colorScaleStyle = GradientColors.getColor1() + " !important; color: white !important;";
 			} else if ((score >= 0) && (score <= 2.33)) {
-				colorScaleStyle = GradientColors.getColor2();
+				colorScaleStyle = GradientColors.getColor2() + " !important; color: white !important;";
 			} else if ((score > 2.33) && (score <= 4.66)) {
-				colorScaleStyle = GradientColors.getColor3();
+				colorScaleStyle = GradientColors.getColor3() + " !important; color: white !important;";
 			} else if ((score > 4.66) && (score <= 12.44)) {
-				colorScaleStyle = GradientColors.getColor4();
+				colorScaleStyle = GradientColors.getColor4() + " !important; color: black !important;";
 			} else if ((score > 12.44) && (score <= 20.22)) {
-				colorScaleStyle = GradientColors.getColor5();
+				colorScaleStyle = GradientColors.getColor5() + " !important; color: black !important;";
 			} else if ((score > 20.22) && (score <= 28)) {
-				colorScaleStyle = GradientColors.getColor6();
+				colorScaleStyle = GradientColors.getColor6() + " !important; color: black !important;";
 			} else if ((score > 28) && (score <= 35.33)) {
-				colorScaleStyle = GradientColors.getColor7();
+				colorScaleStyle = GradientColors.getColor7() + " !important; color: white !important;";
 			} else if ((score > 35.33) && (score <= 42.67)) {
-				colorScaleStyle = GradientColors.getColor8();
+				colorScaleStyle = GradientColors.getColor8() + " !important; color: white !important;";
 			} else if (score > 42.67) {
-				colorScaleStyle = GradientColors.getColor9();
+				colorScaleStyle = GradientColors.getColor9() + " !important; color: white !important;";
 			} else {
 				// do nothing
 			}
 
-			colorScaleStyle += " !important";
-
 			returnValue = String.Format(@"
 				<div class='col-sm-6 col-md-4 col-lg-3'>
 					<div class='panel panel-default'>
-						<div class='panel-heading' style='border-bottom: 5px solid {0}'>
+						<div class='panel-heading'>
 							<h4 class='panel-title equal-height'>
 								{1}
 							</h4>
-							<h4><strong>ND_Score: <span style='color: {0}'>{2}</span></strong></h4>
+						</div>
+
+						<div class='panel-body' style='background-color: {0};'>
+							<h4><strong>ND_Score: <span style='color: {0};'>{2}</span></strong></h4>
 						</div>
 
 						<div class='panel-body'>
