@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -25,11 +26,9 @@ namespace WholesomeMVC.WebForms
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (IsPostBack)
-			{
-                
-            } else
-			{
+			if (IsPostBack) {
+                // do nothing
+            } else {
 				// set page variables
 				String strTitle = "Search Results";
 
@@ -75,9 +74,6 @@ namespace WholesomeMVC.WebForms
 			//myCommand.ExecuteNonQuery();
 
 			sc.Close();
-
-			gridSearchResults.DataSource = dataSearchResults;
-			gridSearchResults.DataBind();
 
 			search_summary.Text = String.Format("Found {0} items", dataSearchResults.Rows.Count);
 			filter_applied.Text = String.Format("Filter applied: {0}", "none");
@@ -128,20 +124,71 @@ namespace WholesomeMVC.WebForms
 
 			returnValue = String.Format(@"
 				<div class='col-sm-6 col-md-4 col-lg-3'>
-					<div class='panel panel-default' style='border-bottom: 5px solid {2};'>
+					<div class='panel panel-default' style='border-bottom: 5px solid {0};'>
 						<div class='panel-body'>
-							<h4 class='panel-title equal-height'>{0}</h4>
-							<h4><strong>ND_Score: <span style='color: {2};'>{1}<span></strong></h4>
-							<button class='btn btn-default btn-block'>Expand</button>
+							<h4 id='{3}_name' class='panel-title equal-height'>{1}</h4>
+							<h4><strong>ND_Score: <span style='color: {0};'>{2}<span></strong></h4>
+							<button id='{3}' class='btn btn-default btn-block expend-button' data-toggle='modal' data-target='#expanded_view'>Expand</button>
 						</div>
 					</div>
 				</div>
 			",
+			colorScaleStyle,
 			item["name"].ToString(),
 			item["ND score"].ToString(),
-			colorScaleStyle);
+			item["NDBno"].ToString());
 
 			return returnValue;
+		}
+
+		protected void ExpandItem(object sender, EventArgs e)
+		{
+			string ndbno = lblNdbno.Value;
+			FoodItem.findNdbno(ndbno);
+
+			double score = FoodItem.newFood.NRF6;
+			String colorScaleStyle = "";
+
+			if (score < 0) {
+				colorScaleStyle = GradientColors.getColor1();
+			} else if ((score >= 0) && (score <= 2.33)) {
+				colorScaleStyle = GradientColors.getColor2();
+			} else if ((score > 2.33) && (score <= 4.66)) {
+				colorScaleStyle = GradientColors.getColor3();
+			} else if ((score > 4.66) && (score <= 12.44)) {
+				colorScaleStyle = GradientColors.getColor4();
+			} else if ((score > 12.44) && (score <= 20.22)) {
+				colorScaleStyle = GradientColors.getColor5();
+			} else if ((score > 20.22) && (score <= 28)) {
+				colorScaleStyle = GradientColors.getColor6();
+			} else if ((score > 28) && (score <= 35.33)) {
+				colorScaleStyle = GradientColors.getColor7();
+			} else if ((score > 35.33) && (score <= 42.67)) {
+				colorScaleStyle = GradientColors.getColor8();
+			} else if (score > 42.67) {
+				colorScaleStyle = GradientColors.getColor9();
+			} else {
+				// do nothing
+			}
+
+			lblIndexResult.ForeColor = ColorTranslator.FromHtml(colorScaleStyle);
+			modal_header.Attributes["style"] = String.Format("border-bottom: 5px solid {0}", colorScaleStyle);
+
+			lblFoodName.Text = FoodItem.newFood.name;
+			lblIndexResult.Text = Convert.ToString(Math.Round(score, 2));
+			lblNdbno.Value = FoodItem.newFood.ndbNo;
+			lblName.Value = FoodItem.newFood.name;
+
+			txtcalories.Text = FoodItem.newFood.kCal.ToString();
+			txtsatfat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
+			txtsodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
+			txtfiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
+			txtsugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
+			txtprotein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
+			txtva.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
+			txtvc.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
+			txtcalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
+			txtiron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
 		}
 	}
 }

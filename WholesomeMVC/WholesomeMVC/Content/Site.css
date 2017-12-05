@@ -50,20 +50,6 @@ body {
 .navbar-header > button {
 	margin: 24px 15px;
 }
-/*@media (min-width: 768px) and (max-width: 992px) {
-	.navbar-collapse.collapse {
-		display: none !important;
-	}
-	.navbar-collapse.collapse.in {
-		display: block !important;
-	}
-	.navbar-header .collapse, .navbar-toggle {
-		display: block !important;
-	}
-	.navbar-header {
-		float: none;
-	}
-}*/
 
 /* style image */
 .navbar-brand > img {
@@ -109,4 +95,12 @@ body {
 /* search bar */
 #search-panel {
 	padding: 23px 15px;
+}
+
+/* style nutrition label */
+.fat {
+	border-top: 3px solid black;
+}
+.fatter {
+	border-top: 12px solid black;
 }
