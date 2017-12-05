@@ -79,11 +79,11 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-								Account
+								<asp:Label ID="label_user" runat="server" />
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><asp:HyperLink runat="server" ID="login" Text="Login" NavigateUrl="~/Account/Login"></asp:HyperLink></li>
+								<li><asp:HyperLink runat="server" ID="log_in_out"></asp:HyperLink></li>
 								<li><asp:HyperLink runat="server" ID="register" Text="Register" NavigateUrl="~/Account/Register"></asp:HyperLink></li>
 							</ul>
 						</li>
@@ -100,7 +100,7 @@
 								<li><a href="Comparison.aspx">Comparison</a></li>
 							</ul>
 						</li>
-						<li><asp:Label ID="label_user" runat="server" /></li>
+						<li></li>
 					</ul>
 				</div>
 			</div>
@@ -135,7 +135,9 @@
 		</footer>
 	</form>
 
-    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+	<form action="/Account/LogOff" class="hidden" id="logoutForm" method="post"></form>
+
+	<script src="/Scripts/jquery-1.10.2.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
     <script src="/Scripts/Custom/site.js"></script>
 
