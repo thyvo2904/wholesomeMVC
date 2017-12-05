@@ -75,7 +75,8 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/Manage/Index">Account</a></li>
+
+						<li><asp:HyperLink runat ="server" id="login" Text ="Login" NavigateUrl="~/WebForms/index.aspx"></asp:HyperLink></li>
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								Menu
