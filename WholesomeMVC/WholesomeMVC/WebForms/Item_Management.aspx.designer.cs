@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WholesomeMVC.WebForms {
+namespace WholesomeMVC {
     
     
     public partial class Item_Management {

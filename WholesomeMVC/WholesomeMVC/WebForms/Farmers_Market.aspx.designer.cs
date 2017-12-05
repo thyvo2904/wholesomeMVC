@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WholesomeMVC.WebForms {
+namespace WholesomeMVC {
     
     
     public partial class Farmers_Market {
