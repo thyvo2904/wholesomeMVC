@@ -22,6 +22,11 @@
     <asp:ContentPlaceHolder ID="style" runat="server"></asp:ContentPlaceHolder>
 
 	<script type="text/javascript" src="/Scripts/modernizr-2.6.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("[id*=txtSearch]").autocomplete({ source: '<%=ResolveUrl("~/WebForms/AutoComplete.ashx" ) %>' });
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -64,7 +69,7 @@
 
 									<div class="col-sm-8">
 										<div class="input-group">
-											<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
+											<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
 											<span class="input-group-btn">
 												<button type="submit" class="btn btn-default" runat="server" onserverclick="btnSearch">
 													<span class="glyphicon glyphicon-search"></span>
@@ -123,7 +128,7 @@
 					<li>&bull;</li>
 					<li><a href="recent.aspx">Recent</a></li>
 					<li>&bull;</li>
-					<li><a href="Comparison.aspx">Comparison</a></li>
+					<li><a href="Comparison.aspx">Comparison Tool</a></li>
 				</ul>
 				<br />
 				<p class="text-center">
@@ -143,6 +148,7 @@
 	<script src="/Scripts/jquery-1.10.2.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
     <script src="/Scripts/Custom/site.js"></script>
+
 
     <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
 </body>

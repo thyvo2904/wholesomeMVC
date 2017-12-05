@@ -19,6 +19,7 @@ namespace WholesomeMVC.WebForms
 {
     public partial class Update_Item : System.Web.UI.Page
     {
+        public static DataTable matchedCeresIDS = new DataTable();
         public static DataTable dataSearchResults = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,18 +40,101 @@ namespace WholesomeMVC.WebForms
 
                 if (!IsPostBack)
                 {
-                    string ConnectString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
-                    string QueryString = "select No_ + ' ' + description AS itemdescription from wholesome_item";
+                    //string ConnectString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+                    //string QueryString = "select No_ + ' ' + description AS itemdescription from wholesome_item WHERE nrf6 IS NOT NULL";
 
-                    SqlConnection myConnection = new SqlConnection(ConnectString);
-                    SqlDataAdapter myCommand = new SqlDataAdapter(QueryString, myConnection);
-                    DataSet ds = new DataSet();
-                    myCommand.Fill(ds, "wholesome_item");
+                    //SqlConnection myConnection = new SqlConnection(ConnectString);
+                    //SqlDataAdapter myCommand = new SqlDataAdapter(QueryString, myConnection);
+                    //DataSet ds = new DataSet();
+                    //myCommand.Fill(ds, "wholesome_item");
 
-                    ddlMatchedCeresID.DataSource = ds;
-                    ddlMatchedCeresID.DataTextField = "itemdescription";
-                    ddlMatchedCeresID.DataValueField = "itemdescription";
-                    ddlMatchedCeresID.DataBind();
+                    //ddlMatchedCeresID.DataSource = ds;
+                    //ddlMatchedCeresID.DataTextField = "itemdescription";
+                    //ddlMatchedCeresID.DataValueField = "itemdescription";
+                    //ddlMatchedCeresID.DataBind();
+
+                    System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
+                    {
+                        ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                    };
+
+                    sc.Open();
+
+
+                    SqlCommand myCommand = new SqlCommand("Pull_New_Ceres_Items",
+                                                             sc);
+                    myCommand.CommandType = CommandType.StoredProcedure;
+
+                    myCommand.ExecuteNonQuery();
+
+                    myCommand = new SqlCommand("Update_Ceres_Items",
+                                                             sc);
+                    myCommand.ExecuteNonQuery();
+
+                    //myCommand = new SqlCommand("Update_Wholesome_Items",
+                    //                                         sc);
+                    //myCommand.ExecuteNonQuery();
+
+                    sc.Close();
+
+
+                    if (!matchedCeresIDS.Columns.Contains("NDBno") && !matchedCeresIDS.Columns.Contains("Name")
+                    && !matchedCeresIDS.Columns.Contains("ND Score"))
+                    {
+                        matchedCeresIDS.Columns.Add("CeresID", typeof(string)); // Row 0
+                        matchedCeresIDS.Columns.Add("Ceres_Name", typeof(string)); // Row 1
+                        matchedCeresIDS.Columns.Add("USDA Number", typeof(string)); // Row 2
+                        matchedCeresIDS.Columns.Add("Name", typeof(string)); // Row 3
+                        matchedCeresIDS.Columns.Add("ND Score", typeof(double));// Row 14
+                    }
+
+                    else
+                    {
+                        matchedCeresIDS.Clear();
+                    }
+
+                    System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection
+                    {
+                        ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+                    };
+
+                    conn.Open();
+
+                    SqlDataReader newReader = null;
+                    SqlCommand newCommand = new SqlCommand("SELECT Wholesome_Item.No_, Wholesome_Item.description, Wholesome_item.ndb_no, Wholesome_item.[description 2] AS description2, nrf6" +
+                        " FROM Wholesome_Item WHERE nrf6 IS NOT NULL",
+                                                             conn);
+
+                    newReader = newCommand.ExecuteReader();
+                    if (newReader.HasRows)
+                    {
+                        while (newReader.Read())
+                        {
+
+                            DataRow row = matchedCeresIDS.NewRow();
+                            row[0] = newReader["No_"].ToString();
+                            row[1] = newReader["description"].ToString();
+                            row[2] = newReader["ndb_no"].ToString();
+                            row[3] = newReader["description2"].ToString();
+                            row[4] = Double.Parse(newReader["nrf6"].ToString());
+
+                            matchedCeresIDS.Rows.Add(row);
+                        }
+                    }
+
+
+
+                    gridMatchedCeresIDS.DataSource = matchedCeresIDS;
+                    gridMatchedCeresIDS.DataBind();
+
+                    gridMatchedCeresIDS.HeaderRow.Cells[0].Attributes["data-class"] = "expand";
+                    gridMatchedCeresIDS.HeaderRow.Cells[2].Attributes["data-hide"] = "phone";
+                    gridMatchedCeresIDS.HeaderRow.Cells[3].Attributes["data-hide"] = "phone";
+                    gridMatchedCeresIDS.HeaderRow.Cells[4].Attributes["data-hide"] = "phone";
+
+                    gridMatchedCeresIDS.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+                    conn.Close();
                 }
                 
             }
@@ -476,6 +560,35 @@ namespace WholesomeMVC.WebForms
                     //}
                 }
             }
+        }
+
+        protected void ceresMatchedOnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            //if (e.Row.RowType == DataControlRowType.DataRow)
+            //{
+            //    TableCell cell = e.Row.Cells[4];
+            //    foreach (char c in cell.Text)
+            //    {
+            //        if (char.IsNumber(c))
+            //        {
+            //            double quantity = double.Parse(cell.Text);
+
+
+            //            if (quantity < 4.66)
+            //            {
+            //                cell.BackColor = Color.Red;
+            //            }
+            //            if (quantity > 4.66 && quantity <= 27.99)
+            //            {
+            //                cell.BackColor = Color.Yellow;
+            //            }
+            //            if (quantity >= 28)
+            //            {
+            //                cell.BackColor = Color.Green;
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         protected void gridUSDAChoices_RowDataBound(object sender, GridViewRowEventArgs e)
