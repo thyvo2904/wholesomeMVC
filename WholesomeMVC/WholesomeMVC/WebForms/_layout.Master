@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="_layout.master.cs" Inherits="WholesomeMVC._layout" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="_layout.master.cs" Inherits="WholesomeMVC.WebForms._layout" %>
 
 <!DOCTYPE html>
 
@@ -12,6 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="shortcut icon" type="image/x-icon" href="/Content/Images/favicon.ico">
+
+	<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Ubuntu" rel="stylesheet"> 
 
     <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" runat="server" />
     <link href="/Content/font-awesome.min.css" rel="stylesheet" type="text/css" runat="server" />
@@ -75,7 +77,8 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/Manage/Index">Account</a></li>
+
+						<li><asp:HyperLink runat ="server" id="login" Text ="Login" NavigateUrl="~/Account/Login"></asp:HyperLink></li>
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								Menu
@@ -105,13 +108,13 @@
 			<section class="row">
 				<hr />
 				<ul class="text-center footer-link">
-					<li><a href="index.aspx">Home</a></li>
+					<li><a href="~/index.aspx">Home</a></li>
 					<li>&bull;</li>
-					<li><a href="manual_input.aspx">Nutrient Calculator</a></li>
+					<li><a href="~/manual_input.aspx">Nutrient Calculator</a></li>
 					<li>&bull;</li>
-					<li><a href="recent.aspx">Recent</a></li>
+					<li><a href="~/recent.aspx">Recent</a></li>
 					<li>&bull;</li>
-					<li><a href="saved_items.aspx">Saved Items</a></li>
+					<li><a href="~/saved_items.aspx">Saved Items</a></li>
 				</ul>
 				<br />
 				<p class="text-center">

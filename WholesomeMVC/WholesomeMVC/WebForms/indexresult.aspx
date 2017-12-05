@@ -10,77 +10,146 @@
 		<div class="row">
 			<div class="col-xs-6 col-sm-4 col-md-2 text-center">
 				<div class="panel panel-default text-center filter-button">
-					<asp:Image ImageUrl="/Content/Images/icons8-wheat-100.png" runat="server" />
-					<asp:Button Text="Grain" runat="server" CssClass="btn btn-default btn-block" />
+					<asp:Image ID="image_grain" runat="server" />
+					<asp:Button ID="button_grain" Text="Grain" runat="server" CssClass="btn btn-default btn-block" />
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-2 text-center">
 				<div class="panel panel-default text-center filter-button">
-					<asp:Image ImageUrl="/Content/Images/icons8-natural-food-100.png" runat="server" />
-					<asp:Button Text="Vegetables" runat="server" CssClass="btn btn-default btn-block" />
+					<asp:Image ID="image_vegetables" runat="server" />
+					<asp:Button ID="button_vegetables" Text="Vegetables" runat="server" CssClass="btn btn-default btn-block" />
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-2 text-center">
 				<div class="panel panel-default text-center filter-button">
-					<asp:Image ImageUrl="/Content/Images/icons8-strawberry-100.png" runat="server" />
-					<asp:Button Text="Fruit" runat="server" CssClass="btn btn-default btn-block" />
+					<asp:Image ID="image_fruit" runat="server" />
+					<asp:Button ID="button_fruit" runat="server" CssClass="btn btn-default btn-block" />
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-2 text-center">
 				<div class="panel panel-default text-center filter-button">
-					<asp:Image ImageUrl="/Content/Images/icons8-milk-100.png" runat="server" />
-					<asp:Button Text="Dairy" runat="server" CssClass="btn btn-default btn-block" />
+					<asp:Image ID="image_dairy" runat="server" />
+					<asp:Button ID="button_dairy" runat="server" CssClass="btn btn-default btn-block" />
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-2 text-center">
 				<div class="panel panel-default text-center filter-button">
-					<asp:Image ImageUrl="/Content/Images/icons8-teddy-bear-100.png" runat="server" />
-					<asp:Button Text="Baby Food" runat="server" CssClass="btn btn-default btn-block" />
+					<asp:Image ID="image_baby_food" runat="server" />
+					<asp:Button ID="button_baby_food" runat="server" CssClass="btn btn-default btn-block" />
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-4 col-md-2 text-center">
 				<div class="panel panel-default text-center filter-button">
-					<asp:Image ImageUrl="/Content/Images/icons8-wine-bottle-100.png" runat="server" />
-					<asp:Button Text="Beverages" runat="server" CssClass="btn btn-default btn-block" />
+					<asp:Image ID="image_beverages" runat="server" />
+					<asp:Button ID="button_beverages" runat="server" CssClass="btn btn-default btn-block" />
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<section>
+
+	</section>
+
+	<section>
 		<h3><asp:Literal ID="search_summary" runat="server" /></h3>
 		<h4><asp:Literal ID="filter_applied" runat="server" /></h4>
-		<div id="search_results" runat="server" class="row">
-			<div class='col-sm-6 col-md-4 col-lg-3'>
-				<div class='panel panel-default'>
-					<div class='panel-body'>
-						<h4 class='panel-title equal-height'>{1}
-						</h4>
-						<h4><strong>ND_Score: {2}</strong></h4>
-						<button class='btn btn-success btn-block'>Expand</button>
-					</div>
+
+		<!-- grid view of search result panels -->
+		<div id="search_results" runat="server" class="row"></div>
+
+		<!-- Modal for expanded view -->
+		<div class="modal fade" id="expanded_view" tabindex="-1" role="dialog" aria-labelledby="expanded view">
+			<div class="modal-dialog modal-sm" role="document">
+				<div class="modal-content">
+					<asp:ScriptManager runat="server" EnablePartialRendering="true"></asp:ScriptManager>
+					<asp:UpdatePanel runat="server">
+						<ContentTemplate>
+							<div id="modal_header" runat="server" class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class='panel-title equal-height'>
+									<asp:Label ID="lblFoodName" runat="server"></asp:Label>
+								</h4>
+								<h4>
+									<strong>
+										ND_Score:
+										<asp:Label runat="server" ID="lblIndexResult"></asp:Label>
+									</strong>
+								</h4>
+							</div>
+
+							<div class="modal-body">
+								<h4><strong>Nutrition Facts</strong></h4>
+								<table class='table table-condensed table-hover'>
+									<tbody>
+										<tr class='fatter'>
+											<th>Calories</th>
+											<td><asp:Label ID="txtcalories" runat="server" /></td>
+											<td></td>
+										</tr>
+										<tr class='fat'>
+											<th>Saturated Fat</th>
+											<td><asp:Label ID="txtsatfat" runat="server" /></td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Sodium</th>
+											<td><asp:Label ID="txtsodium" runat="server" /></td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Dietary Fiber</th>
+											<td><asp:Label ID="txtfiber" runat="server" /></td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Total Sugars</th>
+											<td><asp:Label ID="txtsugar" runat="server" /></td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Protein</th>
+											<td><asp:Label ID="txtprotein" runat="server" /></td>
+											<td>g</td>
+										</tr>
+										<tr class='fatter'>
+											<th>Vitamin A</th>
+											<td><asp:Label ID="txtva" runat="server" /></td>
+											<td>IU</td>
+										</tr>
+										<tr>
+											<th>Vitamin C</th>
+											<td><asp:Label ID="txtvc" runat="server" /></td>
+											<td>IU</td>
+										</tr>
+										<tr>
+											<th>Calcium</th>
+											<td><asp:Label ID="txtcalcium" runat="server" /></td>
+											<td>mg</td>
+										</tr>
+										<tr>
+											<th>Iron</th>
+											<td><asp:Label ID="txtiron" runat="server" /></td>
+											<td>mg</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
+								<asp:Button Text="Save Item" runat="server" CssClass="btn btn-success" />
+							</div>
+							<!-- hack to make on-server-generated buttons work -->
+							<asp:HiddenField runat="server" ID="lblNdbno" ClientIDMode="Static"></asp:HiddenField>
+							<asp:HiddenField runat="server" ID="lblName" ClientIDMode="Static"></asp:HiddenField>
+							<asp:Button runat="server" ID="button_expand_item" OnClick="ExpandItem" ClientIDMode="Static" CssClass="hidden" />
+						</ContentTemplate>
+						<Triggers>
+							<asp:AsyncPostBackTrigger ControlID="button_expand_item" EventName="Click" />
+						</Triggers>
+					</asp:UpdatePanel>
 				</div>
 			</div>
-<%--			OnSelectedIndexChanged="gridSearchResults_SelectedIndexChanged"
-			OnRowDataBound="OnRowDataBound"--%>
-			<asp:GridView
-				ID="gridSearchResults"
-				runat="server"
-				AutoGenerateColumns="false"
-				Width="660px"
-				Visible="true"
-				CssClass="myGridStyle"
-				PagerStyle-CssClass="pgr"
-				EmptyDataText="Please use the search bar to locate food items">
-				<Columns>
-					<asp:BoundField DataField="NDBno" HeaderText="NDBno" />
-					<asp:BoundField DataField="Name" HeaderText="Item" />
-					<asp:BoundField DataField="ND score" HeaderText="ND Score" />
-					<asp:CommandField ShowSelectButton="True" SelectText="Expand" />
-				</Columns>
-				<EmptyDataRowStyle Font-Size="30px" />
-				<PagerStyle CssClass="pgr"></PagerStyle>
-			</asp:GridView>
 		</div>
 	</section>
 </asp:Content>

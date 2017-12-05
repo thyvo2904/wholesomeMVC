@@ -66,28 +66,6 @@ namespace WholesomeMVC.WebForms
 			String returnValue = "";
 			String colorScaleStyle = "";
 
-			//if (newFoodArray[intItemIndex].NRF6 < 0) {
-			//	colorScaleStyle = "color:white; border-color:" + GradientColors.getColor1() + "!important;";
-			//} else if ((newFoodArray[intItemIndex].NRF6 >= 0) && (newFoodArray[intItemIndex].NRF6 <= 2.33)) {
-			//	colorScaleStyle = "color:white; border-color:" + GradientColors.getColor2() + "!important;"; ;
-			//} else if ((newFoodArray[intItemIndex].NRF6 > 2.33) && (newFoodArray[intItemIndex].NRF6 <= 4.66)) {
-			//	colorScaleStyle= "color:white; border-color:" + GradientColors.getColor3() + "!important;";
-			//} else if ((newFoodArray[intItemIndex].NRF6 > 4.66) && (newFoodArray[intItemIndex].NRF6 <= 12.44)) {
-			//	colorScaleStyle = "color:black; border-color:" + GradientColors.getColor4() + "!important;";
-			//} else if ((newFoodArray[intItemIndex].NRF6 > 12.44) && (newFoodArray[intItemIndex].NRF6 <= 20.22)) {
-			//	colorScaleStyle = "color:black; border-color:" + GradientColors.getColor5() + "!important;";
-			//} else if ((newFoodArray[intItemIndex].NRF6 > 20.22) && (newFoodArray[intItemIndex].NRF6 <= 28)) {
-			//	colorScaleStyle = "color:black; border-color:" + GradientColors.getColor6() + "!important;";
-			//} else if ((newFoodArray[intItemIndex].NRF6 > 28) && (newFoodArray[intItemIndex].NRF6 <= 35.33)) {
-			//	colorScaleStyle = "color:white; border-color:" + GradientColors.getColor7() + "!important;";
-			//} else if ((newFoodArray[intItemIndex].NRF6 > 35.33) && (newFoodArray[intItemIndex].NRF6 <= 42.67)) {
-			//	colorScaleStyle = "color:white; border-color:" + GradientColors.getColor8() + "!important;";
-			//} else if (newFoodArray[intItemIndex].NRF6 > 42.67) {
-			//	colorScaleStyle = "color:white; border-color:" + GradientColors.getColor9() + "!important;";
-			//} else {
-			//	// do nothing
-			//}
-
 			double score = newFoodArray[intItemIndex].NRF6;
 
 			if (score < 0) {

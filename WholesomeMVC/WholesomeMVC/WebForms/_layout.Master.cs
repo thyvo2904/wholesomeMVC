@@ -5,13 +5,22 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WholesomeMVC
+namespace WholesomeMVC.WebForms
 {
     public partial class _layout : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             label_year.Text = DateTime.Now.Year.ToString();
+
+            if (Request.IsAuthenticated)
+        
+              
+                {
+                    login.Text = "Account";
+                    login.NavigateUrl = "~/Manage/Index";
+                }
+            
         }
 
 		protected void btnSearch(object sender, EventArgs e)
