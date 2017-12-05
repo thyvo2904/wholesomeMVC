@@ -591,7 +591,7 @@
     <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
-    <Content Include="WebForms\account_management.aspx" />
+    <Content Include="Scripts\Vendor\bootstrap3-typeahead.min.js" />
     <Content Include="WebForms\add_item.aspx" />
     <Content Include="WebForms\advanced_search.aspx" />
     <Content Include="Content\Custom\manual_input.css" />
@@ -614,7 +614,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
-    <Content Include="Scripts\Custom\jquery.matchHeight-min.js" />
+    <Content Include="Scripts\Vendor\jquery.matchHeight-min.js" />
     <Content Include="Scripts\Custom\manual_input.js" />
     <Content Include="Scripts\Custom\recent.js" />
     <Content Include="WebForms\index.aspx" />

@@ -167,6 +167,6 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
-    <script type="text/javascript" src="/Scripts/Custom/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="/Scripts/Vendor/jquery.matchHeight-min.js"></script>
     <script type="text/javascript" src="/Scripts/Custom/indexresult.js"></script>
 </asp:Content>
