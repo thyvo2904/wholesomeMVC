@@ -77,8 +77,16 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-
-						<li><asp:HyperLink runat ="server" id="login" Text ="Login" NavigateUrl="~/Account/Login"></asp:HyperLink></li>
+						<li>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								Account
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><asp:HyperLink runat="server" ID="login" Text="Login" NavigateUrl="~/Account/Login"></asp:HyperLink></li>
+								<li><asp:HyperLink runat="server" ID="register" Text="Register" NavigateUrl="~/Account/Register"></asp:HyperLink></li>
+							</ul>
+						</li>
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								Menu
@@ -108,13 +116,13 @@
 			<section class="row">
 				<hr />
 				<ul class="text-center footer-link">
-					<li><a href="~/index.aspx">Home</a></li>
+					<li><a href="index.aspx">Home</a></li>
 					<li>&bull;</li>
-					<li><a href="~/manual_input.aspx">Nutrient Calculator</a></li>
+					<li><a href="manual_input.aspx">Nutrient Calculator</a></li>
 					<li>&bull;</li>
-					<li><a href="~/recent.aspx">Recent</a></li>
+					<li><a href="recent.aspx">Recent</a></li>
 					<li>&bull;</li>
-					<li><a href="~/saved_items.aspx">Saved Items</a></li>
+					<li><a href="saved_items.aspx">Saved Items</a></li>
 				</ul>
 				<br />
 				<p class="text-center">
