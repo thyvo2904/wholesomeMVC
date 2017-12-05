@@ -191,13 +191,6 @@
   <ItemGroup>
     <Compile Include="CsClass\Hint.cs" />
     <Compile Include="CsClass\Parsed.cs" />
-    <Compile Include="WebForms\account_management.aspx.cs">
-      <DependentUpon>account_management.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForms\account_management.aspx.designer.cs">
-      <DependentUpon>account_management.aspx</DependentUpon>
-    </Compile>
     <Compile Include="WebForms\add_item.aspx.cs">
       <DependentUpon>add_item.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -225,6 +218,13 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="CsClass\Desc.cs" />
     <Compile Include="CsClass\FarmersMarketResult.cs" />
+    <Compile Include="WebForms\Comparison.aspx.cs">
+      <DependentUpon>Comparison.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\Comparison.aspx.designer.cs">
+      <DependentUpon>Comparison.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\Farmers_Market.aspx.cs">
       <DependentUpon>farmers_market.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -255,20 +255,6 @@
     </Compile>
     <Compile Include="WebForms\inventory_admin.aspx.designer.cs">
       <DependentUpon>inventory_admin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForms\inventory_purchased.aspx.cs">
-      <DependentUpon>inventory_purchased.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForms\inventory_purchased.aspx.designer.cs">
-      <DependentUpon>inventory_purchased.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForms\inventory_staff.aspx.cs">
-      <DependentUpon>inventory_staff.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForms\inventory_staff.aspx.designer.cs">
-      <DependentUpon>inventory_staff.aspx</DependentUpon>
     </Compile>
     <Compile Include="CsClass\Item.cs" />
     <Compile Include="WebForms\Item_Management.aspx.cs">
@@ -369,7 +355,6 @@
     <Content Include="Scripts\Custom\Fb_categories.js" />
     <Content Include="Scripts\Custom\indexresult.js" />
     <Content Include="Scripts\Custom\site.js" />
-    <Content Include="WebForms\account_management.aspx" />
     <Content Include="WebForms\add_item.aspx" />
     <Content Include="WebForms\advanced_search.aspx" />
     <Content Include="Content\Custom\manual_input.css" />
@@ -386,6 +371,7 @@
     <Content Include="Content\Images\icons8-microsoft-100.png" />
     <Content Include="Content\Images\image_brand.png" />
     <Content Include="Content\Custom\index.css" />
+    <Content Include="WebForms\Comparison.aspx" />
     <Content Include="WebForms\farmers_market.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -396,8 +382,6 @@
     <Content Include="Scripts\Custom\recent.js" />
     <Content Include="WebForms\index.aspx" />
     <Content Include="WebForms\inventory_admin.aspx" />
-    <Content Include="WebForms\inventory_purchased.aspx" />
-    <Content Include="WebForms\inventory_staff.aspx" />
     <Content Include="WebForms\Item_Management.aspx" />
     <Content Include="WebForms\indexresult.aspx" />
     <Content Include="WebForms\manual_input.aspx" />

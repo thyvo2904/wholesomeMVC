@@ -65,7 +65,7 @@
 					<asp:ScriptManager runat="server" EnablePartialRendering="true"></asp:ScriptManager>
 					<asp:UpdatePanel runat="server">
 						<ContentTemplate>
-							<div id="modal_header" runat="server" class="modal-header" style="border-bottom: 5px solid red;">
+							<div id="modal_header" runat="server" class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 								<h4 class='panel-title equal-height'>
 									<asp:Label ID="lblFoodName" runat="server"></asp:Label>
@@ -134,10 +134,22 @@
 										</tr>
 									</tbody>
 								</table>
+
+								<hr />
+								<div>
+									<div class="form-group">
+										<label for="txtCeresNumber"><asp:Label Text="Ceres Number" runat="server" /></label>
+										<asp:TextBox ID="txtCeresNumber" CssClass="form-control" runat="server" placeholder="12345..."></asp:TextBox>
+									</div>
+									<div class="form-group">
+										<label for="txtCeresDescription"><asp:Label Text="Ceres Description" runat="server" /></label>
+										<asp:TextBox ID="txtCeresDescription" CssClass="form-control" runat="server" placeholder="Item description..."></asp:TextBox>
+									</div>
+								</div>
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
-								<asp:Button Text="Save Item" runat="server" CssClass="btn btn-success" />
+								<asp:Button Text="Save Item" runat="server" CssClass="btn btn-success" OnClick="SaveItem" />
 							</div>
 							<!-- hack to make on-server-generated buttons work -->
 							<asp:HiddenField runat="server" ID="lblNdbno" ClientIDMode="Static"></asp:HiddenField>

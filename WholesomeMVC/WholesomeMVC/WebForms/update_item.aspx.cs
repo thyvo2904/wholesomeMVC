@@ -12,6 +12,9 @@ using WholesomeMVC;
 using System.Web.Services;
 using System.Configuration;
 
+using System.Linq;
+
+
 namespace WholesomeMVC.WebForms
 {
     public partial class Update_Item : System.Web.UI.Page
@@ -24,15 +27,32 @@ namespace WholesomeMVC.WebForms
             {
                 if (indexresult.number != "")
                 {
-                    txtNumber.Text = indexresult.number;
+                    //txtNumber.Text = indexresult.number;
                 }
 
                 if (FoodItem.getCeresID() != "" || FoodItem.getDescription() != "")
                 {
-                    txtNumber.Text = FoodItem.getCeresID();
-                    txtDescription.Text = FoodItem.getDescription();
+                    //txtNumber.Text = FoodItem.getCeresID();
+                    //txtDescription.Text = FoodItem.getDescription();
                     FoodItem.clearCeresData();
                 }
+
+                if (!IsPostBack)
+                {
+                    string ConnectString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+                    string QueryString = "select No_ + ' ' + description AS itemdescription from wholesome_item";
+
+                    SqlConnection myConnection = new SqlConnection(ConnectString);
+                    SqlDataAdapter myCommand = new SqlDataAdapter(QueryString, myConnection);
+                    DataSet ds = new DataSet();
+                    myCommand.Fill(ds, "wholesome_item");
+
+                    ddlMatchedCeresID.DataSource = ds;
+                    ddlMatchedCeresID.DataTextField = "itemdescription";
+                    ddlMatchedCeresID.DataValueField = "itemdescription";
+                    ddlMatchedCeresID.DataBind();
+                }
+                
             }
 
             else
@@ -41,14 +61,14 @@ namespace WholesomeMVC.WebForms
                 {
                     divnew.Style.Add("display", "block");
                     divold.Style.Add("display", "none");
-                    ddlMethod.SelectedIndex = 2;
+                    DropDownList2.SelectedIndex = 2;
                 }
 
                 else if (!String.IsNullOrEmpty(txtOldCalcium.Text) && !String.IsNullOrEmpty(txtOldIron.Text))
                 {
                     divold.Style.Add("display", "block");
                     divnew.Style.Add("display", "none");
-                    ddlMethod.SelectedIndex = 1;
+                    DropDownList2.SelectedIndex = 1;
                 }
             }
 
@@ -77,37 +97,37 @@ namespace WholesomeMVC.WebForms
         // This just does the USDA item search / pops up the manual input options
         protected void btnUpdateItem_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
-            {
-                System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
-                Boolean findCeresID = false;
-                con.Open();
-                go.Connection = con;
-                go.CommandText = "SELECT No_ FROM Wholesome_Item WHERE No_ = @No_";
-                go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+            //using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+            //{
+            //    System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
+            //    Boolean findCeresID = false;
+            //    con.Open();
+            //    go.Connection = con;
+            //    go.CommandText = "SELECT No_ FROM Wholesome_Item WHERE No_ = @No_";
+            //    //go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
 
-                SqlDataReader readIn = go.ExecuteReader();
-                while (readIn.Read())
-                {
-                    findCeresID = true;
-                }
+            //    SqlDataReader readIn = go.ExecuteReader();
+            //    while (readIn.Read())
+            //    {
+            //        findCeresID = true;
+            //    }
 
-                con.Close();
+            //    con.Close();
 
-                if (findCeresID == true)
-                {
+                //if (findCeresID == true)
+                //{
                     String foodSearch = txtSearchDescription.Text;
                     FoodItem.findNdbnoUpdateItem(foodSearch);
+            BindDataFromDB();
+            //gridUSDAChoices.DataSource = Update_Item.dataSearchResults;
+            //gridUSDAChoices.DataBind();
+            //    }
 
-                    gridUSDAChoices.DataSource = Update_Item.dataSearchResults;
-                    gridUSDAChoices.DataBind();
-                }
-
-                else
-                {
-                    Response.Write("<script>alert('Please enter a valid Ceres ID!');</script>");
-                }
-            }
+            //    else
+            //    {
+            //        Response.Write("<script>alert('Please enter a valid Ceres ID!');</script>");
+            //    }
+            //}
         }
 
         protected void btnCalculateOld_Click(object sender, EventArgs e)
@@ -255,12 +275,12 @@ namespace WholesomeMVC.WebForms
                     command1.Connection = connection;
                     command1.CommandType = System.Data.CommandType.Text;
 
-                    String description = txtDescription.Text;
+                    //String description = txtDescription.Text;
 
-                    if (description.Length > 48)
-                    {
-                        description = description.Substring(0, 48);
-                    }
+                    //if (description.Length > 48)
+                    //{
+                    //    description = description.Substring(0, 48);
+                    //}
 
                     // UPDATE Wholesome_Item SET No_ = , ndb_no = , Description = , Long_Desc = ,
                     // protein = , fiber = , vitaminA = , vitaminC = , vitaminD = , Potassium = ,
@@ -271,9 +291,9 @@ namespace WholesomeMVC.WebForms
                     + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE No_ = @No_";
 
 
-                    command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+                    //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
                     command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = "";
-                    command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = description;
+                    //command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = description;
                     command1.Parameters.Add("@Long_Desc", SqlDbType.NVarChar, 500).Value = "";
                     command1.Parameters.Add("@protein", SqlDbType.Decimal, 18).Value = txtOldProtein.Text;
                     command1.Parameters.Add("@fiber", SqlDbType.Decimal, 18).Value = txtOldFiber.Text;
@@ -354,12 +374,12 @@ namespace WholesomeMVC.WebForms
         protected void btnNewSaveItem_Click(object sender, EventArgs e)
         {
             String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
-            String description = txtDescription.Text;
+            //String description = txtDescription.Text;
 
-            if (description.Length > 48)
-            {
-                description.Substring(0, 48);
-            }
+            //if (description.Length > 48)
+            //{
+            //    description.Substring(0, 48);
+            //}
 
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -379,9 +399,9 @@ namespace WholesomeMVC.WebForms
                     + " KCal = @KCal, nrf6 = @nrf6, lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE No_ = @No_";
 
 
-                    command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+                    //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
                     command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = "";
-                    command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = description;
+                    //command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = description;
                     command1.Parameters.Add("@Long_Desc", SqlDbType.NVarChar, 500).Value = "";
                     command1.Parameters.Add("@protein", SqlDbType.Decimal, 18).Value = txtNewProtein.Text;
                     command1.Parameters.Add("@fiber", SqlDbType.Decimal, 18).Value = txtNewFiber.Text;
@@ -472,11 +492,11 @@ namespace WholesomeMVC.WebForms
         protected void gridSearchResults_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Response.Write("<script>alert('USDA item connected to CERES ID!');</script>");
-            String no_ = txtNumber.Text;
-            String ndbno = gridUSDAChoices.SelectedRow.Cells[0].Text;
-            String ceresDescription = txtDescription.Text;
-            string description = gridUSDAChoices.SelectedRow.Cells[1].Text;
-            string foodGroup = gridUSDAChoices.SelectedRow.Cells[2].Text;
+            //String no_ = txtNumber.Text;
+            String ndbno = "";// gridUSDAChoices.SelectedRow.Cells[0].Text;
+            //String ceresDescription = txtDescription.Text;
+            string description = ""; //gridUSDAChoices.SelectedRow.Cells[1].Text;
+            string foodGroup = "";//gridUSDAChoices.SelectedRow.Cells[2].Text;
             //double protein = Double.Parse(gridUSDAChoices.SelectedRow.Cells[2].Text);
             //double fiber = Double.Parse(gridUSDAChoices.SelectedRow.Cells[3].Text);
             //double vitaminA = Double.Parse(gridUSDAChoices.SelectedRow.Cells[4].Text);
@@ -487,15 +507,15 @@ namespace WholesomeMVC.WebForms
             //double totalSugar = Double.Parse(gridUSDAChoices.SelectedRow.Cells[9].Text);
             //double sodium = Double.Parse(gridUSDAChoices.SelectedRow.Cells[10].Text);
             //double kCal = Double.Parse(gridUSDAChoices.SelectedRow.Cells[11].Text);
-            double ndscore = Double.Parse(gridUSDAChoices.SelectedRow.Cells[3].Text);
+            double ndscore = 0; // Double.Parse(gridUSDAChoices.SelectedRow.Cells[3].Text);
             String foodGroupNumber = ""; 
 
             String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
 
-            if (ceresDescription.Length > 48)
-            {
-                ceresDescription = ceresDescription.Substring(0, 48);
-            }
+            //if (ceresDescription.Length > 48)
+            //{
+            //    ceresDescription = ceresDescription.Substring(0, 48);
+            //}
 
             if (description.Length > 48)
             {
@@ -536,7 +556,7 @@ namespace WholesomeMVC.WebForms
                  + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_";
 
 
-                command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
+                //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
                 command1.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
                 command1.Parameters.Add("@Description2", SqlDbType.NVarChar, 50).Value = description;
                 command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = ndscore;
@@ -619,35 +639,35 @@ namespace WholesomeMVC.WebForms
 
         protected void OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlMethod.SelectedIndex == 0)
-            {
+            //if (ddlMethod.SelectedIndex == 0)
+            //{
 
-            }
+            //}
 
-            else if (ddlMethod.SelectedIndex == 1)
-            {
-                gridUSDAChoices.Visible = true;
-                divmanual.Visible = false;
-            }
+            //else if (ddlMethod.SelectedIndex == 1)
+            //{
+            //    gridUSDAChoices.Visible = true;
+            //    divmanual.Visible = false;
+            //}
 
-            else if (ddlMethod.SelectedIndex == 2)
-            {
-                divmanual.Visible = true;
-                gridUSDAChoices.Visible = false;
-                divold.Style.Add("display", "block");
+            //else if (ddlMethod.SelectedIndex == 2)
+            //{
+            //    divmanual.Visible = true;
+            //    gridUSDAChoices.Visible = false;
+            //    divold.Style.Add("display", "block");
 
-            }
+            //}
 
         }
 
         protected void btnSelectFBCategory_Click(object sender, EventArgs e)
         {
-            String no_ = txtNumber.Text;
-            String ndbno = gridUSDAChoices.SelectedRow.Cells[0].Text;
-            String ceresDescription = txtDescription.Text;
-            string description = gridUSDAChoices.SelectedRow.Cells[1].Text;
-            string foodGroup = gridUSDAChoices.SelectedRow.Cells[2].Text;
-            double ndscore = Double.Parse(gridUSDAChoices.SelectedRow.Cells[3].Text);
+            //String no_ = txtNumber.Text;
+            String ndbno = ""; // gridUSDAChoices.SelectedRow.Cells[0].Text;
+            //String ceresDescription = txtDescription.Text;
+            string description = ""; // gridUSDAChoices.SelectedRow.Cells[1].Text;
+            string foodGroup = ""; // gridUSDAChoices.SelectedRow.Cells[2].Text;
+            double ndscore = 0; // Double.Parse(gridUSDAChoices.SelectedRow.Cells[3].Text);
             String gradientEntry = "";
 
             if(ndscore < 0)
@@ -711,7 +731,7 @@ namespace WholesomeMVC.WebForms
              + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_";
 
 
-            command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
+            //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
             command1.Parameters.Add("@GradientEntry", SqlDbType.NVarChar, 20).Value = gradientEntry;
             command1.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
             command1.Parameters.Add("@Description2", SqlDbType.NVarChar, 50).Value = description;
@@ -726,6 +746,111 @@ namespace WholesomeMVC.WebForms
 
             command1.ExecuteNonQuery();
             sc.Close();
+        }
+
+
+        protected void BindDataFromDB()
+        {
+            section.Visible = true;
+            System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
+            {
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
+            };
+
+            sc.Open();
+
+            SqlCommand myCommand = new SqlCommand("Pull_New_Ceres_Items", sc);
+            myCommand.CommandType = CommandType.StoredProcedure;
+            myCommand.ExecuteNonQuery();
+
+            myCommand = new SqlCommand("Update_Ceres_Items", sc);
+            myCommand.ExecuteNonQuery();
+
+            //myCommand = new SqlCommand("Update_Wholesome_Items", sc);
+            //myCommand.ExecuteNonQuery();
+
+            sc.Close();
+
+            //gridSearchResults.DataSource = dataSearchResults;
+            //gridSearchResults.DataBind();
+
+            search_summary.Text = String.Format("Found {0} items", Update_Item.dataSearchResults.Rows.Count);
+            filter_applied.Text = String.Format("Filter applied: {0}", "none");
+
+            String strHTML = "";
+            foreach (DataRow row in Update_Item.dataSearchResults.Rows)
+            {
+                strHTML += GenerateHtmlForEachItem(row);
+            }
+
+            search_results.InnerHtml = strHTML;
+        }
+
+        protected String GenerateHtmlForEachItem(DataRow item)
+        {
+            String returnValue = "";
+            String colorScaleStyle = "";
+            double score = double.Parse(item["ND Score"].ToString());
+
+            if (score < 0)
+            {
+                colorScaleStyle = GradientColors.getColor1();
+            }
+            else if ((score >= 0) && (score <= 2.33))
+            {
+                colorScaleStyle = GradientColors.getColor2();
+            }
+            else if ((score > 2.33) && (score <= 4.66))
+            {
+                colorScaleStyle = GradientColors.getColor3();
+            }
+            else if ((score > 4.66) && (score <= 12.44))
+            {
+                colorScaleStyle = GradientColors.getColor4();
+            }
+            else if ((score > 12.44) && (score <= 20.22))
+            {
+                colorScaleStyle = GradientColors.getColor5();
+            }
+            else if ((score > 20.22) && (score <= 28))
+            {
+                colorScaleStyle = GradientColors.getColor6();
+            }
+            else if ((score > 28) && (score <= 35.33))
+            {
+                colorScaleStyle = GradientColors.getColor7();
+            }
+            else if ((score > 35.33) && (score <= 42.67))
+            {
+                colorScaleStyle = GradientColors.getColor8();
+            }
+            else if (score > 42.67)
+            {
+                colorScaleStyle = GradientColors.getColor9();
+            }
+            else
+            {
+                // do nothing
+            }
+
+            colorScaleStyle += " !important";
+
+            returnValue = String.Format(@"
+				<div class='col-sm-6 col-md-4 col-lg-3'>
+					<div class='panel panel-default' style='border-bottom: 5px solid {2};'>
+						<div class='panel-body'>
+							<h4 class='panel-title equal-height'>{0}</h4>
+							<h4><strong>ND_Score: <span style='color: {2};'>{1}<span></strong></h4>
+							<button class='btn btn-default btn-block'>Expand</button>
+						</div>
+					</div>
+				</div>
+			",
+            item["name"].ToString(),
+            item["ND score"].ToString(),
+            colorScaleStyle);
+
+            return returnValue;
         }
     }
 }

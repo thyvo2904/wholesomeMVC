@@ -253,20 +253,20 @@ namespace WholesomeMVC.WebForms
 
         protected void gridUnMatchedWholesomeIDS_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String sendCeresID = gridUnmatchedTestDBIDS.SelectedRow.Cells[0].Text;
-            String sendDescription = gridUnmatchedTestDBIDS.SelectedRow.Cells[1].Text;
-            FoodItem.setCeresData(sendCeresID, sendDescription);
-            Response.Redirect("Update_Item.aspx");
+            //String sendCeresID = gridUnmatchedTestDBIDS.SelectedRow.Cells[0].Text;
+            //String sendDescription = gridUnmatchedTestDBIDS.SelectedRow.Cells[1].Text;
+            //FoodItem.setCeresData(sendCeresID, sendDescription);
+            //Response.Redirect("Update_Item.aspx");
 
 
         }
 
         protected void gridunMatchedCeresIDS_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String sendCeresID = gridUnmatchedCeresIDS.SelectedRow.Cells[0].Text;
-            String sendDescription = gridUnmatchedCeresIDS.SelectedRow.Cells[1].Text;
-            FoodItem.setCeresData(sendCeresID, sendDescription);
-            Response.Redirect("add_item.aspx");
+            //String sendCeresID = gridUnmatchedCeresIDS.SelectedRow.Cells[0].Text;
+            //String sendDescription = gridUnmatchedCeresIDS.SelectedRow.Cells[1].Text;
+            //FoodItem.setCeresData(sendCeresID, sendDescription);
+            //Response.Redirect("add_item.aspx");
 
         }
 
