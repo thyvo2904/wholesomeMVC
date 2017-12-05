@@ -65,7 +65,7 @@
 					<asp:ScriptManager runat="server" EnablePartialRendering="true"></asp:ScriptManager>
 					<asp:UpdatePanel runat="server">
 						<ContentTemplate>
-							<div id="modal_header" runat="server" class="modal-header" style="border-bottom: 5px solid red;">
+							<div id="modal_header" runat="server" class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 								<h4 class='panel-title equal-height'>
 									<asp:Label ID="lblFoodName" runat="server"></asp:Label>

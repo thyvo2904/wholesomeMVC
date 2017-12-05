@@ -172,7 +172,7 @@ namespace WholesomeMVC.WebForms
 			}
 
 			lblIndexResult.ForeColor = ColorTranslator.FromHtml(colorScaleStyle);
-			modal_header.Attributes["style"] = String.Format("border-bottom: 5px solid {0}", colorScaleStyle);
+			modal_header.Attributes["style"] = String.Format("border-bottom: 5px solid {0};", colorScaleStyle);
 
 			lblFoodName.Text = FoodItem.newFood.name;
 			lblIndexResult.Text = Convert.ToString(Math.Round(score, 2));
