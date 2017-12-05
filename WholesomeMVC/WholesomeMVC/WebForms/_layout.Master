@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="_layout.master.cs" Inherits="WholesomeMVC._layout" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="_layout.master.cs" Inherits="WholesomeMVC.WebForms._layout" %>
 
 <!DOCTYPE html>
 
@@ -78,7 +78,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 
-						<li><asp:HyperLink runat ="server" id="login" Text ="Login" NavigateUrl="~/WebForms/index.aspx"></asp:HyperLink></li>
+						<li><asp:HyperLink runat ="server" id="login" Text ="Login" NavigateUrl="~/Account/Login"></asp:HyperLink></li>
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								Menu

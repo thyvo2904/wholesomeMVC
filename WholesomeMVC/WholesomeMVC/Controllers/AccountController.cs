@@ -58,7 +58,7 @@ namespace WholesomeMVC.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = "WebForms/Index";
+            ViewBag.ReturnUrl = "~/WebForms/index.aspx";
             return View();
         }
 
@@ -399,7 +399,7 @@ namespace WholesomeMVC.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "WebForms");
+            return RedirectToAction("index.aspx", "WebForms");
         }
 
         //

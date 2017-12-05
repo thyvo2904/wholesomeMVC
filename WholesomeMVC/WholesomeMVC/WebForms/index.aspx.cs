@@ -37,18 +37,7 @@ namespace WholesomeMVC.WebForms
 				image_saved_items.ImageUrl = "/Content/Images/icons8-save-100.png";
 				link_saved_items.NavigateUrl = "saved_items.aspx";
 				link_saved_items.Text = "Saved Items";
-			}
-
-            //if user is logged in change login button to account
-            if (Request.IsAuthenticated)
-            {
-                HyperLink mpLabel = (HyperLink)Master.FindControl("login");
-                if (mpLabel != null)
-                {
-                    mpLabel.Text = "Account";
-                    mpLabel.NavigateUrl = "~/Manage/Index";
-                }
-            }
+			}       
         }
 
         protected void btnSearch(object sender, EventArgs e)
