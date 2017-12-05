@@ -27,7 +27,7 @@ namespace WholesomeMVC.Controllers
 
 		public void SavedItems()
 		{
-			Response.Redirect("~/WebForms/saved_items.aspx");
+			Response.Redirect("~/WebForms/Comparison.aspx");
 		}
     }
 }
