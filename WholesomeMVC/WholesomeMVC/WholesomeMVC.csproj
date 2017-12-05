@@ -329,7 +329,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Custom\Fb_Categories.css" />
     <Content Include="Content\Custom\indexresult.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
