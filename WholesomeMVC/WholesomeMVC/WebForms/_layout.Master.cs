@@ -1,27 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
+using Microsoft.AspNet.Identity;
 using System.Web.UI.WebControls;
 
 namespace WholesomeMVC.WebForms
 {
-    public partial class _layout : System.Web.UI.MasterPage
+	public partial class _layout : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             label_year.Text = DateTime.Now.Year.ToString();
 
-            if (Request.IsAuthenticated)
-        
-              
-                {
-                    login.Text = "Account";
-                    login.NavigateUrl = "~/Manage/Index";
-                }
-            
-        }
+            if (Request.IsAuthenticated) {
+				// User is authenticated
+				log_in_out.Text = "Log out";
+				//log_in_out.NavigateUrl = "~/Manage/Index";
+				log_in_out.NavigateUrl = "javascript:document.getElementById('logoutForm').submit()";
+				label_user.Text = HttpContext.Current.User.Identity.GetUserName();
+			} else {
+				// User is NOT authenticated
+				log_in_out.Text = "Log in";
+				log_in_out.NavigateUrl = "~/Account/Login";
+				label_user.Text = "Account";
+			}
+
+		}
 
 		protected void btnSearch(object sender, EventArgs e)
 		{

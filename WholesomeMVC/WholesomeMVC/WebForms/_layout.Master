@@ -22,6 +22,11 @@
     <asp:ContentPlaceHolder ID="style" runat="server"></asp:ContentPlaceHolder>
 
 	<script type="text/javascript" src="/Scripts/modernizr-2.6.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("[id*=txtSearch]").autocomplete({ source: '<%=ResolveUrl("~/WebForms/AutoComplete.ashx" ) %>' });
+        });
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -64,7 +69,7 @@
 
 									<div class="col-sm-8">
 										<div class="input-group">
-											<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
+											<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
 											<span class="input-group-btn">
 												<button type="submit" class="btn btn-default" runat="server" onserverclick="btnSearch">
 													<span class="glyphicon glyphicon-search"></span>
@@ -77,8 +82,16 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-
-						<li><asp:HyperLink runat ="server" id="login" Text ="Login" NavigateUrl="~/Account/Login"></asp:HyperLink></li>
+						<li>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<asp:Label ID="label_user" runat="server" />
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><asp:HyperLink runat="server" ID="log_in_out"></asp:HyperLink></li>
+								<li><asp:HyperLink runat="server" ID="register" Text="Register" NavigateUrl="~/Account/Register"></asp:HyperLink></li>
+							</ul>
+						</li>
 						<li>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								Menu
@@ -89,9 +102,10 @@
 								<li role="separator" class="divider"></li>
 								<li><a href="manual_input.aspx">Nutrient Calculator</a></li>
 								<li><a href="recent.aspx">Recent</a></li>
-								<li><a href="saved_items.aspx">Saved Items</a></li>
+								<li><a href="Comparison.aspx">Comparison</a></li>
 							</ul>
 						</li>
+						<li></li>
 					</ul>
 				</div>
 			</div>
@@ -108,13 +122,13 @@
 			<section class="row">
 				<hr />
 				<ul class="text-center footer-link">
-					<li><a href="~/index.aspx">Home</a></li>
+					<li><a href="index.aspx">Home</a></li>
 					<li>&bull;</li>
-					<li><a href="~/manual_input.aspx">Nutrient Calculator</a></li>
+					<li><a href="manual_input.aspx">Nutrient Calculator</a></li>
 					<li>&bull;</li>
-					<li><a href="~/recent.aspx">Recent</a></li>
+					<li><a href="recent.aspx">Recent</a></li>
 					<li>&bull;</li>
-					<li><a href="~/saved_items.aspx">Saved Items</a></li>
+					<li><a href="Comparison.aspx">Comparison Tool</a></li>
 				</ul>
 				<br />
 				<p class="text-center">
@@ -126,9 +140,12 @@
 		</footer>
 	</form>
 
-    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+	<form action="/Account/LogOff" class="hidden" id="logoutForm" method="post"></form>
+
+	<script src="/Scripts/jquery-1.10.2.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
     <script src="/Scripts/Custom/site.js"></script>
+
 
     <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
 </body>

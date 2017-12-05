@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="Item_Management.aspx.cs" Inherits="WholesomeMVC.Item_Management" %>
+﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="Item_Management.aspx.cs" Inherits="WholesomeMVC.WebForms.Item_Management" %>
 
 <!DOCTYPE html>
 
@@ -77,7 +77,7 @@
         <ul class="nav navbar-nav">
             <li><a style="color:#0D8843; font-size:14px;" href="manual_input.aspx">NUTRIENT CALCULATOR</a></li>
             <li><a style="color:#0D8843; font-size:14px;" href="recent.aspx">RECENT</a></li>
-            <li><a style="color:#0D8843; font-size:14px;" href="saved_items.aspx">SAVED ITEMS</a></li>
+            <li><a style="color:#0D8843; font-size:14px;" href="Comparison.aspx">COMPARISON</a></li>
         </ul>
         
         
@@ -198,7 +198,7 @@
         <ul class="nav navbar-nav">
             <li><a style="color:#fff; font-size:14px;" href="manual_input.aspx">NUTRIENT CALCULATOR</a></li>
             <li><a style="color:#fff; font-size:14px;" href="recent.aspx">RECENT</a></li>
-            <li><a style="color:#fff; font-size:14px;" href="saved_items.aspx">SAVED ITEMS</a></li>
+            <li><a style="color:#fff; font-size:14px;" href="COMPARISON.aspx">COMPARISON</a></li>
         </ul>           
         </div> <!--end col 1-->     
         

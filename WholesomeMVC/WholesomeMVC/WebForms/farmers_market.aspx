@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Farmers_Market.aspx.cs" Inherits="WholesomeMVC.Farmers_Market" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/WebForms/_layout.Master" AutoEventWireup="True" CodeBehind="Farmers_Market.aspx.cs" Inherits="WholesomeMVC.WebForms.Farmers_Market" %>
 
 <!DOCTYPE html>
 
@@ -219,7 +219,7 @@
         <ul class="nav navbar-nav">
             <li><a style="color:#0D8843; font-size:14px;" href="manual_input.aspx">NUTRIENT CALCULATOR</a></li>
             <li><a style="color:#0D8843; font-size:14px;" href="recent.aspx">RECENT</a></li>
-            <li><a style="color:#0D8843; font-size:14px;" href="saved_items.aspx">SAVED ITEMS</a></li>
+            <li><a style="color:#0D8843; font-size:14px;" href="Comparison.aspx">COMPARISON</a></li>
         </ul>
         
         
@@ -328,7 +328,7 @@
   <ul class="nav navbar-nav">
             <li><a style="color:#fff; font-size:14px;" href="manual_input.aspx">NUTRIENT CALCULATOR</a></li>
             <li><a style="color:#fff; font-size:14px;" href="recent.aspx">RECENT</a></li>
-            <li><a style="color:#fff; font-size:14px;" href="saved_items.aspx">SAVED ITEMS</a></li>
+            <li><a style="color:#fff; font-size:14px;" href="Comparison.aspx">COMPARISON</a></li>
         </ul>           
         </div> <!--end col 1-->     
         
