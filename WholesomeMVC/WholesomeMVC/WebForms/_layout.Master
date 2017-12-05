@@ -83,7 +83,7 @@
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><asp:HyperLink runat="server" ID="log_in_out"></asp:HyperLink></li>
+								<li><asp:HyperLink runat="server" ID="log_in_out" ClientIDMode="Static"></asp:HyperLink></li>
 								<li><asp:HyperLink runat="server" ID="register" Text="Register" NavigateUrl="~/Account/Register"></asp:HyperLink></li>
 							</ul>
 						</li>
@@ -123,19 +123,22 @@
 					<li>&bull;</li>
 					<li><a href="recent.aspx">Recent</a></li>
 					<li>&bull;</li>
-					<li><a href="Comparison.aspx">COMPARISON/a></li>
+					<li><a href="Comparison.aspx">Comparison</a></li>
 				</ul>
 				<br />
 				<p class="text-center">
 					&copy;
-				<asp:Label runat="server" ID="label_year"></asp:Label>
+					<asp:Label runat="server" ID="label_year"></asp:Label>
 					- Wholesome Inc. All rights reserved.
 				</p>
 			</section>
 		</footer>
+		<asp:HiddenField ID="generatedToken" ClientIDMode="Static" runat="server" />
 	</form>
 
-	<form action="/Account/LogOff" class="hidden" id="logoutForm" method="post"></form>
+	<form action="/Account/LogOff" class="hidden" id="logoutForm" method="post">
+		<input id="tokenToSubmit" name="__RequestVerificationToken" type="hidden" value="" />
+	</form>
 
 	<script src="/Scripts/jquery-1.10.2.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
