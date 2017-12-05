@@ -1,5 +1,23 @@
-﻿body {
-	background-color: #ffffff;
+﻿/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+	white-space: normal;
+}
+
+/*------------------------------------------------------------------------------
+    CUSTOM CSS START HERE
+------------------------------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: 'Fira Sans' !important;
+}
+html, body {
+	font-family: 'Ubuntu' !important;
+}
+
+body {
+	background-color: #fafafa;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -14,19 +32,15 @@
 	margin-top: 102px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-	white-space: normal;
+#content_header {
+	margin-bottom: 25px;
 }
 
-/*------------------------------------------------------------------------------
-    CUSTOM CSS START HERE
-------------------------------------------------------------------------------*/
-/* utility classes */
-
 /* override bootstrap default navbar links */
+.navbar.navbar-default {
+	border-top: 5px solid #70C277;
+	background-color: #ffffff;
+}
 .navbar-nav > li > a {
 	line-height: 50px;
 }
@@ -36,7 +50,7 @@
 .navbar-header > button {
 	margin: 24px 15px;
 }
-@media (min-width: 768px) and (max-width: 992px) {
+/*@media (min-width: 768px) and (max-width: 992px) {
 	.navbar-collapse.collapse {
 		display: none !important;
 	}
@@ -49,7 +63,7 @@
 	.navbar-header {
 		float: none;
 	}
-}
+}*/
 
 /* style image */
 .navbar-brand > img {

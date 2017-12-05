@@ -333,25 +333,26 @@ namespace WholesomeMVC.WebForms
         {
             String color = "";
             int count = 0;
-            System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
-            {
-                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
-        };
+			System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection {
+				ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
+			};
 
-            sc.Open();
+			sc.Open();
 
             SqlDataReader newReader = null;
             SqlCommand myCommand = new SqlCommand("SELECT HexColor FROM GradientValue WHERE GradientEntry = 1",
                                                      sc);
             newReader = myCommand.ExecuteReader();
             
-                while (newReader.Read())
-                {
-                
-                    color = newReader["HexColor"].ToString();
-                
+			while (newReader.Read())
+			{
+			
+				color = newReader["HexColor"].ToString();
+			
 
-                }
+			}
+
+			sc.Close();
 
             return color;
             
@@ -383,6 +384,8 @@ namespace WholesomeMVC.WebForms
 
             }
 
+			sc.Close();
+
             return color;
         }
 
@@ -411,6 +414,8 @@ namespace WholesomeMVC.WebForms
                 }
 
             }
+
+			sc.Close();
 
             return color;
         }
@@ -441,6 +446,8 @@ namespace WholesomeMVC.WebForms
 
             }
 
+			sc.Close();
+
             return color;
         }
 
@@ -469,6 +476,8 @@ namespace WholesomeMVC.WebForms
                 }
 
             }
+
+			sc.Close();
 
             return color;
         }
@@ -499,6 +508,8 @@ namespace WholesomeMVC.WebForms
 
             }
 
+			sc.Close();
+
             return color;
         }
 
@@ -527,6 +538,8 @@ namespace WholesomeMVC.WebForms
                 }
 
             }
+
+			sc.Close();
 
             return color;
         }
@@ -557,6 +570,8 @@ namespace WholesomeMVC.WebForms
 
             }
 
+			sc.Close();
+
             return color;
         }
 
@@ -585,6 +600,8 @@ namespace WholesomeMVC.WebForms
                 }
 
             }
+
+			sc.Close();
 
             return color;
         }

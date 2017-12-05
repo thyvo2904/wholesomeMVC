@@ -458,6 +458,17 @@ namespace WholesomeMVC.WebForms
             }
         }
 
+        protected void gridUSDAChoices_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            //check the item being bound is actually a DataRow, if it is,
+            //wire up the required html events and attach the relevant JavaScripts
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onclick"] =
+                    "javascript:ready();";
+            }
+        }
+
         protected void gridSearchResults_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Response.Write("<script>alert('USDA item connected to CERES ID!');</script>");
@@ -512,91 +523,99 @@ namespace WholesomeMVC.WebForms
                     }
 
                     sc.Close();
+            if (foodGroupNumber != "")
+            {
+                sc.Open();
+                SqlCommand command1 = new SqlCommand();
+                command1.Connection = sc;
+                command1.CommandType = System.Data.CommandType.Text;
 
-            sc.Open();
-                    SqlCommand command1 = new SqlCommand();
-                    command1.Connection = sc;
-                    command1.CommandType = System.Data.CommandType.Text;
-
-                    // ADD SESSION INFO
-                    command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
-                     + " FdGrp_CD = @FdGrp_CD, nrf6 = @nrf6, "
-                     + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_";
-
-
-                    command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
-                    command1.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
-                    command1.Parameters.Add("@Description2", SqlDbType.NVarChar, 50).Value = description;
-                    command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = ndscore;
-                    command1.Parameters.Add("FdGrp_CD", SqlDbType.NVarChar, 4).Value = foodGroupNumber;
+                // ADD SESSION INFO
+                command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
+                 + " FdGrp_CD = @FdGrp_CD, nrf6 = @nrf6, "
+                 + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_";
 
 
-                    command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = "Charles Moore";
-                    command1.Parameters.Add("@Lastupdated", SqlDbType.Date).Value = DateTime.Now;
+                command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
+                command1.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
+                command1.Parameters.Add("@Description2", SqlDbType.NVarChar, 50).Value = description;
+                command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = ndscore;
+                command1.Parameters.Add("FdGrp_CD", SqlDbType.NVarChar, 4).Value = foodGroupNumber;
 
 
-                    
-                    command1.ExecuteNonQuery();
-                    sc.Close();
+                command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = "Charles Moore";
+                command1.Parameters.Add("@Lastupdated", SqlDbType.Date).Value = DateTime.Now;
 
 
-                    //int count = 0;
-                    //using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
-                    //{
-                    //    System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
 
-                    //    con.Open();
-                    //    go.Connection = con;
-                    //    go.CommandText = "SELECT No_ FROM Item WHERE No_ = @No_";
-                    //    go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+                command1.ExecuteNonQuery();
+                sc.Close();
+            }
 
+            //int count = 0;
+            //using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+            //{
+            //    System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
 
-                    //    SqlDataReader readIn = go.ExecuteReader();
-                    //    while (readIn.Read())
-                    //    {
-                    //        ++count;
-                    //    }
-
-                    //    con.Close();
+            //    con.Open();
+            //    go.Connection = con;
+            //    go.CommandText = "SELECT No_ FROM Item WHERE No_ = @No_";
+            //    go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
 
 
-                    //}
+            //    SqlDataReader readIn = go.ExecuteReader();
+            //    while (readIn.Read())
+            //    {
+            //        ++count;
+            //    }
 
-                    //if (count == 1)
-                    //{
-                    //    connection.Open();
+            //    con.Close();
 
-                    //    try
-                    //    {
-                    //        command1 = new SqlCommand();
-                    //        command1.Connection = connection;
-                    //        command1.CommandType = System.Data.CommandType.Text;
 
-                    //        command1.CommandText = @"UPDATE item SET [No_ 2] = @No_2,  [Description 2] = @Description2, [CHOP Points] = @CHOPPoints
-                    //WHERE No_ = '" + txtNumber.Text + "'";
+            //}
 
-                    //        command1.Parameters.Add("@No_2", SqlDbType.NVarChar, 20).Value = ndbno;
-                    //        command1.Parameters.Add("@Description2", SqlDbType.NVarChar, 50).Value = description;
-                    //        command1.Parameters.Add("@CHOPPoints", SqlDbType.Decimal, 18).Value = ndscore;
-                    //        command1.ExecuteNonQuery();
-                    //        connection.Close();
-                    //    }
+            //if (count == 1)
+            //{
+            //    connection.Open();
 
-                    //    catch (Exception l)
-                    //    {
-                    //        Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
-                    //    }
+            //    try
+            //    {
+            //        command1 = new SqlCommand();
+            //        command1.Connection = connection;
+            //        command1.CommandType = System.Data.CommandType.Text;
 
-                    //}
+            //        command1.CommandText = @"UPDATE item SET [No_ 2] = @No_2,  [Description 2] = @Description2, [CHOP Points] = @CHOPPoints
+            //WHERE No_ = '" + txtNumber.Text + "'";
 
-                    //else
-                    //{
-                    //    Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
-                    //}
+            //        command1.Parameters.Add("@No_2", SqlDbType.NVarChar, 20).Value = ndbno;
+            //        command1.Parameters.Add("@Description2", SqlDbType.NVarChar, 50).Value = description;
+            //        command1.Parameters.Add("@CHOPPoints", SqlDbType.Decimal, 18).Value = ndscore;
+            //        command1.ExecuteNonQuery();
+            //        connection.Close();
+            //    }
+
+            //    catch (Exception l)
+            //    {
+            //        Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
+            //    }
+
+            //}
+
+            //else
+            //{
+            //    Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
+            //}
+
+            lblFBCategories.Visible = true;
+                ddlFBCategories.Visible = true;
+                btnSelectFBCategory.Visible = true;
                 
 
+            
 
         }
+
+        
 
         protected void OnSelectedIndexChanged(object sender, EventArgs e)
         {
@@ -619,6 +638,94 @@ namespace WholesomeMVC.WebForms
 
             }
 
+        }
+
+        protected void btnSelectFBCategory_Click(object sender, EventArgs e)
+        {
+            String no_ = txtNumber.Text;
+            String ndbno = gridUSDAChoices.SelectedRow.Cells[0].Text;
+            String ceresDescription = txtDescription.Text;
+            string description = gridUSDAChoices.SelectedRow.Cells[1].Text;
+            string foodGroup = gridUSDAChoices.SelectedRow.Cells[2].Text;
+            double ndscore = Double.Parse(gridUSDAChoices.SelectedRow.Cells[3].Text);
+            String gradientEntry = "";
+
+            if(ndscore < 0)
+            {
+                gradientEntry = "1";
+            }
+
+            else if(ndscore >= 0 && ndscore < 2.33)
+            {
+                gradientEntry = "2";
+            }
+
+            else if (ndscore >= 2.33 && ndscore < 4.66)
+            {
+                gradientEntry = "3";
+            }
+
+            else if (ndscore >= 4.66 && ndscore < 12.44)
+            {
+                gradientEntry = "4";
+            }
+
+            else if (ndscore >= 12.44 && ndscore < 20.22)
+            {
+                gradientEntry = "5";
+            }
+
+            else if (ndscore >= 20.22 && ndscore < 28)
+            {
+                gradientEntry = "6";
+            }
+
+            else if (ndscore >= 28 && ndscore < 35.33)
+            {
+                gradientEntry = "7";
+            }
+
+            else if (ndscore >= 35.33 && ndscore < 42.67)
+            {
+                gradientEntry = "8";
+            }
+
+            else if (ndscore >= 42.67)
+            {
+                gradientEntry = "9";
+            }
+
+            System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
+            {
+                ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
+            };
+
+            sc.Open();
+            SqlCommand command1 = new SqlCommand();
+            command1.Connection = sc;
+            command1.CommandType = System.Data.CommandType.Text;
+
+            // ADD SESSION INFO
+            command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
+             + " FBC_Code = @FBC_Code, GradientEntry = @GradientEntry, nrf6 = @nrf6, "
+             + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_";
+
+
+            command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
+            command1.Parameters.Add("@GradientEntry", SqlDbType.NVarChar, 20).Value = gradientEntry;
+            command1.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
+            command1.Parameters.Add("@Description2", SqlDbType.NVarChar, 50).Value = description;
+            command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = ndscore;
+            command1.Parameters.Add("FBC_Code", SqlDbType.NVarChar, 10).Value = ddlFBCategories.SelectedValue;
+
+
+            command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = "Charles Moore";
+            command1.Parameters.Add("@Lastupdated", SqlDbType.Date).Value = DateTime.Now;
+
+
+
+            command1.ExecuteNonQuery();
+            sc.Close();
         }
     }
 }
