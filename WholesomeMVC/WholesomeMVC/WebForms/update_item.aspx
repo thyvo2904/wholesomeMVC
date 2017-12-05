@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="True" CodeBehind="Update_Item.aspx.cs" Inherits="WholesomeMVC.WebForms.Update_Item" %>
+﻿<%@ Page Language="C#" AutoEventWireup="True"  CodeBehind="Update_Item.aspx.cs" Inherits="WholesomeMVC.WebForms.Update_Item" %>
 
 <!DOCTYPE html>
 
@@ -60,6 +60,15 @@
          outline-color: #0D8843;
          float: right;  
      }
+        select#ddlMatchedCeresID {
+   color: #fff;
+   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);
+   background-color: #779126;
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+   padding-left: 15px;
+}
       
         
        
@@ -87,12 +96,20 @@
             if (elem.value == 0) {
                 document.getElementById('divold').style.display = "block";
                 document.getElementById('divnew').style.display = "none";
+                document.getElementById('divgridview').style.display = "none";
             } else if (elem.value == 1) {
                 document.getElementById('divnew').style.display = "block";
                 document.getElementById('divold').style.display = "none";
+                document.getElementById('divnew').style.display = "none";
+            }else if (elem.value == 2) {
+                document.getElementById('divnew').style.display = "none";
+                document.getElementById('divold').style.display = "none";
+                document.getElementById('divgridview').style.display = "block";
+                
             } else {
                 document.getElementById('divold').style.display = "block";
                 document.getElementById('divnew').style.display = "none";
+                document.getElementById('divgridview').style.display = "block";
             }
         }
         </script>
@@ -219,38 +236,35 @@
 <br> 
   <div class="wrapper">
      <div id="divitem">
-        <asp:Label ID="Label10" runat="server" Text="Method of Nutrition Entry:"></asp:Label>
+        <%--<asp:Label ID="Label10" runat="server" Text="Method of Nutrition Entry:"></asp:Label>
                <asp:DropDownList ID="ddlMethod" AutoPostBack = "true" OnSelectedIndexChanged = "OnSelectedIndexChanged" runat="server">
                <asp:ListItem>-Choose-</asp:ListItem>
                <asp:ListItem>Closest USDA Match</asp:ListItem>
                <asp:ListItem>Manual Input</asp:ListItem>
-        </asp:DropDownList>
-  <table class="item">
-  <tr>
-    <td>Item Number: </td>
-    <td><asp:TextBox ID="txtNumber" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNumber" ID="chkItemNumber" runat="server" ValidationGroup="UpdateItem" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>CERES Description:</td>
-    <td><asp:TextBox ID="txtDescription" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtDescription" ValidationGroup="UpdateItem" ID="chkDescription" runat="server" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
-  </tr>
-      <tr>
-    <td>Search a Similar Item:</td>
-    <td><asp:TextBox ID="txtSearchDescription" runat="server"></asp:TextBox></td>
-  </tr>
+        </asp:DropDownList>--%>
+  
+  
+    <td>Matched Items </td>
+    <%--<td><asp:TextBox ID="txtNumber" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNumber" ID="chkItemNumber" runat="server" ValidationGroup="UpdateItem" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
+  </tr>--%>
+  <select id="ddlMatchedCeresID" runat="server" name="Matched Ceres ID's">
+
+  </select>
+      
   <tr>
     <td></td>
-    <td><asp:Button ID="btnUpdateItem" runat="server" Text="Update Item" CssClass="btncss" OnClick="btnUpdateItem_Click" ValidationGroup="UpdateItem"/></td>
+    
   </tr>
  
-</table>
+
         </div>
                      
       
-  <div id="divmanual" runat="server" visible="false">
-     <select id="DropDownList2" name="form_select" onchange="showDiv(this)" >
-        <option value="0">Old Label</option>
-        <option value="1">New Label</option>
+  <div id="divmanual" runat="server" visible="true">
+     <select id="DropDownList2" runat="server" name="form_select" onchange="showDiv(this)" >
+        <option value="0">Manual: Old Label</option>
+        <option value="1">Manual: New Label</option>
+         <option value="2">USDA</option>
      </select>
 
   <div id="divold" runat="server" style="display:none">
@@ -348,13 +362,11 @@
   <asp:Button ID="btnNewSaveItem" runat="server" OnClick="btnNewSaveItem_Click" Text="Save Item" CssClass="btncss"/>
     <asp:Label ID="lblNewResult" runat="server" Text=" "></asp:Label>
 </div>
-
-  </div>
-
-         </div>
-
-         <div id="divgridview">
-             <asp:GridView ID="gridUSDAChoices" runat="server" OnRowDataBound="gridUSDAChoices_RowDataBound" AutoGenerateColumns="false" onselectedindexchanged="gridSearchResults_SelectedIndexChanged" HorizontalAlign="Center">
+      <div id="divgridview" style="display:none">
+          <td>Search a Similar Item:</td>
+    <td><asp:TextBox ID="txtSearchDescription" runat="server"></asp:TextBox></td>
+          <td><asp:Button ID="btnUpdateItem" runat="server" Text="Update Item" CssClass="btncss" OnClick="btnUpdateItem_Click" ValidationGroup="UpdateItem"/></td>
+             <%--<asp:GridView ID="gridUSDAChoices" runat="server" OnRowDataBound="gridUSDAChoices_RowDataBound" AutoGenerateColumns="false" onselectedindexchanged="gridSearchResults_SelectedIndexChanged" HorizontalAlign="Center">
              <Columns>
              <asp:BoundField DataField ="NDBno" HeaderText ="NDBno"/>
              <asp:BoundField DataField ="Name" HeaderText ="Name"/>
@@ -362,8 +374,16 @@
              <asp:BoundField DataField ="ND score" HeaderText ="ND Score" />
           <asp:commandfield showselectbutton="True" selectText ="Select"/>
          </Columns>
-                     </asp:GridView>
+                     </asp:GridView>--%>
+          <%--<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">--%>
+          
+              <%--</asp:Content>--%>
              </div>
+  </div>
+
+         </div>
+
+         
          <br>
          <asp:Label ID="lblFBCategories" visible="false" runat="server" Text="Choose a Food Bank Category"></asp:Label>
          <br>
@@ -405,6 +425,43 @@
     
 
     </form>
+
+    <section runat="server" id="section" visible="true">
+		<h3><asp:Literal ID="search_summary" runat="server" /></h3>
+		<h4><asp:Literal ID="filter_applied" runat="server" /></h4>
+		<div id="search_results" runat="server" class="row">
+			<div class='col-sm-6 col-md-4 col-lg-3'>
+				<div class='panel panel-default'>
+					<div class='panel-body'>
+						<h4 class='panel-title equal-height'>{1}
+						</h4>
+						<h4><strong>ND_Score: {2}</strong></h4>
+						<button class='btn btn-success btn-block'>Expand</button>
+					</div>
+				</div>
+			</div>
+			<%--OnSelectedIndexChanged="gridSearchResults_SelectedIndexChanged"
+			OnRowDataBound="OnRowDataBound"--%>
+			<%--<asp:GridView
+				ID="gridSearchResults"
+				runat="server"
+				AutoGenerateColumns="false"
+				Width="660px"
+				Visible="true"
+				CssClass="myGridStyle"
+				PagerStyle-CssClass="pgr"
+				EmptyDataText="Please use the search bar to locate food items">
+				<Columns>
+					<asp:BoundField DataField="NDBno" HeaderText="NDBno" />
+					<asp:BoundField DataField="Name" HeaderText="Item" />
+					<asp:BoundField DataField="ND score" HeaderText="ND Score" />
+					<asp:CommandField ShowSelectButton="True" SelectText="Expand" />
+				</Columns>
+				<EmptyDataRowStyle Font-Size="30px" />
+				<PagerStyle CssClass="pgr"></PagerStyle>
+			</asp:GridView>--%>
+		</div>
+	</section>
     <!--start footer-->
      
 <footer style="padding-top: 20px; position:relative; bottom:0; border-top:1px solid #fff; background-color: #0D8843;">

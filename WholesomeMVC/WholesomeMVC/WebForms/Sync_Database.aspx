@@ -183,7 +183,7 @@
              <asp:BoundField DataField ="Ceres_Name" HeaderText ="Ceres_Name"/>
              <asp:BoundField DataField ="NDBno" HeaderText ="NDBno"/>
              <asp:BoundField DataField ="Name" HeaderText ="Name"/>
-             <asp:BoundField DataField ="Protein" HeaderText ="Protein"/>
+             <%--<asp:BoundField DataField ="Protein" HeaderText ="Protein"/>
              <asp:BoundField DataField ="Fiber" HeaderText ="Fiber"/>
              <asp:BoundField DataField ="VitaminA" HeaderText ="VitaminA"/>
              <asp:BoundField DataField ="VitaminC" HeaderText ="VitaminC"/>
@@ -195,7 +195,7 @@
              <asp:BoundField DataField ="Total_Sugar" HeaderText ="Total_Sugar"/> 
              <asp:BoundField DataField ="Added_Sugar" HeaderText ="Added_Sugar"/>
              <asp:BoundField DataField ="Sodium" HeaderText ="Sodium"/>
-             <asp:BoundField DataField ="KCal" HeaderText ="KCal"/>
+             <asp:BoundField DataField ="KCal" HeaderText ="KCal"/>--%>
              <asp:BoundField DataField ="ND score" HeaderText ="ND Score" />
           <asp:commandfield showselectbutton="true" selectText ="Update"/>
          </Columns>
@@ -211,7 +211,7 @@
              <asp:BoundField DataField ="Ceres_Name" HeaderText ="Ceres_Name"/>
              <asp:BoundField DataField ="NDBno" HeaderText ="NDBno"/>
              <asp:BoundField DataField ="Name" HeaderText ="Name"/>
-             <asp:BoundField DataField ="Protein" HeaderText ="Protein"/>
+             <%--<asp:BoundField DataField ="Protein" HeaderText ="Protein"/>
              <asp:BoundField DataField ="Fiber" HeaderText ="Fiber"/>
              <asp:BoundField DataField ="VitaminA" HeaderText ="VitaminA"/>
              <asp:BoundField DataField ="VitaminC" HeaderText ="VitaminC"/>
@@ -223,12 +223,12 @@
              <asp:BoundField DataField ="Total_Sugar" HeaderText ="Total_Sugar"/> 
              <asp:BoundField DataField ="Added_Sugar" HeaderText ="Added_Sugar"/>
              <asp:BoundField DataField ="Sodium" HeaderText ="Sodium"/>
-             <asp:BoundField DataField ="KCal" HeaderText ="KCal"/>
+             <asp:BoundField DataField ="KCal" HeaderText ="KCal"/>--%>
              <asp:BoundField DataField ="ND score" HeaderText ="ND Score" />
           <asp:commandfield showselectbutton="true" selectText ="Retrieve"/>
          </Columns>
                      </asp:GridView>
-             </div>
+             <%--</div>
          <br><br>
          <div class="container">
          <asp:Label ID="lblUmatchedCeresIDS" runat="server" Text="Unmatched Ceres ID's"></asp:Label>
@@ -239,9 +239,9 @@
           <asp:commandfield showselectbutton="true" selectText ="Select a Match"/>
          </Columns>
         </asp:GridView>
-             </div>
+             </div>--%>
          <br><br>
-         <div class="container">
+         <%--<div class="container">
          <asp:Label ID="Label1" runat="server" Text="Unmatched Wholesome ID's"></asp:Label>
          <asp:GridView ID="gridUnmatchedTestDBIDS" runat="server" OnRowDataBound="unMatchedOnRowDataBound" AutoGenerateColumns="false" onselectedindexchanged="gridUnMatchedWholesomeIDS_SelectedIndexChanged">
              <Columns>
@@ -266,7 +266,7 @@
              <asp:commandfield showselectbutton="true" selectText ="Update"/>
                  </Columns>
          </asp:GridView>
-        </div>
+        </div>--%>
       </div>
          <br>
          
