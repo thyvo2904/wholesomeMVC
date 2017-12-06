@@ -6,8 +6,11 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="body" runat="server">
-    <br>
-    <button runat="server" type="submit" class="btnexport2" onserverclick="btntable_Export">Export To Excel</button>
-    <br>
-    <asp:PlaceHolder runat="server" ID="compare"></asp:PlaceHolder>
+	<div>
+		<asp:Button Text="Export To Excel" runat="server" OnClick="btntable_Export" CssClass="btn btn-success btn-lg" />
+	</div>
+	<div>
+		<hr />
+		<asp:PlaceHolder runat="server" ID="compare"></asp:PlaceHolder>
+	</div>
 </asp:Content>

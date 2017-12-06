@@ -307,11 +307,11 @@
       <DependentUpon>system_settings.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Update_Item.aspx.cs">
-      <DependentUpon>update_item.aspx</DependentUpon>
+      <DependentUpon>Update_Item.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForms\Update_Item.aspx.designer.cs">
-      <DependentUpon>update_item.aspx</DependentUpon>
+      <DependentUpon>Update_Item.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\recent.aspx.cs">
       <DependentUpon>recent.aspx</DependentUpon>
@@ -333,6 +333,7 @@
     <Content Include="Content\bootstrap.cosmo.min.css" />
     <Content Include="Content\Custom\comparison.css" />
     <Content Include="Content\Custom\indexresult.css" />
+    <Content Include="Scripts\Custom\Update_Item.js" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap4.css" />
@@ -502,6 +503,7 @@
     <Content Include="Content\Images\icons8-milk-100.png" />
     <Content Include="Content\Images\icons8-natural-food-100.png" />
     <Content Include="Content\Images\icons8-save-100.png" />
+    <Content Include="Content\Images\icons8-scales-100.png" />
     <Content Include="Content\Images\icons8-sodium-100.png" />
     <Content Include="Content\Images\icons8-strawberry-100.png" />
     <Content Include="Content\Images\icons8-sugar-free-100.png" />
@@ -515,6 +517,7 @@
     <Content Include="Scripts\Custom\indexresult.js" />
     <Content Include="Scripts\Custom\inventory_admin.js" />
     <Content Include="Scripts\Custom\site.js" />
+    <Content Include="Scripts\Custom\update_item.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap4.js" />
@@ -651,7 +654,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="WebForms\Sync_Database.aspx" />
     <Content Include="WebForms\system_settings.aspx" />
-    <Content Include="WebForms\update_item.aspx" />
+    <Content Include="WebForms\Update_Item.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
