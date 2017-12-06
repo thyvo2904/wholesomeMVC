@@ -271,7 +271,7 @@ $(document).ready(function() {
     <%--<td><asp:TextBox ID="txtNumber" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNumber" ID="chkItemNumber" runat="server" ValidationGroup="UpdateItem" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
   </tr>--%>
   <%--<select id="ddlMatchedCeresID" runat="server" name="Matched Ceres ID's">--%>
-         <asp:GridView ID="gridMatchedCeresIDS" runat="server" CssClass="footable" Style="max-width: 500px" OnRowDataBound="ceresMatchedOnRowDataBound" AutoGenerateColumns="False" RowStyle-Wrap="false">
+         <asp:GridView ID="gridMatchedCeresIDS" runat="server" CssClass="footable" Style="max-width: 500px" OnSelectedIndexChanged="gridMatchedCeresIDS_SelectedIndexChanged" OnRowDataBound="ceresMatchedOnRowDataBound" AutoGenerateColumns="False" RowStyle-Wrap="false">
              <Columns>
              <asp:BoundField DataField ="CeresID" HeaderText ="CeresID"/>
              <asp:BoundField DataField ="Ceres_Name" HeaderText ="Ceres_Name"/>

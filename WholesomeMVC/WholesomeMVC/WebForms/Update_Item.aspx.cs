@@ -748,7 +748,13 @@ namespace WholesomeMVC.WebForms
 
         }
 
-        
+        protected void gridMatchedCeresIDS_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String idToMatch = gridMatchedCeresIDS.SelectedRow.Cells[0].Text;
+            
+
+
+        }
 
         protected void OnSelectedIndexChanged(object sender, EventArgs e)
         {
