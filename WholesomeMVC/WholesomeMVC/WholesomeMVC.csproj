@@ -331,6 +331,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.cosmo.css" />
     <Content Include="Content\bootstrap.cosmo.min.css" />
+    <Content Include="Content\Custom\comparison.css" />
     <Content Include="Content\Custom\indexresult.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />

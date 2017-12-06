@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+
 
 namespace WholesomeMVC.WebForms
 {
@@ -81,7 +84,7 @@ namespace WholesomeMVC.WebForms
                 {
                     // Create a cell and set its text.
                     cell = new HtmlTableCell();
-                    //cell.InnerHtml = "Row: " + i.ToString() + "<br />Cell: " + j.ToString();
+                  
                     // Add the cell to the current row.
                     row.Cells.Add(cell);
                 }
@@ -111,6 +114,7 @@ namespace WholesomeMVC.WebForms
             {
                 table1.Rows[0].Cells[k].InnerText = "#" + k.ToString();
             }
+
             // add dataset from db table to html table
             DataTable dt = this.GetData();
 
@@ -118,12 +122,8 @@ namespace WholesomeMVC.WebForms
             {
                 for (int j = 0; j < dt.Columns.Count; j++)
                 {
-
                     // Loop through columns
-
                     table1.Rows[j + 1].Cells[i + 1].InnerText = dt.Rows[i][j].ToString();
-
-
                 }
             }
 
@@ -131,8 +131,30 @@ namespace WholesomeMVC.WebForms
             compare.Controls.Add(table1);
         }
 
+        protected void ExportCompareTableToExcel()
+        {
+            Response.ContentType = "application/x-msexcel";
+            string FileName = "FB_COMPARISON" + DateTime.Now + ".xls";
+            Response.AddHeader("Content-Disposition", "attachment;filename = " + FileName);
+            Response.ContentEncoding = Encoding.UTF8;
+            StringWriter tw = new StringWriter();
+            HtmlTextWriter hw = new HtmlTextWriter(tw);
+            compare.RenderControl(hw);
+            Response.Write(tw.ToString());
+            Response.End();
+        }
+
+        protected void btntable_Export(object sender, EventArgs e)
+        {
+            ExportCompareTableToExcel();
+        }
+
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            /* Do nothing */
+        }
+
+
 
     }
-
-
 }
