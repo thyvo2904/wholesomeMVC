@@ -13,114 +13,6 @@ namespace WholesomeMVC.WebForms {
     public partial class indexresult {
         
         /// <summary>
-        /// image_grain control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_grain;
-        
-        /// <summary>
-        /// button_grain control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_grain;
-        
-        /// <summary>
-        /// image_vegetables control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_vegetables;
-        
-        /// <summary>
-        /// button_vegetables control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_vegetables;
-        
-        /// <summary>
-        /// image_fruit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_fruit;
-        
-        /// <summary>
-        /// button_fruit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_fruit;
-        
-        /// <summary>
-        /// image_dairy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_dairy;
-        
-        /// <summary>
-        /// button_dairy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_dairy;
-        
-        /// <summary>
-        /// image_baby_food control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_baby_food;
-        
-        /// <summary>
-        /// button_baby_food control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_baby_food;
-        
-        /// <summary>
-        /// image_beverages control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_beverages;
-        
-        /// <summary>
-        /// button_beverages control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_beverages;
-        
-        /// <summary>
         /// search_summary control.
         /// </summary>
         /// <remarks>
@@ -130,13 +22,22 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.Literal search_summary;
         
         /// <summary>
-        /// filter_applied control.
+        /// label_color_scale_legend control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal filter_applied;
+        protected global::System.Web.UI.WebControls.Label label_color_scale_legend;
+        
+        /// <summary>
+        /// image_color_scale_legend control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image image_color_scale_legend;
         
         /// <summary>
         /// search_results control.
@@ -265,6 +166,15 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.Label txtiron;
         
         /// <summary>
+        /// sook1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sook1;
+        
+        /// <summary>
         /// txtCeresNumber control.
         /// </summary>
         /// <remarks>
@@ -272,6 +182,15 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCeresNumber;
+        
+        /// <summary>
+        /// sook2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sook2;
         
         /// <summary>
         /// txtCeresDescription control.
@@ -290,6 +209,15 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnSaveItem;
+        
+        /// <summary>
+        /// btnCompare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCompare;
         
         /// <summary>
         /// lblNdbno control.

@@ -66,7 +66,7 @@
 										<div class="input-group">
 											<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control typeahead" autocomplete="off"></asp:TextBox>
 											<span class="input-group-btn">
-												<button type="submit" class="btn btn-default" style="background-color: #FF9500;" runat="server" onserverclick="btnSearch">
+												<button type="submit" class="btn btn-default" runat="server" onserverclick="btnSearch">
 													<span class="glyphicon glyphicon-search"></span>
 												</button>
 											</span>
@@ -78,17 +78,18 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a style="color:#FF9500;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								<asp:Label ID="label_user" runat="server" />
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><asp:HyperLink runat="server" ID="log_in_out" ClientIDMode="Static"></asp:HyperLink></li>
+								<li><asp:HyperLink runat="server" ID="log_in" Text="Log In" NavigateUrl="~/Account/Login"></asp:HyperLink></li>
+								<li><asp:LinkButton runat="server" ID="log_out" Text="Log Off" OnClick="LogOut"></asp:LinkButton></li>
 								<li><asp:HyperLink runat="server" ID="register" Text="Register" NavigateUrl="~/Account/Register"></asp:HyperLink></li>
 							</ul>
 						</li>
 						<li>
-							<a href="#" class="dropdown-toggle" style="color:#FF9500;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								Menu
 								<span class="caret"></span>
 							</a>
@@ -133,11 +134,6 @@
 				</p>
 			</section>
 		</footer>
-		<asp:HiddenField ID="generatedToken" ClientIDMode="Static" runat="server" />
-	</form>
-
-	<form action="/Account/LogOff" class="hidden" id="logoutForm" method="post">
-		<input id="tokenToSubmit" name="__RequestVerificationToken" type="hidden" value="" />
 	</form>
 
 	<script src="/Scripts/jquery-1.10.2.min.js"></script>

@@ -76,13 +76,22 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.Label label_user;
         
         /// <summary>
-        /// log_in_out control.
+        /// log_in control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink log_in_out;
+        protected global::System.Web.UI.WebControls.HyperLink log_in;
+        
+        /// <summary>
+        /// log_out control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton log_out;
         
         /// <summary>
         /// register control.
@@ -119,15 +128,6 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label label_year;
-        
-        /// <summary>
-        /// generatedToken control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField generatedToken;
         
         /// <summary>
         /// script control.
