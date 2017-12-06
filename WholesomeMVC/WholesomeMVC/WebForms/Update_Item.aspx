@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="True" MasterPageFile="~/WebForms/_layout.Master" CodeBehind="update_item.aspx.cs" Inherits="WholesomeMVC.WebForms.update_item" %>
          
 <asp:Content ContentPlaceHolderID="style" runat="server">
-	<%--<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/css/footable.min.css" rel="stylesheet" type="text/css" />--%>
 	<link href="/Content/Vendor/footable.bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="/Content/Custom/update_item.css" rel="stylesheet" type="text/css" />
 </asp:Content>
@@ -206,64 +205,66 @@
   <asp:Button ID="btnNewSaveItem" runat="server" OnClick="btnNewSaveItem_Click" Text="Save Item" CssClass="btncss"/>
     <asp:Label ID="lblNewResult" runat="server" Text=" "></asp:Label>--%>
 </div>
-      <div id="divgridview" style="display:none">
-          <td>Search a Similar Item:</td>
-    <td><asp:TextBox ID="txtSearchDescription" runat="server"></asp:TextBox></td>
-          <td><asp:Button ID="btnUpdateItem" runat="server" Text="Update Item" CssClass="btncss" OnClick="btnUpdateItem_Click" ValidationGroup="UpdateItem"/></td>
-             <%--<asp:GridView ID="gridUSDAChoices" runat="server" OnRowDataBound="gridUSDAChoices_RowDataBound" AutoGenerateColumns="false" onselectedindexchanged="gridSearchResults_SelectedIndexChanged" HorizontalAlign="Center">
-             <Columns>
-             <asp:BoundField DataField ="NDBno" HeaderText ="NDBno"/>
-             <asp:BoundField DataField ="Name" HeaderText ="Name"/>
-             <asp:BoundField DataField ="Food Group" HeaderText ="Food Group"/>
-             <asp:BoundField DataField ="ND score" HeaderText ="ND Score" />
-          <asp:commandfield showselectbutton="True" selectText ="Select"/>
-         </Columns>
-                     </asp:GridView>--%>
-          <%--<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">--%>
-          
-              <%--</asp:Content>--%>
-             </div>
+
+	  <div id="divgridview" style="display: none">
+		  <h4>Search a Similar Item:</h4>
+		  <div>
+			  <asp:TextBox ID="txtSearchDescription" runat="server"></asp:TextBox>
+		  </div>
+		  <div>
+			  <asp:Button ID="btnUpdateItem" runat="server" Text="Update Item" CssClass="btncss" OnClick="btnUpdateItem_Click" ValidationGroup="UpdateItem" />
+		  </div>
+		  <%--<asp:GridView ID="gridUSDAChoices" runat="server" OnRowDataBound="gridUSDAChoices_RowDataBound" AutoGenerateColumns="false" onselectedindexchanged="gridSearchResults_SelectedIndexChanged" HorizontalAlign="Center">
+<Columns>
+<asp:BoundField DataField ="NDBno" HeaderText ="NDBno"/>
+<asp:BoundField DataField ="Name" HeaderText ="Name"/>
+<asp:BoundField DataField ="Food Group" HeaderText ="Food Group"/>
+<asp:BoundField DataField ="ND score" HeaderText ="ND Score" />
+<asp:commandfield showselectbutton="True" selectText ="Select"/>
+</Columns>
+</asp:GridView>--%>
+		  <%--<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">--%>
+
+		  <%--</asp:Content>--%>
+	  </div>
   </div>
 
-         </div>
 
-         
-         <br>
-         <asp:Label ID="lblFBCategories" visible="false" runat="server" Text="Choose a Food Bank Category"></asp:Label>
-         <br>
-         <asp:DropDownList ID="ddlFBCategories" runat="server" Visible="False">
-             <asp:ListItem>Baby</asp:ListItem>
-             <asp:ListItem>Beverage</asp:ListItem>
-             <asp:ListItem>Bread</asp:ListItem>
-             <asp:ListItem>Cereal/Brk</asp:ListItem>
-             <asp:ListItem>complete</asp:ListItem>
-             <asp:ListItem>Condiment</asp:ListItem>
-             <asp:ListItem>dairy</asp:ListItem>
-             <asp:ListItem>dessert</asp:ListItem>
-             <asp:ListItem>Dough</asp:ListItem>
-             <asp:ListItem>Dressing</asp:ListItem>
-             <asp:ListItem>Entree</asp:ListItem>
-             <asp:ListItem>Fruit/veg</asp:ListItem>
-             <asp:ListItem>Fruits</asp:ListItem>
-             <asp:ListItem>Grain</asp:ListItem>
-             <asp:ListItem>Juice</asp:ListItem>
-             <asp:ListItem>Mixed/Asst</asp:ListItem>
-             <asp:ListItem>NF</asp:ListItem>
-             <asp:ListItem>Non-Dairy</asp:ListItem>
-             <asp:ListItem>Nutrition</asp:ListItem>
-             <asp:ListItem>Pasta</asp:ListItem>
-             <asp:ListItem>Pro-Meat</asp:ListItem>
-             <asp:ListItem>Pro-Non</asp:ListItem>
-             <asp:ListItem>Rice</asp:ListItem>
-             <asp:ListItem>Salvage</asp:ListItem>
-             <asp:ListItem>Snack</asp:ListItem>
-             <asp:ListItem>Vegetables</asp:ListItem>
-         </asp:DropDownList>
+	<div>
+		<asp:Label ID="lblFBCategories" Visible="false" runat="server" Text="Choose a Food Bank Category"></asp:Label>
+		<asp:DropDownList ID="ddlFBCategories" runat="server" Visible="False">
+			<asp:ListItem>Baby</asp:ListItem>
+			<asp:ListItem>Beverage</asp:ListItem>
+			<asp:ListItem>Bread</asp:ListItem>
+			<asp:ListItem>Cereal/Brk</asp:ListItem>
+			<asp:ListItem>complete</asp:ListItem>
+			<asp:ListItem>Condiment</asp:ListItem>
+			<asp:ListItem>dairy</asp:ListItem>
+			<asp:ListItem>dessert</asp:ListItem>
+			<asp:ListItem>Dough</asp:ListItem>
+			<asp:ListItem>Dressing</asp:ListItem>
+			<asp:ListItem>Entree</asp:ListItem>
+			<asp:ListItem>Fruit/veg</asp:ListItem>
+			<asp:ListItem>Fruits</asp:ListItem>
+			<asp:ListItem>Grain</asp:ListItem>
+			<asp:ListItem>Juice</asp:ListItem>
+			<asp:ListItem>Mixed/Asst</asp:ListItem>
+			<asp:ListItem>NF</asp:ListItem>
+			<asp:ListItem>Non-Dairy</asp:ListItem>
+			<asp:ListItem>Nutrition</asp:ListItem>
+			<asp:ListItem>Pasta</asp:ListItem>
+			<asp:ListItem>Pro-Meat</asp:ListItem>
+			<asp:ListItem>Pro-Non</asp:ListItem>
+			<asp:ListItem>Rice</asp:ListItem>
+			<asp:ListItem>Salvage</asp:ListItem>
+			<asp:ListItem>Snack</asp:ListItem>
+			<asp:ListItem>Vegetables</asp:ListItem>
+		</asp:DropDownList>
+		<asp:Button ID="btnSelectFBCategory" runat="server" OnClick="btnSelectFBCategory_Click" Text="Select" Visible="False" />
+	</div>
 
-         <asp:Button ID="btnSelectFBCategory" runat="server" OnClick="btnSelectFBCategory_Click" Text="Select" Visible="False" />
-    
 
-    <section runat="server" id="section" visible="true">
+	<section runat="server" id="section" visible="true">
 		<h3><asp:Literal ID="search_summary" runat="server" /></h3>
 
 		<!-- Search items will show here -->
@@ -271,7 +272,6 @@
 			ID="gridMatchedCeresIDS" 
 			runat="server" 
 			CssClass="table table-bordered table-hover"
-			OnSelectedIndexChanged="gridMatchedCeresIDS_SelectedIndexChanged"
 			OnRowDataBound="ceresMatchedOnRowDataBound"
 			AutoGenerateColumns="False"
 			ClientIDMode="Static"
@@ -282,7 +282,6 @@
 				<asp:BoundField DataField="USDA Number" HeaderText="NDBno" />
 				<asp:BoundField DataField="Name" HeaderText="Name" />
 				<asp:BoundField DataField="ND score" HeaderText="ND Score" />
-				<asp:CommandField ShowSelectButton="true" SelectText="Update" />
 			</Columns>
 		</asp:GridView>
 		<asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
@@ -295,15 +294,17 @@
 					<asp:ScriptManager runat="server" EnablePartialRendering="true"></asp:ScriptManager>
 					<asp:UpdatePanel runat="server">
 						<ContentTemplate>
-							<div id="modal_header" runat="server" class="modal-header">
+							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 								<h4 class='panel-title equal-height'>
 									<asp:Label ID="lblFoodName" runat="server"></asp:Label>
 								</h4>
+							</div>
+
+							<div runat="server" id="nd_score_panel" class="modal-body">
 								<h4>
-									<strong>
-										ND_Score:
-										<asp:Label runat="server" ID="lblIndexResult"></asp:Label>
+									<strong>ND_Score:
+									<asp:Label runat="server" ID="lblIndexResult"></asp:Label>
 									</strong>
 								</h4>
 							</div>
@@ -314,52 +315,62 @@
 									<tbody>
 										<tr class='fatter'>
 											<th>Calories</th>
-											<td><asp:Label ID="txtcalories" runat="server" /></td>
+											<td>
+												<asp:Label ID="txtcalories" runat="server" /></td>
 											<td></td>
 										</tr>
 										<tr class='fat'>
 											<th>Saturated Fat</th>
-											<td><asp:Label ID="txtsatfat" runat="server" /></td>
+											<td>
+												<asp:Label ID="txtsatfat" runat="server" /></td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Sodium</th>
-											<td><asp:Label ID="txtsodium" runat="server" /></td>
+											<td>
+												<asp:Label ID="txtsodium" runat="server" /></td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Dietary Fiber</th>
-											<td><asp:Label ID="txtfiber" runat="server" /></td>
+											<td>
+												<asp:Label ID="txtfiber" runat="server" /></td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Total Sugars</th>
-											<td><asp:Label ID="txtsugar" runat="server" /></td>
+											<td>
+												<asp:Label ID="txtsugar" runat="server" /></td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Protein</th>
-											<td><asp:Label ID="txtprotein" runat="server" /></td>
+											<td>
+												<asp:Label ID="txtprotein" runat="server" /></td>
 											<td>g</td>
 										</tr>
 										<tr class='fatter'>
 											<th>Vitamin A</th>
-											<td><asp:Label ID="txtva" runat="server" /></td>
+											<td>
+												<asp:Label ID="txtva" runat="server" /></td>
 											<td>IU</td>
 										</tr>
 										<tr>
 											<th>Vitamin C</th>
-											<td><asp:Label ID="txtvc" runat="server" /></td>
+											<td>
+												<asp:Label ID="txtvc" runat="server" /></td>
 											<td>IU</td>
 										</tr>
 										<tr>
 											<th>Calcium</th>
-											<td><asp:Label ID="txtcalcium" runat="server" /></td>
+											<td>
+												<asp:Label ID="txtcalcium" runat="server" /></td>
 											<td>mg</td>
 										</tr>
 										<tr>
 											<th>Iron</th>
-											<td><asp:Label ID="txtiron" runat="server" /></td>
+											<td>
+												<asp:Label ID="txtiron" runat="server" /></td>
 											<td>mg</td>
 										</tr>
 									</tbody>
@@ -368,13 +379,15 @@
 								<hr />
 								<div>
 									<div class="form-group">
-										<label for="txtCeresNumber"><asp:Label Text="Ceres Number" runat="server" /></label>
+										<label for="txtCeresNumber">
+											<asp:Label Text="Ceres Number" runat="server" /></label>
 										<asp:TextBox ID="txtCeresNumber" CssClass="form-control" runat="server" placeholder="12345..."></asp:TextBox>
 									</div>
 									<div class="form-group">
-										<label for="txtCeresDescription"><asp:Label Text="Ceres Description" runat="server" /></label>
+										<label for="txtCeresDescription">
+											<asp:Label Text="Ceres Description" runat="server" /></label>
 										<asp:TextBox ID="txtCeresDescription" CssClass="form-control" runat="server" placeholder="Item description..."></asp:TextBox><br>
-                                        <%--<button type="button" class="btn btn-sm btn-default" id="btnSaveItem" runat="server" onserverclick="btnSaveItem_Click"><span class="glyphicon glyphicon-floppy-saved"></span>Save</button></span>--%>
+										<%--<button type="button" class="btn btn-sm btn-default" id="btnSaveItem" runat="server" onserverclick="btnSaveItem_Click"><span class="glyphicon glyphicon-floppy-saved"></span>Save</button></span>--%>
 									</div>
 								</div>
 							</div>
@@ -382,9 +395,9 @@
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
 								<%--<asp:Button Text="Compare Item" runat="server" CssClass="btn btn-success" OnClick="CompareItem" />--%>
 							</div>
-							<!-- hack to make on-server-generated buttons work -->
-							<asp:HiddenField runat="server" ID="hidden_ceres_name" ClientIDMode="Static"></asp:HiddenField>
+							<!-- hack to expand modal after postback -->
 							<asp:HiddenField runat="server" ID="hidden_ceresid" ClientIDMode="Static"></asp:HiddenField>
+							<asp:HiddenField runat="server" ID="hidden_ceres_name" ClientIDMode="Static"></asp:HiddenField>
 							<asp:HiddenField runat="server" ID="hidden_ndbno" ClientIDMode="Static"></asp:HiddenField>
 							<asp:Button runat="server" ID="button_expand_item" OnClick="ExpandItem" ClientIDMode="Static" CssClass="hidden" />
 						</ContentTemplate>
@@ -395,49 +408,15 @@
 				</div>
 			</div>
 		</div>
-
-		<%--OnSelectedIndexChanged="gridSearchResults_SelectedIndexChanged"
-		OnRowDataBound="OnRowDataBound"--%>
-		<%--<asp:GridView
-			ID="gridSearchResults"
-			runat="server"
-			AutoGenerateColumns="false"
-			Width="660px"
-			Visible="true"
-			CssClass="myGridStyle"
-			PagerStyle-CssClass="pgr"
-			EmptyDataText="Please use the search bar to locate food items">
-			<Columns>
-				<asp:BoundField DataField="NDBno" HeaderText="NDBno" />
-				<asp:BoundField DataField="Name" HeaderText="Item" />
-				<asp:BoundField DataField="ND score" HeaderText="ND Score" />
-				<asp:CommandField ShowSelectButton="True" SelectText="Expand" />
-			</Columns>
-			<EmptyDataRowStyle Font-Size="30px" />
-			<PagerStyle CssClass="pgr"></PagerStyle>
-		</asp:GridView>--%>
 	</section>
 </asp:Content>
     
  <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
-<%--	 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<%--	
 	 <script src="Fb_categories.js"></script>
 
 	 <link href="/css/additem.css" rel="stylesheet" type="text/css" runat="server" />
 	 <link href="Fb_category.css" rel="stylesheet" type="text/css" runat="server" />
-
-	 <style>
-	 	select#ddlMatchedCeresID {
-	 		color: #fff;
-	 		background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);
-	 		background-color: #779126;
-	 		-webkit-border-radius: 20px;
-	 		-moz-border-radius: 20px;
-	 		border-radius: 20px;
-	 		padding-left: 15px;
-	 	}
-	 </style>
 
 	 <script>
         function showDiv(elem) {
@@ -460,27 +439,12 @@
                 document.getElementById('divgridview').style.display = "block";
             }
         }
-	 </script>
-	 <script>
-        $(document).ready(function () {
-
-            // Custom settings
-            $('.matchedCeresIDS').responsiveTable({
-                staticColumns: 2,
-                scrollRight: true,
-                scrollHintEnabled: true,
-                scrollHintDuration: 2000
-            });
-        });
 	 </script>--%>
 	
-	<%--<script src="scripts/jquery.responsivetable.min.js"></script>--%>
-	<%--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/js/footable.min.js"></script>--%>
 	<script type="text/javascript" src="/Scripts/Vendor/moment.min.js"></script>
 	<script type="text/javascript" src="/Scripts/Vendor/footable.min.js"></script>
     <script type="text/javascript" src="/Scripts/Vendor/jquery.matchHeight-min.js"></script>
     <script type="text/javascript" src="/Scripts/Custom/update_item.js"></script>
-     <script type="text/javascript" src="/Scripts/Custom/Update_Item.js"></script>
  </asp:Content>
 
 

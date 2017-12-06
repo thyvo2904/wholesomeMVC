@@ -1,4 +1,11 @@
 ﻿/* override footable search buttons */
-.footable-filtering button {
+.footable-filtering-search button {
 	display: none;
+}
+
+/* override bootstrap update button */
+.update-button {
+	background-color: #70C277;
+	border-color: #70C277;
+	color: #FFFFFF;
 }
