@@ -121,6 +121,15 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.Label label_year;
         
         /// <summary>
+        /// generatedToken control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField generatedToken;
+        
+        /// <summary>
         /// script control.
         /// </summary>
         /// <remarks>
