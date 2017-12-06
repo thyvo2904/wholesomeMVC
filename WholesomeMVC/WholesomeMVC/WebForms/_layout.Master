@@ -13,7 +13,7 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="/Content/Images/favicon.ico">
 
-	<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Ubuntu" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Nunito|Nunito+Sans" rel="stylesheet"> 
 
     <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" runat="server" />
     <link href="/Content/font-awesome.min.css" rel="stylesheet" type="text/css" runat="server" />
