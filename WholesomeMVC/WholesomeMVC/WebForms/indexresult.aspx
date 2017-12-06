@@ -149,7 +149,7 @@
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
-								<asp:Button Text="Save Item" runat="server" CssClass="btn btn-success" OnClick="SaveItem" />
+								<asp:Button Text="Compare Item" runat="server" CssClass="btn btn-success" OnClick="SaveItem" />
 							</div>
 							<!-- hack to make on-server-generated buttons work -->
 							<asp:HiddenField runat="server" ID="lblNdbno" ClientIDMode="Static"></asp:HiddenField>
@@ -167,6 +167,6 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
-    <script type="text/javascript" src="/Scripts/Custom/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="/Scripts/Vendor/jquery.matchHeight-min.js"></script>
     <script type="text/javascript" src="/Scripts/Custom/indexresult.js"></script>
 </asp:Content>
