@@ -307,11 +307,11 @@
       <DependentUpon>system_settings.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Update_Item.aspx.cs">
-      <DependentUpon>update_item.aspx</DependentUpon>
+      <DependentUpon>Update_Item.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForms\Update_Item.aspx.designer.cs">
-      <DependentUpon>update_item.aspx</DependentUpon>
+      <DependentUpon>Update_Item.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\recent.aspx.cs">
       <DependentUpon>recent.aspx</DependentUpon>
@@ -514,6 +514,7 @@
     <Content Include="Scripts\Custom\indexresult.js" />
     <Content Include="Scripts\Custom\inventory_admin.js" />
     <Content Include="Scripts\Custom\site.js" />
+    <Content Include="Scripts\Custom\update_item.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap4.js" />
@@ -650,7 +651,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="WebForms\Sync_Database.aspx" />
     <Content Include="WebForms\system_settings.aspx" />
-    <Content Include="WebForms\update_item.aspx" />
+    <Content Include="WebForms\Update_Item.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

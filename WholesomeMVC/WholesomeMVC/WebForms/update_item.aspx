@@ -1,48 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="True" MasterPageFile="~/WebForms/_layout.Master" CodeBehind="Update_Item.aspx.cs" Inherits="WholesomeMVC.WebForms.Update_Item" %>
-
-
-
-<%--<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" 
-
-    content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
-<title>Wholesome | Update Item</title>
-
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="screen">
-<link href="css/custom.css" rel="stylesheet" type="text/css" media="screen">
- <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>--%>
-
-   
-      
          
-        
-         
-<%--<div  class="col-md-2"> 
-
-<div class="container-fluid menu">       
-<div class="vertical-menu">
-  <a href="Add_Item.aspx">Add Item</a>
-  <a href="Update_Item.aspx" class="active" >Update Item</a>
-  <a href="Sync_Database.aspx">Sync Database</a>
-  <a href="Inventory_admin.aspx">Main Menu</a>
-  
-
-</div>    
-   </div>
-    
-
-     </div>--%>
-
-         
-    <asp:Content ContentPlaceHolderID="body" runat="server">
-<br> 
+<asp:Content ContentPlaceHolderID="body" runat="server">
   <div class="wrapper">
      <div id="divitem">
         <%--<asp:Label ID="Label10" runat="server" Text="Method of Nutrition Entry:"></asp:Label>
@@ -53,30 +11,30 @@
         </asp:DropDownList>--%>
   
   
-    <td>Matched Items </td>
-    <%--<td><asp:TextBox ID="txtNumber" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNumber" ID="chkItemNumber" runat="server" ValidationGroup="UpdateItem" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
-  </tr>--%>
-  <%--<select id="ddlMatchedCeresID" runat="server" name="Matched Ceres ID's">--%>
-         <asp:GridView ID="gridMatchedCeresIDS" runat="server" CssClass="footable" Style="max-width: 500px" OnSelectedIndexChanged="gridMatchedCeresIDS_SelectedIndexChanged" OnRowDataBound="ceresMatchedOnRowDataBound" AutoGenerateColumns="False" RowStyle-Wrap="false">
-             <Columns>
-             <asp:BoundField DataField ="CeresID" HeaderText ="CeresID"/>
-             <asp:BoundField DataField ="Ceres_Name" HeaderText ="Ceres_Name"/>
-             <asp:BoundField DataField ="USDA Number" HeaderText ="NDBno"/>
-             <asp:BoundField DataField ="Name" HeaderText ="Name"/>
-             <asp:BoundField DataField ="ND score" HeaderText ="ND Score" />
-          <asp:commandfield showselectbutton="true" selectText ="Update"/>
-         </Columns>
-                     </asp:GridView>
-         <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
-  <%--</select>--%>
-      
-  <tr>
-    <td></td>
-    
-  </tr>
- 
-
-        </div>
+    <h2>Matched Items</h2>
+		<%--<td><asp:TextBox ID="txtNumber" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNumber" ID="chkItemNumber" runat="server" ValidationGroup="UpdateItem" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td> </tr>--%>
+		<%--<select id="ddlMatchedCeresID" runat="server" name="Matched Ceres ID's">--%>
+		<%--</select>--%>
+		<asp:GridView
+			ID="gridMatchedCeresIDS" 
+			runat="server" 
+			CssClass="footable"
+			Style="max-width: 500px"
+			OnSelectedIndexChanged="gridMatchedCeresIDS_SelectedIndexChanged"
+			OnRowDataBound="ceresMatchedOnRowDataBound"
+			AutoGenerateColumns="False"
+			RowStyle-Wrap="false">
+			<Columns>
+				<asp:BoundField DataField="CeresID" HeaderText="CeresID" />
+				<asp:BoundField DataField="Ceres_Name" HeaderText="Ceres_Name" />
+				<asp:BoundField DataField="USDA Number" HeaderText="NDBno" />
+				<asp:BoundField DataField="Name" HeaderText="Name" />
+				<asp:BoundField DataField="ND score" HeaderText="ND Score" />
+				<asp:CommandField ShowSelectButton="true" SelectText="Update" />
+			</Columns>
+		</asp:GridView>
+		<asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+	</div>
                      
       
   <div id="divmanual" runat="server" visible="true">
@@ -236,145 +194,177 @@
          </asp:DropDownList>
 
          <asp:Button ID="btnSelectFBCategory" runat="server" OnClick="btnSelectFBCategory_Click" Text="Select" Visible="False" />
-
-         <br>
-         
-         
-         <br><br><br><br><br>
-    
-
     
 
     <section runat="server" id="section" visible="true">
 		<h3><asp:Literal ID="search_summary" runat="server" /></h3>
 		<h4><asp:Literal ID="filter_applied" runat="server" /></h4>
-		<div id="search_results" runat="server" class="row">
-			<div class='col-sm-6 col-md-4 col-lg-3'>
-				<div class='panel panel-default'>
-					<div class='panel-body'>
-						<h4 class='panel-title equal-height'>{1}
-						</h4>
-						<h4><strong>ND_Score: {2}</strong></h4>
-						<button class='btn btn-success btn-block'>Expand</button>
-					</div>
+
+		<!-- Search items will show here -->
+		<div id="search_results" runat="server" class="row"></div>
+
+		<!-- Modal for expanded view -->
+		<div class="modal fade" id="expanded_view" tabindex="-1" role="dialog" aria-labelledby="expanded view">
+			<div class="modal-dialog modal-sm" role="document">
+				<div class="modal-content">
+					<asp:ScriptManager runat="server" EnablePartialRendering="true"></asp:ScriptManager>
+					<asp:UpdatePanel runat="server">
+						<ContentTemplate>
+							<div id="modal_header" runat="server" class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class='panel-title equal-height'>
+									<asp:Label ID="lblFoodName" runat="server"></asp:Label>
+								</h4>
+								<h4>
+									<strong>
+										ND_Score:
+										<asp:Label runat="server" ID="lblIndexResult"></asp:Label>
+									</strong>
+								</h4>
+							</div>
+
+							<div class="modal-body">
+								<h4><strong>Nutrition Facts</strong></h4>
+								<table class='table table-condensed table-hover'>
+									<tbody>
+										<tr class='fatter'>
+											<th>Calories</th>
+											<td><asp:Label ID="txtcalories" runat="server" /></td>
+											<td></td>
+										</tr>
+										<tr class='fat'>
+											<th>Saturated Fat</th>
+											<td><asp:Label ID="txtsatfat" runat="server" /></td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Sodium</th>
+											<td><asp:Label ID="txtsodium" runat="server" /></td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Dietary Fiber</th>
+											<td><asp:Label ID="txtfiber" runat="server" /></td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Total Sugars</th>
+											<td><asp:Label ID="txtsugar" runat="server" /></td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Protein</th>
+											<td><asp:Label ID="txtprotein" runat="server" /></td>
+											<td>g</td>
+										</tr>
+										<tr class='fatter'>
+											<th>Vitamin A</th>
+											<td><asp:Label ID="txtva" runat="server" /></td>
+											<td>IU</td>
+										</tr>
+										<tr>
+											<th>Vitamin C</th>
+											<td><asp:Label ID="txtvc" runat="server" /></td>
+											<td>IU</td>
+										</tr>
+										<tr>
+											<th>Calcium</th>
+											<td><asp:Label ID="txtcalcium" runat="server" /></td>
+											<td>mg</td>
+										</tr>
+										<tr>
+											<th>Iron</th>
+											<td><asp:Label ID="txtiron" runat="server" /></td>
+											<td>mg</td>
+										</tr>
+									</tbody>
+								</table>
+
+								<hr />
+								<div>
+									<div class="form-group">
+										<label for="txtCeresNumber"><asp:Label Text="Ceres Number" runat="server" /></label>
+										<asp:TextBox ID="txtCeresNumber" CssClass="form-control" runat="server" placeholder="12345..."></asp:TextBox>
+									</div>
+									<div class="form-group">
+										<label for="txtCeresDescription"><asp:Label Text="Ceres Description" runat="server" /></label>
+										<asp:TextBox ID="txtCeresDescription" CssClass="form-control" runat="server" placeholder="Item description..."></asp:TextBox><br>
+                                        <%--<button type="button" class="btn btn-sm btn-default" id="btnSaveItem" runat="server" onserverclick="btnSaveItem_Click"><span class="glyphicon glyphicon-floppy-saved"></span>Save</button></span>--%>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
+								<%--<asp:Button Text="Compare Item" runat="server" CssClass="btn btn-success" OnClick="CompareItem" />--%>
+							</div>
+							<!-- hack to make on-server-generated buttons work -->
+							<asp:HiddenField runat="server" ID="hidden_ceres_name" ClientIDMode="Static"></asp:HiddenField>
+							<asp:HiddenField runat="server" ID="hidden_ceresid" ClientIDMode="Static"></asp:HiddenField>
+							<asp:HiddenField runat="server" ID="hidden_ndbno" ClientIDMode="Static"></asp:HiddenField>
+							<asp:Button runat="server" ID="button_expand_item" OnClick="ExpandItem" ClientIDMode="Static" CssClass="hidden" />
+						</ContentTemplate>
+						<Triggers>
+							<asp:AsyncPostBackTrigger ControlID="button_expand_item" EventName="Click" />
+						</Triggers>
+					</asp:UpdatePanel>
 				</div>
 			</div>
-			<%--OnSelectedIndexChanged="gridSearchResults_SelectedIndexChanged"
-			OnRowDataBound="OnRowDataBound"--%>
-			<%--<asp:GridView
-				ID="gridSearchResults"
-				runat="server"
-				AutoGenerateColumns="false"
-				Width="660px"
-				Visible="true"
-				CssClass="myGridStyle"
-				PagerStyle-CssClass="pgr"
-				EmptyDataText="Please use the search bar to locate food items">
-				<Columns>
-					<asp:BoundField DataField="NDBno" HeaderText="NDBno" />
-					<asp:BoundField DataField="Name" HeaderText="Item" />
-					<asp:BoundField DataField="ND score" HeaderText="ND Score" />
-					<asp:CommandField ShowSelectButton="True" SelectText="Expand" />
-				</Columns>
-				<EmptyDataRowStyle Font-Size="30px" />
-				<PagerStyle CssClass="pgr"></PagerStyle>
-			</asp:GridView>--%>
 		</div>
-	</section>
 
-             </asp:Content>
+		<%--OnSelectedIndexChanged="gridSearchResults_SelectedIndexChanged"
+		OnRowDataBound="OnRowDataBound"--%>
+		<%--<asp:GridView
+			ID="gridSearchResults"
+			runat="server"
+			AutoGenerateColumns="false"
+			Width="660px"
+			Visible="true"
+			CssClass="myGridStyle"
+			PagerStyle-CssClass="pgr"
+			EmptyDataText="Please use the search bar to locate food items">
+			<Columns>
+				<asp:BoundField DataField="NDBno" HeaderText="NDBno" />
+				<asp:BoundField DataField="Name" HeaderText="Item" />
+				<asp:BoundField DataField="ND score" HeaderText="ND Score" />
+				<asp:CommandField ShowSelectButton="True" SelectText="Expand" />
+			</Columns>
+			<EmptyDataRowStyle Font-Size="30px" />
+			<PagerStyle CssClass="pgr"></PagerStyle>
+		</asp:GridView>--%>
+	</section>
+</asp:Content>
     
-     <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
-         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-         <script src="scripts/jquery.responsivetable.min.js"></script> 
-    <script src="Fb_categories.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/css/footable.min.css"
-    rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/js/footable.min.js"></script>
-<script type="text/javascript">
+ <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
+<%--	 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	 <script src="scripts/jquery.responsivetable.min.js"></script>
+	 <script src="Fb_categories.js"></script>
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/css/footable.min.css"
+		 rel="stylesheet" type="text/css" />
+	 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/js/footable.min.js"></script>
+	 <script type="text/javascript">
     $(function () {
         $('[id*=gridMatchedCeresIDS]').footable();
     });
-</script>
-    
-  <link href="/css/additem.css" rel="stylesheet" type="text/css" runat="server"/>
-    <link href="Fb_category.css" rel="stylesheet" type="text/css" runat="server"/>
-    
-  <style>
+	 </script>
 
-    ul.ui-autocomplete {
-    list-style: none;
-    list-style-type:none;
-    padding: 0px;
-    margin:0px;
-    color: black;
-    height: 200px; 
-    overflow-y: scroll;
-    overflow-x: hidden;
+	 <link href="/css/additem.css" rel="stylesheet" type="text/css" runat="server" />
+	 <link href="Fb_category.css" rel="stylesheet" type="text/css" runat="server" />
 
-      }
-              .wrapper{
-            display: inline-block;
-            /*width: 360px;*/
-            height: 360px;
-        }
+	 <style>
+	 	select#ddlMatchedCeresID {
+	 		color: #fff;
+	 		background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);
+	 		background-color: #779126;
+	 		-webkit-border-radius: 20px;
+	 		-moz-border-radius: 20px;
+	 		border-radius: 20px;
+	 		padding-left: 15px;
+	 	}
+	 </style>
 
-        #divitem{
-            float:left;
-            margin-right:50px;
-            margin-left: 80px;
-        }
-
-        #divmanual{
-            float: right;
-            margin-left: 50px;
-        }
-
-        #divgridview{
-            text-align:center;
-            margin-left: auto; margin-right: auto;
-        }
-
-        .btncss{
-         background-color: #0D8843;
-         color:#fff;
-         outline-color: #0D8843;
-         float: right;  
-     }
-        select#ddlMatchedCeresID {
-   color: #fff;
-   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);
-   background-color: #779126;
-   -webkit-border-radius: 20px;
-   -moz-border-radius: 20px;
-   border-radius: 20px;
-   padding-left: 15px;
-}
-      
-        
-       
-        </style>
-
-<script>
-    $(document).ready(function (e) {
-        $('.search-panel .dropdown-menu').find('a').click(function (e) {
-            e.preventDefault();
-            var param = $(this).attr("href").replace("#", "");
-            var concept = $(this).text();
-            $('.search-panel span#search_concept').text(concept);
-            $('.input-group #search_param').val(param);
-        });
-    });
-</script> 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("[id*=txtSearch]").autocomplete({ source: '<%=ResolveUrl("~/AutoComplete.ashx" ) %>' });
-    }); 
-</script>    
-
-    <script>
+	 <script>
         function showDiv(elem) {
             if (elem.value == 0) {
                 document.getElementById('document.getElementById("divold")').style.display = "block";
@@ -395,8 +385,8 @@
                 document.getElementById('divgridview').style.display = "block";
             }
         }
-        </script>
-    <script>
+	 </script>
+	 <script>
         $(document).ready(function () {
 
             // Custom settings
@@ -407,7 +397,10 @@
                 scrollHintDuration: 2000
             });
         });
-    </script>
-    </asp:Content>
+	 </script>--%>
+	
+    <script type="text/javascript" src="/Scripts/Vendor/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="/Scripts/Custom/update_item.js"></script>
+ </asp:Content>
 
-     
+
