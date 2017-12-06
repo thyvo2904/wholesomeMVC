@@ -489,11 +489,11 @@ namespace WholesomeMVC.WebForms
 
 
 
-            if (!Update_Item.dataSearchResults.Columns.Contains("NDBno"))
+            if (!update_item.dataSearchResults.Columns.Contains("NDBno"))
             {
-                Update_Item.dataSearchResults.Columns.Add("NDBno", typeof(string)); // Row 0
-                Update_Item.dataSearchResults.Columns.Add("Name", typeof(string)); // Row 1
-                Update_Item.dataSearchResults.Columns.Add("Food Group", typeof(string)); // Row 1
+                update_item.dataSearchResults.Columns.Add("NDBno", typeof(string)); // Row 0
+                update_item.dataSearchResults.Columns.Add("Name", typeof(string)); // Row 1
+                update_item.dataSearchResults.Columns.Add("Food Group", typeof(string)); // Row 1
                 //Update_Item.dataSearchResults.Columns.Add("Protein", typeof(double));// Row 2
                 //Update_Item.dataSearchResults.Columns.Add("Fiber", typeof(double));// Row 3
                 //Update_Item.dataSearchResults.Columns.Add("VitaminA", typeof(double));// Row 4
@@ -504,13 +504,13 @@ namespace WholesomeMVC.WebForms
                 //Update_Item.dataSearchResults.Columns.Add("Total_Sugar", typeof(double));// Row 9
                 //Update_Item.dataSearchResults.Columns.Add("Sodium", typeof(double));// Row 10
                 //Update_Item.dataSearchResults.Columns.Add("KCal", typeof(double));// Row 11
-                Update_Item.dataSearchResults.Columns.Add("ND Score", typeof(double));// Row 12
+                update_item.dataSearchResults.Columns.Add("ND Score", typeof(double));// Row 12
 
             }
 
             else
             {
-                Update_Item.dataSearchResults.Clear();
+                update_item.dataSearchResults.Clear();
             }
 
            
@@ -566,7 +566,7 @@ namespace WholesomeMVC.WebForms
 
                 for (int i = 0; i < result2.foods.Count; i++)
                 {
-                    DataRow row = Update_Item.dataSearchResults.NewRow();
+                    DataRow row = update_item.dataSearchResults.NewRow();
 
 
                     foreach (Nutrient item in result2.foods[i].food.nutrients)
@@ -697,7 +697,7 @@ namespace WholesomeMVC.WebForms
                     //row[11] = newFood.sodium;
                     //row[12] = newFood.kCal;
                     row[3] = newFood.NRF6;
-                    Update_Item.dataSearchResults.Rows.Add(row);
+                    update_item.dataSearchResults.Rows.Add(row);
                 }
             
         }
