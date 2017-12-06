@@ -13,7 +13,7 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="/Content/Images/favicon.ico">
 
-	<link href="https://fonts.googleapis.com/css?family=Fira+Sans|Ubuntu" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Nunito|Nunito+Sans" rel="stylesheet"> 
 
     <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" runat="server" />
     <link href="/Content/font-awesome.min.css" rel="stylesheet" type="text/css" runat="server" />
@@ -83,7 +83,7 @@
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><asp:LinkButton runat="server" ID="log_in_out" ClientIDMode="Static"></asp:LinkButton></li>
+								<li><asp:HyperLink runat="server" ID="log_in_out" ClientIDMode="Static"></asp:HyperLink></li>
 								<li><asp:HyperLink runat="server" ID="register" Text="Register" NavigateUrl="~/Account/Register"></asp:HyperLink></li>
 							</ul>
 						</li>

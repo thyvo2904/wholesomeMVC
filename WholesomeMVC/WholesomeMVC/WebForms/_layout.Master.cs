@@ -107,14 +107,14 @@ namespace WholesomeMVC.WebForms
 				log_in_out.Text = "Log out";
 				//log_in_out.NavigateUrl = "~/Manage/Index";
 				//log_in_out.NavigateUrl = "javascript:document.getElementById('logoutForm').submit()";
-				log_in_out.PostBackUrl = "~/Account/Logoff";
+				log_in_out.NavigateUrl = "~/Account/Logoff";
 
 				label_user.Text = HttpContext.Current.User.Identity.GetUserName();
 				generatedToken.Value = _antiXsrfTokenValue;
 			} else {
 				// User is NOT authenticated
 				log_in_out.Text = "Log in";
-				log_in_out.PostBackUrl = "~/Account/Login";
+				log_in_out.NavigateUrl = "~/Account/Login";
 				label_user.Text = "Account";
 			}
 
