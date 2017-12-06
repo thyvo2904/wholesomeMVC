@@ -67,27 +67,20 @@ namespace WholesomeMVC.WebForms
 
 
             String urlPartOne = "https://api.nal.usda.gov/ndb/search/?format=json&q=";
-            String urlPartTwo = "&sort=n&max=25&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
+            String urlPartTwo = "&sort=n&max=50&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
 
 
             String url = urlPartOne + foodSearch + urlPartTwo;
 
             var json = new WebClient().DownloadString(url);
-
-
-
             var result = JsonConvert.DeserializeObject<Search>(json);
 
-
-            //for (int i = 0; i < IndexResults.dataSearchResults.Rows.Count; i++)
-            //{
             if (!indexresult.dataSearchResults.Columns.Contains("NDBno") && !indexresult.dataSearchResults.Columns.Contains("Name")
                 && !indexresult.dataSearchResults.Columns.Contains("ND Score"))
             {
                 indexresult.dataSearchResults.Columns.Add("NDBno", typeof(string));
                 indexresult.dataSearchResults.Columns.Add("Name", typeof(string));
                 indexresult.dataSearchResults.Columns.Add("ND Score", typeof(double));
-
             }
 
             else
@@ -180,12 +173,12 @@ namespace WholesomeMVC.WebForms
                         else if (Int32.Parse(item.nutrient_id) == 301)
                         {
                             newFood.calcium = Double.Parse(item.value);
-                            newFood.calcium = Math.Round(newFood.calcium, 2);
+                           // newFood.calcium = Math.Round(newFood.calcium, 2);
                         }
                         else if (Int32.Parse(item.nutrient_id) == 303)
                         {
                             newFood.iron = Double.Parse(item.value);
-                            newFood.iron = Math.Round(newFood.iron, 2);
+                           // newFood.iron = Math.Round(newFood.iron, 2);
                         }
                         else if (Int32.Parse(item.nutrient_id) == 606)
                         {
@@ -227,7 +220,48 @@ namespace WholesomeMVC.WebForms
                             newFood.ingredients = result2.foods[0].food.ing.desc;
                         }
 
-                        newFood.nR6 = (newFood.protein / 50) + (newFood.fiber / 25) + (newFood.vitaminA / 5000) + (newFood.vitaminC / 60) + (newFood.calcium / 1000) + (newFood.iron / 18);
+
+                        double protein = newFood.protein / 50;
+                        double fiber = newFood.fiber / 25;
+                        double vitaminA = newFood.vitaminA / 5000;
+                        double vitaminC = newFood.vitaminC / 60;
+                        double calcium = newFood.calcium / 1000;
+                        double iron = newFood.iron / 18;
+                          
+                        //if any of the good value ratios are > 1, set them equal to 1 to follow algorithm rule 
+                        if (protein > 1)
+                        {
+                            protein = 1;
+                        }
+
+                        if(fiber > 1)
+                        {
+                            fiber = 1;
+                        }
+
+                        if(vitaminA > 1)
+                        {
+                            vitaminA = 1;
+                        }
+
+                        if(vitaminC > 1)
+                        {
+                            vitaminC = 1;
+                        }
+
+                        if (calcium > 1)
+                        {
+                            calcium = 1;
+                        }
+
+                        if(iron > 1)
+                        {
+                            iron = 1;
+                        }
+                         
+                       
+
+                        newFood.nR6 = (protein) + (fiber) + (vitaminA) + (vitaminC) + (calcium) + (iron);
                         newFood.liMT = (newFood.satFat / 20) + (newFood.totalSugar / 125) + (newFood.sodium / 2400);
 
 
