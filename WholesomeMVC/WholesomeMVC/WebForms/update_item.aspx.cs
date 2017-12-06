@@ -154,6 +154,16 @@ namespace WholesomeMVC.WebForms
                     divnew.Style.Add("display", "none");
                     DropDownList2.SelectedIndex = 1;
                 }
+
+                gridMatchedCeresIDS.HeaderRow.Cells[0].Attributes["data-class"] = "expand";
+                gridMatchedCeresIDS.HeaderRow.Cells[2].Attributes["data-hide"] = "all";
+                gridMatchedCeresIDS.HeaderRow.Cells[3].Attributes["data-hide"] = "all";
+                gridMatchedCeresIDS.HeaderRow.Cells[4].Attributes["data-hide"] = "phone";
+
+                gridMatchedCeresIDS.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+                
+
             }
 
         }
@@ -162,18 +172,18 @@ namespace WholesomeMVC.WebForms
         {
 
 
-            if (txtSearch.Text != "")
-            {
-                String foodSearch = "";
-                foodSearch = txtSearch.Text;
-                FoodItem.findNdbno(foodSearch);
-                Server.Transfer("~/IndexResults.aspx");
-            }
+            //if (txtSearch.Text != "")
+            //{
+            //    String foodSearch = "";
+            //    foodSearch = txtSearch.Text;
+            //    FoodItem.findNdbno(foodSearch);
+            //    Server.Transfer("~/IndexResults.aspx");
+            //}
 
-            else
-            {
-                Response.Write("<script>alert('Please enter a value');</script>");
-            }
+            //else
+            //{
+            //    Response.Write("<script>alert('Please enter a value');</script>");
+            //}
 
 
         }
