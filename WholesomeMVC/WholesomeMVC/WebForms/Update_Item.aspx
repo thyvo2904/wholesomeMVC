@@ -20,7 +20,7 @@
 		<%--<td><asp:TextBox ID="txtNumber" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNumber" ID="chkItemNumber" runat="server" ValidationGroup="UpdateItem" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td> </tr>--%>
 		<%--<select id="ddlMatchedCeresID" runat="server" name="Matched Ceres ID's">--%>
 		<%--</select>--%>
-		<asp:GridView
+		<%--<asp:GridView
 			ID="gridMatchedCeresIDS" 
 			runat="server" 
 			CssClass="footable"
@@ -38,6 +38,16 @@
 				<asp:CommandField ShowSelectButton="true" SelectText="Update" />
 			</Columns>
 		</asp:GridView>
+		 <asp:DropDownList  id="ddlChooseMethod" OnSelectedIndexChanged="ddlChooseMethod_SelectedIndexChanged" runat="server">
+             <asp:ListItem>-Input Method-</asp:ListItem>
+             <asp:ListItem>USDA</asp:ListItem>
+             <asp:ListItem>Manual: Old Label</asp:ListItem>
+             <asp:ListItem>Manual: New Label</asp:ListItem>
+         </asp:DropDownList>
+		 <asp:Label ID="lblUSDASearch" runat="server" Text="Search USDA"></asp:Label>
+         <asp:TextBox ID="txtSearchUSDA" runat="server"></asp:TextBox>
+         <asp:Button ID="btnSearchUSDA" runat="server" Text="Search" />
+
 		<asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
          <asp:Label ID="lblOldProtein" runat="server" Text="Protein:"></asp:Label>
          <asp:TextBox ID="txtOldProtein" runat="server"></asp:TextBox>
@@ -87,6 +97,9 @@
          <asp:Button ID="btnCalculateOldNDScore" runat="server" Text="Calculate" />
          <asp:Label ID="lblNewNRF6" runat="server" Text="ND_Score"></asp:Label>
          <asp:Button ID="btnSaveNewItem" runat="server" Text="Save" />
+         
+         <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+         <asp:Button ID="btnSearch" runat="server" Text="Search USDA" />
 	</div>
 
                      

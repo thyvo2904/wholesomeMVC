@@ -10,37 +10,10 @@
 namespace WholesomeMVC.WebForms {
     
     
-    public partial class Update_Item {
+    public partial class update_item {
         
         /// <summary>
-        /// divitem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divitem;
-        
-        /// <summary>
-        /// gridMatchedCeresIDS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridMatchedCeresIDS;
-        
-        /// <summary>
-        /// SqlDataSource1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
-        
-        /// <summary>
-        /// divmanual control.
+        /// lblOldProtein control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -463,6 +436,24 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.Button btnSaveNewItem;
         
         /// <summary>
+        /// txtSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        
+        /// <summary>
+        /// btnSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearch;
+        
+        /// <summary>
         /// divmanual control.
         /// </summary>
         /// <remarks>
@@ -490,13 +481,13 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divold;
         
         /// <summary>
-        /// divgridview control.
+        /// divnew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divgridview;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divnew;
         
         /// <summary>
         /// txtSearchDescription control.
