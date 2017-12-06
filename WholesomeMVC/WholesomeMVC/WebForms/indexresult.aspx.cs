@@ -298,7 +298,7 @@ namespace WholesomeMVC.WebForms
             String ndbno = lblNdbno.Value;
             
 
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     SqlCommand command = new SqlCommand("Select ndb_no From dbo.Comparison_Item WHERE ndb_no = @ndb_no", connection);
                     command.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
@@ -324,7 +324,47 @@ namespace WholesomeMVC.WebForms
                     }
                     else
                     {
-                        connection.Open();
+
+                    int gradientEntry = 0;
+                    double nutritionScore = Double.Parse(lblIndexResult.Text);
+
+                    if (nutritionScore < 0)
+                    {
+                        gradientEntry = 1;
+                    }
+                    else if ((nutritionScore >= 0) && (nutritionScore <= 2.33))
+                    {
+                        gradientEntry = 2;
+                    }
+                    else if ((nutritionScore > 2.33) && (nutritionScore <= 4.66))
+                    {
+                        gradientEntry = 3;
+                    }
+                    else if ((nutritionScore > 4.66) && (nutritionScore <= 12.44))
+                    {
+                        gradientEntry = 4;
+                    }
+                    else if ((nutritionScore > 12.44) && (nutritionScore <= 20.22))
+                    {
+                        gradientEntry = 5;
+                    }
+                    else if ((nutritionScore > 20.22) && (nutritionScore <= 28))
+                    {
+                        gradientEntry = 6;
+                    }
+                    else if ((nutritionScore > 28) && (nutritionScore <= 35.33))
+                    {
+                        gradientEntry = 7;
+                    }
+                    else if ((nutritionScore > 35.33) && (nutritionScore <= 42.67))
+                    {
+                        gradientEntry = 8;
+                    }
+                    else if (nutritionScore > 42.67)
+                    {
+                        gradientEntry = 9;
+                    }
+                    connection.Open();
                         SqlCommand command1 = new SqlCommand();
                         command1.Connection = connection;
                         command1.CommandType = System.Data.CommandType.Text;
@@ -335,6 +375,7 @@ namespace WholesomeMVC.WebForms
 						[nrf6],
 						[FoodName],
 						[loginID],
+                        [GradientEntry],
 						[protein],
 						[fiber],
 						[VitaminA],
@@ -352,6 +393,7 @@ namespace WholesomeMVC.WebForms
 						@nrf6,
 						@name,
 						@loginid,
+                        @GradientEntry,
 						@protein,
 						@fiber,
 						@va,
@@ -370,6 +412,7 @@ namespace WholesomeMVC.WebForms
                         command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
                         command1.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = lblName.Value;
                         command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getuserid();
+                        command1.Parameters.Add("@GradientEntry", SqlDbType.Int).Value = gradientEntry;
                         command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
                         command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
                         command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;
@@ -473,6 +516,46 @@ namespace WholesomeMVC.WebForms
         protected void btnSaveItem_Click(object sender, EventArgs e)
         {
 
+            int gradientEntry = 0;
+            double nutritionScore = Double.Parse(lblIndexResult.Text);
+
+            if (nutritionScore < 0)
+            {
+                gradientEntry = 1;
+            }
+            else if ((nutritionScore >= 0) && (nutritionScore <= 2.33))
+            {
+                gradientEntry = 2;
+            }
+            else if ((nutritionScore > 2.33) && (nutritionScore <= 4.66))
+            {
+                gradientEntry = 3;
+            }
+            else if ((nutritionScore > 4.66) && (nutritionScore <= 12.44))
+            {
+                gradientEntry = 4;
+            }
+            else if ((nutritionScore > 12.44) && (nutritionScore <= 20.22))
+            {
+                gradientEntry = 5;
+            }
+            else if ((nutritionScore > 20.22) && (nutritionScore <= 28))
+            {
+                gradientEntry = 6;
+            }
+            else if ((nutritionScore > 28) && (nutritionScore <= 35.33))
+            {
+                gradientEntry = 7;
+            }
+            else if ((nutritionScore > 35.33) && (nutritionScore <= 42.67))
+            {
+                gradientEntry = 8;
+            }
+            else if (nutritionScore > 42.67)
+            {
+                gradientEntry = 9;
+            }
+
             String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
 
             if (txtCeresNumber.Text == "" || txtCeresDescription.Text == "")
@@ -495,8 +578,8 @@ namespace WholesomeMVC.WebForms
                         //    name = lblName.Text.Substring(0, 48);
                         //}
 
-                        command1.CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([NDB_No], [Name], [Description], [ND_Score], [Ceres_Item_Number], [UserID], [LastUpdatedBy], [LastUpdated]) VALUES
-                                      (@ndbno, @name,  @ceresdescription, @nrf6, @ceresitemnumber, @userID, @lastupdatedby, @lastupdated)";
+                        command1.CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([NDB_No], [Name], [Description], [ND_Score], [GradientEntry], [Ceres_Item_Number], [UserID], [LastUpdatedBy], [LastUpdated]) VALUES
+                                      (@ndbno, @name,  @ceresdescription, @nrf6, @GradientEntry, @ceresitemnumber, @userID, @lastupdatedby, @lastupdated)";
 
                         command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
                         command1.Parameters.Add("@name", SqlDbType.VarChar, 500).Value = FoodItem.newFood.name;
@@ -506,6 +589,8 @@ namespace WholesomeMVC.WebForms
                         command1.Parameters.Add("@userID", SqlDbType.Int).Value = "1";
                         command1.Parameters.Add("@lastupdatedby", SqlDbType.NVarChar, 20).Value = "Nathan Hamrick";
                         command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+                        command1.Parameters.Add("@GradientEntry", SqlDbType.Int).Value = gradientEntry;
+
 
                         connection.Open();
                         command1.ExecuteNonQuery();
