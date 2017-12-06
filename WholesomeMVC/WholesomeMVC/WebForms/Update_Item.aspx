@@ -89,7 +89,7 @@
          <asp:Button ID="btnSaveNewItem" runat="server" Text="Save" />
          
          <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
-         <asp:Button ID="btnSearch" runat="server" Text="Search USDA" />
+         <asp:Button ID="btnSearch" runat="server" Text="Search USDA" OnClick="btnSearch_Click" />
 	</div>
 
                      
