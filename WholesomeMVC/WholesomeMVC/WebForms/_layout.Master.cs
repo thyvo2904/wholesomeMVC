@@ -111,7 +111,6 @@ namespace WholesomeMVC.WebForms
 				//log_in_out.NavigateUrl = "~/Manage/Index";
 				//log_in_out.NavigateUrl = "javascript:document.getElementById('logoutForm').submit()";
 				log_in_out.NavigateUrl = "~/Account/Logoff";
-
 				label_user.Text = HttpContext.Current.User.Identity.GetUserName();
 				generatedToken.Value = _antiXsrfTokenValue;
 
@@ -155,7 +154,7 @@ namespace WholesomeMVC.WebForms
             } else {
 				// User is NOT authenticated
 				log_in_out.Text = "Log in";
-				log_in_out.NavigateUrl = "~/Account/Login";
+				log_in_out.NavigateUrl = "~/Views/Account/Login";
 				label_user.Text = "Account";
 			}
 
