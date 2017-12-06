@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -19,6 +20,8 @@ namespace WholesomeMVC.WebForms
         public static String savedItemName = "";
         public static double savedNrf6 = 0;
         public static String savedFoodGroup = "";
+        public static ArrayList lowSodium;
+        
 
         public static string number;
         public static string ing;
@@ -202,6 +205,24 @@ namespace WholesomeMVC.WebForms
             string ndbno = lblNdbno.Value;
             FoodItem.findNdbno(ndbno);
 
+           
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
+            //check if item already exists in database, if it does hide the save button 
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                SqlCommand command = new SqlCommand("Select * FROM wholesome_item WHERE ndb_no = @ndbno", connection);
+                command.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = ndbno;
+                connection.Open();
+               SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    btnSaveItem.Visible = false;
+                }
+            }
+
+
+
             double score = FoodItem.newFood.NRF6;
             String colorScaleStyle = "";
 
@@ -261,10 +282,10 @@ namespace WholesomeMVC.WebForms
             txtfiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
             txtsugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
             txtprotein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
-            txtva.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
-            txtvc.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
-            txtcalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
-            txtiron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+            txtva.Text = Math.Round(FoodItem.newFood.vitaminA, 2).ToString();
+            txtvc.Text = Math.Round(FoodItem.newFood.vitaminC, 2).ToString();
+            txtcalcium.Text = Math.Round(FoodItem.newFood.calcium, 2).ToString();
+            txtiron.Text = Math.Round(FoodItem.newFood.iron, 2).ToString();
         }
 
         /***
@@ -490,20 +511,17 @@ namespace WholesomeMVC.WebForms
                         command1.Connection = connection;
                         command1.CommandType = System.Data.CommandType.Text;
 
-                        //if (lblName.Text.Length > 48)
-                        //{
-                        //    name = lblName.Text.Substring(0, 48);
-                        //}
+                    
 
-                        command1.CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([NDB_No], [Name], [Description], [ND_Score], [Ceres_Item_Number], [UserID], [LastUpdatedBy], [LastUpdated]) VALUES
+                        command1.CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([ndb_no], [description 2], [nrf6], [No_], [UserID], [LastUpdatedBy], [LastUpdated]) VALUES
                                       (@ndbno, @name,  @ceresdescription, @nrf6, @ceresitemnumber, @userID, @lastupdatedby, @lastupdated)";
 
                         command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
                         command1.Parameters.Add("@name", SqlDbType.VarChar, 500).Value = FoodItem.newFood.name;
-                        command1.Parameters.Add("@ceresdescription", SqlDbType.VarChar, 50).Value = FoodItem.newFood.name;
-                        command1.Parameters.Add("@ceresitemnumber", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;
+                        command1.Parameters.Add("@ceresdescription", SqlDbType.VarChar, 50).Value = txtCeresDescription.Text;
                         command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = FoodItem.newFood.NRF6;
-                        command1.Parameters.Add("@userID", SqlDbType.Int).Value = "1";
+                        command1.Parameters.Add("@ceresitemnumber", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;            
+                        command1.Parameters.Add("@userID", SqlDbType.Int).Value = HttpContext.Current.User.Identity.GetUserId();
                         command1.Parameters.Add("@lastupdatedby", SqlDbType.NVarChar, 20).Value = "Nathan Hamrick";
                         command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
 

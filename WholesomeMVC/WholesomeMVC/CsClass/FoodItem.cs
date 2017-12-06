@@ -67,7 +67,7 @@ namespace WholesomeMVC.WebForms
 
 
             String urlPartOne = "https://api.nal.usda.gov/ndb/search/?format=json&q=";
-            String urlPartTwo = "&sort=n&max=25&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
+            String urlPartTwo = "&sort=n&max=50&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
 
 
             String url = urlPartOne + foodSearch + urlPartTwo;
@@ -173,12 +173,12 @@ namespace WholesomeMVC.WebForms
                         else if (Int32.Parse(item.nutrient_id) == 301)
                         {
                             newFood.calcium = Double.Parse(item.value);
-                            newFood.calcium = Math.Round(newFood.calcium, 2);
+                           // newFood.calcium = Math.Round(newFood.calcium, 2);
                         }
                         else if (Int32.Parse(item.nutrient_id) == 303)
                         {
                             newFood.iron = Double.Parse(item.value);
-                            newFood.iron = Math.Round(newFood.iron, 2);
+                           // newFood.iron = Math.Round(newFood.iron, 2);
                         }
                         else if (Int32.Parse(item.nutrient_id) == 606)
                         {
