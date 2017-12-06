@@ -44,7 +44,7 @@
     <asp:Content ContentPlaceHolderID="body" runat="server">
 <br> 
   <div class="wrapper">
-     <div id="divitem">
+     <div id="divitem" ClientIDMode="static" runat="server">
         <%--<asp:Label ID="Label10" runat="server" Text="Method of Nutrition Entry:"></asp:Label>
                <asp:DropDownList ID="ddlMethod" AutoPostBack = "true" OnSelectedIndexChanged = "OnSelectedIndexChanged" runat="server">
                <asp:ListItem>-Choose-</asp:ListItem>
@@ -57,7 +57,7 @@
     <%--<td><asp:TextBox ID="txtNumber" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNumber" ID="chkItemNumber" runat="server" ValidationGroup="UpdateItem" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
   </tr>--%>
   <%--<select id="ddlMatchedCeresID" runat="server" name="Matched Ceres ID's">--%>
-         <asp:GridView ID="gridMatchedCeresIDS" runat="server" CssClass="footable" Style="max-width: 500px" OnSelectedIndexChanged="gridMatchedCeresIDS_SelectedIndexChanged" OnRowDataBound="ceresMatchedOnRowDataBound" AutoGenerateColumns="False" RowStyle-Wrap="false">
+         <asp:GridView ID="gridMatchedCeresIDS" runat="server" ClientIDMode="static" CssClass="footable" Style="max-width: 500px" OnSelectedIndexChanged="gridMatchedCeresIDS_SelectedIndexChanged" OnRowDataBound="ceresMatchedOnRowDataBound" AutoGenerateColumns="False" RowStyle-Wrap="false">
              <Columns>
              <asp:BoundField DataField ="CeresID" HeaderText ="CeresID"/>
              <asp:BoundField DataField ="Ceres_Name" HeaderText ="Ceres_Name"/>
@@ -79,14 +79,14 @@
         </div>
                      
       
-  <div id="divmanual" runat="server" visible="true">
+  <div id="divmanual" runat="server" ClientIDMode="static" visible="true">
      <select id="DropDownList2" runat="server" name="form_select" onchange="showDiv(this)" >
         <option value="0">Manual: Old Label</option>
         <option value="1">Manual: New Label</option>
          <option value="2">USDA</option>
      </select>
 
-  <div id="divold" runat="server" style="display:none">
+  <div id="divold" runat="server" ClientIDMode="static" style="display:none">
   <table>
   <tr>
     <td>kCal: </td>
@@ -134,7 +134,7 @@
   <asp:Label ID="lblOldResult" runat="server" Text=" "></asp:Label>
 </div>
 
-<div id="divnew" runat="server" style="display:none">
+<div id="divnew" runat="server" ClientIDMode="static" style="display:none">
 <table>
   <tr>
     <td>kCal: </td>
@@ -181,7 +181,7 @@
   <asp:Button ID="btnNewSaveItem" runat="server" OnClick="btnNewSaveItem_Click" Text="Save Item" CssClass="btncss"/>
     <asp:Label ID="lblNewResult" runat="server" Text=" "></asp:Label>
 </div>
-      <div id="divgridview" style="display:none">
+      <div id="divgridview" ClientIDMode="static" runat="server" style="display:none">
           <td>Search a Similar Item:</td>
     <td><asp:TextBox ID="txtSearchDescription" runat="server"></asp:TextBox></td>
           <td><asp:Button ID="btnUpdateItem" runat="server" Text="Update Item" CssClass="btncss" OnClick="btnUpdateItem_Click" ValidationGroup="UpdateItem"/></td>
@@ -285,6 +285,7 @@
              </asp:Content>
     
      <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
+         <script type="text/javascript" src="/Scripts/Custom/Update_Item.js"></script>
          <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
          <script src="scripts/jquery.responsivetable.min.js"></script> 
@@ -293,11 +294,11 @@
     rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/js/footable.min.js"></script>
-<script type="text/javascript">
+<%--<script type="text/javascript">
     $(function () {
         $('[id*=gridMatchedCeresIDS]').footable();
     });
-</script>
+</script>--%>
     
   <link href="/css/additem.css" rel="stylesheet" type="text/css" runat="server"/>
     <link href="Fb_category.css" rel="stylesheet" type="text/css" runat="server"/>
@@ -357,7 +358,7 @@
        
         </style>
 
-<script>
+<%--<script>
     $(document).ready(function (e) {
         $('.search-panel .dropdown-menu').find('a').click(function (e) {
             e.preventDefault();
@@ -367,17 +368,17 @@
             $('.input-group #search_param').val(param);
         });
     });
-</script> 
-<script type="text/javascript">
+</script> --%>
+<%--<script type="text/javascript">
     $(document).ready(function () {
         $("[id*=txtSearch]").autocomplete({ source: '<%=ResolveUrl("~/AutoComplete.ashx" ) %>' });
     }); 
-</script>    
+</script>   --%> 
 
-    <script>
+    <%--<script>
         function showDiv(elem) {
             if (elem.value == 0) {
-                document.getElementById('document.getElementById("divold")').style.display = "block";
+                document.getElementById('divold').style.display = "block";
                 document.getElementById('divnew').style.display = "none";
                 document.getElementById('divgridview').style.display = "none";
             } else if (elem.value == 1) {
@@ -407,7 +408,7 @@
                 scrollHintDuration: 2000
             });
         });
-    </script>
+    </script>--%>
     </asp:Content>
 
      

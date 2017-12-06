@@ -13,6 +13,15 @@ namespace WholesomeMVC.WebForms {
     public partial class Update_Item {
         
         /// <summary>
+        /// divitem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divitem;
+        
+        /// <summary>
         /// gridMatchedCeresIDS control.
         /// </summary>
         /// <remarks>
@@ -479,6 +488,15 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNewResult;
+        
+        /// <summary>
+        /// divgridview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divgridview;
         
         /// <summary>
         /// txtSearchDescription control.
