@@ -21,8 +21,9 @@ namespace WholesomeMVC.WebForms
 				page_title.Text = strTitle;
 				Label body_title = (Label) Master.FindControl("body_title");
 				body_title.Text = strTitle;
+                body_title.Style.Add("color", "#FF9500");
 
-				body_description.Text = @"
+                body_description.Text = @"
                 Manually input the value of each nutrient to calculate
                 a score to compare to the nutrition grade";
 
