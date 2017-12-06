@@ -283,6 +283,15 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtCeresDescription;
         
         /// <summary>
+        /// btnSaveItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnSaveItem;
+        
+        /// <summary>
         /// lblNdbno control.
         /// </summary>
         /// <remarks>

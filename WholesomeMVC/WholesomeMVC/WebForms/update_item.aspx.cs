@@ -128,8 +128,8 @@ namespace WholesomeMVC.WebForms
                     gridMatchedCeresIDS.DataBind();
 
                     gridMatchedCeresIDS.HeaderRow.Cells[0].Attributes["data-class"] = "expand";
-                    gridMatchedCeresIDS.HeaderRow.Cells[2].Attributes["data-hide"] = "phone";
-                    gridMatchedCeresIDS.HeaderRow.Cells[3].Attributes["data-hide"] = "phone";
+                    gridMatchedCeresIDS.HeaderRow.Cells[2].Attributes["data-hide"] = "all";
+                    gridMatchedCeresIDS.HeaderRow.Cells[3].Attributes["data-hide"] = "all";
                     gridMatchedCeresIDS.HeaderRow.Cells[4].Attributes["data-hide"] = "phone";
 
                     gridMatchedCeresIDS.HeaderRow.TableSection = TableRowSection.TableHeader;
@@ -748,7 +748,13 @@ namespace WholesomeMVC.WebForms
 
         }
 
-        
+        protected void gridMatchedCeresIDS_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String idToMatch = gridMatchedCeresIDS.SelectedRow.Cells[0].Text;
+            
+
+
+        }
 
         protected void OnSelectedIndexChanged(object sender, EventArgs e)
         {

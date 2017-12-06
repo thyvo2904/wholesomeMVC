@@ -15,14 +15,17 @@ namespace WholesomeMVC.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                createTable();
+            }
         }
         //generate comaprsion table columns
         protected int GenerateCols()
         {
             string stmt = "SELECT COUNT(*) FROM dbo.Comparison_Item";
             int count = 0;
-            string constr = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlCommand cmdCount = new SqlCommand(stmt, con))
@@ -41,7 +44,7 @@ namespace WholesomeMVC.WebForms
             string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.GradientValue"))
+                using (SqlCommand cmd = new SqlCommand("SELECT ndb_no,FoodName,nrf6,KCal,SaturatedFat,Sodium,fiber,TotalSugar,protein,VitaminA,VitaminC,Iron,Calcium FROM dbo.Comparison_Item"))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter())
                     {
@@ -69,7 +72,7 @@ namespace WholesomeMVC.WebForms
             // Start adding content to the table.
             HtmlTableRow row;
             HtmlTableCell cell;
-            for (int i = 1; i <= 17; i++)
+            for (int i = 1; i <= 14; i++)
             {
                 // Create a new row and set its background color.
                 row = new HtmlTableRow();
@@ -88,22 +91,20 @@ namespace WholesomeMVC.WebForms
             }
             // set table header
             table1.Rows[0].Cells[0].InnerText = "FoodNumber";
-            table1.Rows[1].Cells[0].InnerText = "Food Name";
-            table1.Rows[2].Cells[0].InnerText = "ND_Score";
-            table1.Rows[3].Cells[0].InnerText = "Calories";
-            table1.Rows[4].Cells[0].InnerText = "Total Fat|g";
-            table1.Rows[5].Cells[0].InnerText = "Trans Fat|g";
-            table1.Rows[6].Cells[0].InnerText = "Saturated Fat|g";
-            table1.Rows[7].Cells[0].InnerText = "Cholesterol|mg";
-            table1.Rows[8].Cells[0].InnerText = "Sodium|mg";
-            table1.Rows[9].Cells[0].InnerText = "Total Carbohydrate|g";
-            table1.Rows[10].Cells[0].InnerText = "Dietary Fiber|g";
-            table1.Rows[11].Cells[0].InnerText = "Total Sugars|g";
-            table1.Rows[12].Cells[0].InnerText = "Protein|g";
-            table1.Rows[13].Cells[0].InnerText = "Vitamin A|IU";
-            table1.Rows[14].Cells[0].InnerText = "Vitamin C|mg";
-            table1.Rows[15].Cells[0].InnerText = "Iron|mg";
-            table1.Rows[16].Cells[0].InnerText = "Calcium|mg";
+            table1.Rows[1].Cells[0].InnerText = "NDBNO";
+            table1.Rows[2].Cells[0].InnerText = "Food Name";
+            table1.Rows[3].Cells[0].InnerText = "ND_Score";
+            table1.Rows[4].Cells[0].InnerText = "Calories";
+            table1.Rows[5].Cells[0].InnerText = "Saturated Fat|g";
+            table1.Rows[6].Cells[0].InnerText = "Sodium|mg";
+            table1.Rows[7].Cells[0].InnerText = "Dietary Fiber|g";
+            table1.Rows[8].Cells[0].InnerText = "Total Sugars|g";
+            table1.Rows[9].Cells[0].InnerText = "Protein|g";
+            table1.Rows[10].Cells[0].InnerText = "Vitamin A|IU";
+            table1.Rows[11].Cells[0].InnerText = "Vitamin C|mg";
+            table1.Rows[12].Cells[0].InnerText = "Iron|mg";
+            table1.Rows[13].Cells[0].InnerText = "Calcium|mg";
+            
             // header of # of food compare
             int colno = GenerateCols();
             for (int k = colno; k > 0; k--)

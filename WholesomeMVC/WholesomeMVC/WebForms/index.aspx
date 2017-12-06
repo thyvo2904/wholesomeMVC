@@ -33,9 +33,9 @@
 
                     <div class="col-sm-8">
                         <div class="input-group input-group-lg">
-                            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
+                            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control typeahead" autocomplete="off"></asp:TextBox>
                             <span class="input-group-btn">
-                                <button type="submit" class="btn btn-default" runat="server" onserverclick="btnSearch" >
+                                <button type="submit" class="btn btn-default" runat="server"  onserverclick="btnSearch" >
                                     
              
                                     <span class="glyphicon glyphicon-search"></span>
@@ -74,9 +74,4 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="script" runat="server">
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("[id*=txtSearch]").autocomplete({ source: '<%=ResolveUrl("/AutoComplete.ashx" ) %>' });
-        });
-    </script>
 </asp:Content>

@@ -253,85 +253,101 @@ namespace WholesomeMVC.WebForms
 		 * Check if the ceres item is null.
 		 * If ceres item doesn't exist prompt the user to open ceres and enter it there first.
 		 */
-        protected void SaveItem(object sender, EventArgs e)
+        protected void CompareItem(object sender, EventArgs e)
         {
-            //FoodItem.findNdbno(ndb_no);
 
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            bool flag = false;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             String ndbno = lblNdbno.Value;
-            String name = lblName.Value;
-            String nrf6 = lblIndexResult.Text;
-            String calories = txtcalories.Text;
-            String satfat = txtsatfat.Text;
-            String sodium = txtsodium.Text;
-            String fiber = txtfiber.Text;
-            String sugar = txtsugar.Text;
-            String protein = txtprotein.Text;
-            String va = txtva.Text;
-            String vc = txtvc.Text;
-            String calcium = txtcalcium.Text;
-            String iron = txtiron.Text;
+
+
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
-                SqlCommand command1 = new SqlCommand();
-                command1.Connection = connection;
-                command1.CommandType = System.Data.CommandType.Text;
+                SqlCommand command = new SqlCommand("Select ndb_no From dbo.Comparison_Item WHERE ndb_no = @ndb_no", connection);
+                command.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
 
-                command1.CommandText = @"
-            				INSERT INTO [wholesomeDB].[dbo].[Comparison_Item] (
-            					[ndb_no],
-                                [nrf6],
-                                [FoodName],
-            					[loginID],
-            					[protein],
-            					[fiber],
-            					[VitaminA],
-            					[VitaminC],
-                                [Calcium],
-                                [Iron],
-                                [SaturatedFat],
-                                [TotalSugar],
-                                [Sodium],
-                                [KCal]
-            				) VALUES (
-            					@ndbno,
-            					@nrf6,
-            					@name,
-                                @loginid,
-                                @protein,
-                                @fiber,
-                                @va,
-                                @vc,
-                                @calcium,
-                                @iron,
-                                @satfat,
-                                @sugar,
-                                @sodium,
-            					@calories
-            				)
-            			";
-                			command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
-                			command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult;
-                			command1.Parameters.Add("@name", SqlDbType.VarChar,50).Value = lblName.Value;
-                			command1.Parameters.Add("@loginid", SqlDbType.Int).Value = savedFoodGroup; // adminloginid
-                			command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
-                			command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
-                            command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;
-                            command1.Parameters.Add("@vc", SqlDbType.Decimal).Value = txtvc.Text;
-                            command1.Parameters.Add("@calcium", SqlDbType.Decimal).Value = txtcalcium.Text;
-                            command1.Parameters.Add("@iron", SqlDbType.Decimal).Value = txtiron.Text;
-                            command1.Parameters.Add("@satfat", SqlDbType.Decimal, 20).Value = txtsatfat.Text;
-                            command1.Parameters.Add("@sugar", SqlDbType.Decimal).Value = txtsugar.Text;
-                            command1.Parameters.Add("@sodium", SqlDbType.Decimal).Value = txtsodium.Text;
-                            command1.Parameters.Add("@calories", SqlDbType.Decimal).Value = txtcalories.Text;
+                while (reader.Read())
+                {
+                    if (reader[0].ToString() == ndbno)
+                    {
+                        flag = true;
+                        break;
+                    }
 
-                            connection.Open();
-                			command1.ExecuteNonQuery();
-                			connection.Close();
+                }
+                if (flag)
+                {
+                    // food already been compared
+                }
+                else
+                    connection.Close();
+                    connection.Open();
+                {
+                    SqlCommand command1 = new SqlCommand();
+                    command1.Connection = connection;
+                    command1.CommandType = System.Data.CommandType.Text;
 
+                    command1.CommandText = @"
+					INSERT INTO [wholesomeDB].[dbo].[Comparison_Item] (
+						[ndb_no],
+						[nrf6],
+						[FoodName],
+						[loginID],
+						[protein],
+						[fiber],
+						[VitaminA],
+						[VitaminC],
+						[Calcium],
+						[Iron],
+						[SaturatedFat],
+						[TotalSugar],
+						[Sodium],
+						[KCal],
+                        [LastupdatedBy],
+                        [LastUpdated]
+					) VALUES (
+						@ndbno,
+						@nrf6,
+						@name,
+						@loginid,
+						@protein,
+						@fiber,
+						@va,
+						@vc,
+						@calcium,
+						@iron,
+						@satfat,
+						@sugar,
+						@sodium,
+						@calories,
+                        @lastupdatedby,
+                        @lastupdated
+					)
+				";
+                    command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
+                    command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
+                    command1.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = lblName.Value;
+                    command1.Parameters.Add("@loginid", SqlDbType.Int).Value = 100; // adminloginid
+                    command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
+                    command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
+                    command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;
+                    command1.Parameters.Add("@vc", SqlDbType.Decimal).Value = txtvc.Text;
+                    command1.Parameters.Add("@calcium", SqlDbType.Decimal).Value = txtcalcium.Text;
+                    command1.Parameters.Add("@iron", SqlDbType.Decimal).Value = txtiron.Text;
+                    command1.Parameters.Add("@satfat", SqlDbType.Decimal, 20).Value = txtsatfat.Text;
+                    command1.Parameters.Add("@sugar", SqlDbType.Decimal).Value = txtsugar.Text;
+                    command1.Parameters.Add("@sodium", SqlDbType.Decimal).Value = txtsodium.Text;
+                    command1.Parameters.Add("@calories", SqlDbType.Decimal).Value = txtcalories.Text;
+                    command1.Parameters.Add("@lastupdatedby", SqlDbType.VarChar,20).Value = "Yihui Zhou";
+                    command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value= DateTime.Now;
+
+                    command1.ExecuteNonQuery();
+                    connection.Close();
+
+                }
             }
-
-
 
 
 
@@ -410,5 +426,51 @@ namespace WholesomeMVC.WebForms
             //	savedNdb_no = "";
 
         }
+
+        protected void btnSaveItem_Click(object sender, EventArgs e)
+        {
+
+            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+
+            if (txtCeresNumber.Text == "" || txtCeresDescription.Text == "")
+            {
+
+                Response.Write("<script>alert('Please enter a value for ceres item number and description');</script>");
+            }
+            else
+            {
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                {
+                    //String name = lblName.Text;
+                    {
+                        SqlCommand command1 = new SqlCommand();
+                        command1.Connection = connection;
+                        command1.CommandType = System.Data.CommandType.Text;
+
+                        //if (lblName.Text.Length > 48)
+                        //{
+                        //    name = lblName.Text.Substring(0, 48);
+                        //}
+
+                        command1.CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([NDB_No], [Name], [Description], [ND_Score], [Ceres_Item_Number], [UserID], [LastUpdatedBy], [LastUpdated]) VALUES
+                                      (@ndbno, @name,  @ceresdescription, @nrf6, @ceresitemnumber, @userID, @lastupdatedby, @lastupdated)";
+
+                        command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
+                        command1.Parameters.Add("@name", SqlDbType.VarChar, 500).Value = FoodItem.newFood.name;
+                        command1.Parameters.Add("@ceresdescription", SqlDbType.VarChar, 50).Value = FoodItem.newFood.name;
+                        command1.Parameters.Add("@ceresitemnumber", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;
+                        command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = FoodItem.newFood.NRF6;
+                        command1.Parameters.Add("@userID", SqlDbType.Int).Value = "1";
+                        command1.Parameters.Add("@lastupdatedby", SqlDbType.NVarChar, 20).Value = "Nathan Hamrick";
+                        command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+
+                        connection.Open();
+                        command1.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+            }
+        }
+
     }
 }
