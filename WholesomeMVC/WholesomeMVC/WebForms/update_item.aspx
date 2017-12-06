@@ -33,11 +33,68 @@
 				<asp:CommandField ShowSelectButton="true" SelectText="Update" />
 			</Columns>
 		</asp:GridView>
+		 <asp:DropDownList  id="ddlChooseMethod" OnSelectedIndexChanged="ddlChooseMethod_SelectedIndexChanged" runat="server">
+             <asp:ListItem>-Input Method-</asp:ListItem>
+             <asp:ListItem>USDA</asp:ListItem>
+             <asp:ListItem>Manual: Old Label</asp:ListItem>
+             <asp:ListItem>Manual: New Label</asp:ListItem>
+         </asp:DropDownList>
+		 <asp:Label ID="lblUSDASearch" runat="server" Text="Search USDA"></asp:Label>
+         <asp:TextBox ID="txtSearchUSDA" runat="server"></asp:TextBox>
 		<asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+         <asp:Label ID="lblOldProtein" runat="server" Text="Protein:"></asp:Label>
+         <asp:TextBox ID="txtOldProtein" runat="server"></asp:TextBox>
+         <asp:Label ID="lblOldFiber" runat="server" Text="Fiber:"></asp:Label>
+         <asp:TextBox ID="txtOldFiber" runat="server"></asp:TextBox>
+         <asp:Label ID="lblOldVitaminA" runat="server" Text="Vitamin A:"></asp:Label>
+         <asp:TextBox ID="txtOldVitaminA" runat="server"></asp:TextBox>
+         <asp:Label ID="lblOldVitaminC" runat="server" Text="Vitamin C:"></asp:Label>
+         <asp:TextBox ID="txtOldVitaminC" runat="server"></asp:TextBox>
+         <asp:Label ID="lblOldCalcium" runat="server" Text="Calcium:"></asp:Label>
+         <asp:TextBox ID="txtOldCalcium" runat="server"></asp:TextBox>
+         <asp:Label ID="lblOldIron" runat="server" Text="Iron:"></asp:Label>
+         <asp:TextBox ID="txtOldIron" runat="server"></asp:TextBox>
+         <asp:Label ID="lblOldSaturatedFat" runat="server" Text="Saturated Fat:"></asp:Label>
+         <asp:TextBox ID="txtOldSaturatedFat" runat="server"></asp:TextBox>
+         <asp:Label ID="lblOldTotalSugar" runat="server" Text="Total Sugar:"></asp:Label>
+         <asp:TextBox ID="txtOldTotalSugar" runat="server"></asp:TextBox>
+         <asp:Label ID="lblOldSodium" runat="server" Text="Sodium:"></asp:Label>
+         <asp:TextBox ID="txtOldSodium" runat="server"></asp:TextBox>
+         <asp:Label ID="lblOldKCal" runat="server" Text="KCal:"></asp:Label><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox>
+         <asp:TextBox ID="txtOldKCal" runat="server"></asp:TextBox>
+         <asp:Button ID="btnCalculateOldNRF6" runat="server" Text="Calculate" />
+         <asp:Label ID="lblOldNRF6" runat="server" Text="ND_Score"></asp:Label>
+         <asp:Button ID="btnSaveOldItem" runat="server" Text="Save" />
+         <br>
+
+         <asp:Label ID="lblNewProtein" runat="server" Text="Protein:"></asp:Label>
+         <asp:TextBox ID="txtNewProtein" runat="server"></asp:TextBox>
+         <asp:Label ID="lblNewFiber" runat="server" Text="Fiber:"></asp:Label>
+         <asp:TextBox ID="txtNewFiber" runat="server"></asp:TextBox>
+         <asp:Label ID="lblNewVitaminD" runat="server" Text="Vitamin D:"></asp:Label>
+         <asp:TextBox ID="txtNewVitaminD" runat="server"></asp:TextBox>
+         <asp:Label ID="lblNewPotassium" runat="server" Text="Potassium:"></asp:Label>
+         <asp:TextBox ID="txtNewPotassium" runat="server"></asp:TextBox>
+         <asp:Label ID="lblNewCalcium" runat="server" Text="Calcium:"></asp:Label>
+         <asp:TextBox ID="txtNewCalcium" runat="server"></asp:TextBox>
+         <asp:Label ID="lblNewIron" runat="server" Text="Iron:"></asp:Label>
+         <asp:TextBox ID="txtNewIron" runat="server"></asp:TextBox>
+         <asp:Label ID="lblNewSaturatedFat" runat="server" Text="Saturated Fat:"></asp:Label>
+         <asp:TextBox ID="txtNewSaturatedFat" runat="server"></asp:TextBox>
+         <asp:Label ID="lblNewAddedSugar" runat="server" Text="Added Sugar:"></asp:Label>
+         <asp:TextBox ID="txtNewAddedSugar" runat="server"></asp:TextBox>
+         <asp:Label ID="lblNewSodium" runat="server" Text="Sodium:"></asp:Label>
+         <asp:TextBox ID="txtNewSodium" runat="server"></asp:TextBox>
+         <asp:Label ID="lblNewKCal" runat="server" Text="KCal:"></asp:Label>
+         <asp:TextBox ID="txtNewKCal" runat="server"></asp:TextBox>
+         <asp:Button ID="btnCalculateOldNDScore" runat="server" Text="Calculate" />
+         <asp:Label ID="lblNewNRF6" runat="server" Text="ND_Score"></asp:Label>
+         <asp:Button ID="btnSaveNewItem" runat="server" Text="Save" />
 	</div>
+
                      
       
-  <div id="divmanual" runat="server" visible="true">
+  <div id="divmanual" runat="server" visible="false">
      <select id="DropDownList2" runat="server" name="form_select" onchange="showDiv(this)" >
         <option value="0">Manual: Old Label</option>
         <option value="1">Manual: New Label</option>
@@ -45,7 +102,7 @@
      </select>
 
   <div id="divold" runat="server" style="display:none">
-  <table>
+  <%--<table>
   <tr>
     <td>kCal: </td>
     <td><asp:TextBox ID="txtOldKCal" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtOldKCal" ID="RequiredFieldValidator1" ValidationGroup="CalculateOld" runat="server" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
@@ -89,11 +146,11 @@
 </table>
   <asp:Button ID="btnCalculateOld" runat="server" OnClick="btnCalculateOld_Click" Text="Calculate Index" CssClass="btncss" ValidationGroup="CalculateOld" />
   <asp:Button ID="btnOldSaveItem" runat="server" OnClick="btnOldSaveItem_Click" Text="Save Item" CssClass="btncss"/>
-  <asp:Label ID="lblOldResult" runat="server" Text=" "></asp:Label>
+  <asp:Label ID="lblOldResult" runat="server" Text=" "></asp:Label>--%>
 </div>
 
 <div id="divnew" runat="server" style="display:none">
-<table>
+<%--<table>
   <tr>
     <td>kCal: </td>
     <td><asp:TextBox ID="txtNewKCal" runat="server"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="(Required)" ValidationGroup ="CalcNew" ControlToValidate="txtNewKCal"></asp:RequiredFieldValidator></td>
@@ -137,7 +194,7 @@
 </table>
     <asp:Button ID="btnCalculateNew" runat="server" ValidationGroup="CalcNew" OnClick="btnCalculateNew_Click" Text="Calculate Index" CssClass="btncss" />
   <asp:Button ID="btnNewSaveItem" runat="server" OnClick="btnNewSaveItem_Click" Text="Save Item" CssClass="btncss"/>
-    <asp:Label ID="lblNewResult" runat="server" Text=" "></asp:Label>
+    <asp:Label ID="lblNewResult" runat="server" Text=" "></asp:Label>--%>
 </div>
       <div id="divgridview" style="display:none">
           <td>Search a Similar Item:</td>
@@ -401,6 +458,7 @@
 	
     <script type="text/javascript" src="/Scripts/Vendor/jquery.matchHeight-min.js"></script>
     <script type="text/javascript" src="/Scripts/Custom/update_item.js"></script>
+     <script type="text/javascript" src="/Scripts/Custom/Update_Item.js"></script>
  </asp:Content>
 
 
