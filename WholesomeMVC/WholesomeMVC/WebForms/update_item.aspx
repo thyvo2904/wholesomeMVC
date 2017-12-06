@@ -1,8 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="True"  CodeBehind="Update_Item.aspx.cs" Inherits="WholesomeMVC.WebForms.Update_Item" %>
+﻿<%@ Page Language="C#" AutoEventWireup="True" MasterPageFile="~/WebForms/_layout.Master" CodeBehind="Update_Item.aspx.cs" Inherits="WholesomeMVC.WebForms.Update_Item" %>
 
-<!DOCTYPE html>
 
-<html>
+
+<%--<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" 
@@ -17,228 +17,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="scripts/jquery.responsivetable.min.js"></script> 
-    <script src="Fb_categories.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/css/footable.min.css"
-    rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/js/footable.min.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $('[id*=gridMatchedCeresIDS]').footable();
-    });
-</script>
-  <link href="/css/additem.css" rel="stylesheet" type="text/css" runat="server"/>
-    <link href="Fb_category.css" rel="stylesheet" type="text/css" runat="server"/>
-  <style>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>--%>
 
-    ul.ui-autocomplete {
-    list-style: none;
-    list-style-type:none;
-    padding: 0px;
-    margin:0px;
-    color: black;
-    height: 200px; 
-    overflow-y: scroll;
-    overflow-x: hidden;
-
-      }
-              .wrapper{
-            display: inline-block;
-            /*width: 360px;*/
-            height: 360px;
-        }
-
-        #divitem{
-            float:left;
-            margin-right:50px;
-            margin-left: 80px;
-        }
-
-        #divmanual{
-            float: right;
-            margin-left: 50px;
-        }
-
-        #divgridview{
-            text-align:center;
-            margin-left: auto; margin-right: auto;
-        }
-
-        .btncss{
-         background-color: #0D8843;
-         color:#fff;
-         outline-color: #0D8843;
-         float: right;  
-     }
-        select#ddlMatchedCeresID {
-   color: #fff;
-   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);
-   background-color: #779126;
-   -webkit-border-radius: 20px;
-   -moz-border-radius: 20px;
-   border-radius: 20px;
-   padding-left: 15px;
-}
-      
-        
-       
-        </style>
-
-<script>
-    $(document).ready(function (e) {
-        $('.search-panel .dropdown-menu').find('a').click(function (e) {
-            e.preventDefault();
-            var param = $(this).attr("href").replace("#", "");
-            var concept = $(this).text();
-            $('.search-panel span#search_concept').text(concept);
-            $('.input-group #search_param').val(param);
-        });
-    });
-</script> 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("[id*=txtSearch]").autocomplete({ source: '<%=ResolveUrl("~/AutoComplete.ashx" ) %>' });
-    }); 
-</script>    
-
-    <script>
-        function showDiv(elem) {
-            if (elem.value == 0) {
-                document.getElementById('divold').style.display = "block";
-                document.getElementById('divnew').style.display = "none";
-                document.getElementById('divgridview').style.display = "none";
-            } else if (elem.value == 1) {
-                document.getElementById('divnew').style.display = "block";
-                document.getElementById('divold').style.display = "none";
-                document.getElementById('divnew').style.display = "none";
-            }else if (elem.value == 2) {
-                document.getElementById('divnew').style.display = "none";
-                document.getElementById('divold').style.display = "none";
-                document.getElementById('divgridview').style.display = "block";
-                
-            } else {
-                document.getElementById('divold').style.display = "block";
-                document.getElementById('divnew').style.display = "none";
-                document.getElementById('divgridview').style.display = "block";
-            }
-        }
-        </script>
-    <script>
-$(document).ready(function() {
-    
-    // Custom settings
-    $('.matchedCeresIDS').responsiveTable({
-        staticColumns: 2, 
-        scrollRight: true, 
-        scrollHintEnabled: true, 
-        scrollHintDuration: 2000
-    });
-});  
-    </script>
-    
-</head>
-
-<body>
-    
-     <form runat="server">   
-    
-<!--start nav bar-->      
-     
-<nav class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.aspx">
-            <img src="https://farm5.staticflickr.com/4468/38145590072_8dd45d4da2_o.png" height="75" width="120" alt="Wholesome Logo" class="img-responsive"></a>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li><a style="color:#0D8843; font-size:14px;" href="manual_input.aspx">NUTRIENT CALCULATOR</a></li>
-            <li><a style="color:#0D8843; font-size:14px;" href="recent.aspx">RECENT</a></li>
-            <li><a style="color:#0D8843; font-size:14px;" href="Comparison.aspx">COMPARISON</a></li>
-        </ul>
-        
-        
-        
-        <!--new section-->    
-          
-        <div class="input-group">
-            <div class="input-group-btn search-panel">
-       <asp:DropDownList ID="ddlCategory" runat="server" CssClass="btn btn-default dropdown-toggle" AppendDataBoundItems="true" OnSelectedIndexChanged="Page_Load" DataSourceID="Category" DataTextField="FdGrp_Desc" DataValueField="FdGrp_Desc">
-         <asp:ListItem Selected="True">--Select Category--</asp:ListItem>
- 
-                
-      </asp:DropDownList>
-                </div>
-                      <asp:SqlDataSource ID="Category" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [FdGrp_Desc] FROM [FD_GROUP]"></asp:SqlDataSource>
-            <asp:TextBox ID="txtSearch" runat="server" CssClass="sook form-control"></asp:TextBox>
-           <span class="input-group-btn">
-         <button type="submit" class="btn btn-default" runat="server" onserverclick="btnSearch" ><span class="glyphicon glyphicon-search"></span></button></span>
-      
-        
-            </div>
-    </div>
-
-       <!--ADDED HTML FOR THE LOGIN DROPDOWN--> 
-    
- <div class="container-fluid">
-     <div class="col-sm-12">
-     <div class="row">
-    <div class="dropdown pull-right">  
-      <button class="btn btn-default dropdown-toggle" type="button" id="userdropdown" data-toggle="dropdown" style="background-color: #0D8843; color: #fff;">Welcome,<asp:Label ID="lblName" runat="server" Text="name"></asp:Label>   <span class="glyphicon glyphicon-user" style="color:#fff;"></span>
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="userdropdown">
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="account_management.aspx">Account Management</a></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="Settings.aspx">Settings</a></li>
-      <li role="presentation" class="divider"></li>
-      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Log Out</a></li>
-    </ul>      
-         </div>   
-         
-        
-</div>
-         </div>
-</div>     
-         
-<!--END ADDED HTML FOR THE LOGIN DROPDOWN-->  
-</nav>
-  
- <!--end nav bar--> 
-    
-  
    
-
-
-    <div class="container-fluid banner">    
-  <div class="col-sm-8"> <!--start first container--> 
-          
-
-  
       
-    </div> <!--end 1st container-->
-            
-        
-  <div class="col-sm-4"> <!--start 2nd container-->
-    <div class="row">  <!--start row-->
-    <div class="text-center"> 
-   <h3 >
-    <span style="color: #fff;" class="glyphicon"></span>
- </h3>       
-       </div> 
-    </div> <!--end row-->
-    </div> <!--end second container-->
- </div>  <!--end container-->
-  <br>  
          
         
          
-<div  class="col-md-2"> 
+<%--<div  class="col-md-2"> 
 
 <div class="container-fluid menu">       
 <div class="vertical-menu">
@@ -252,10 +38,10 @@ $(document).ready(function() {
    </div>
     
 
-     </div>
+     </div>--%>
 
          
-    
+    <asp:Content ContentPlaceHolderID="body" runat="server">
 <br> 
   <div class="wrapper">
      <div id="divitem">
@@ -271,7 +57,7 @@ $(document).ready(function() {
     <%--<td><asp:TextBox ID="txtNumber" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNumber" ID="chkItemNumber" runat="server" ValidationGroup="UpdateItem" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
   </tr>--%>
   <%--<select id="ddlMatchedCeresID" runat="server" name="Matched Ceres ID's">--%>
-         <asp:GridView ID="gridMatchedCeresIDS" runat="server" CssClass="footable" Style="max-width: 500px" OnRowDataBound="ceresMatchedOnRowDataBound" AutoGenerateColumns="False" RowStyle-Wrap="false">
+         <asp:GridView ID="gridMatchedCeresIDS" runat="server" CssClass="footable" Style="max-width: 500px" OnSelectedIndexChanged="gridMatchedCeresIDS_SelectedIndexChanged" OnRowDataBound="ceresMatchedOnRowDataBound" AutoGenerateColumns="False" RowStyle-Wrap="false">
              <Columns>
              <asp:BoundField DataField ="CeresID" HeaderText ="CeresID"/>
              <asp:BoundField DataField ="Ceres_Name" HeaderText ="Ceres_Name"/>
@@ -457,7 +243,7 @@ $(document).ready(function() {
          <br><br><br><br><br>
     
 
-    </form>
+    
 
     <section runat="server" id="section" visible="true">
 		<h3><asp:Literal ID="search_summary" runat="server" /></h3>
@@ -495,36 +281,133 @@ $(document).ready(function() {
 			</asp:GridView>--%>
 		</div>
 	</section>
-    <!--start footer-->
-     
-<footer style="padding-top: 20px; position:relative; bottom:0; border-top:1px solid #fff; background-color: #0D8843;">
-  <div class="container">
-    <div class="row" style="padding-bottom:10px;">
-    
-            <div class="col-md-2">
-                <div class="hidden-md hidden-lg">
-              <h1 style="margin-top:0px; margin-bottom:15px; color: #fff; font-size: 20px; text-transform:uppercase; letter-spacing:2px;">Site Navigation</h1>   
-                </div>
-        <ul class="nav navbar-nav">
-            <li><a style="color:#fff; font-size:14px;" href="manual_input.aspx">NUTRIENT CALCULATOR</a></li>
-            <li><a style="color:#fff; font-size:14px;" href="recent.aspx">RECENT</a></li>
-            <li><a style="color:#fff; font-size:14px;" href="Comparison.aspx">COMPARISON</a></li>
-        </ul>           
-        </div> <!--end col 1-->     
-        
-      </div>
-      
-      
-    <div class="row">   
-  <div class="col-md-12 text-right">    
-     <p style="color:#fff;">Copyright 2017 Wholesome Inc. All rights reserved.</p>   
 
-      </div>
-      </div> 
-    </div>  
+             </asp:Content>
     
-    </footer>
+     <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
+         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+         <script src="scripts/jquery.responsivetable.min.js"></script> 
+    <script src="Fb_categories.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/css/footable.min.css"
+    rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/js/footable.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('[id*=gridMatchedCeresIDS]').footable();
+    });
+</script>
     
-<!--end footer-->
-</body>
-</html>
+  <link href="/css/additem.css" rel="stylesheet" type="text/css" runat="server"/>
+    <link href="Fb_category.css" rel="stylesheet" type="text/css" runat="server"/>
+    
+  <style>
+
+    ul.ui-autocomplete {
+    list-style: none;
+    list-style-type:none;
+    padding: 0px;
+    margin:0px;
+    color: black;
+    height: 200px; 
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+      }
+              .wrapper{
+            display: inline-block;
+            /*width: 360px;*/
+            height: 360px;
+        }
+
+        #divitem{
+            float:left;
+            margin-right:50px;
+            margin-left: 80px;
+        }
+
+        #divmanual{
+            float: right;
+            margin-left: 50px;
+        }
+
+        #divgridview{
+            text-align:center;
+            margin-left: auto; margin-right: auto;
+        }
+
+        .btncss{
+         background-color: #0D8843;
+         color:#fff;
+         outline-color: #0D8843;
+         float: right;  
+     }
+        select#ddlMatchedCeresID {
+   color: #fff;
+   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);
+   background-color: #779126;
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+   padding-left: 15px;
+}
+      
+        
+       
+        </style>
+
+<script>
+    $(document).ready(function (e) {
+        $('.search-panel .dropdown-menu').find('a').click(function (e) {
+            e.preventDefault();
+            var param = $(this).attr("href").replace("#", "");
+            var concept = $(this).text();
+            $('.search-panel span#search_concept').text(concept);
+            $('.input-group #search_param').val(param);
+        });
+    });
+</script> 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("[id*=txtSearch]").autocomplete({ source: '<%=ResolveUrl("~/AutoComplete.ashx" ) %>' });
+    }); 
+</script>    
+
+    <script>
+        function showDiv(elem) {
+            if (elem.value == 0) {
+                document.getElementById('document.getElementById("divold")').style.display = "block";
+                document.getElementById('divnew').style.display = "none";
+                document.getElementById('divgridview').style.display = "none";
+            } else if (elem.value == 1) {
+                document.getElementById('divnew').style.display = "block";
+                document.getElementById('divold').style.display = "none";
+                document.getElementById('divnew').style.display = "none";
+            } else if (elem.value == 2) {
+                document.getElementById('divnew').style.display = "none";
+                document.getElementById('divold').style.display = "none";
+                document.getElementById('divgridview').style.display = "block";
+
+            } else {
+                document.getElementById('divold').style.display = "block";
+                document.getElementById('divnew').style.display = "none";
+                document.getElementById('divgridview').style.display = "block";
+            }
+        }
+        </script>
+    <script>
+        $(document).ready(function () {
+
+            // Custom settings
+            $('.matchedCeresIDS').responsiveTable({
+                staticColumns: 2,
+                scrollRight: true,
+                scrollHintEnabled: true,
+                scrollHintDuration: 2000
+            });
+        });
+    </script>
+    </asp:Content>
+
+     
