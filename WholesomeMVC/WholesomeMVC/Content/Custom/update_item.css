@@ -1,0 +1,4 @@
+﻿/* override footable search buttons */
+.footable-filtering button {
+	display: none;
+}

@@ -10,7 +10,7 @@
 namespace WholesomeMVC.WebForms {
     
     
-    public partial class Comparison {
+    public partial class comparison {
         
         /// <summary>
         /// compare control.
