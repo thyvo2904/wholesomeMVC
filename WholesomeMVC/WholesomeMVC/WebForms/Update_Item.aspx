@@ -37,18 +37,8 @@
 				<asp:BoundField DataField="ND score" HeaderText="ND Score" />
 				<asp:CommandField ShowSelectButton="true" SelectText="Update" />
 			</Columns>
-		</asp:GridView>
-		 <asp:DropDownList  id="ddlChooseMethod" OnSelectedIndexChanged="ddlChooseMethod_SelectedIndexChanged" runat="server">
-             <asp:ListItem>-Input Method-</asp:ListItem>
-             <asp:ListItem>USDA</asp:ListItem>
-             <asp:ListItem>Manual: Old Label</asp:ListItem>
-             <asp:ListItem>Manual: New Label</asp:ListItem>
-         </asp:DropDownList>
-		 <asp:Label ID="lblUSDASearch" runat="server" Text="Search USDA"></asp:Label>
-         <asp:TextBox ID="txtSearchUSDA" runat="server"></asp:TextBox>
-         <asp:Button ID="btnSearchUSDA" runat="server" Text="Search" />
-
-		<asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+		</asp:GridView>--%>
+		<%--<asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>--%>
          <asp:Label ID="lblOldProtein" runat="server" Text="Protein:"></asp:Label>
          <asp:TextBox ID="txtOldProtein" runat="server"></asp:TextBox>
          <asp:Label ID="lblOldFiber" runat="server" Text="Fiber:"></asp:Label>
