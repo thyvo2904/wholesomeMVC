@@ -108,9 +108,9 @@ namespace WholesomeMVC.WebForms
             if (Request.IsAuthenticated) {
 				// User is authenticated
 				log_in_out.Text = "Log out";
-				//log_in_out.NavigateUrl = "~/Manage/Index";
-				//log_in_out.NavigateUrl = "javascript:document.getElementById('logoutForm').submit()";
-				log_in_out.NavigateUrl = "~/Account/Logoff";
+                //log_in_out.NavigateUrl = "~/Manage/Index";
+                //log_in_out.NavigateUrl = "javascript:document.getElementById('logoutForm').submit()";
+                log_in_out.NavigateUrl = "javascript: document.getElementById('logoutForm').submit()";
 
 				label_user.Text = HttpContext.Current.User.Identity.GetUserName();
 				generatedToken.Value = _antiXsrfTokenValue;

@@ -73,21 +73,14 @@ namespace WholesomeMVC.WebForms
             String url = urlPartOne + foodSearch + urlPartTwo;
 
             var json = new WebClient().DownloadString(url);
-
-
-
             var result = JsonConvert.DeserializeObject<Search>(json);
 
-
-            //for (int i = 0; i < IndexResults.dataSearchResults.Rows.Count; i++)
-            //{
             if (!indexresult.dataSearchResults.Columns.Contains("NDBno") && !indexresult.dataSearchResults.Columns.Contains("Name")
                 && !indexresult.dataSearchResults.Columns.Contains("ND Score"))
             {
                 indexresult.dataSearchResults.Columns.Add("NDBno", typeof(string));
                 indexresult.dataSearchResults.Columns.Add("Name", typeof(string));
                 indexresult.dataSearchResults.Columns.Add("ND Score", typeof(double));
-
             }
 
             else
