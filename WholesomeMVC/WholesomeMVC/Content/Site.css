@@ -43,6 +43,7 @@ body {
 }
 .navbar-nav > li > a {
 	line-height: 50px;
+	color: #70C277 !important;
 }
 .navbar .lead {
 	margin: 0;
@@ -95,6 +96,11 @@ body {
 /* search bar */
 #search-panel {
 	padding: 23px 15px;
+}
+#search-panel .input-group-btn > button {
+	background-color: #70C277 !important;
+	border-color: #70C277 !important;
+	color: #FFFFFF !important;
 }
 
 /* style nutrition label */

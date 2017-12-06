@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -26,12 +27,31 @@ namespace WholesomeMVC.WebForms
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (HttpContext.Current.User.IsInRole("Admin"))
+            {
+                btnCompare.Visible = true;
+                sook1.Visible = true;
+                sook2.Visible = true;
+            }
+            else
+            {
+                btnCompare.Visible = false;
+                sook1.Visible = false;
+                sook2.Visible = false;
+                btnCompare.Attributes["Title"] = "Please login first!";
+            }
             if (IsPostBack)
             {
                 // do nothing
             }
             else
             {
+                // add color_legend
+                String strScaleLegend = "Color Scale Legend";
+
+                label_color_scale_legend.Text = strScaleLegend;
+                image_color_scale_legend.ImageUrl = "/Content/Images/image_color_scale_legend.png";
+
                 // set page variables
                 String strTitle = "Search Results";
 
@@ -40,19 +60,19 @@ namespace WholesomeMVC.WebForms
                 Label body_title = (Label)Master.FindControl("body_title");
                 body_title.Text = strTitle;
 
-                image_grain.ImageUrl = "/Content/Images/icons8-wheat-100.png";
-                image_vegetables.ImageUrl = "/Content/Images/icons8-broccoli-100.png";
-                image_fruit.ImageUrl = "/Content/Images/icons8-apple-100.png";
-                image_dairy.ImageUrl = "/Content/Images/icons8-cheese-100.png";
-                image_baby_food.ImageUrl = "/Content/Images/icons8-baby-bottle-100.png";
-                image_beverages.ImageUrl = "/Content/Images/icons8-wine-glass-100.png";
+                //image_grain.ImageUrl = "/Content/Images/icons8-wheat-100.png";
+                //image_vegetables.ImageUrl = "/Content/Images/icons8-broccoli-100.png";
+                //image_fruit.ImageUrl = "/Content/Images/icons8-apple-100.png";
+                //image_dairy.ImageUrl = "/Content/Images/icons8-cheese-100.png";
+                //image_baby_food.ImageUrl = "/Content/Images/icons8-baby-bottle-100.png";
+                //image_beverages.ImageUrl = "/Content/Images/icons8-wine-glass-100.png";
 
-                button_grain.Text = "Grain";
-                button_vegetables.Text = "Vegetables";
-                button_fruit.Text = "Fruit";
-                button_dairy.Text = "Dairy";
-                button_baby_food.Text = "Baby Food";
-                button_beverages.Text = "Beverages";
+                //button_grain.Text = "Grain";
+                //button_vegetables.Text = "Vegetables";
+                //button_fruit.Text = "Fruit";
+                //button_dairy.Text = "Dairy";
+                //button_baby_food.Text = "Baby Food";
+                //button_beverages.Text = "Beverages";
 
                 BindDataFromDB();
             }
@@ -86,7 +106,7 @@ namespace WholesomeMVC.WebForms
             sc.Close();
 
             search_summary.Text = String.Format("Found {0} items", dataSearchResults.Rows.Count);
-            filter_applied.Text = String.Format("Filter applied: {0}", "none");
+            //filter_applied.Text = String.Format("Filter applied: {0}", "none");
 
             String strHTML = "";
             foreach (DataRow row in dataSearchResults.Rows)
@@ -230,6 +250,7 @@ namespace WholesomeMVC.WebForms
             modal_header.Attributes["style"] = String.Format("border-bottom: 5px solid {0};", colorScaleStyle);
 
             lblFoodName.Text = FoodItem.newFood.name;
+            lblFoodName.Attributes["style"] = "font-weight: bold;";
             lblIndexResult.Text = Convert.ToString(Math.Round(score, 2));
             lblNdbno.Value = FoodItem.newFood.ndbNo;
             lblName.Value = FoodItem.newFood.name;
@@ -253,43 +274,62 @@ namespace WholesomeMVC.WebForms
 		 * Check if the ceres item is null.
 		 * If ceres item doesn't exist prompt the user to open ceres and enter it there first.
 		 */
+
+        protected String getuserid()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            String getid;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string result = "SELECT LoginID FROM dbo.Session WHERE Id = '" + HttpContext.Current.User.Identity.GetUserId() + "' ";
+                SqlCommand showresult = new SqlCommand(result, con);
+                con.Open();
+                getid = showresult.ExecuteScalar().ToString();
+                con.Close();
+            }
+            return getid;
+        }
+
         protected void CompareItem(object sender, EventArgs e)
         {
 
             bool flag = false;
             String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             String ndbno = lblNdbno.Value;
+            
 
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                SqlCommand command = new SqlCommand("Select ndb_no From dbo.Comparison_Item WHERE ndb_no = @ndb_no", connection);
-                command.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
-                    if (reader[0].ToString() == ndbno)
-                    {
-                        flag = true;
-                        break;
-                    }
-
-                }
-                if (flag)
-                {
-                    // food already been compared
-                }
-                else
-                    connection.Close();
+                    SqlCommand command = new SqlCommand("Select ndb_no From dbo.Comparison_Item WHERE ndb_no = @ndb_no", connection);
+                    command.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
                     connection.Open();
-                {
-                    SqlCommand command1 = new SqlCommand();
-                    command1.Connection = connection;
-                    command1.CommandType = System.Data.CommandType.Text;
+                    SqlDataReader reader = command.ExecuteReader();
 
-                    command1.CommandText = @"
+                    while (reader.Read())
+                    {
+                        if (reader[0].ToString() == ndbno)
+                        {
+                            flag = true;
+                            break;
+                        }
+
+                    }
+                    connection.Close();
+                    if (flag)
+                    {
+                        // food already been compared
+                        string script = "alert(\"Item has already been added to comparison tool\");";
+                        ScriptManager.RegisterStartupScript(this, GetType(),
+                                              "ServerControlScript", script, true);
+                    }
+                    else
+                    {
+                        connection.Open();
+                        SqlCommand command1 = new SqlCommand();
+                        command1.Connection = connection;
+                        command1.CommandType = System.Data.CommandType.Text;
+
+                        command1.CommandText = @"
 					INSERT INTO [wholesomeDB].[dbo].[Comparison_Item] (
 						[ndb_no],
 						[nrf6],
@@ -326,28 +366,31 @@ namespace WholesomeMVC.WebForms
                         @lastupdated
 					)
 				";
-                    command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
-                    command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
-                    command1.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = lblName.Value;
-                    command1.Parameters.Add("@loginid", SqlDbType.Int).Value = 100; // adminloginid
-                    command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
-                    command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
-                    command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;
-                    command1.Parameters.Add("@vc", SqlDbType.Decimal).Value = txtvc.Text;
-                    command1.Parameters.Add("@calcium", SqlDbType.Decimal).Value = txtcalcium.Text;
-                    command1.Parameters.Add("@iron", SqlDbType.Decimal).Value = txtiron.Text;
-                    command1.Parameters.Add("@satfat", SqlDbType.Decimal, 20).Value = txtsatfat.Text;
-                    command1.Parameters.Add("@sugar", SqlDbType.Decimal).Value = txtsugar.Text;
-                    command1.Parameters.Add("@sodium", SqlDbType.Decimal).Value = txtsodium.Text;
-                    command1.Parameters.Add("@calories", SqlDbType.Decimal).Value = txtcalories.Text;
-                    command1.Parameters.Add("@lastupdatedby", SqlDbType.VarChar,20).Value = "Yihui Zhou";
-                    command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value= DateTime.Now;
+                        command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
+                        command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
+                        command1.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = lblName.Value;
+                        command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getuserid();
+                        command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
+                        command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
+                        command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;
+                        command1.Parameters.Add("@vc", SqlDbType.Decimal).Value = txtvc.Text;
+                        command1.Parameters.Add("@calcium", SqlDbType.Decimal).Value = txtcalcium.Text;
+                        command1.Parameters.Add("@iron", SqlDbType.Decimal).Value = txtiron.Text;
+                        command1.Parameters.Add("@satfat", SqlDbType.Decimal, 20).Value = txtsatfat.Text;
+                        command1.Parameters.Add("@sugar", SqlDbType.Decimal).Value = txtsugar.Text;
+                        command1.Parameters.Add("@sodium", SqlDbType.Decimal).Value = txtsodium.Text;
+                        command1.Parameters.Add("@calories", SqlDbType.Decimal).Value = txtcalories.Text;
+                        command1.Parameters.Add("@lastupdatedby", SqlDbType.VarChar, 20).Value = "Yihui Zhou";
+                        command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
 
-                    command1.ExecuteNonQuery();
-                    connection.Close();
+                        command1.ExecuteNonQuery();
+                        connection.Close();
 
+                    }
                 }
-            }
+            
+        
+            
 
 
 
