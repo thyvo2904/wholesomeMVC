@@ -14,7 +14,7 @@ using System.Web.UI.WebControls;
 
 namespace WholesomeMVC.WebForms
 {
-    public partial class Comparison : System.Web.UI.Page
+    public partial class comparison : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -78,7 +78,7 @@ namespace WholesomeMVC.WebForms
             Table table1 = new Table();
 
             // Set the table's formatting-related properties.
-			table1.CssClass = "table table-striped table-hover";
+			table1.CssClass = "table table-striped table-hover table-responsive";
 			table1.BackColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
        
 
