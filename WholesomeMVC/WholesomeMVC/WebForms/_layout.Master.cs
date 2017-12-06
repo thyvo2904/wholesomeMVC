@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Web;
 using System.Web.Security;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 using System.Text;
 using System.Web.Helpers;
 using Microsoft.AspNet.Identity;
@@ -110,7 +113,46 @@ namespace WholesomeMVC.WebForms
 				//log_in_out.NavigateUrl = "javascript:document.getElementById('logoutForm').submit()";
 				log_in.Visible = false;
 				label_user.Text = HttpContext.Current.User.Identity.GetUserName();
-			} else {
+				generatedToken.Value = _antiXsrfTokenValue;
+
+                String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(ConnectionString))
+                    {
+                        SqlCommand command1 = new SqlCommand();
+                        command1.Connection = connection;
+                        command1.CommandType = System.Data.CommandType.Text;
+
+                        command1.CommandText = @"
+						INSERT INTO [wholesomeDB].[dbo].[Session] (
+							[ID],
+							[LastUpdated],
+                            [LastUpdatedBy]
+						) VALUES (
+							@ID,
+							@LastUpdated,
+							@LastUpdatedBy)
+					";
+
+                        command1.Parameters.Add("@ID", SqlDbType.NVarChar, 128).Value = HttpContext.Current.User.Identity.GetUserId();
+                        command1.Parameters.Add("@LastUpdated", SqlDbType.DateTime).Value = DateTime.Now;
+                        command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar,20).Value = HttpContext.Current.User.Identity.GetUserName();
+                        
+                        connection.Open();
+                        command1.ExecuteNonQuery();
+                        connection.Close();
+                    }
+
+                    
+                }
+                catch (Exception q)
+                {
+                    Console.WriteLine(q.ToString());
+                }
+
+            } else {
 				// User is NOT authenticated
 				label_user.Text = "Account";
 			}
