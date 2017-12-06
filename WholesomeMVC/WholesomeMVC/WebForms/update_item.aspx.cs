@@ -128,8 +128,8 @@ namespace WholesomeMVC.WebForms
                     gridMatchedCeresIDS.DataBind();
 
                     gridMatchedCeresIDS.HeaderRow.Cells[0].Attributes["data-class"] = "expand";
-                    gridMatchedCeresIDS.HeaderRow.Cells[2].Attributes["data-hide"] = "phone";
-                    gridMatchedCeresIDS.HeaderRow.Cells[3].Attributes["data-hide"] = "phone";
+                    gridMatchedCeresIDS.HeaderRow.Cells[2].Attributes["data-hide"] = "all";
+                    gridMatchedCeresIDS.HeaderRow.Cells[3].Attributes["data-hide"] = "all";
                     gridMatchedCeresIDS.HeaderRow.Cells[4].Attributes["data-hide"] = "phone";
 
                     gridMatchedCeresIDS.HeaderRow.TableSection = TableRowSection.TableHeader;
