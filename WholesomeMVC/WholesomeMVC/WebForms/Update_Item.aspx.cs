@@ -17,7 +17,7 @@ using System.Drawing;
 
 namespace WholesomeMVC.WebForms
 {
-    public partial class Update_Item : System.Web.UI.Page
+    public partial class update_item : System.Web.UI.Page
     {
         public static DataTable matchedCeresIDS = new DataTable();
         public static DataTable dataSearchResults = new DataTable();
@@ -855,25 +855,26 @@ namespace WholesomeMVC.WebForms
 
 			gridMatchedCeresIDS.DataSource = matchedCeresIDS;
 			gridMatchedCeresIDS.DataBind();
-			gridMatchedCeresIDS.HeaderRow.Cells[0].Attributes["data-class"] = "expand";
-			gridMatchedCeresIDS.HeaderRow.Cells[2].Attributes["data-hide"] = "all";
-			gridMatchedCeresIDS.HeaderRow.Cells[3].Attributes["data-hide"] = "all";
-			gridMatchedCeresIDS.HeaderRow.Cells[4].Attributes["data-hide"] = "phone";
+
+			gridMatchedCeresIDS.HeaderRow.Cells[2].Attributes["data-breakpoints"] = "all";
+			gridMatchedCeresIDS.HeaderRow.Cells[3].Attributes["data-breakpoints"] = "all";
+			gridMatchedCeresIDS.HeaderRow.Cells[4].Attributes["data-breakpoints"] = "xs";
+			gridMatchedCeresIDS.HeaderRow.Cells[4].Attributes["data-type"] = "number";
+
 			gridMatchedCeresIDS.HeaderRow.TableSection = TableRowSection.TableHeader;
 
 			conn.Close();
 
             search_summary.Text = String.Format("Found {0} matched items", matchedCeresIDS.Rows.Count);
-            filter_applied.Text = String.Format("Filter applied: {0}", "none");
 
-			String strHTML = "";
-            foreach (DataRow row in matchedCeresIDS.Rows)
-            {
-                strHTML += GenerateHtmlForEachItem(row);
-            }
+			//String strHTML = "";
+			//foreach (DataRow row in matchedCeresIDS.Rows)
+			//{
+			//	strHTML += GenerateHtmlForEachItem(row);
+			//}
 
-            search_results.InnerHtml = strHTML;
-        }
+			//search_results.InnerHtml = strHTML;
+		}
 
 		/***
 		 * Take a data row (aka item) of the result set as argument.

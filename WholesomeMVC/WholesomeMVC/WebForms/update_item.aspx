@@ -1,5 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="True" MasterPageFile="~/WebForms/_layout.Master" CodeBehind="Update_Item.aspx.cs" Inherits="WholesomeMVC.WebForms.Update_Item" %>
+﻿<%@ Page Language="C#" AutoEventWireup="True" MasterPageFile="~/WebForms/_layout.Master" CodeBehind="update_item.aspx.cs" Inherits="WholesomeMVC.WebForms.update_item" %>
          
+<asp:Content ContentPlaceHolderID="style" runat="server">
+	<%--<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/css/footable.min.css" rel="stylesheet" type="text/css" />--%>
+	<link href="/Content/Vendor/footable.bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="/Content/Custom/update_item.css" rel="stylesheet" type="text/css" />
+</asp:Content>
+
 <asp:Content ContentPlaceHolderID="body" runat="server">
   <div class="wrapper">
      <div id="divitem">
@@ -11,29 +17,9 @@
         </asp:DropDownList>--%>
   
   
-    <h2>Matched Items</h2>
 		<%--<td><asp:TextBox ID="txtNumber" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNumber" ID="chkItemNumber" runat="server" ValidationGroup="UpdateItem" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td> </tr>--%>
 		<%--<select id="ddlMatchedCeresID" runat="server" name="Matched Ceres ID's">--%>
 		<%--</select>--%>
-		<asp:GridView
-			ID="gridMatchedCeresIDS" 
-			runat="server" 
-			CssClass="footable"
-			Style="max-width: 500px"
-			OnSelectedIndexChanged="gridMatchedCeresIDS_SelectedIndexChanged"
-			OnRowDataBound="ceresMatchedOnRowDataBound"
-			AutoGenerateColumns="False"
-			RowStyle-Wrap="false">
-			<Columns>
-				<asp:BoundField DataField="CeresID" HeaderText="CeresID" />
-				<asp:BoundField DataField="Ceres_Name" HeaderText="Ceres_Name" />
-				<asp:BoundField DataField="USDA Number" HeaderText="NDBno" />
-				<asp:BoundField DataField="Name" HeaderText="Name" />
-				<asp:BoundField DataField="ND score" HeaderText="ND Score" />
-				<asp:CommandField ShowSelectButton="true" SelectText="Update" />
-			</Columns>
-		</asp:GridView>
-		<asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
 	</div>
                      
       
@@ -198,9 +184,27 @@
 
     <section runat="server" id="section" visible="true">
 		<h3><asp:Literal ID="search_summary" runat="server" /></h3>
-		<h4><asp:Literal ID="filter_applied" runat="server" /></h4>
 
 		<!-- Search items will show here -->
+		<asp:GridView
+			ID="gridMatchedCeresIDS" 
+			runat="server" 
+			CssClass="table table-bordered table-hover"
+			OnSelectedIndexChanged="gridMatchedCeresIDS_SelectedIndexChanged"
+			OnRowDataBound="ceresMatchedOnRowDataBound"
+			AutoGenerateColumns="False"
+			ClientIDMode="Static"
+			RowStyle-Wrap="false">
+			<Columns>
+				<asp:BoundField DataField="CeresID" HeaderText="CeresID" />
+				<asp:BoundField DataField="Ceres_Name" HeaderText="Ceres_Name" />
+				<asp:BoundField DataField="USDA Number" HeaderText="NDBno" />
+				<asp:BoundField DataField="Name" HeaderText="Name" />
+				<asp:BoundField DataField="ND score" HeaderText="ND Score" />
+				<asp:CommandField ShowSelectButton="true" SelectText="Update" />
+			</Columns>
+		</asp:GridView>
+		<asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
 		<div id="search_results" runat="server" class="row"></div>
 
 		<!-- Modal for expanded view -->
@@ -337,17 +341,7 @@
  <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
 <%--	 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	 <script src="scripts/jquery.responsivetable.min.js"></script>
 	 <script src="Fb_categories.js"></script>
-	 <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/css/footable.min.css"
-		 rel="stylesheet" type="text/css" />
-	 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/js/footable.min.js"></script>
-	 <script type="text/javascript">
-    $(function () {
-        $('[id*=gridMatchedCeresIDS]').footable();
-    });
-	 </script>
 
 	 <link href="/css/additem.css" rel="stylesheet" type="text/css" runat="server" />
 	 <link href="Fb_category.css" rel="stylesheet" type="text/css" runat="server" />
@@ -399,6 +393,10 @@
         });
 	 </script>--%>
 	
+	<%--<script src="scripts/jquery.responsivetable.min.js"></script>--%>
+	<%--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/js/footable.min.js"></script>--%>
+	<script type="text/javascript" src="/Scripts/Vendor/moment.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Vendor/footable.min.js"></script>
     <script type="text/javascript" src="/Scripts/Vendor/jquery.matchHeight-min.js"></script>
     <script type="text/javascript" src="/Scripts/Custom/update_item.js"></script>
  </asp:Content>

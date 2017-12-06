@@ -1,9 +1,28 @@
-﻿$(document).ready(function () {
+$(document).ready(function () {
 	$('.equal-height').matchHeight({
 		byRow: true,
 		property: 'height',
 		target: null,
 		remove: false
+	});
+
+	$("#gridMatchedCeresIDS").footable({
+		// options go here
+		"expandFirst": true,
+		"showToggle": true,
+		"paging": {
+			"enabled": true,
+			"position": "center"
+		},
+		"sorting": {
+			"enabled": true
+		},
+		"filtering": {
+			"enabled": true,
+			"delay": 0,
+			"dropdownTitle": "Search in:",
+			"position": "right",
+		}
 	});
 });
 
