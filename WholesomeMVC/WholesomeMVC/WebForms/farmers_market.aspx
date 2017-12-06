@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/WebForms/_layout.Master" AutoEventWireup="True" CodeBehind="Farmers_Market.aspx.cs" Inherits="WholesomeMVC.WebForms.Farmers_Market" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Farmers_Market.aspx.cs" Inherits="WholesomeMVC.WebForms.Farmers_Market" %>
 
 <!DOCTYPE html>
 
