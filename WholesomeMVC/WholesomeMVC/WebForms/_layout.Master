@@ -22,11 +22,6 @@
     <asp:ContentPlaceHolder ID="style" runat="server"></asp:ContentPlaceHolder>
 
 	<script type="text/javascript" src="/Scripts/modernizr-2.6.2.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("[id*=txtSearch]").autocomplete({ source: '<%=ResolveUrl("~/WebForms/AutoComplete.ashx" ) %>' });
-        });
-    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -69,7 +64,7 @@
 
 									<div class="col-sm-8">
 										<div class="input-group">
-											<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
+											<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control typeahead" autocomplete="off"></asp:TextBox>
 											<span class="input-group-btn">
 												<button type="submit" class="btn btn-default" runat="server" onserverclick="btnSearch">
 													<span class="glyphicon glyphicon-search"></span>
@@ -147,8 +142,8 @@
 
 	<script src="/Scripts/jquery-1.10.2.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/Vendor/bootstrap3-typeahead.min.js"></script>
     <script src="/Scripts/Custom/site.js"></script>
-
 
     <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
 </body>

@@ -278,57 +278,56 @@ namespace WholesomeMVC.WebForms
                 command1.CommandType = System.Data.CommandType.Text;
 
                 command1.CommandText = @"
-            				INSERT INTO [wholesomeDB].[dbo].[Comparison_Item] (
-            					[ndb_no],
-                                [nrf6],
-                                [FoodName],
-            					[loginID],
-            					[protein],
-            					[fiber],
-            					[VitaminA],
-            					[VitaminC],
-                                [Calcium],
-                                [Iron],
-                                [SaturatedFat],
-                                [TotalSugar],
-                                [Sodium],
-                                [KCal]
-            				) VALUES (
-            					@ndbno,
-            					@nrf6,
-            					@name,
-                                @loginid,
-                                @protein,
-                                @fiber,
-                                @va,
-                                @vc,
-                                @calcium,
-                                @iron,
-                                @satfat,
-                                @sugar,
-                                @sodium,
-            					@calories
-            				)
-            			";
-                			command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
-                			command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult;
-                			command1.Parameters.Add("@name", SqlDbType.VarChar,50).Value = lblName.Value;
-                			command1.Parameters.Add("@loginid", SqlDbType.Int).Value = savedFoodGroup; // adminloginid
-                			command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
-                			command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
-                            command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;
-                            command1.Parameters.Add("@vc", SqlDbType.Decimal).Value = txtvc.Text;
-                            command1.Parameters.Add("@calcium", SqlDbType.Decimal).Value = txtcalcium.Text;
-                            command1.Parameters.Add("@iron", SqlDbType.Decimal).Value = txtiron.Text;
-                            command1.Parameters.Add("@satfat", SqlDbType.Decimal, 20).Value = txtsatfat.Text;
-                            command1.Parameters.Add("@sugar", SqlDbType.Decimal).Value = txtsugar.Text;
-                            command1.Parameters.Add("@sodium", SqlDbType.Decimal).Value = txtsodium.Text;
-                            command1.Parameters.Add("@calories", SqlDbType.Decimal).Value = txtcalories.Text;
+					INSERT INTO [wholesomeDB].[dbo].[Comparison_Item] (
+						[ndb_no],
+						[nrf6],
+						[FoodName],
+						[loginID],
+						[protein],
+						[fiber],
+						[VitaminA],
+						[VitaminC],
+						[Calcium],
+						[Iron],
+						[SaturatedFat],
+						[TotalSugar],
+						[Sodium],
+						[KCal]
+					) VALUES (
+						@ndbno,
+						@nrf6,
+						@name,
+						@loginid,
+						@protein,
+						@fiber,
+						@va,
+						@vc,
+						@calcium,
+						@iron,
+						@satfat,
+						@sugar,
+						@sodium,
+						@calories
+					)
+				";
+				command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
+				command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult;
+				command1.Parameters.Add("@name", SqlDbType.VarChar,50).Value = lblName.Value;
+				command1.Parameters.Add("@loginid", SqlDbType.Int).Value = savedFoodGroup; // adminloginid
+				command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
+				command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
+				command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;
+				command1.Parameters.Add("@vc", SqlDbType.Decimal).Value = txtvc.Text;
+				command1.Parameters.Add("@calcium", SqlDbType.Decimal).Value = txtcalcium.Text;
+				command1.Parameters.Add("@iron", SqlDbType.Decimal).Value = txtiron.Text;
+				command1.Parameters.Add("@satfat", SqlDbType.Decimal, 20).Value = txtsatfat.Text;
+				command1.Parameters.Add("@sugar", SqlDbType.Decimal).Value = txtsugar.Text;
+				command1.Parameters.Add("@sodium", SqlDbType.Decimal).Value = txtsodium.Text;
+				command1.Parameters.Add("@calories", SqlDbType.Decimal).Value = txtcalories.Text;
 
-                            connection.Open();
-                			command1.ExecuteNonQuery();
-                			connection.Close();
-
+				connection.Open();
+				command1.ExecuteNonQuery();
+				connection.Close();
             }
 
 
