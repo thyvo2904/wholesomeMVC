@@ -113,7 +113,7 @@ namespace WholesomeMVC.WebForms
 				//log_in_out.NavigateUrl = "javascript:document.getElementById('logoutForm').submit()";
 				log_in.Visible = false;
 				label_user.Text = HttpContext.Current.User.Identity.GetUserName();
-				generatedToken.Value = _antiXsrfTokenValue;
+                generatedToken.Value = _antiXsrfTokenValue;
 
                 String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 

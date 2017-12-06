@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="_layout.master.cs" Inherits="WholesomeMVC.WebForms._layout" %>
+﻿<%@ Master Language="C#" AutoEventWireup="True" CodeBehind="_layout.master.cs" Inherits="WholesomeMVC.WebForms._layout" %>
 
 <!DOCTYPE html>
 
