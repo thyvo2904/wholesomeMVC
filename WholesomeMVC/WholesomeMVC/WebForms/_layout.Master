@@ -69,9 +69,9 @@
 
 									<div class="col-sm-8">
 										<div class="input-group">
-											<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
+											<asp:TextBox ID="txtSearch"  runat="server" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
 											<span class="input-group-btn">
-												<button type="submit" class="btn btn-default" runat="server" onserverclick="btnSearch">
+												<button type="submit" class="btn btn-default" style="background-color: #FF9500;" runat="server" onserverclick="btnSearch">
 													<span class="glyphicon glyphicon-search"></span>
 												</button>
 											</span>
@@ -83,7 +83,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<a style="color:#FF9500;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								<asp:Label ID="label_user" runat="server" />
 								<span class="caret"></span>
 							</a>
@@ -93,7 +93,7 @@
 							</ul>
 						</li>
 						<li>
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<a href="#" class="dropdown-toggle" style="color:#FF9500;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 								Menu
 								<span class="caret"></span>
 							</a>
