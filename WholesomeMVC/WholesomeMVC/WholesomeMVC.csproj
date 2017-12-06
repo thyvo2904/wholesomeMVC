@@ -310,15 +310,15 @@
       <DependentUpon>update_item.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\update_item.aspx.designer.cs">
-      <DependentUpon>update_item.aspx</DependentUpon>
-    </Compile>
     <Compile Include="WebForms\recent.aspx.cs">
       <DependentUpon>recent.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForms\recent.aspx.designer.cs">
       <DependentUpon>recent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\update_item.aspx.designer.cs">
+      <DependentUpon>update_item.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\_layout.Master.cs">
       <DependentUpon>_layout.Master</DependentUpon>
