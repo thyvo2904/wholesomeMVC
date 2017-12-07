@@ -10,7 +10,6 @@ _add more here_
 ## 1. facelift all pages
 todo:
 - add_item
-- farmers_market
 - inventory_admin
 - Item_Management
 - Sync_Database
@@ -20,6 +19,7 @@ done:
 - _layout.Master
 - advanced_search
 - comparison
+- farmers_market
 - index
 - indexresult
 - manual_input
