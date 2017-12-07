@@ -26,8 +26,11 @@
 			<h4><asp:Label ID="chart_1_header" runat="server" /></h4>
 			<div>
                 <div class='tableauPlaceholder' id='viz1512618751938' style='position: relative'>
-                    <noscript><a href='#'>
-                        <img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;De&#47;Dec6&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript>
+                    <noscript>
+						<a href='#'>
+							<img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;De&#47;Dec6&#47;Dashboard1&#47;1_rss.png' style='border: none' />
+						</a>
+                    </noscript>
                     <object class='tableauViz' style='display: none;'>
                         <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
                         <param name='embed_code_version' value='3' />
@@ -112,8 +115,8 @@
 			</div>
 
 			<!-- chart #2 -->
-			<h4><asp:Label ID="chart_2_header" runat="server" /></h4>
-			<div></div>
+			<%--<h4><asp:Label ID="chart_2_header" runat="server" /></h4>
+			<div></div>--%>
 		</section>
 	
 </asp:Content>
