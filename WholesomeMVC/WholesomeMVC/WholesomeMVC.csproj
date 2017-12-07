@@ -498,6 +498,7 @@
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\Blue-Ridge-Area-Food-Bank.png" />
     <Content Include="Content\Images\icons8-apple-100.png" />
     <Content Include="Content\Images\icons8-baby-bottle-100.png" />
     <Content Include="Content\Images\icons8-broccoli-100.png" />
