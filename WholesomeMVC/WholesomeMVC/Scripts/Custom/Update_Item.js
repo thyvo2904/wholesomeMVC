@@ -1,4 +1,5 @@
 $(document).ready(function () {
+	// format table with footable
 	$("#gridMatchedCeresIDS").footable({
 		// options go here
 		"expandFirst": false,
@@ -28,6 +29,35 @@ $(document).ready(function () {
 			}
 		}
 	});
+
+	// set up toggle function
+	$("#link_old_view").click(function () {
+		$(this).parent().addClass("active");
+		$(this).parent().siblings().removeClass("active");
+
+		$("#old_view").show();
+		$(".old_buttons").show();
+
+		$("#new_view").hide();
+		$(".new_buttons").hide();
+
+		$("#hidden_view_mode").val("old");
+	});
+	$("#link_new_view").click(function () {
+		$(this).parent().addClass("active");
+		$(this).parent().siblings().removeClass("active");
+
+		$("#new_view").show();
+		$(".new_buttons").show();
+
+		$("#old_view").hide();
+		$(".old_buttons").hide();
+
+		$("#hidden_view_mode").val("new");
+	})
+
+	// set up default view
+	$("#link_old_view").click();
 });
 
 function showDiv(elem) {

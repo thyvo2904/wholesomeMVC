@@ -857,6 +857,7 @@ namespace WholesomeMVC.WebForms
 			string ceresid = hidden_ceresid.Value;
 			string ceres_name = hidden_ceres_name.Value;
 			string ndbno = hidden_ndbno.Value;
+			string view_mode = hidden_view_mode.Value;
 
 			FoodItem.findNdbno(ndbno);
 
@@ -890,19 +891,39 @@ namespace WholesomeMVC.WebForms
 			lblFoodName.Text = FoodItem.newFood.name;
 			lblIndexResult.Text = Convert.ToString(Math.Round(score, 2));
 
-			txtOldKCal.Text = FoodItem.newFood.kCal.ToString();
-			txtOldSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
-			txtOldSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
-			txtOldFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
-			txtOldTotalSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
-			txtOldProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
-			txtOldVitaminA.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
-			txtOldVitaminC.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
-			txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
-			txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
-
 			txtCeresNumber.Text = ceresid;
 			txtCeresDescription.Text = ceres_name;
+
+			// calculate values based on view mode (old/new)
+			switch (view_mode)
+			{
+				case "old":
+					txtOldKCal.Text = FoodItem.newFood.kCal.ToString();
+					txtOldSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
+					txtOldSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
+					txtOldFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
+					txtOldTotalSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
+					txtOldProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
+					txtOldVitaminA.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
+					txtOldVitaminC.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
+					txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
+					txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+					break;
+				case "new":
+					txtNewKCal.Text = FoodItem.newFood.kCal.ToString();
+					txtNewSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
+					txtNewSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
+					txtNewFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
+					txtNewAddedSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
+					txtNewProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
+					txtNewVitaminD.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
+					txtNewCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
+					txtNewIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+					txtNewPotassium.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
+					break;
+				default:
+					break;
+			}
 		}
 
     }
