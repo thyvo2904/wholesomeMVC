@@ -158,13 +158,13 @@ namespace WholesomeMVC.WebForms
                 if (ndscore <= 4.66)
                 {
                     table1.Rows[3].Cells[k + 1].ForeColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
-                    table1.Rows[3].Cells[k + 1].BackColor = System.Drawing.ColorTranslator.FromHtml("Red");
+                    table1.Rows[3].Cells[k + 1].BackColor = System.Drawing.ColorTranslator.FromHtml("#cc0000");
 
                 }
                 else if (ndscore > 4.66 && ndscore < 28)
                 {
                     table1.Rows[3].Cells[k + 1].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
-                    table1.Rows[3].Cells[k + 1].BackColor = System.Drawing.ColorTranslator.FromHtml("Yellow");
+                    table1.Rows[3].Cells[k + 1].BackColor = System.Drawing.ColorTranslator.FromHtml("#FFCC00");
                 }
                 else if (ndscore >= 28)
                 {
