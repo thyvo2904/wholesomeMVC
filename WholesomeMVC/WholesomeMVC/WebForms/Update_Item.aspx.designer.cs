@@ -229,6 +229,15 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtOldIron;
         
         /// <summary>
+        /// ddlFBCategories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFBCategories;
+        
+        /// <summary>
         /// txtNewKCal control.
         /// </summary>
         /// <remarks>
@@ -328,6 +337,15 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.Literal txtCeresNumber;
         
         /// <summary>
+        /// lblCeresID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCeresID;
+        
+        /// <summary>
         /// txtCeresDescription control.
         /// </summary>
         /// <remarks>
@@ -335,6 +353,15 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal txtCeresDescription;
+        
+        /// <summary>
+        /// lblCeresDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCeresDescription;
         
         /// <summary>
         /// btnCalculateOldNRF6 control.
@@ -398,15 +425,6 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFBCategories;
-        
-        /// <summary>
-        /// ddlFBCategories control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFBCategories;
         
         /// <summary>
         /// btnSelectFBCategory control.
