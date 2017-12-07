@@ -325,7 +325,7 @@ namespace WholesomeMVC.WebForms
                         con.Open();
                         go.Connection = con;
                         go.CommandText = "SELECT No_ FROM Wholesome_Item WHERE No_ = @No_";
-                        go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;
+                        //go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;
 
                         SqlDataReader readIn = go.ExecuteReader();
                         while (readIn.Read())
@@ -354,7 +354,7 @@ namespace WholesomeMVC.WebForms
                             };
 
                             //command1.Parameters.Add("@CHOPPoints", SqlDbType.Decimal, 18).Value = txt.Text;
-                            command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;
+                           // command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;
                             command1.ExecuteNonQuery();
                             connection.Close();
                         }
@@ -874,8 +874,8 @@ namespace WholesomeMVC.WebForms
 			txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
 			txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
 
-			txtCeresNumber.Text = ceresid;
-			txtCeresDescription.Text = ceres_name;
+			//txt.Text = ceresid;
+			txtSearchDescription.Text = ceres_name;
 		}
 
     }
