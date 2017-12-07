@@ -720,7 +720,7 @@ namespace WholesomeMVC.WebForms
             {
                 gradientEntry = "3";
             }
-           
+
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
                 ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
