@@ -101,6 +101,5 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="script" runat="server">
-	<script type="text/javascript" src="/Scripts/Custom/jquery.matchHeight-min.js"></script>
 	<script type="text/javascript" src="/Scripts/Custom/inventory_admin.js"></script>
 </asp:Content>

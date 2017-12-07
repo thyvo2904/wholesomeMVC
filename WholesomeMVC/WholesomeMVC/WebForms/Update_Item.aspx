@@ -411,7 +411,6 @@
 	
 	<script type="text/javascript" src="/Scripts/Vendor/moment.min.js"></script>
 	<script type="text/javascript" src="/Scripts/Vendor/footable.min.js"></script>
-    <script type="text/javascript" src="/Scripts/Vendor/jquery.matchHeight-min.js"></script>
     <script type="text/javascript" src="/Scripts/Custom/update_item.js"></script>
  </asp:Content>
 

@@ -15,7 +15,7 @@
                         <asp:DropDownList
                             ID="ddlCategory"
                             runat="server"
-                            CssClass="btn btn-default btn-lg dropdown-toggle"
+                            CssClass="btn btn-default btn-lg dropdown-toggle equal-height"
                             AppendDataBoundItems="True"
                             OnSelectedIndexChanged="Page_Load"
                             DataSourceID="Category"
@@ -33,11 +33,9 @@
 
                     <div class="col-sm-8">
                         <div class="input-group input-group-lg">
-                            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control typeahead" autocomplete="off"></asp:TextBox>
+                            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control typeahead equal-height" autocomplete="off"></asp:TextBox>
                             <span class="input-group-btn">
-                                <button type="submit" class="btn btn-default" runat="server"  onserverclick="btnSearch" >
-                                    
-             
+                                <button type="submit" class="btn btn-default equal-height" runat="server"  onserverclick="btnSearch" >
                                     <span class="glyphicon glyphicon-search"></span>
                                 </button>
                             </span>
