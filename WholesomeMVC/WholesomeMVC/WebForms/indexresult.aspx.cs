@@ -218,6 +218,11 @@ namespace WholesomeMVC.WebForms
                 if (reader.HasRows)
                 {
                     btnSaveItem.Visible = false;
+                    txtCeresStatus.Text = "Matched";
+                }
+                else
+                {
+                    txtCeresStatus.Text = "Unmatched";
                 }
             }
 

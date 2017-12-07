@@ -144,6 +144,10 @@
 
 								<hr />
 								<div>
+                                    <div class="form-group" id="sook" runat="server">
+										<label for="lblCeresStatus"><asp:Label Text="" runat="server" /></label>
+										<asp:TextBox ID="txtCeresStatus" CssClass="form-control" runat="server"></asp:TextBox>
+									</div>
 									<div class="form-group" id="sook1" runat="server">
 										<label for="txtCeresNumber"><asp:Label Text="Ceres Number" runat="server" /></label>
 										<asp:TextBox ID="txtCeresNumber" CssClass="form-control" runat="server" placeholder="12345..."></asp:TextBox>
