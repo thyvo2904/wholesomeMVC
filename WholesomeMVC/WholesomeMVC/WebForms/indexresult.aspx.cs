@@ -41,7 +41,6 @@ namespace WholesomeMVC.WebForms
                 btnCompare.Visible = false;
                 sook1.Visible = false;
                 sook2.Visible = false;
-                btnCompare.Attributes["Title"] = "Please login first!";
             }
             if (IsPostBack)
             {
@@ -134,11 +133,10 @@ namespace WholesomeMVC.WebForms
             String colorScaleStyle = "";
             double score = double.Parse(item["ND Score"].ToString());
 
-            if (score <= 4.65)
+            if (score <= 4.66)
             {
                 colorScaleStyle = GradientColors.getColor1();
             }
-
             else if ((score >= 4.66) && (score <= 27.99))
             {
                 colorScaleStyle = GradientColors.getColor2();
