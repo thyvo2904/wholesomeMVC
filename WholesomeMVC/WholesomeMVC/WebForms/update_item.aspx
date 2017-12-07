@@ -214,8 +214,8 @@
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
 
-								<asp:Button ID="btnCalculateOldNRF6" OnClick="btnCalculateOldNRF6_Click" runat="server" Text="Calculate" CssClass="btn btn-primary old_buttons" />
-								<asp:Button ID="btnSaveOldItem" OnClick="btnOldSaveItem_Click" runat="server" Text="Save" CssClass="btn btn-success old_buttons" />
+								<asp:Button ID="btnCalculateOldNRF6" OnClick="btnCalculateOldNRF6_Click" data-dismiss="modal" runat="server" Text="Calculate" CssClass="btn btn-primary old_buttons" />
+								<asp:Button ID="btnSaveOldItem" OnClick="btnOldSaveItem_Click" data-dismiss="modal" runat="server" Text="Save" CssClass="btn btn-success old_buttons" />
 							</div>
 						</ContentTemplate>
 						<Triggers>
