@@ -564,9 +564,11 @@ namespace WholesomeMVC.WebForms
             {
                 ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
             };
-            SqlCommand command = new SqlCommand();
-            command.Connection = sc;
-            command.CommandType = System.Data.CommandType.Text;
+            SqlCommand command = new SqlCommand
+            {
+                Connection = sc,
+                CommandType = System.Data.CommandType.Text
+            };
             sc.Open();
 
 
@@ -584,14 +586,16 @@ namespace WholesomeMVC.WebForms
             if (foodGroupNumber != "")
             {
                 sc.Open();
-                SqlCommand command1 = new SqlCommand();
-                command1.Connection = sc;
-                command1.CommandType = System.Data.CommandType.Text;
+                SqlCommand command1 = new SqlCommand
+                {
+                    Connection = sc,
+                    CommandType = System.Data.CommandType.Text,
 
-                // ADD SESSION INFO
-                command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
+                    // ADD SESSION INFO
+                    CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
                  + " FdGrp_CD = @FdGrp_CD, nrf6 = @nrf6, "
-                 + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_";
+                 + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_"
+                };
 
 
                 //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
@@ -707,53 +711,22 @@ namespace WholesomeMVC.WebForms
             String ndbno = ""; // gridUSDAChoices.SelectedRow.Cells[0].Text;
             //String ceresDescription = txtDescription.Text;
             string description = ""; // gridUSDAChoices.SelectedRow.Cells[1].Text;
-            string foodGroup = ""; // gridUSDAChoices.SelectedRow.Cells[2].Text;
+           // string foodGroup = ""; // gridUSDAChoices.SelectedRow.Cells[2].Text;
             double ndscore = 0; // Double.Parse(gridUSDAChoices.SelectedRow.Cells[3].Text);
             String gradientEntry = "";
 
-            if (ndscore < 0)
+            if (ndscore <= 4.65)
             {
                 gradientEntry = "1";
             }
 
-            else if (ndscore >= 0 && ndscore < 2.33)
+            else if ((ndscore >= 4.66) && (ndscore <= 27.99))
             {
                 gradientEntry = "2";
             }
-
-            else if (ndscore >= 2.33 && ndscore < 4.66)
+            else if (ndscore >= 28)
             {
                 gradientEntry = "3";
-            }
-
-            else if (ndscore >= 4.66 && ndscore < 12.44)
-            {
-                gradientEntry = "4";
-            }
-
-            else if (ndscore >= 12.44 && ndscore < 20.22)
-            {
-                gradientEntry = "5";
-            }
-
-            else if (ndscore >= 20.22 && ndscore < 28)
-            {
-                gradientEntry = "6";
-            }
-
-            else if (ndscore >= 28 && ndscore < 35.33)
-            {
-                gradientEntry = "7";
-            }
-
-            else if (ndscore >= 35.33 && ndscore < 42.67)
-            {
-                gradientEntry = "8";
-            }
-
-            else if (ndscore >= 42.67)
-            {
-                gradientEntry = "9";
             }
 
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
@@ -762,14 +735,16 @@ namespace WholesomeMVC.WebForms
             };
 
             sc.Open();
-            SqlCommand command1 = new SqlCommand();
-            command1.Connection = sc;
-            command1.CommandType = System.Data.CommandType.Text;
+            SqlCommand command1 = new SqlCommand
+            {
+                Connection = sc,
+                CommandType = System.Data.CommandType.Text,
 
-            // ADD SESSION INFO
-            command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
+                // ADD SESSION INFO
+                CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
              + " FBC_Code = @FBC_Code, GradientEntry = @GradientEntry, nrf6 = @nrf6, "
-             + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_";
+             + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_"
+            };
 
 
             //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
@@ -909,8 +884,8 @@ namespace WholesomeMVC.WebForms
             txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
             txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
 
-            txtCeresNumber.Text = ceresid;
-            txtCeresDescription.Text = ceres_name;
+           // txtCeresNumber.Text = ceresid;
+            //txtCeresDescription.Text = ceres_name;
         }
 
         protected void btnCalculateOldNRF6_Click(object sender, EventArgs e)
@@ -991,31 +966,33 @@ namespace WholesomeMVC.WebForms
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 {
-                    SqlCommand command1 = new SqlCommand();
-                    command1.Connection = connection;
-                    command1.CommandType = System.Data.CommandType.Text;
+                    SqlCommand command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
-                    //String description = txtDescription.Text;
+                        //String description = txtDescription.Text;
 
-                    //if (description.Length > 48)
-                    //{
-                    //    description = description.Substring(0, 48);
-                    //}
+                        //if (description.Length > 48)
+                        //{
+                        //    description = description.Substring(0, 48);
+                        //}
 
-                    // UPDATE Wholesome_Item SET No_ = , ndb_no = , Description = , Long_Desc = ,
-                    // protein = , fiber = , vitaminA = , vitaminC = , vitaminD = , Potassium = ,
-                    // calcium = , iron = , saturatedFat = , TotalSugar = , AddedSugar = , Sodium = ,
-                    // KCal = , nrf6 = , lastUpdatedBy = , LastUpdated = WHERE No_ = 
-                    command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
+                        // UPDATE Wholesome_Item SET No_ = , ndb_no = , Description = , Long_Desc = ,
+                        // protein = , fiber = , vitaminA = , vitaminC = , vitaminD = , Potassium = ,
+                        // calcium = , iron = , saturatedFat = , TotalSugar = , AddedSugar = , Sodium = ,
+                        // KCal = , nrf6 = , lastUpdatedBy = , LastUpdated = WHERE No_ = 
+                        CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
                     + " nrf6 = @nrf6, Loginid = @loginid"
-                    + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE No_ = @No_";
+                    + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE No_ = @No_"
+                    };
 
 
                     //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
                     command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = "";
                     //command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = description;
                     command1.Parameters.Add("@Long_Desc", SqlDbType.NVarChar, 500).Value = "";
-                    command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
+                    //command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
                     command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value =HttpContext.Current.User.Identity.GetUserName();
                     command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
 

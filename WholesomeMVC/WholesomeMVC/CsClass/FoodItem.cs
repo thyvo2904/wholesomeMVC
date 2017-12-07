@@ -287,8 +287,8 @@ namespace WholesomeMVC.WebForms
             else
             {
                 string api2 = System.Web.HttpUtility.UrlPathEncode(foodSearch);
-                String urlAPI2pt1 = "https://api.edamam.com/api/food-database/parser?ingr=";
-                String urlAPI2pt2 = "&app_id ={cd27db7d} &app_key ={9d149ec2802f86f42a15dcbd16891ff9}&page = 0";
+               // String urlAPI2pt1 = "https://api.edamam.com/api/food-database/parser?ingr=";
+               // String urlAPI2pt2 = "&app_id ={cd27db7d} &app_key ={9d149ec2802f86f42a15dcbd16891ff9}&page = 0";
                 
 
 
@@ -942,8 +942,8 @@ namespace WholesomeMVC.WebForms
             else
             {
                 string api2 = System.Web.HttpUtility.UrlPathEncode(foodSearch);
-                String urlAPI2pt1 = "https://api.edamam.com/api/food-database/parser?ingr=";
-                String urlAPI2pt2 = "&app_id ={cd27db7d} &app_key ={9d149ec2802f86f42a15dcbd16891ff9}&page = 0";
+                //String urlAPI2pt1 = "https://api.edamam.com/api/food-database/parser?ingr=";
+                //String urlAPI2pt2 = "&app_id ={cd27db7d} &app_key ={9d149ec2802f86f42a15dcbd16891ff9}&page = 0";
 
 
 
