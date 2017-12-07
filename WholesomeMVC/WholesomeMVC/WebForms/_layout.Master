@@ -46,7 +46,7 @@
 										<asp:DropDownList
 											ID="ddlCategory"
 											runat="server"
-											CssClass="btn btn-default dropdown-toggle"
+											CssClass="btn btn-default dropdown-toggle equal-height"
 											AppendDataBoundItems="True"
 											OnSelectedIndexChanged="Page_Load"
 											DataSourceID="Category"
@@ -64,9 +64,9 @@
 
 									<div class="col-sm-8">
 										<div class="input-group">
-											<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control typeahead" autocomplete="off"></asp:TextBox>
+											<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control typeahead equal-height" autocomplete="off"></asp:TextBox>
 											<span class="input-group-btn">
-												<button type="submit" class="btn btn-default" runat="server" onserverclick="btnSearch">
+												<button type="submit" class="btn btn-default equal-height" runat="server" onserverclick="btnSearch">
 													<span class="glyphicon glyphicon-search"></span>
 												</button>
 											</span>
@@ -98,8 +98,9 @@
 								<li role="separator" class="divider"></li>
 								<li><a href="manual_input.aspx">Nutrient Calculator</a></li>
 								<li><a href="recent.aspx">Recent</a></li>
-								<li><a href="Comparison.aspx">Comparison</a></li>
-                                <li><a href="Update_Item.aspx">Update Item</a></li>
+								<li><a href="comparison.aspx">Comparison</a></li>
+                                <li><a href="update_item.aspx">Update Item</a></li>
+								<li><a href="farmers_market.aspx">Farmers Market Finder</a></li>
 							</ul>
 						</li>
 						<li></li>
@@ -125,21 +126,34 @@
 					<li>&bull;</li>
 					<li><a href="recent.aspx">Recent</a></li>
 					<li>&bull;</li>
-					<li><a href="Comparison.aspx">Comparison Tool</a></li>
+					<li><a href="comparison.aspx">Comparison Tool</a></li>
+					<li>&bull;</li>
+					<li><a href="update_item.aspx">Update Item</a></li>
+					<li>&bull;</li>
+					<li><a href="farmers_market.aspx">Farmers Market Finder</a></li>
 				</ul>
 				<br />
+				<p class="text-center">
+					<img src="/Content/Images/Blue-Ridge-Area-Food-Bank.png" class="img-responsive" width="200" />
+				</p>
 				<p class="text-center">
 					&copy;
 					<asp:Label runat="server" ID="label_year"></asp:Label>
 					- Wholesome Inc. All rights reserved.
 				</p>
+				<p class="text-center">
+					made with <i class="fa fa-heart"></i>, <i class="fa fa-hand-peace-o"></i>, and no <i class="fa fa-bed"></i> <i class="fa fa-moon-o"></i>
+				</p>
 			</section>
+            <section class="row">
+            </section>
 		</footer>
 	</form>
 
 	<script src="/Scripts/jquery-1.10.2.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
     <script src="/Scripts/Vendor/bootstrap3-typeahead.min.js"></script>
+    <script src="/Scripts/Vendor/jquery.matchHeight-min.js"></script>
     <script src="/Scripts/Custom/site.js"></script>
 
     <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>

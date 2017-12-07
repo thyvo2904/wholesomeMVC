@@ -39,6 +39,16 @@
 			fitToElement: false
 		});
 	}, 'json');
+
+	// instantiate equal-height library
+	$(document).ready(function () {
+		$('.equal-height').matchHeight({
+			byRow: true,
+			property: 'height',
+			target: null,
+			remove: false
+		});
+	});
 });
 
 $("#log_in_out").click(function () {

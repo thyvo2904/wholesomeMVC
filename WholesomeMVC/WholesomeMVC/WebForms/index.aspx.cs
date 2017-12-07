@@ -34,9 +34,13 @@ namespace WholesomeMVC.WebForms
 				link_recent.NavigateUrl = "recent.aspx";
 				link_recent.Text = "Recent";
 
-				image_saved_items.ImageUrl = "/Content/Images/icons8-scales-100.png";
-				link_saved_items.NavigateUrl = "Comparison.aspx";
-				link_saved_items.Text = "Comparison";
+				image_comparison.ImageUrl = "/Content/Images/icons8-compare-100.png";
+				link_comparison.NavigateUrl = "comparison.aspx";
+				link_comparison.Text = "Comparison";
+
+				image_farmers_market.ImageUrl = "/Content/Images/icons8-near-me-100.png";
+				link_farmers_market.NavigateUrl = "farmers_market.aspx";
+				link_farmers_market.Text = "Farmers Market Finder";
 			}       
         }
 

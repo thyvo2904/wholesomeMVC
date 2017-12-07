@@ -35,13 +35,14 @@ namespace WholesomeMVC.WebForms
                 btnCompare.Visible = true;
                 sook1.Visible = true;
                 sook2.Visible = true;
+                txtCeresStatus.Visible = true;
             }
             else
             {
                 btnCompare.Visible = false;
                 sook1.Visible = false;
                 sook2.Visible = false;
-                btnCompare.Attributes["Title"] = "Please login first!";
+                txtCeresStatus.Visible = false;
             }
             if (IsPostBack)
             {
@@ -134,16 +135,15 @@ namespace WholesomeMVC.WebForms
             String colorScaleStyle = "";
             double score = double.Parse(item["ND Score"].ToString());
 
-            if (score <= 4.65)
+            if (score < 4.66)
             {
                 colorScaleStyle = GradientColors.getColor1();
             }
-
-            else if ((score >= 4.66) && (score <= 27.99))
+            else if ((score >= 4.66) && (score <= 28))
             {
                 colorScaleStyle = GradientColors.getColor2();
             }
-            else if (score >= 28)
+            else if (score > 28)
             {
                 colorScaleStyle = GradientColors.getColor3();
             }
@@ -210,15 +210,15 @@ namespace WholesomeMVC.WebForms
             double score = FoodItem.newFood.NRF6;
             String colorScaleStyle = "";
 
-            if(score <= 4.65)
+            if(score < 4.66)
             {
                 colorScaleStyle = GradientColors.getColor1();
             }
-            else if ((score >= 4.66) && (score <= 27.99))
+            else if ((score >= 4.66) && (score <= 28))
             {
                 colorScaleStyle = GradientColors.getColor2();
             }
-            else if (score >= 28)
+            else if (score > 28)
             {
                 colorScaleStyle = GradientColors.getColor3();
             }
@@ -485,15 +485,23 @@ namespace WholesomeMVC.WebForms
 
 
 
-
                             CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([No_], [ndb_no], [Description], [nrf6], [LoginID], [LastUpdatedBy], [LastUpdated], [description 2]) VALUES
                                       (@ceresitemnumber, @ndbno, @ceresdescription, @nrf6, @loginID, @lastupdatedby, @lastupdated, @name)"
                         };
+                        // dealing with uncatogirzed food which has NaN nd_score
+                        if (lblIndexResult.Text == "NaN")
+                        {
+                            command1.Parameters.AddWithValue("@nrf6", DBNull.Value);
+                        }
+                        else
+                        {
+                            command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = FoodItem.newFood.NRF6;
+                        }
                         command1.Parameters.Add("@ceresitemnumber", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;
                         command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
                         command1.Parameters.Add("@ceresdescription", SqlDbType.NVarChar, 50).Value = txtCeresDescription.Text;
-                        command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = FoodItem.newFood.NRF6;
-                        command1.Parameters.Add("@name", SqlDbType.NVarChar, 500).Value = FoodItem.newFood.name;
+                        ////command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = FoodItem.newFood.NRF6;
+                        command1.Parameters.Add("@name", SqlDbType.NVarChar, 500).Value = FoodItem.newFood.name;            
                         command1.Parameters.Add("@loginID", SqlDbType.Int).Value = getloginid();
                         command1.Parameters.Add("@lastupdatedby", SqlDbType.NVarChar, 20).Value = "Nathan Hamrick";
                         command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
@@ -506,8 +514,6 @@ namespace WholesomeMVC.WebForms
             }
         }
 
-
     }
 }
-
 
