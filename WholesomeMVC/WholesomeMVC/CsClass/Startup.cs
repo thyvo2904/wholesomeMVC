@@ -27,15 +27,19 @@ namespace WholesomeMVC
             {
 
                 // first we create Admin rool   
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Admin";
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+                {
+                    Name = "Admin"
+                };
                 roleManager.Create(role);
 
                 //Here we create a Admin super user who will maintain the website                  
 
-                var user = new ApplicationUser();
-                user.UserName = "wholesome_admin";
-                user.Email = "wholesome@gmail.com";
+                var user = new ApplicationUser
+                {
+                    UserName = "wholesome_admin",
+                    Email = "wholesome@gmail.com"
+                };
 
                 string userPWD = "Cis484!!";
 
@@ -52,8 +56,10 @@ namespace WholesomeMVC
             // creating Creating Manager role    
             if (!roleManager.RoleExists("Purchasing_Staff"))
             {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Purchasing_Staff";
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+                {
+                    Name = "Purchasing_Staff"
+                };
                 roleManager.Create(role);
 
             }
@@ -61,16 +67,20 @@ namespace WholesomeMVC
             // creating Creating Employee role    
             if (!roleManager.RoleExists("Warehouse_Staff"))
             {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Warehouse_Staff";
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+                {
+                    Name = "Warehouse_Staff"
+                };
                 roleManager.Create(role);
 
             }
 
             if (!roleManager.RoleExists("Public_User"))
             {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Public_User";
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+                {
+                    Name = "Public_User"
+                };
                 roleManager.Create(role);
 
             }
