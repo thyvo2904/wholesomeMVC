@@ -57,6 +57,16 @@ body {
 	height: 50px;
 }
 
+/* footer image */
+footer {
+	margin-bottom: 25px;
+}
+
+footer img {
+	display: block;
+	margin: auto;
+}
+
 /* footer links */
 .footer-link {
 	display: block;
@@ -110,4 +120,3 @@ body {
 .fatter {
 	border-top: 12px solid black;
 }
-
