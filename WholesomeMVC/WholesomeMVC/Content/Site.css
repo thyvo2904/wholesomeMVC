@@ -128,3 +128,8 @@ footer img {
 th, td {
 	vertical-align: middle !important;
 }
+
+/* style mouse when hover view_nav */
+.nav a {
+	cursor: pointer;
+}
