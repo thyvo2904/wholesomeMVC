@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WholesomeMVC.WebForms
-{
-
-
-    public partial class update_item
-    {
-
+namespace WholesomeMVC.WebForms {
+    
+    
+    public partial class update_item {
+        
         /// <summary>
         /// txtSearch control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
-
+        
         /// <summary>
         /// btnSearch control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearch;
-
+        
         /// <summary>
         /// view_mode control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal view_mode;
-
+        
         /// <summary>
         /// search_summary control.
         /// </summary>
@@ -49,7 +47,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal search_summary;
-
+        
         /// <summary>
         /// gridMatchedCeresIDS control.
         /// </summary>
@@ -58,7 +56,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gridMatchedCeresIDS;
-
+        
         /// <summary>
         /// SqlDataSource1 control.
         /// </summary>
@@ -67,7 +65,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
-
+        
         /// <summary>
         /// hidden_ceresid control.
         /// </summary>
@@ -76,7 +74,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hidden_ceresid;
-
+        
         /// <summary>
         /// hidden_ceres_name control.
         /// </summary>
@@ -85,7 +83,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hidden_ceres_name;
-
+        
         /// <summary>
         /// hidden_ndbno control.
         /// </summary>
@@ -94,7 +92,16 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hidden_ndbno;
-
+        
+        /// <summary>
+        /// hidden_view_mode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidden_view_mode;
+        
         /// <summary>
         /// button_expand_item control.
         /// </summary>
@@ -103,7 +110,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button button_expand_item;
-
+        
         /// <summary>
         /// lblFoodName control.
         /// </summary>
@@ -112,7 +119,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lblFoodName;
-
+        
         /// <summary>
         /// nd_score_panel control.
         /// </summary>
@@ -121,7 +128,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl nd_score_panel;
-
+        
         /// <summary>
         /// lblIndexResult control.
         /// </summary>
@@ -130,7 +137,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblIndexResult;
-
+        
         /// <summary>
         /// txtOldKCal control.
         /// </summary>
@@ -139,7 +146,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOldKCal;
-
+        
         /// <summary>
         /// txtOldSaturatedFat control.
         /// </summary>
@@ -148,7 +155,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOldSaturatedFat;
-
+        
         /// <summary>
         /// txtOldSodium control.
         /// </summary>
@@ -157,7 +164,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOldSodium;
-
+        
         /// <summary>
         /// txtOldFiber control.
         /// </summary>
@@ -166,7 +173,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOldFiber;
-
+        
         /// <summary>
         /// txtOldTotalSugar control.
         /// </summary>
@@ -175,7 +182,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOldTotalSugar;
-
+        
         /// <summary>
         /// txtOldProtein control.
         /// </summary>
@@ -184,7 +191,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOldProtein;
-
+        
         /// <summary>
         /// txtOldVitaminA control.
         /// </summary>
@@ -193,7 +200,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOldVitaminA;
-
+        
         /// <summary>
         /// txtOldVitaminC control.
         /// </summary>
@@ -202,7 +209,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOldVitaminC;
-
+        
         /// <summary>
         /// txtOldCalcium control.
         /// </summary>
@@ -211,7 +218,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOldCalcium;
-
+        
         /// <summary>
         /// txtOldIron control.
         /// </summary>
@@ -220,214 +227,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOldIron;
-
-        /// <summary>
-        /// txtCeresNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal txtCeresNumber;
-
-        /// <summary>
-        /// txtCeresDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal txtCeresDescription;
-
-        /// <summary>
-        /// btnCalculateOldNRF6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCalculateOldNRF6;
-
-        /// <summary>
-        /// btnSaveOldItem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveOldItem;
-
-        /// <summary>
-        /// lblNewProtein control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNewProtein;
-
-        /// <summary>
-        /// txtNewProtein control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewProtein;
-
-        /// <summary>
-        /// lblNewFiber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNewFiber;
-
-        /// <summary>
-        /// txtNewFiber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewFiber;
-
-        /// <summary>
-        /// lblNewVitaminD control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNewVitaminD;
-
-        /// <summary>
-        /// txtNewVitaminD control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewVitaminD;
-
-        /// <summary>
-        /// lblNewPotassium control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNewPotassium;
-
-        /// <summary>
-        /// txtNewPotassium control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewPotassium;
-
-        /// <summary>
-        /// lblNewCalcium control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNewCalcium;
-
-        /// <summary>
-        /// txtNewCalcium control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewCalcium;
-
-        /// <summary>
-        /// lblNewIron control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNewIron;
-
-        /// <summary>
-        /// txtNewIron control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewIron;
-
-        /// <summary>
-        /// lblNewSaturatedFat control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNewSaturatedFat;
-
-        /// <summary>
-        /// txtNewSaturatedFat control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewSaturatedFat;
-
-        /// <summary>
-        /// lblNewAddedSugar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNewAddedSugar;
-
-        /// <summary>
-        /// txtNewAddedSugar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewAddedSugar;
-
-        /// <summary>
-        /// lblNewSodium control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNewSodium;
-
-        /// <summary>
-        /// txtNewSodium control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNewSodium;
-
-        /// <summary>
-        /// lblNewKCal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNewKCal;
-
+        
         /// <summary>
         /// txtNewKCal control.
         /// </summary>
@@ -436,25 +236,133 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNewKCal;
-
+        
         /// <summary>
-        /// btnCalculateOldNDScore control.
+        /// txtNewSaturatedFat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCalculateOldNDScore;
-
+        protected global::System.Web.UI.WebControls.TextBox txtNewSaturatedFat;
+        
         /// <summary>
-        /// lblNewNRF6 control.
+        /// txtNewSodium control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNewNRF6;
-
+        protected global::System.Web.UI.WebControls.TextBox txtNewSodium;
+        
+        /// <summary>
+        /// txtNewFiber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNewFiber;
+        
+        /// <summary>
+        /// txtNewAddedSugar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNewAddedSugar;
+        
+        /// <summary>
+        /// txtNewProtein control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNewProtein;
+        
+        /// <summary>
+        /// txtNewVitaminD control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNewVitaminD;
+        
+        /// <summary>
+        /// txtNewCalcium control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNewCalcium;
+        
+        /// <summary>
+        /// txtNewIron control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNewIron;
+        
+        /// <summary>
+        /// txtNewPotassium control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNewPotassium;
+        
+        /// <summary>
+        /// txtCeresNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal txtCeresNumber;
+        
+        /// <summary>
+        /// txtCeresDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal txtCeresDescription;
+        
+        /// <summary>
+        /// btnCalculateOldNRF6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCalculateOldNRF6;
+        
+        /// <summary>
+        /// btnSaveOldItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaveOldItem;
+        
+        /// <summary>
+        /// btnCalculateNewNRF6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCalculateNewNRF6;
+        
         /// <summary>
         /// btnSaveNewItem control.
         /// </summary>
@@ -463,7 +371,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveNewItem;
-
+        
         /// <summary>
         /// txtSearchDescription control.
         /// </summary>
@@ -472,7 +380,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearchDescription;
-
+        
         /// <summary>
         /// btnUpdateItem control.
         /// </summary>
@@ -481,7 +389,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpdateItem;
-
+        
         /// <summary>
         /// lblFBCategories control.
         /// </summary>
@@ -490,7 +398,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFBCategories;
-
+        
         /// <summary>
         /// ddlFBCategories control.
         /// </summary>
@@ -499,7 +407,7 @@ namespace WholesomeMVC.WebForms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlFBCategories;
-
+        
         /// <summary>
         /// btnSelectFBCategory control.
         /// </summary>

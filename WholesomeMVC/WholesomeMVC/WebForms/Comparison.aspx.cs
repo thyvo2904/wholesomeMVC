@@ -75,12 +75,14 @@ namespace WholesomeMVC.WebForms
 		protected void createTable()
         {
             //HtmlTable table1 = new HtmlTable();
-            Table table1 = new Table();
+            Table table1 = new Table
+            {
 
-            // Set the table's formatting-related properties.
-			table1.CssClass = "table table-striped table-hover table-responsive";
-			table1.BackColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
-       
+                // Set the table's formatting-related properties.
+                CssClass = "table table-striped table-hover table-responsive",
+                BackColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF")
+            };
+
 
             // Start adding content to the table.
             TableRow row;
@@ -88,9 +90,11 @@ namespace WholesomeMVC.WebForms
             for (int i = 0; i <= 13; i++) {
 				// Create a new row and set its background color.
 				if (i == 0) {
-					row = new TableHeaderRow();
-					row.TableSection = TableRowSection.TableHeader;
-				} else {
+                    row = new TableHeaderRow
+                    {
+                        TableSection = TableRowSection.TableHeader
+                    };
+                } else {
 					row = new TableRow();
 				}
 
@@ -174,13 +178,15 @@ namespace WholesomeMVC.WebForms
 
         protected HtmlTable exportTable()
         {
-            HtmlTable table1 = new HtmlTable();
+            HtmlTable table1 = new HtmlTable
+            {
 
-			// Set the table's formatting-related properties.
-			table1.Border = 1;
-			table1.CellPadding = 3;
-			table1.CellSpacing = 3;
-			table1.BorderColor = "transparent";
+                // Set the table's formatting-related properties.
+                Border = 1,
+                CellPadding = 3,
+                CellSpacing = 3,
+                BorderColor = "transparent"
+            };
 
 
             // Start adding content to the table.
@@ -189,9 +195,11 @@ namespace WholesomeMVC.WebForms
             for (int i = 1; i <= 14; i++)
             {
                 // Create a new row and set its background color.
-                row = new HtmlTableRow();
-				row.BgColor = (i % 2 == 0 ? "#f2f2f2" : "white");
-				for (int j = 1; j <= (GenerateCols() + 1); j++)
+                row = new HtmlTableRow
+                {
+                    BgColor = (i % 2 == 0 ? "#f2f2f2" : "white")
+                };
+                for (int j = 1; j <= (GenerateCols() + 1); j++)
                 {
                     // Create a cell and set its text.
                     cell = new HtmlTableCell();

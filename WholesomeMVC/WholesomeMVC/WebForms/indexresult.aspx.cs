@@ -50,10 +50,10 @@ namespace WholesomeMVC.WebForms
             else
             {
                 // add color_legend
-                //String strScaleLegend = "Color Scale Legend";
+                String strScaleLegend = "Color Scale Legend";
 
-                //label_color_scale_legend.Text = strScaleLegend;
-                //image_color_scale_legend.ImageUrl = "/Content/Images/image_color_scale_legend.png";
+                label_color_scale_legend.Text = strScaleLegend;
+                image_color_scale_legend.ImageUrl = "/Content/Images/image_color_scale_legend.png";
 
                 // set page variables
                 String strTitle = "Search Results";
@@ -96,8 +96,10 @@ namespace WholesomeMVC.WebForms
 
             sc.Open();
 
-            SqlCommand myCommand = new SqlCommand("Pull_New_Ceres_Items", sc);
-            myCommand.CommandType = CommandType.StoredProcedure;
+            SqlCommand myCommand = new SqlCommand("Pull_New_Ceres_Items", sc)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
             myCommand.ExecuteNonQuery();
 
             myCommand = new SqlCommand("Update_Ceres_Items", sc);
@@ -132,41 +134,18 @@ namespace WholesomeMVC.WebForms
             String colorScaleStyle = "";
             double score = double.Parse(item["ND Score"].ToString());
 
-            if (score < 0)
+            if (score <= 4.65)
             {
                 colorScaleStyle = GradientColors.getColor1();
             }
-            else if ((score >= 0) && (score <= 2.33))
+
+            else if ((score >= 4.66) && (score <= 27.99))
             {
                 colorScaleStyle = GradientColors.getColor2();
             }
-            else if ((score > 2.33) && (score <= 4.66))
+            else if (score >= 28)
             {
                 colorScaleStyle = GradientColors.getColor3();
-            }
-            else if ((score > 4.66) && (score <= 12.44))
-            {
-                colorScaleStyle = GradientColors.getColor4();
-            }
-            else if ((score > 12.44) && (score <= 20.22))
-            {
-                colorScaleStyle = GradientColors.getColor5();
-            }
-            else if ((score > 20.22) && (score <= 28))
-            {
-                colorScaleStyle = GradientColors.getColor6();
-            }
-            else if ((score > 28) && (score <= 35.33))
-            {
-                colorScaleStyle = GradientColors.getColor7();
-            }
-            else if ((score > 35.33) && (score <= 42.67))
-            {
-                colorScaleStyle = GradientColors.getColor8();
-            }
-            else if (score > 42.67)
-            {
-                colorScaleStyle = GradientColors.getColor9();
             }
             else
             {
@@ -231,41 +210,18 @@ namespace WholesomeMVC.WebForms
             double score = FoodItem.newFood.NRF6;
             String colorScaleStyle = "";
 
-            if (score < 0)
-            {
+              if(score <= 4.65)
+              {
                 colorScaleStyle = GradientColors.getColor1();
-            }
-            else if ((score >= 0) && (score <= 2.33))
+              }
+
+            else if ((score >= 4.66) && (score <= 27.99))
             {
                 colorScaleStyle = GradientColors.getColor2();
             }
-            else if ((score > 2.33) && (score <= 4.66))
+            else if (score >= 28)
             {
                 colorScaleStyle = GradientColors.getColor3();
-            }
-            else if ((score > 4.66) && (score <= 12.44))
-            {
-                colorScaleStyle = GradientColors.getColor4();
-            }
-            else if ((score > 12.44) && (score <= 20.22))
-            {
-                colorScaleStyle = GradientColors.getColor5();
-            }
-            else if ((score > 20.22) && (score <= 28))
-            {
-                colorScaleStyle = GradientColors.getColor6();
-            }
-            else if ((score > 28) && (score <= 35.33))
-            {
-                colorScaleStyle = GradientColors.getColor7();
-            }
-            else if ((score > 35.33) && (score <= 42.67))
-            {
-                colorScaleStyle = GradientColors.getColor8();
-            }
-            else if (score > 42.67)
-            {
-                colorScaleStyle = GradientColors.getColor9();
             }
             else
             {
@@ -301,13 +257,13 @@ namespace WholesomeMVC.WebForms
 		 * If ceres item doesn't exist prompt the user to open ceres and enter it there first.
 		 */
 
-        protected String getloginid()
+        protected String getuserid()
         {
             string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             String getid;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                string result = "SELECT max(LoginID) FROM dbo.Session WHERE Id = '" + HttpContext.Current.User.Identity.GetUserId() + "' ";
+                string result = "SELECT LoginID FROM dbo.Session WHERE Id = '" + HttpContext.Current.User.Identity.GetUserId() + "' ";
                 SqlCommand showresult = new SqlCommand(result, con);
                 con.Open();
                 getid = showresult.ExecuteScalar().ToString();
@@ -351,11 +307,12 @@ namespace WholesomeMVC.WebForms
                     else
                     {
                         connection.Open();
-                        SqlCommand command1 = new SqlCommand();
-                        command1.Connection = connection;
-                        command1.CommandType = System.Data.CommandType.Text;
+                    SqlCommand command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
-                        command1.CommandText = @"
+                        CommandText = @"
 					INSERT INTO [wholesomeDB].[dbo].[Comparison_Item] (
 						[ndb_no],
 						[nrf6],
@@ -391,118 +348,27 @@ namespace WholesomeMVC.WebForms
                         @lastupdatedby,
                         @lastupdated
 					)
-				";
-                
-                    //if (string.IsNullOrEmpty(lblIndexResult.Text))
-                    //{
-                    //    command1.Parameters.AddWithValue("@nrf6",DBNull.Value);
-                    //}
-                    //else
-                    //{
-                    //    command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
-                    //}
-                    //if (string.IsNullOrEmpty(txtprotein.Text))
-                    //{
-                    //    command1.Parameters.AddWithValue("@protein", DBNull.Value);
-                    //}
-                    //else
-                    //{
-                    //    command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
-                    //}
-                    //if (string.IsNullOrEmpty(txtfiber.Text))
-                    //{
-                    //    command1.Parameters.AddWithValue("@fiber", DBNull.Value);
-                    //}
-                    //else
-                    //{
-                    //    command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
-                    //}
-                    //if (string.IsNullOrEmpty(txtva.Text))
-                    //{
-                    //    command1.Parameters.AddWithValue("@va", DBNull.Value);
-                    //}
-                    //else
-                    //{
-                    //    command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;
-                    //}
-                    //if (string.IsNullOrEmpty(txtvc.Text))
-                    //{
-                    //    command1.Parameters.AddWithValue("@vc", DBNull.Value);
-                    //}
-                    //else
-                    //{
-                    //    command1.Parameters.Add("@vc", SqlDbType.Decimal).Value = txtvc.Text;
-                    //}
-                    //if (string.IsNullOrEmpty(txtcalcium.Text))
-                    //{
-                    //    command1.Parameters.AddWithValue("@calcium", DBNull.Value);
-                    //}
-                    //else
-                    //{
-                    //    command1.Parameters.Add("@calcium", SqlDbType.Decimal).Value = txtcalcium.Text;
-                    //}
-                    //if (string.IsNullOrEmpty(txtiron.Text))
-                    //{
-                    //    command1.Parameters.AddWithValue("@iron", DBNull.Value);
-                    //}
-                    //else
-                    //{
-                    //    command1.Parameters.Add("@iron", SqlDbType.Decimal).Value = txtiron.Text;
-                    //}
-                    //if (string.IsNullOrEmpty(txtsatfat.Text))
-                    //{
-                    //    command1.Parameters.AddWithValue("@satfat", DBNull.Value);
-                    //}
-                    //else
-                    //{
-                    //    command1.Parameters.Add("@satfat", SqlDbType.Decimal).Value = txtsatfat.Text;
-                    //}
-                    //if (string.IsNullOrEmpty(txtsugar.Text))
-                    //{
-                    //    command1.Parameters.AddWithValue("@sugar", DBNull.Value);
-                    //}
-                    //else
-                    //{
-                    //    command1.Parameters.Add("@sugar", SqlDbType.Decimal).Value = txtsugar.Text;
-                    //}
-                    //if (string.IsNullOrEmpty(txtsodium.Text))
-                    //{
-                    //    command1.Parameters.AddWithValue("@sodium", DBNull.Value);
-                    //}
-                    //else
-                    //{
-                    //    command1.Parameters.Add("@sodium", SqlDbType.Decimal).Value = txtsodium.Text;
-                    //}
-                    //if (string.IsNullOrEmpty(txtcalories.Text))
-                    //{
-                    //    command1.Parameters.AddWithValue("@calories", DBNull.Value);
-                    //}
-                    //else
-                    //{
-                    //    command1.Parameters.Add("@calories", SqlDbType.Decimal).Value = txtcalories.Text;
-                    //}
-                   
-
-
+				"
+                    };
                     command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
-                    command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
-                    command1.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = lblName.Value;
-                    command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getloginid();
-                    command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
-                    command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
-                    command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;
-                    command1.Parameters.Add("@vc", SqlDbType.Decimal).Value = txtvc.Text;
-                    command1.Parameters.Add("@calcium", SqlDbType.Decimal).Value = txtcalcium.Text;
-                    command1.Parameters.Add("@iron", SqlDbType.Decimal).Value = txtiron.Text;
-                    command1.Parameters.Add("@satfat", SqlDbType.Decimal, 20).Value = txtsatfat.Text;
-                    command1.Parameters.Add("@sugar", SqlDbType.Decimal).Value = txtsugar.Text;
-                    command1.Parameters.Add("@sodium", SqlDbType.Decimal).Value = txtsodium.Text;
-                    command1.Parameters.Add("@calories", SqlDbType.Decimal).Value = txtcalories.Text;
-                    command1.Parameters.Add("@lastupdatedby", SqlDbType.VarChar, 20).Value = "Yihui Zhou";
-                    command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+                        command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
+                        command1.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = lblName.Value;
+                        command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getuserid();
+                        command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
+                        command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
+                        command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;
+                        command1.Parameters.Add("@vc", SqlDbType.Decimal).Value = txtvc.Text;
+                        command1.Parameters.Add("@calcium", SqlDbType.Decimal).Value = txtcalcium.Text;
+                        command1.Parameters.Add("@iron", SqlDbType.Decimal).Value = txtiron.Text;
+                        command1.Parameters.Add("@satfat", SqlDbType.Decimal, 20).Value = txtsatfat.Text;
+                        command1.Parameters.Add("@sugar", SqlDbType.Decimal).Value = txtsugar.Text;
+                        command1.Parameters.Add("@sodium", SqlDbType.Decimal).Value = txtsodium.Text;
+                        command1.Parameters.Add("@calories", SqlDbType.Decimal).Value = txtcalories.Text;
+                        command1.Parameters.Add("@lastupdatedby", SqlDbType.VarChar, 20).Value = "Yihui Zhou";
+                        command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
 
-                    command1.ExecuteNonQuery();
-                    connection.Close();
+                        command1.ExecuteNonQuery();
+                        connection.Close();
 
                     }
                 }
@@ -604,14 +470,16 @@ namespace WholesomeMVC.WebForms
                 {
                     //String name = lblName.Text;
                     {
-                        SqlCommand command1 = new SqlCommand();
-                        command1.Connection = connection;
-                        command1.CommandType = System.Data.CommandType.Text;
+                        SqlCommand command1 = new SqlCommand
+                        {
+                            Connection = connection,
+                            CommandType = System.Data.CommandType.Text,
 
-                    
 
-                        command1.CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([ndb_no], [description 2], [nrf6], [No_], [UserID], [LastUpdatedBy], [LastUpdated]) VALUES
-                                      (@ndbno, @name,  @ceresdescription, @nrf6, @ceresitemnumber, @userID, @lastupdatedby, @lastupdated)";
+
+                            CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([Item_ID], [ndb_no], [description 2], [nrf6], [No_], [UserID], [LastUpdatedBy], [LastUpdated]) VALUES
+                                      (@ndbno, @name,  @ceresdescription, @nrf6, @ceresitemnumber, @userID, @lastupdatedby, @lastupdated)"
+                        };
 
                         command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
                         command1.Parameters.Add("@name", SqlDbType.VarChar, 500).Value = FoodItem.newFood.name;

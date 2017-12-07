@@ -130,7 +130,7 @@ namespace WholesomeMVC.WebForms
                     lblOldResult.Attributes["style"] = "color:green; font-weight:bold;text-align: center; font-size: 110%";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Response.Write("<script>alert('Please enter a valid value');</script>");
             }
@@ -209,7 +209,7 @@ namespace WholesomeMVC.WebForms
                     lblNewResult.Attributes["style"] = "font-weight:bold;text-align: center; font-size: 110%";
                 }
             }
-            catch (Exception ei)
+            catch (Exception)
             {
                 Response.Write("<script>alert('Please enter a valid value');</script>");
             }
@@ -230,14 +230,16 @@ namespace WholesomeMVC.WebForms
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     {
-                        SqlCommand command1 = new SqlCommand();
-                        command1.Connection = connection;
-                        command1.CommandType = System.Data.CommandType.Text;
+                        SqlCommand command1 = new SqlCommand
+                        {
+                            Connection = connection,
+                            CommandType = System.Data.CommandType.Text,
 
 
-                        command1.CommandText = @"EXECUTE create_item @No_, @ndb_no, @Description, 
+                            CommandText = @"EXECUTE create_item @No_, @ndb_no, @Description, 
 @Long_Desc, @protein , @fiber, @vitaminA, @VitaminC, @VitaminD, @Potassium, @Calcium, 
-@Iron, @saturatedFat, @TotalSugar, @AddedSugar, @Sodium, @KCal, @nrf6, @lastUpdatedBy, @lastUpdated";
+@Iron, @saturatedFat, @TotalSugar, @AddedSugar, @Sodium, @KCal, @nrf6, @lastUpdatedBy, @lastUpdated"
+                        };
 
 
                         command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
@@ -293,12 +295,14 @@ namespace WholesomeMVC.WebForms
 
                             try
                             {
-                                command1 = new SqlCommand();
-                                command1.Connection = connection;
-                                command1.CommandType = System.Data.CommandType.Text;
+                                command1 = new SqlCommand
+                                {
+                                    Connection = connection,
+                                    CommandType = System.Data.CommandType.Text,
 
-                                command1.CommandText = @"UPDATE item SET [CHOP Points] = @CHOPPoints
-                    WHERE No_ = @No_";
+                                    CommandText = @"UPDATE item SET [CHOP Points] = @CHOPPoints
+                    WHERE No_ = @No_"
+                                };
 
                                 command1.Parameters.Add("@CHOPPoints", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
                                 command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
@@ -306,7 +310,7 @@ namespace WholesomeMVC.WebForms
                                 connection.Close();
                             }
 
-                            catch (Exception k)
+                            catch (Exception)
                             {
 
                             }
@@ -320,7 +324,7 @@ namespace WholesomeMVC.WebForms
                 }
             }
 
-            catch (Exception a)
+            catch (Exception)
             {
                 Response.Write("<script>alert('Ceres item already exists!');</script>");
             }
@@ -340,14 +344,16 @@ namespace WholesomeMVC.WebForms
                 using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     {
-                        SqlCommand command1 = new SqlCommand();
-                        command1.Connection = connection;
-                        command1.CommandType = System.Data.CommandType.Text;
+                        SqlCommand command1 = new SqlCommand
+                        {
+                            Connection = connection,
+                            CommandType = System.Data.CommandType.Text,
 
 
-                        command1.CommandText = @"EXECUTE create_item @No_, @ndb_no, @Description, 
+                            CommandText = @"EXECUTE create_item @No_, @ndb_no, @Description, 
 @Long_Desc, @protein , @fiber, @vitaminA, @VitaminC, @VitaminD, @Potassium, @Calcium, 
-@Iron, @saturatedFat, @TotalSugar, @AddedSugar, @Sodium, @KCal, @nrf6, @lastUpdatedBy, @lastUpdated";
+@Iron, @saturatedFat, @TotalSugar, @AddedSugar, @Sodium, @KCal, @nrf6, @lastUpdatedBy, @lastUpdated"
+                        };
 
 
                         command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
@@ -402,12 +408,14 @@ namespace WholesomeMVC.WebForms
                             connection.Open();
                             try
                             {
-                                command1 = new SqlCommand();
-                                command1.Connection = connection;
-                                command1.CommandType = System.Data.CommandType.Text;
+                                command1 = new SqlCommand
+                                {
+                                    Connection = connection,
+                                    CommandType = System.Data.CommandType.Text,
 
-                                command1.CommandText = @"UPDATE item SET [CHOP Points] = @CHOPPoints
-                    WHERE No_ = @No_";
+                                    CommandText = @"UPDATE item SET [CHOP Points] = @CHOPPoints
+                    WHERE No_ = @No_"
+                                };
 
                                 command1.Parameters.Add("@CHOPPoints", SqlDbType.Decimal, 18).Value = lblNewResult.Text;
                                 command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
@@ -415,7 +423,7 @@ namespace WholesomeMVC.WebForms
                                 connection.Close();
                             }
 
-                            catch (Exception r)
+                            catch (Exception)
                             {
 
                             }
@@ -428,7 +436,7 @@ namespace WholesomeMVC.WebForms
                     }
                 }
             }
-            catch (Exception b)
+            catch (Exception)
             {
                 Response.Write("<script>alert('Ceres item already exists!');</script>");
             }
@@ -479,14 +487,16 @@ namespace WholesomeMVC.WebForms
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 {
-                    SqlCommand command1 = new SqlCommand();
-                    command1.Connection = connection;
-                    command1.CommandType = System.Data.CommandType.Text;
+                    SqlCommand command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
 
-                    command1.CommandText = @"EXECUTE create_item @No_, @ndb_no, @Description, 
+                        CommandText = @"EXECUTE create_item @No_, @ndb_no, @Description, 
 @Long_Desc, @protein , @fiber, @vitaminA, @VitaminC, @VitaminD, @Potassium, @Calcium, 
-@Iron, @saturatedFat, @TotalSugar, @AddedSugar, @Sodium, @KCal, @nrf6, @lastUpdatedBy, @lastUpdated";
+@Iron, @saturatedFat, @TotalSugar, @AddedSugar, @Sodium, @KCal, @nrf6, @lastUpdatedBy, @lastUpdated"
+                    };
 
 
                     command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
@@ -544,12 +554,14 @@ namespace WholesomeMVC.WebForms
 
                         try
                         {
-                            command1 = new SqlCommand();
-                            command1.Connection = connection;
-                            command1.CommandType = System.Data.CommandType.Text;
+                            command1 = new SqlCommand
+                            {
+                                Connection = connection,
+                                CommandType = System.Data.CommandType.Text,
 
-                            command1.CommandText = @"UPDATE item SET [No_ 2] = @No_2,  [Description 2] = @Description2, [CHOP Points] = @CHOPPoints
-                    WHERE No_ = '" + txtNumber.Text + "'";
+                                CommandText = @"UPDATE item SET [No_ 2] = @No_2,  [Description 2] = @Description2, [CHOP Points] = @CHOPPoints
+                    WHERE No_ = '" + txtNumber.Text + "'"
+                            };
 
                             command1.Parameters.Add("@No_2", SqlDbType.NVarChar, 20).Value = ndbno;
                             command1.Parameters.Add("@Description2", SqlDbType.NVarChar, 50).Value = description;
@@ -558,7 +570,7 @@ namespace WholesomeMVC.WebForms
                             connection.Close();
                         }
 
-                        catch (Exception l)
+                        catch (Exception)
                         {
                             Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
                         }

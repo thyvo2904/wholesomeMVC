@@ -38,6 +38,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <NoWarn>1006</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -193,6 +194,7 @@
   <ItemGroup>
     <Compile Include="CsClass\Hint.cs" />
     <Compile Include="CsClass\Parsed.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="WebForms\add_item.aspx.cs">
       <DependentUpon>add_item.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

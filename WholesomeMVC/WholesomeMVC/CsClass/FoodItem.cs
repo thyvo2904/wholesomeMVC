@@ -287,8 +287,8 @@ namespace WholesomeMVC.WebForms
             else
             {
                 string api2 = System.Web.HttpUtility.UrlPathEncode(foodSearch);
-                String urlAPI2pt1 = "https://api.edamam.com/api/food-database/parser?ingr=";
-                String urlAPI2pt2 = "&app_id ={cd27db7d} &app_key ={9d149ec2802f86f42a15dcbd16891ff9}&page = 0";
+               // String urlAPI2pt1 = "https://api.edamam.com/api/food-database/parser?ingr=";
+               // String urlAPI2pt2 = "&app_id ={cd27db7d} &app_key ={9d149ec2802f86f42a15dcbd16891ff9}&page = 0";
                 
 
 
@@ -503,7 +503,7 @@ namespace WholesomeMVC.WebForms
                     add_item.dataSearchResults.Rows.Add(row);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }
@@ -680,15 +680,17 @@ namespace WholesomeMVC.WebForms
                 String foodCatNumber = "";
 
                 sc.Open();
-                SqlCommand command = new SqlCommand();
-                            command.Connection = sc;
-                            command.CommandType = System.Data.CommandType.Text;
+                SqlCommand command = new SqlCommand
+                {
+                    Connection = sc,
+                    CommandType = System.Data.CommandType.Text,
 
 
 
-                            // ADD SESSION INFO
-                            command.CommandText = @"SELECT FdGrp_CD FROM FOOD_DES WHERE ndb_no = @ndb_no";
-                            command.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 60).Value = result2.foods[i].food.desc.ndbno;
+                    // ADD SESSION INFO
+                    CommandText = @"SELECT FdGrp_CD FROM FOOD_DES WHERE ndb_no = @ndb_no"
+                };
+                command.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 60).Value = result2.foods[i].food.desc.ndbno;
                             SqlDataReader readIn = command.ExecuteReader();
                             while (readIn.Read())
                             {
@@ -699,14 +701,16 @@ namespace WholesomeMVC.WebForms
                             sc.Close();
 
                 sc.Open();
-                command = new SqlCommand();
-                command.Connection = sc;
-                command.CommandType = System.Data.CommandType.Text;
+                command = new SqlCommand
+                {
+                    Connection = sc,
+                    CommandType = System.Data.CommandType.Text,
 
 
 
-                // ADD SESSION INFO
-                command.CommandText = @"SELECT FdGrp_Desc FROM FD_GROUP WHERE FdGrp_CD = @FdGrp_CD";
+                    // ADD SESSION INFO
+                    CommandText = @"SELECT FdGrp_Desc FROM FD_GROUP WHERE FdGrp_CD = @FdGrp_CD"
+                };
                 command.Parameters.Add("FdGrp_CD", SqlDbType.NVarChar, 4).Value = foodCatNumber;
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -938,8 +942,8 @@ namespace WholesomeMVC.WebForms
             else
             {
                 string api2 = System.Web.HttpUtility.UrlPathEncode(foodSearch);
-                String urlAPI2pt1 = "https://api.edamam.com/api/food-database/parser?ingr=";
-                String urlAPI2pt2 = "&app_id ={cd27db7d} &app_key ={9d149ec2802f86f42a15dcbd16891ff9}&page = 0";
+                //String urlAPI2pt1 = "https://api.edamam.com/api/food-database/parser?ingr=";
+                //String urlAPI2pt2 = "&app_id ={cd27db7d} &app_key ={9d149ec2802f86f42a15dcbd16891ff9}&page = 0";
 
 
 

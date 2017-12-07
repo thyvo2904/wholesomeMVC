@@ -14,10 +14,9 @@ namespace WholesomeMVC.WebForms
 {
     public partial class advanced_search : System.Web.UI.Page
     {
-        string dataSource = "";
+ 
         string sortBy = "";
         string reportType = "";
-        string ndbNo = "";
         string searchTerms = "";
 
         protected void Page_Load(object sender, EventArgs e)

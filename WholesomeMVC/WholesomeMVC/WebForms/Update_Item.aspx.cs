@@ -14,6 +14,7 @@ using System.Configuration;
 
 using System.Linq;
 using System.Drawing;
+using Microsoft.AspNet.Identity;
 
 namespace WholesomeMVC.WebForms
 {
@@ -122,9 +123,9 @@ namespace WholesomeMVC.WebForms
 
             //if (findCeresID == true)
             //{
-            String foodSearch = txtSearchDescription.Text;
-            FoodItem.findNdbnoUpdateItem(foodSearch);
-            BindDataFromDB();
+            //String foodSearch = txtSearchDescription.Text;
+            //FoodItem.findNdbnoUpdateItem(foodSearch);
+            //BindDataFromDB();
             //gridUSDAChoices.DataSource = Update_Item.dataSearchResults;
             //gridUSDAChoices.DataBind();
             //    }
@@ -200,6 +201,8 @@ namespace WholesomeMVC.WebForms
             //    Response.Write("<script>alert('Please enter a valid value');</script>");
             //}
         }
+
+
 
         protected void btnCalculateNew_Click(object sender, EventArgs e)
         {
@@ -561,9 +564,11 @@ namespace WholesomeMVC.WebForms
             {
                 ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
             };
-            SqlCommand command = new SqlCommand();
-            command.Connection = sc;
-            command.CommandType = System.Data.CommandType.Text;
+            SqlCommand command = new SqlCommand
+            {
+                Connection = sc,
+                CommandType = System.Data.CommandType.Text
+            };
             sc.Open();
 
 
@@ -581,14 +586,16 @@ namespace WholesomeMVC.WebForms
             if (foodGroupNumber != "")
             {
                 sc.Open();
-                SqlCommand command1 = new SqlCommand();
-                command1.Connection = sc;
-                command1.CommandType = System.Data.CommandType.Text;
+                SqlCommand command1 = new SqlCommand
+                {
+                    Connection = sc,
+                    CommandType = System.Data.CommandType.Text,
 
-                // ADD SESSION INFO
-                command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
+                    // ADD SESSION INFO
+                    CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
                  + " FdGrp_CD = @FdGrp_CD, nrf6 = @nrf6, "
-                 + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_";
+                 + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_"
+                };
 
 
                 //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
@@ -704,53 +711,22 @@ namespace WholesomeMVC.WebForms
             String ndbno = ""; // gridUSDAChoices.SelectedRow.Cells[0].Text;
             //String ceresDescription = txtDescription.Text;
             string description = ""; // gridUSDAChoices.SelectedRow.Cells[1].Text;
-            string foodGroup = ""; // gridUSDAChoices.SelectedRow.Cells[2].Text;
+           // string foodGroup = ""; // gridUSDAChoices.SelectedRow.Cells[2].Text;
             double ndscore = 0; // Double.Parse(gridUSDAChoices.SelectedRow.Cells[3].Text);
             String gradientEntry = "";
 
-            if (ndscore < 0)
+            if (ndscore <= 4.65)
             {
                 gradientEntry = "1";
             }
 
-            else if (ndscore >= 0 && ndscore < 2.33)
+            else if ((ndscore >= 4.66) && (ndscore <= 27.99))
             {
                 gradientEntry = "2";
             }
-
-            else if (ndscore >= 2.33 && ndscore < 4.66)
+            else if (ndscore >= 28)
             {
                 gradientEntry = "3";
-            }
-
-            else if (ndscore >= 4.66 && ndscore < 12.44)
-            {
-                gradientEntry = "4";
-            }
-
-            else if (ndscore >= 12.44 && ndscore < 20.22)
-            {
-                gradientEntry = "5";
-            }
-
-            else if (ndscore >= 20.22 && ndscore < 28)
-            {
-                gradientEntry = "6";
-            }
-
-            else if (ndscore >= 28 && ndscore < 35.33)
-            {
-                gradientEntry = "7";
-            }
-
-            else if (ndscore >= 35.33 && ndscore < 42.67)
-            {
-                gradientEntry = "8";
-            }
-
-            else if (ndscore >= 42.67)
-            {
-                gradientEntry = "9";
             }
 
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
@@ -759,14 +735,16 @@ namespace WholesomeMVC.WebForms
             };
 
             sc.Open();
-            SqlCommand command1 = new SqlCommand();
-            command1.Connection = sc;
-            command1.CommandType = System.Data.CommandType.Text;
+            SqlCommand command1 = new SqlCommand
+            {
+                Connection = sc,
+                CommandType = System.Data.CommandType.Text,
 
-            // ADD SESSION INFO
-            command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
+                // ADD SESSION INFO
+                CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
              + " FBC_Code = @FBC_Code, GradientEntry = @GradientEntry, nrf6 = @nrf6, "
-             + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_";
+             + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_"
+            };
 
 
             //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
@@ -867,47 +845,24 @@ namespace WholesomeMVC.WebForms
             string ceresid = hidden_ceresid.Value;
             string ceres_name = hidden_ceres_name.Value;
             string ndbno = hidden_ndbno.Value;
+			string view_mode = hidden_view_mode.Value;
 
             FoodItem.findNdbno(ndbno);
 
             double score = FoodItem.newFood.NRF6;
             String colorScaleStyle = "";
+            if (score <= 4.65)
+            {
+                colorScaleStyle = GradientColors.getColor1();
+            }
 
-            if (score < 0)
+            else if ((score >= 4.66) && (score <= 27.99))
             {
-                colorScaleStyle = GradientColors.getColor1() + " !important; color: white !important;";
+                colorScaleStyle = GradientColors.getColor2();
             }
-            else if ((score >= 0) && (score <= 2.33))
+            else if (score >= 28)
             {
-                colorScaleStyle = GradientColors.getColor2() + " !important; color: white !important;";
-            }
-            else if ((score > 2.33) && (score <= 4.66))
-            {
-                colorScaleStyle = GradientColors.getColor3() + " !important; color: white !important;";
-            }
-            else if ((score > 4.66) && (score <= 12.44))
-            {
-                colorScaleStyle = GradientColors.getColor4() + " !important; color: black !important;";
-            }
-            else if ((score > 12.44) && (score <= 20.22))
-            {
-                colorScaleStyle = GradientColors.getColor5() + " !important; color: black !important;";
-            }
-            else if ((score > 20.22) && (score <= 28))
-            {
-                colorScaleStyle = GradientColors.getColor6() + " !important; color: black !important;";
-            }
-            else if ((score > 28) && (score <= 35.33))
-            {
-                colorScaleStyle = GradientColors.getColor7() + " !important; color: white !important;";
-            }
-            else if ((score > 35.33) && (score <= 42.67))
-            {
-                colorScaleStyle = GradientColors.getColor8() + " !important; color: white !important;";
-            }
-            else if (score > 42.67)
-            {
-                colorScaleStyle = GradientColors.getColor9() + " !important; color: white !important;";
+                colorScaleStyle = GradientColors.getColor3();
             }
             else
             {
@@ -919,20 +874,154 @@ namespace WholesomeMVC.WebForms
             lblFoodName.Text = FoodItem.newFood.name;
             lblIndexResult.Text = Convert.ToString(Math.Round(score, 2));
 
-            txtOldKCal.Text = FoodItem.newFood.kCal.ToString();
-            txtOldSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
-            txtOldSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
-            txtOldFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
-            txtOldTotalSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
-            txtOldProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
-            txtOldVitaminA.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
-            txtOldVitaminC.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
-            txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
-            txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+			switch (view_mode)
+			{
+				case "old":
+					txtOldKCal.Text = FoodItem.newFood.kCal.ToString();
+					txtOldSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
+					txtOldSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
+					txtOldFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
+					txtOldTotalSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
+					txtOldProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
+					txtOldVitaminA.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
+					txtOldVitaminC.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
+					txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
+					txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+					break;
+				case "new":
+					txtNewKCal.Text = FoodItem.newFood.kCal.ToString();
+					txtNewSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
+					txtNewSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
+					txtNewFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
+					txtNewAddedSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
+					txtNewProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
+					txtNewVitaminD.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
+					txtNewCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
+					txtNewIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+					txtNewPotassium.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
+					break;
+				default:
+					break;
+			}
 
-            txtCeresNumber.Text = ceresid;
-            txtCeresDescription.Text = ceres_name;
+           // txtCeresNumber.Text = ceresid;
+            //txtCeresDescription.Text = ceres_name;
         }
 
+        protected void btnCalculateOldNRF6_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+             //   lblOldResult.Text = String.Empty;
+            double nR6 = 0;
+            double liMT = 0;
+            double NRF6 = 0;
+            double kCal = Double.Parse(txtOldKCal.Text);
+            double protein = Double.Parse(txtOldProtein.Text);
+            double vitaminA = Double.Parse(txtOldVitaminA.Text);
+            double vitaminC = Double.Parse(txtOldVitaminC.Text);
+            double fiber = Double.Parse(txtOldFiber.Text);
+            double calcium = Double.Parse(txtOldCalcium.Text);
+            double iron = Double.Parse(txtOldIron.Text);
+            double saturatedFat = Double.Parse(txtOldSaturatedFat.Text);
+            double totalSugar = Double.Parse(txtOldTotalSugar.Text);
+            double sodium = Double.Parse(txtOldSodium.Text);
+
+
+            protein = protein / 50;
+            fiber = fiber / 25;
+            vitaminA = vitaminA / 5000;
+            vitaminC = vitaminC / 60;
+            calcium = calcium / 1000;
+            iron = iron / 18;
+
+            //if any of the good value ratios are > 1, set them equal to 1 to follow algorithm rule 
+            if (protein > 1)
+            {
+                protein = 1;
+            }
+
+            if (fiber > 1)
+            {
+                fiber = 1;
+            }
+
+            if (vitaminA > 1)
+            {
+                vitaminA = 1;
+            }
+
+            if (vitaminC > 1)
+            {
+                vitaminC = 1;
+            }
+
+            if (calcium > 1)
+            {
+                calcium = 1;
+            }
+
+            if (iron > 1)
+            {
+                iron = 1;
+            }
+
+
+
+            nR6 = (protein) + (fiber) + (vitaminA) + (vitaminC) + (calcium) + (iron);
+            liMT = (saturatedFat / 20) + (totalSugar / 125) + (sodium / 2400);
+
+            NRF6 = nR6 - liMT;
+
+            lblIndexResult.Text = NRF6.ToString();
+
+
+
+
+
+            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+
+
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                {
+                    SqlCommand command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
+
+                        //String description = txtDescription.Text;
+
+                        //if (description.Length > 48)
+                        //{
+                        //    description = description.Substring(0, 48);
+                        //}
+
+                        // UPDATE Wholesome_Item SET No_ = , ndb_no = , Description = , Long_Desc = ,
+                        // protein = , fiber = , vitaminA = , vitaminC = , vitaminD = , Potassium = ,
+                        // calcium = , iron = , saturatedFat = , TotalSugar = , AddedSugar = , Sodium = ,
+                        // KCal = , nrf6 = , lastUpdatedBy = , LastUpdated = WHERE No_ = 
+                        CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
+                    + " nrf6 = @nrf6, Loginid = @loginid"
+                    + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE No_ = @No_"
+                    };
+
+
+                    //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+                    command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = "";
+                    //command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = description;
+                    command1.Parameters.Add("@Long_Desc", SqlDbType.NVarChar, 500).Value = "";
+                    //command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
+                    command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value =HttpContext.Current.User.Identity.GetUserName();
+                    command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+
+
+                    connection.Open();
+                    command1.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+        }
     }
 }
