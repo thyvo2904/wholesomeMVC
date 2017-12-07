@@ -253,6 +253,9 @@
     </Compile>
     <Compile Include="CsClass\Index.cs" />
     <Compile Include="CsClass\Ing.cs" />
+    <Compile Include="WebForms\indexresult.aspx.designer.cs">
+      <DependentUpon>indexresult.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForms\inventory_admin.aspx.cs">
       <DependentUpon>inventory_admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -272,9 +275,6 @@
     <Compile Include="WebForms\indexresult.aspx.cs">
       <DependentUpon>indexresult.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForms\indexresult.aspx.designer.cs">
-      <DependentUpon>indexresult.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\manual_input.aspx.cs">
       <DependentUpon>manual_input.aspx</DependentUpon>
@@ -520,6 +520,7 @@
     <Content Include="Content\Vendor\footable.bootstrap.min.css" />
     <Content Include="Content\Vendor\footable.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Scripts\Custom\advanced_search.js" />
     <Content Include="Scripts\Custom\Fb_categories.js" />
     <Content Include="Scripts\Custom\indexresult.js" />
     <Content Include="Scripts\Custom\inventory_admin.js" />

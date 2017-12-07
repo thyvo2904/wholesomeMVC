@@ -20,6 +20,9 @@ namespace WholesomeMVC.WebForms
 {
     public partial class update_item : System.Web.UI.Page
     {
+
+        private static double oldNRF6 = 0;
+
         public static DataTable matchedCeresIDS = new DataTable();
         public static DataTable dataSearchResults = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
@@ -273,112 +276,118 @@ namespace WholesomeMVC.WebForms
 
         protected void btnOldSaveItem_Click(object sender, EventArgs e)
         {
-            //String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+
+            String gradientEntry = "";
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                {
+                    SqlCommand command1 = new SqlCommand();
+                    command1.Connection = connection;
+                    command1.CommandType = System.Data.CommandType.Text;
+
+                    //String description = txtDescription.Text;
+
+                    //if (description.Length > 48)
+                    //{
+                    //    description = description.Substring(0, 48);
+                    //}
+
+                    if (oldNRF6 <= 4.65)
+                    {
+                        gradientEntry = "1";
+                    }
+
+                    else if ((oldNRF6 >= 4.66) && (oldNRF6 <= 27.99))
+                    {
+                        gradientEntry = "2";
+                    }
+                    else if (oldNRF6 >= 28)
+                    {
+                        gradientEntry = "3";
+                    }
 
 
 
-            //using (SqlConnection connection = new SqlConnection(ConnectionString))
-            //{
-            //    {
-            //        SqlCommand command1 = new SqlCommand();
-            //        command1.Connection = connection;
-            //        command1.CommandType = System.Data.CommandType.Text;
-
-            //        //String description = txtDescription.Text;
-
-            //        //if (description.Length > 48)
-            //        //{
-            //        //    description = description.Substring(0, 48);
-            //        //}
-
-            //        // UPDATE Wholesome_Item SET No_ = , ndb_no = , Description = , Long_Desc = ,
-            //        // protein = , fiber = , vitaminA = , vitaminC = , vitaminD = , Potassium = ,
-            //        // calcium = , iron = , saturatedFat = , TotalSugar = , AddedSugar = , Sodium = ,
-            //        // KCal = , nrf6 = , lastUpdatedBy = , LastUpdated = WHERE No_ = 
-            //        command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
-            //        + " Description = @Description, nrf6 = @nrf6, Loginid = @loginid"
-            //        + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE No_ = @No_";
+                    command1.CommandText = @"UPDATE Wholesome_Item SET"
+                    + " nrf6 = @nrf6, Loginid = @loginid, GradientEntry = @GradientEntry,"
+                    + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [description 2] = @description2, FBC_Code = @FBC_Code " +
+                    "WHERE No_ = @No_"
+                    ;
 
 
-            //        //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
-            //        command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = "";
-            //        //command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = description;
-            //        command1.Parameters.Add("@Long_Desc", SqlDbType.NVarChar, 500).Value = "";
-            //        command1.Parameters.Add("@protein", SqlDbType.Decimal, 18).Value = txtOldProtein.Text;
-            //        command1.Parameters.Add("@fiber", SqlDbType.Decimal, 18).Value = txtOldFiber.Text;
-            //        command1.Parameters.Add("@vitaminA", SqlDbType.Decimal, 18).Value = txtOldVA.Text;
-            //        command1.Parameters.Add("@vitaminC", SqlDbType.Decimal, 18).Value = txtOldVC.Text;
-            //        command1.Parameters.Add("@vitaminD", SqlDbType.Decimal, 18).Value = 0;
-            //        command1.Parameters.Add("@Potassium", SqlDbType.Decimal, 18).Value = 0;
-            //        command1.Parameters.Add("@Calcium", SqlDbType.Decimal, 18).Value = txtOldCalcium.Text;
-            //        command1.Parameters.Add("@Iron", SqlDbType.Decimal, 18).Value = txtOldIron.Text;
-            //        command1.Parameters.Add("@saturatedFat", SqlDbType.Decimal, 18).Value = txtOldSatFat.Text;
-            //        command1.Parameters.Add("@TotalSugar", SqlDbType.Decimal, 18).Value = txtOldTotalSugar.Text;
-            //        command1.Parameters.Add("@AddedSugar", SqlDbType.Decimal, 18).Value = 0;
-            //        command1.Parameters.Add("@Sodium", SqlDbType.Decimal, 18).Value = txtOldSodium.Text;
-            //        command1.Parameters.Add("@KCal", SqlDbType.Decimal, 18).Value = txtOldKCal.Text;
-            //        command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
-            //        command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = "Charles Moore";
-            //        command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+                    command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = //txtNumber.Text;
+
+                    command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = oldNRF6;
+                    command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getloginid();
+                    command1.Parameters.Add("@GradientEntry", SqlDbType.Int).Value = gradientEntry;
+                    command1.Parameters.Add("@description2", SqlDbType.NVarChar, 50).Value = "";
+                    command1.Parameters.Add("@FBC_Code", SqlDbType.NVarChar, 10).Value = ddlFBCategories.SelectedValue;
+                    command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = HttpContext.Current.User.Identity.GetUserName();
+                    command1.Parameters.Add("@lastupdated", SqlDbType.DateTime).Value = DateTime.Now;
 
 
-            //        connection.Open();
-            //        command1.ExecuteNonQuery();
-            //        connection.Close();
-
-            //        //int count = 0;
-            //        //using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
-            //        //{
-            //        //    System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
-
-            //        //    con.Open();
-            //        //    go.Connection = con;
-            //        //    go.CommandText = "SELECT No_ FROM Item WHERE No_ = @No_";
-            //        //    go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
-
-            //        //    SqlDataReader readIn = go.ExecuteReader();
-            //        //    while (readIn.Read())
-            //        //    {
-            //        //        ++count;
-            //        //    }
-
-            //        //    con.Close();
-
-
-            //        //}
-
-            //        //if (count == 1)
-            //        //{
-            //        //    connection.Open();
-
-            //        //    try
-            //        //    {
-            //        //        command1 = new SqlCommand();
-            //        //        command1.Connection = connection;
-            //        //        command1.CommandType = System.Data.CommandType.Text;
-
-            //        //        command1.CommandText = @"UPDATE item SET [CHOP Points] = @CHOPPoints
-            //        //WHERE No_ = @No_";
-
-            //        //        command1.Parameters.Add("@CHOPPoints", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
-            //        //        command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
-            //        //        command1.ExecuteNonQuery();
-            //        //        connection.Close();
-            //        //    }
-
-            //        //    catch (Exception k)
-            //        //    {
-
-            //        //    }
-            //        //}
-
-            //        //else
-            //        //{
-            //        //    Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
-            //        //}
-            //    }
-            //}
+                    connection.Open();
+                    command1.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
         }
+
+            //int count = 0;
+            //        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+            //        {
+            //            System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
+
+            //            con.Open();
+            //            go.Connection = con;
+            //            go.CommandText = "SELECT No_ FROM Item WHERE No_ = @No_";
+            //            go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+
+            //            SqlDataReader readIn = go.ExecuteReader();
+            //            while (readIn.Read())
+            //            {
+            //                ++count;
+            //            }
+
+            //            con.Close();
+
+
+            //        }
+
+            //        if (count == 1)
+            //        {
+            //            connection.Open();
+
+            //            try
+            //            {
+            //                command1 = new SqlCommand();
+            //                command1.Connection = connection;
+            //                command1.CommandType = System.Data.CommandType.Text;
+
+            //                command1.CommandText = @"UPDATE item SET [CHOP Points] = @CHOPPoints
+            //        WHERE No_ = @No_";
+
+            //                command1.Parameters.Add("@CHOPPoints", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
+            //                command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+            //                command1.ExecuteNonQuery();
+            //                connection.Close();
+            //            }
+
+            //            catch (Exception k)
+            //            {
+
+            //            }
+            //        }
+
+            //        else
+            //        {
+            //            Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
+            //        }
+            //    }
+            
+        
 
         protected void btnNewSaveItem_Click(object sender, EventArgs e)
         {
@@ -849,6 +858,8 @@ namespace WholesomeMVC.WebForms
             string ndbno = hidden_ndbno.Value;
 			string view_mode = hidden_view_mode.Value;
 
+            
+
             FoodItem.findNdbno(ndbno);
 
             double score = FoodItem.newFood.NRF6;
@@ -920,7 +931,7 @@ namespace WholesomeMVC.WebForms
              //   lblOldResult.Text = String.Empty;
             double nR6 = 0;
             double liMT = 0;
-            double NRF6 = 0;
+            //double NRF6 = 0;
             double kCal = Double.Parse(txtOldKCal.Text);
             double protein = Double.Parse(txtOldProtein.Text);
             double vitaminA = Double.Parse(txtOldVitaminA.Text);
@@ -976,60 +987,31 @@ namespace WholesomeMVC.WebForms
             nR6 = (protein) + (fiber) + (vitaminA) + (vitaminC) + (calcium) + (iron);
             liMT = (saturatedFat / 20) + (totalSugar / 125) + (sodium / 2400);
 
-            NRF6 = nR6 - liMT;
+            oldNRF6 = nR6 - liMT;
 
-            lblOldIndexResult.Text = NRF6.ToString();
-
-
+            
 
 
 
-            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
 
 
-
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                {
-                    SqlCommand command1 = new SqlCommand
-                    {
-                        Connection = connection,
-                        CommandType = System.Data.CommandType.Text,
-
-                        //String description = txtDescription.Text;
-
-                        //if (description.Length > 48)
-                        //{
-                        //    description = description.Substring(0, 48);
-                        //}
-
-                        // UPDATE Wholesome_Item SET No_ = , ndb_no = , Description = , Long_Desc = ,
-                        // protein = , fiber = , vitaminA = , vitaminC = , vitaminD = , Potassium = ,
-                        // calcium = , iron = , saturatedFat = , TotalSugar = , AddedSugar = , Sodium = ,
-                        // KCal = , nrf6 = , lastUpdatedBy = , LastUpdated = WHERE No_ = 
-                        CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
-                    + " nrf6 = @nrf6, Loginid = @loginid, GradientEntry = @GradientEntry,"
-                    + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [description 2] = @description2, FBC_Code = @FBC_Code " +
-                    "WHERE No_ = @No_"
-                    };
-
-
-                    //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
-                    //command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = ;
-                    //command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = ;
-                    //command1.Parameters.Add("@loginid", SqlDbType.Int).Value = ;
-                    //command1.Parameters.Add("@GradientEntry", SqlDbType.Int).Value = ;
-                    //command1.Parameters.Add("@description2", SqlDbType.NVarChar, 50).Value = "";
-                    //command1.Parameters.Add("@FBC_Code", SqlDbType.NVarChar, 10).Value = lblOldResult.Text;
-                    //command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value =HttpContext.Current.User.Identity.GetUserName();
-                    //command1.Parameters.Add("@lastupdated", SqlDbType.DateTime).Value = DateTime.Now;
-
-
-                    connection.Open();
-                    command1.ExecuteNonQuery();
-                    connection.Close();
-                }
-            }
+            
         }
+
+        protected String getloginid()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            String getid;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string result = "SELECT max(LoginID) FROM dbo.Session WHERE Id = '" + HttpContext.Current.User.Identity.GetUserId() + "' ";
+                SqlCommand showresult = new SqlCommand(result, con);
+                con.Open();
+                getid = showresult.ExecuteScalar().ToString();
+                con.Close();
+            }
+            return getid;
+        }
+
     }
 }
