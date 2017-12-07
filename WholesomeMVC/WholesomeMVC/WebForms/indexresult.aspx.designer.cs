@@ -22,24 +22,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.Literal search_summary;
         
         /// <summary>
-        /// label_color_scale_legend control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_color_scale_legend;
-        
-        /// <summary>
-        /// image_color_scale_legend control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_color_scale_legend;
-        
-        /// <summary>
         /// search_results control.
         /// </summary>
         /// <remarks>

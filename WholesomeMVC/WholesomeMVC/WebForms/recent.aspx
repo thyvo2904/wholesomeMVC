@@ -12,14 +12,14 @@
 	<asp:HiddenField runat="server" ID="error_message" ClientIDMode="Static" />
 	<asp:HiddenField runat="server" ID="success_message" ClientIDMode="Static" />
 
-	<section id="content_header">
+	<%--<section id="content_header">
 		<h4><asp:Label ID="label_color_scale_legend" runat="server" /></h4>
 		<div class="row">
 			<div class="col-md-offset-1 col-md-10">
 				<asp:Image ID="image_color_scale_legend" runat="server" CssClass="img-responsive img-rounded" />
 			</div>
 		</div>
-	</section>
+	</section>--%>
 
 	<section>
 		<h4><asp:Label ID="label_recent_items" runat="server" /></h4>
