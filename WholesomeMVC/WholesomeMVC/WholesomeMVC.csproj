@@ -519,6 +519,7 @@
     <Content Include="Content\Vendor\footable.bootstrap.min.css" />
     <Content Include="Content\Vendor\footable.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Scripts\Custom\advanced_search.js" />
     <Content Include="Scripts\Custom\Fb_categories.js" />
     <Content Include="Scripts\Custom\indexresult.js" />
     <Content Include="Scripts\Custom\inventory_admin.js" />
