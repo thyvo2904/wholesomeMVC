@@ -67,30 +67,25 @@ namespace WholesomeMVC.WebForms
 			String colorScaleStyle = "";
 
 			double score = newFoodArray[intItemIndex].NRF6;
+            if (score <= 4.65)
+            {
+                colorScaleStyle = GradientColors.getColor1();
+            }
 
-			if (score < 0) {
-				colorScaleStyle = GradientColors.getColor1() + " !important; color: white !important;";
-			} else if ((score >= 0) && (score <= 2.33)) {
-				colorScaleStyle = GradientColors.getColor2() + " !important; color: white !important;";
-			} else if ((score > 2.33) && (score <= 4.66)) {
-				colorScaleStyle = GradientColors.getColor3() + " !important; color: white !important;";
-			} else if ((score > 4.66) && (score <= 12.44)) {
-				colorScaleStyle = GradientColors.getColor4() + " !important; color: black !important;";
-			} else if ((score > 12.44) && (score <= 20.22)) {
-				colorScaleStyle = GradientColors.getColor5() + " !important; color: black !important;";
-			} else if ((score > 20.22) && (score <= 28)) {
-				colorScaleStyle = GradientColors.getColor6() + " !important; color: black !important;";
-			} else if ((score > 28) && (score <= 35.33)) {
-				colorScaleStyle = GradientColors.getColor7() + " !important; color: white !important;";
-			} else if ((score > 35.33) && (score <= 42.67)) {
-				colorScaleStyle = GradientColors.getColor8() + " !important; color: white !important;";
-			} else if (score > 42.67) {
-				colorScaleStyle = GradientColors.getColor9() + " !important; color: white !important;";
-			} else {
-				// do nothing
-			}
+            else if ((score >= 4.66) && (score <= 27.99))
+            {
+                colorScaleStyle = GradientColors.getColor2();
+            }
+            else if (score >= 28)
+            {
+                colorScaleStyle = GradientColors.getColor3();
+            }
+            else
+            {
+                // do nothing
+            }
 
-			returnValue = String.Format(@"
+            returnValue = String.Format(@"
 				<div class='col-sm-6 col-md-4 col-lg-3'>
 					<div class='panel panel-default'>
 						<div class='panel-heading'>
