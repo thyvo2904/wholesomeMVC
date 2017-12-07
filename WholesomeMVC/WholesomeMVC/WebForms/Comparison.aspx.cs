@@ -143,10 +143,16 @@ namespace WholesomeMVC.WebForms
                     table1.Rows[j + 1].Cells[i + 1].Text = dt.Rows[i][j].ToString();
                 }
             }
-
-            double ndscore;
+            
             for(int k=0; k<colno; k++)
             {
+                double ndscore;
+                if(!(Double.TryParse(table1.Rows[3].Cells[k + 1].Text, out ndscore)))
+                {
+                    table1.Rows[3].Cells[k + 1].Text = "NaN";
+                }
+                else
+                {
                 ndscore = Double.Parse(table1.Rows[3].Cells[k + 1].Text);
 
                 if (ndscore <= 4.66)
@@ -155,20 +161,21 @@ namespace WholesomeMVC.WebForms
                     table1.Rows[3].Cells[k + 1].BackColor = System.Drawing.ColorTranslator.FromHtml("Red");
 
                 }
-                else if(ndscore > 4.66 && ndscore <28)
+                else if (ndscore > 4.66 && ndscore < 28)
                 {
                     table1.Rows[3].Cells[k + 1].ForeColor = System.Drawing.ColorTranslator.FromHtml("#000000");
                     table1.Rows[3].Cells[k + 1].BackColor = System.Drawing.ColorTranslator.FromHtml("Yellow");
                 }
-                else if(ndscore >= 28)
+                else if (ndscore >= 28)
                 {
                     table1.Rows[3].Cells[k + 1].ForeColor = System.Drawing.ColorTranslator.FromHtml("#ffffff");
                     table1.Rows[3].Cells[k + 1].BackColor = System.Drawing.ColorTranslator.FromHtml("Green");
                 }
                 else
                 {
-                    table1.Rows[3].Cells[k + 1].Text = "Uncatogrized";
+                    //table1.Rows[3].Cells[k + 1].Text = "Uncatogrized";
                 }
+            }
             }
 
 
