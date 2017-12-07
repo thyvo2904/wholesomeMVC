@@ -52,8 +52,8 @@ namespace WholesomeMVC.WebForms
                 // add color_legend
                 String strScaleLegend = "Color Scale Legend";
 
-                label_color_scale_legend.Text = strScaleLegend;
-                image_color_scale_legend.ImageUrl = "/Content/Images/image_color_scale_legend.png";
+                //label_color_scale_legend.Text = strScaleLegend;
+                //image_color_scale_legend.ImageUrl = "/Content/Images/image_color_scale_legend.png";
 
                 // set page variables
                 String strTitle = "Search Results";
