@@ -19,7 +19,7 @@ namespace WholesomeMVC.WebForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFarmersMarket;
+        protected global::System.Web.UI.WebControls.Literal lblFarmersMarket;
         
         /// <summary>
         /// txtFarmersMarket control.
@@ -40,6 +40,15 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.Button btnSearchFarmersMarket;
         
         /// <summary>
+        /// search_summary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal search_summary;
+        
+        /// <summary>
         /// gridFarmersMarket control.
         /// </summary>
         /// <remarks>
@@ -49,13 +58,31 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.GridView gridFarmersMarket;
         
         /// <summary>
+        /// google_map_section control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl google_map_section;
+        
+        /// <summary>
+        /// lblFarmersMarketName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lblFarmersMarketName;
+        
+        /// <summary>
         /// lblFarmersMarketLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFarmersMarketLocation;
+        protected global::System.Web.UI.WebControls.Literal lblFarmersMarketLocation;
         
         /// <summary>
         /// farmersMarketIFrame control.

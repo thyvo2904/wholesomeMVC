@@ -336,6 +336,7 @@
     <Content Include="Content\bootstrap.cosmo.css" />
     <Content Include="Content\bootstrap.cosmo.min.css" />
     <Content Include="Content\Custom\comparison.css" />
+    <Content Include="Content\Custom\farmers_market.css" />
     <Content Include="Content\Custom\indexresult.css" />
     <Content Include="Content\Custom\update_item.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
@@ -521,6 +522,7 @@
     <Content Include="Content\Vendor\footable.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Scripts\Custom\advanced_search.js" />
+    <Content Include="Scripts\Custom\farmers_market.js" />
     <Content Include="Scripts\Custom\Fb_categories.js" />
     <Content Include="Scripts\Custom\indexresult.js" />
     <Content Include="Scripts\Custom\inventory_admin.js" />
