@@ -31,6 +31,19 @@
         .auto-style9 {
             height: 47px;
         }
+
+        /*style html table*/
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        /*tr:nth-child(even) {background-color: #f2f2f2;}*/
     </style>
 </asp:Content>
 
@@ -91,7 +104,7 @@
                     <tr>
                         <td class="auto-style4">Cere&#39;s Item:</td>
                         <td class="auto-style5">
-                            <asp:DropDownList ID="ddlCereItem" runat="server" DataSourceID="SqlDataSource1" DataTextField="Description" DataValueField="Description" Height="27px">
+                            <asp:DropDownList ID="ddlCereItem" runat="server" DataSourceID="SqlDataSource1" DataTextField="Description" DataValueField="Description" CssClass="form-control">
                             </asp:DropDownList>
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Description] FROM [Wholesome_Item]"></asp:SqlDataSource>
                         </td>
@@ -100,9 +113,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style7">Food Bank Food Group:</td>
+                        <td class="auto-style7">FB Food Group:</td>
                         <td class="auto-style8">
-                            <asp:DropDownList ID="ddlFBGroup" runat="server" DataSourceID="constr2" DataTextField="FBC_CODE" DataValueField="FBC_CODE" Height="32px">
+                            <asp:DropDownList ID="ddlFBGroup" runat="server" DataSourceID="constr2" DataTextField="FBC_CODE" DataValueField="FBC_CODE" Height="32px" CssClass="form-control">
                                 <asp:ListItem>BABY</asp:ListItem>
                                 <asp:ListItem>BEVERAGE</asp:ListItem>
                                 <asp:ListItem></asp:ListItem>
@@ -113,17 +126,17 @@
                     <tr>
                         <td class="auto-style3">Quantity (lbs):</td>
                         <td class="auto-style2">
-                            <asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:Button ID="btnWhatif" runat="server" OnClick="btnWhatif_Click" Text="What If" />
+                            <asp:Button ID="btnWhatif" runat="server" OnClick="btnWhatif_Click" Text="What If" CssClass="form-control" />
                         </td>
                     </tr>
                     <tr>
                         <td class="auto-style3">&nbsp;</td>
                         <td class="auto-style2">&nbsp;</td>
                         <td>
-                            <asp:Button ID="btnReset" runat="server" Text="Reset" />
+                            <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="form-control"/>
                         </td>
                     </tr>
                 </table>
@@ -134,7 +147,7 @@
 
 			</div>
 		</section>
-	</section>
+	
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="script" runat="server">
