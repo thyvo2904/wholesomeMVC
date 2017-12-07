@@ -14,6 +14,7 @@ using System.Configuration;
 
 using System.Linq;
 using System.Drawing;
+using Microsoft.AspNet.Identity;
 
 namespace WholesomeMVC.WebForms
 {
@@ -872,8 +873,8 @@ namespace WholesomeMVC.WebForms
 
             FoodItem.findNdbno(ndbno);
 
-			double score = FoodItem.newFood.NRF6;
-			String colorScaleStyle = "";
+            double score = FoodItem.newFood.NRF6;
+            String colorScaleStyle = "";
             if (score <= 4.65)
             {
                 colorScaleStyle = GradientColors.getColor1();
@@ -916,10 +917,10 @@ namespace WholesomeMVC.WebForms
         {
             //try
             //{
-            //    lblOldResult.Text = String.Empty;
-                double nR6 = 0;
-                double liMT = 0;
-                double NRF6 = 0;
+             //   lblOldResult.Text = String.Empty;
+            double nR6 = 0;
+            double liMT = 0;
+            double NRF6 = 0;
             double kCal = Double.Parse(txtOldKCal.Text);
             double protein = Double.Parse(txtOldProtein.Text);
             double vitaminA = Double.Parse(txtOldVitaminA.Text);
@@ -1015,7 +1016,7 @@ namespace WholesomeMVC.WebForms
                     //command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = description;
                     command1.Parameters.Add("@Long_Desc", SqlDbType.NVarChar, 500).Value = "";
                     command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
-                    command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = "Charles Moore";
+                    command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value =HttpContext.Current.User.Identity.GetUserName();
                     command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
 
 
@@ -1023,5 +1024,7 @@ namespace WholesomeMVC.WebForms
                     command1.ExecuteNonQuery();
                     connection.Close();
                 }
+            }
+        }
     }
 }
