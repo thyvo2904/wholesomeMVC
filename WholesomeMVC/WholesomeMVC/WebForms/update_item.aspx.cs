@@ -909,8 +909,8 @@ namespace WholesomeMVC.WebForms
             txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
             txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
 
-            txtCeresNumber.Text = ceresid;
-            txtCeresDescription.Text = ceres_name;
+           // txtCeresNumber.Text = ceresid;
+           // txtCeresDescription.Text = ceres_name;
         }
 
         protected void btnCalculateOldNRF6_Click(object sender, EventArgs e)
@@ -1015,7 +1015,7 @@ namespace WholesomeMVC.WebForms
                     command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = "";
                     //command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = description;
                     command1.Parameters.Add("@Long_Desc", SqlDbType.NVarChar, 500).Value = "";
-                    command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
+                   // command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
                     command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value =HttpContext.Current.User.Identity.GetUserName();
                     command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
 
