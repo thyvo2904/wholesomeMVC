@@ -843,7 +843,9 @@ namespace WholesomeMVC.WebForms
         {
             // get data from front end
             string ceresid = hidden_ceresid.Value;
+            
             string ceres_name = hidden_ceres_name.Value;
+            
             string ndbno = hidden_ndbno.Value;
 			string view_mode = hidden_view_mode.Value;
 
@@ -1006,18 +1008,21 @@ namespace WholesomeMVC.WebForms
                         // calcium = , iron = , saturatedFat = , TotalSugar = , AddedSugar = , Sodium = ,
                         // KCal = , nrf6 = , lastUpdatedBy = , LastUpdated = WHERE No_ = 
                         CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
-                    + " nrf6 = @nrf6, Loginid = @loginid"
-                    + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE No_ = @No_"
+                    + " nrf6 = @nrf6, Loginid = @loginid, GradientEntry = @GradientEntry,"
+                    + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [description 2] = @description2, FBC_Code = @FBC_Code " +
+                    "WHERE No_ = @No_"
                     };
 
 
-                    //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
-                    command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = "";
-                    //command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = description;
-                    command1.Parameters.Add("@Long_Desc", SqlDbType.NVarChar, 500).Value = "";
-                    //command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
+                    command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+                    command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = ;
+                    command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = ;
+                    command1.Parameters.Add("@loginid", SqlDbType.Int).Value = ;
+                    command1.Parameters.Add("@GradientEntry", SqlDbType.Int).Value = ;
+                    command1.Parameters.Add("@description2", SqlDbType.NVarChar, 50).Value = "";
+                    command1.Parameters.Add("@FBC_Code", SqlDbType.NVarChar, 10).Value = lblOldResult.Text;
                     command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value =HttpContext.Current.User.Identity.GetUserName();
-                    command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+                    command1.Parameters.Add("@lastupdated", SqlDbType.DateTime).Value = DateTime.Now;
 
 
                     connection.Open();
