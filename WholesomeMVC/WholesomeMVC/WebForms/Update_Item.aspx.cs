@@ -857,7 +857,6 @@ namespace WholesomeMVC.WebForms
             {
                 colorScaleStyle = GradientColors.getColor1();
             }
-
             else if ((score >= 4.66) && (score <= 27.99))
             {
                 colorScaleStyle = GradientColors.getColor2();
@@ -870,15 +869,16 @@ namespace WholesomeMVC.WebForms
             {
                 // do nothing
             }
-
-            nd_score_panel.Attributes["style"] = String.Format("background-color: {0}", colorScaleStyle);
-
-            lblFoodName.Text = FoodItem.newFood.name;
-            lblIndexResult.Text = Convert.ToString(Math.Round(score, 2));
+			colorScaleStyle = "background-color: " + colorScaleStyle;
 
 			switch (view_mode)
 			{
 				case "old":
+					nd_old_score_panel.Attributes["style"] = colorScaleStyle;
+
+					lblOldFoodName.Text = FoodItem.newFood.name;
+					lblOldIndexResult.Text = Convert.ToString(Math.Round(score, 2));
+
 					txtOldKCal.Text = FoodItem.newFood.kCal.ToString();
 					txtOldSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
 					txtOldSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
@@ -889,8 +889,14 @@ namespace WholesomeMVC.WebForms
 					txtOldVitaminC.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
 					txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
 					txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+
 					break;
 				case "new":
+					nd_new_score_panel.Attributes["style"] = colorScaleStyle;
+
+					lblNewFoodName.Text = FoodItem.newFood.name;
+					lblNewIndexResult.Text = Convert.ToString(Math.Round(score, 2));
+
 					txtNewKCal.Text = FoodItem.newFood.kCal.ToString();
 					txtNewSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
 					txtNewSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
@@ -905,9 +911,6 @@ namespace WholesomeMVC.WebForms
 				default:
 					break;
 			}
-
-           // txtCeresNumber.Text = ceresid;
-            //txtCeresDescription.Text = ceres_name;
         }
 
         protected void btnCalculateOldNRF6_Click(object sender, EventArgs e)
@@ -975,7 +978,7 @@ namespace WholesomeMVC.WebForms
 
             NRF6 = nR6 - liMT;
 
-            lblIndexResult.Text = NRF6.ToString();
+            lblOldIndexResult.Text = NRF6.ToString();
 
 
 

@@ -257,13 +257,13 @@ namespace WholesomeMVC.WebForms
 		 * If ceres item doesn't exist prompt the user to open ceres and enter it there first.
 		 */
 
-        protected String getuserid()
+        protected String getloginid()
         {
             string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             String getid;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                string result = "SELECT LoginID FROM dbo.Session WHERE Id = '" + HttpContext.Current.User.Identity.GetUserId() + "' ";
+                string result = "SELECT max(LoginID) FROM dbo.Session WHERE Id = '" + HttpContext.Current.User.Identity.GetUserId() + "' ";
                 SqlCommand showresult = new SqlCommand(result, con);
                 con.Open();
                 getid = showresult.ExecuteScalar().ToString();
@@ -350,10 +350,10 @@ namespace WholesomeMVC.WebForms
 					)
 				"
                     };
-                    command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
+                        command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
                         command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
                         command1.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = lblName.Value;
-                        command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getuserid();
+                        command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getloginid();
                         command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
                         command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
                         command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;

@@ -17,6 +17,7 @@
 				</div>
 			</div>
 		</div>
+	</section>
 
 	<section>
 		<!-- nav to change between old/new/usda view -->
@@ -54,33 +55,35 @@
 		<asp:HiddenField runat="server" ID="hidden_view_mode" ClientIDMode="Static"></asp:HiddenField>
 		<asp:Button runat="server" ID="button_expand_item" OnClick="ExpandItem" ClientIDMode="Static" CssClass="hidden" />
 		
-		<!-- Modal for expanded manual view -->
-		<div class="modal fade" id="expanded_view" tabindex="-1" role="dialog" aria-labelledby="expanded view">
+		<!-- dependency for ajax, need to be placed before UpdatePanels -->
+		<asp:ScriptManager runat="server" EnablePartialRendering="true"></asp:ScriptManager>
+
+		<!-- Modal for expanded old view -->
+		<div class="modal fade" id="expanded_old_view" tabindex="-1" role="dialog" aria-labelledby="expanded view">
 			<div class="modal-dialog modal-sm" role="document">
 				<div class="modal-content">
-					<asp:ScriptManager runat="server" EnablePartialRendering="true"></asp:ScriptManager>
 					<asp:UpdatePanel runat="server">
 						<ContentTemplate>
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 								<h4 class='panel-title equal-height'>
 									<strong>
-										<asp:Literal ID="lblFoodName" runat="server"></asp:Literal>
+										<asp:Literal ID="lblOldFoodName" runat="server"></asp:Literal>
 									</strong>
 								</h4>
 							</div>
 
-							<div runat="server" id="nd_score_panel" class="modal-body">
+							<div runat="server" id="nd_old_score_panel" class="modal-body">
 								<h4>
 									<strong>ND_Score:
-									<asp:Label runat="server" ID="lblIndexResult"></asp:Label>
+									<asp:Label runat="server" ID="lblOldIndexResult"></asp:Label>
 									</strong>
 								</h4>
 							</div>
 
 							<div class="modal-body">
 								<h4><strong>Nutrition Facts</strong></h4>
-								<table id="old_view" class="table form-horizontal">
+								<table class="table form-horizontal">
 									<tbody>
 										<tr class='fatter'>
 											<th>Calories</th>
@@ -188,7 +191,68 @@
 									</tbody>
 								</table>
 
-								<table id="new_view" class="table form-horizontal">
+								<hr />
+								<div>
+									<div class="form-group">
+										<label for="txtOldCeresNumber">
+											<asp:Literal Text="Ceres Number" runat="server" />
+										</label>
+										<p>
+											<asp:Literal ID="txtOldCeresNumber" runat="server"></asp:Literal>
+										</p>
+									</div>
+									<div class="form-group">
+										<label for="txtOldCeresDescription">
+											<asp:Literal Text="Ceres Description" runat="server" />
+										</label>
+										<p>
+											<asp:Literal ID="txtOldCeresDescription" runat="server"></asp:Literal>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
+
+								<asp:Button ID="btnCalculateOldNRF6" runat="server" Text="Calculate" CssClass="btn btn-primary old_buttons" />
+								<asp:Button ID="btnSaveOldItem" runat="server" Text="Save" CssClass="btn btn-success old_buttons" />
+							</div>
+						</ContentTemplate>
+						<Triggers>
+							<asp:AsyncPostBackTrigger ControlID="button_expand_item" EventName="Click" />
+						</Triggers>
+					</asp:UpdatePanel>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Modal for expanded new view -->
+		<div class="modal fade" id="expanded_new_view" tabindex="-1" role="dialog" aria-labelledby="expanded view">
+			<div class="modal-dialog modal-sm" role="document">
+				<div class="modal-content">
+					<asp:UpdatePanel runat="server">
+						<ContentTemplate>
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class='panel-title equal-height'>
+									<strong>
+										<asp:Literal ID="lblNewFoodName" runat="server"></asp:Literal>
+									</strong>
+								</h4>
+							</div>
+
+							<div runat="server" id="nd_new_score_panel" class="modal-body">
+								<h4>
+									<strong>ND_Score:
+									<asp:Label runat="server" ID="lblNewIndexResult"></asp:Label>
+									</strong>
+								</h4>
+							</div>
+
+							<div class="modal-body">
+								<h4><strong>Nutrition Facts</strong></h4>
+								<table class="table form-horizontal">
 									<tbody>
 										<tr class='fatter'>
 											<th>Calories</th>
@@ -266,29 +330,25 @@
 								<hr />
 								<div>
 									<div class="form-group">
-										<label for="txtCeresNumber">
+										<label for="txtNewCeresNumber">
 											<asp:Literal Text="Ceres Number" runat="server" />
 										</label>
 										<p>
-											<asp:Literal ID="txtCeresNumber" runat="server"></asp:Literal>
+											<asp:Literal ID="txtNewCeresNumber" runat="server"></asp:Literal>
 										</p>
 									</div>
 									<div class="form-group">
-										<label for="txtCeresDescription">
+										<label for="txtNewCeresDescription">
 											<asp:Literal Text="Ceres Description" runat="server" />
 										</label>
 										<p>
-											<asp:Literal ID="txtCeresDescription" runat="server"></asp:Literal>
+											<asp:Literal ID="txtNewCeresDescription" runat="server"></asp:Literal>
 										</p>
 									</div>
 								</div>
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
-
-								<asp:Button ID="btnCalculateOldNRF6" runat="server" Text="Calculate" CssClass="btn btn-primary old_buttons" />
-								<asp:Button ID="btnSaveOldItem" runat="server" Text="Save" CssClass="btn btn-success old_buttons" />
-
 								<asp:Button ID="btnCalculateNewNRF6" runat="server" Text="Calculate" CssClass="btn btn-primary new_buttons" />
 								<asp:Button ID="btnSaveNewItem" runat="server" Text="Save" CssClass="btn btn-success new_buttons" />
 							</div>
