@@ -19,14 +19,9 @@ namespace WholesomeMVC.WebForms
             
 
             lblOne.Value = GradientValues.getValue1();
-                lblTwo.Value = GradientValues.getValue1();
-                lblThree.Value = GradientValues.getValue2();
-                lblFour.Value = GradientValues.getValue3();
-                lblFive.Value = GradientValues.getValue4();
-                lblSix.Value = GradientValues.getValue5();
-                lblSeven.Value = GradientValues.getValue6();
-                lblEight.Value = GradientValues.getValue7();
-                lblNine.Value = GradientValues.getValue8();
+                lblTwo.Value = GradientValues.getValue2();
+                lblThree.Value = GradientValues.getValue3();
+        
 
             }
         }
@@ -56,13 +51,9 @@ namespace WholesomeMVC.WebForms
         protected void btnSaveValues(object sender, EventArgs e)
         {
             GradientValues.setValue1(Convert.ToDouble(lblOne.Value));
-            GradientValues.setValue2(Convert.ToDouble(lblThree.Value));
-            GradientValues.setValue3(Convert.ToDouble(lblFour.Value));
-            GradientValues.setValue4(Convert.ToDouble(lblFive.Value));
-            GradientValues.setValue5(Convert.ToDouble(lblSix.Value));
-            GradientValues.setValue6(Convert.ToDouble(lblSeven.Value));
-            GradientValues.setValue7(Convert.ToDouble(lblEight.Value));
-            GradientValues.setValue8(Convert.ToDouble(lblNine.Value));
+            GradientValues.setValue2(Convert.ToDouble(lblTwo.Value));
+            GradientValues.setValue3(Convert.ToDouble(lblThree.Value));
+    
 
         }
 

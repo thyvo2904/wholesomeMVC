@@ -140,6 +140,30 @@ namespace WholesomeMVC.WebForms
                 }
             }
 
+            int ndscore;
+            for(int k=0; k<colno; k++)
+            {
+                ndscore = Convert.ToInt32(table1.Rows[3].Cells[k + 1]);
+
+                if (ndscore <= 4.66)
+                {
+                    table1.Rows[3].Cells[k + 1].ForeColor = System.Drawing.ColorTranslator.FromHtml("Red");
+                }
+                else if(ndscore > 4.66 && ndscore <28)
+                {
+                    table1.Rows[3].Cells[k + 1].ForeColor = System.Drawing.ColorTranslator.FromHtml("Yellow");
+                }
+                else if(ndscore >= 28)
+                {
+                    table1.Rows[3].Cells[k + 1].ForeColor = System.Drawing.ColorTranslator.FromHtml("Green");
+                }
+                else
+                {
+                    table1.Rows[3].Cells[k + 1].Text = "Uncatogrized";
+                }
+            }
+
+
             // Add the table to the page.
             compare.Controls.Add(table1);
         }
@@ -210,7 +234,7 @@ namespace WholesomeMVC.WebForms
                 }
             }
 
-            // Add the table to the page.
+            // return the dynamic comparison table
             return table1; 
 
         }

@@ -6,21 +6,17 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
-<div id="divold" runat="server" style="display:none">
-<%--
-<asp:Button ID="btnCalculateOld" runat="server" OnClick="btnCalculateOld_Click" Text="Calculate Index" CssClass="btncss" ValidationGroup="CalculateOld" />
-<asp:Button ID="btnOldSaveItem" runat="server" OnClick="btnOldSaveItem_Click" Text="Save Item" CssClass="btncss"/>
-<asp:Label ID="lblOldResult" runat="server" Text=" "></asp:Label>
---%>
-</div>
-
-<div id="divnew" runat="server" style="display:none">
-<%--
-<asp:Button ID="btnCalculateNew" runat="server" ValidationGroup="CalcNew" OnClick="btnCalculateNew_Click" Text="Calculate Index" CssClass="btncss" />
-<asp:Button ID="btnNewSaveItem" runat="server" OnClick="btnNewSaveItem_Click" Text="Save Item" CssClass="btncss"/>
-<asp:Label ID="lblNewResult" runat="server" Text=" "></asp:Label>
---%>
-</div>
+	<section>
+		<div class="row">
+			<div class="col-sm-offset-3 col-sm-6">
+				<div class="input-group">
+					<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
+					<span class="input-group-btn">
+						<asp:Button ID="btnSearch" runat="server" Text="Search USDA" CssClass="btn btn-default" />
+					</span>
+				</div>
+			</div>
+		</div>
 
 	<section>
 		<!-- nav to change between old/new/usda view -->
@@ -352,5 +348,4 @@
     <script type="text/javascript" src="/Scripts/Vendor/jquery.matchHeight-min.js"></script>
     <script type="text/javascript" src="/Scripts/Custom/update_item.js"></script>
  </asp:Content>
-
 
