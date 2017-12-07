@@ -6,195 +6,17 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
-  <div class="wrapper">
-     <div id="divitem">
-        <%--<asp:Label ID="Label10" runat="server" Text="Method of Nutrition Entry:"></asp:Label>
-               <asp:DropDownList ID="ddlMethod" AutoPostBack = "true" OnSelectedIndexChanged = "OnSelectedIndexChanged" runat="server">
-               <asp:ListItem>-Choose-</asp:ListItem>
-               <asp:ListItem>Closest USDA Match</asp:ListItem>
-               <asp:ListItem>Manual Input</asp:ListItem>
-        </asp:DropDownList>--%>
-  
-  
-		<%--<td><asp:TextBox ID="txtNumber" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNumber" ID="chkItemNumber" runat="server" ValidationGroup="UpdateItem" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td> </tr>--%>
-		<%--<select id="ddlMatchedCeresID" runat="server" name="Matched Ceres ID's">--%>
-		<%--</select>--%>
-		<%--<asp:GridView
-			ID="gridMatchedCeresIDS" 
-			runat="server" 
-			CssClass="footable"
-			Style="max-width: 500px"
-			OnSelectedIndexChanged="gridMatchedCeresIDS_SelectedIndexChanged"
-			OnRowDataBound="ceresMatchedOnRowDataBound"
-			AutoGenerateColumns="False"
-			RowStyle-Wrap="false">
-			<Columns>
-				<asp:BoundField DataField="CeresID" HeaderText="CeresID" />
-				<asp:BoundField DataField="Ceres_Name" HeaderText="Ceres_Name" />
-				<asp:BoundField DataField="USDA Number" HeaderText="NDBno" />
-				<asp:BoundField DataField="Name" HeaderText="Name" />
-				<asp:BoundField DataField="ND score" HeaderText="ND Score" />
-				<asp:CommandField ShowSelectButton="true" SelectText="Update" />
-			</Columns>
-		</asp:GridView>--%>
-		<%--<asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>--%>
-         <asp:Label ID="lblOldProtein" runat="server" Text="Protein:"></asp:Label>
-         <asp:TextBox ID="txtOldProtein" runat="server"></asp:TextBox>
-         <asp:Label ID="lblOldFiber" runat="server" Text="Fiber:"></asp:Label>
-         <asp:TextBox ID="txtOldFiber" runat="server"></asp:TextBox>
-         <asp:Label ID="lblOldVitaminA" runat="server" Text="Vitamin A:"></asp:Label>
-         <asp:TextBox ID="txtOldVitaminA" runat="server"></asp:TextBox>
-         <asp:Label ID="lblOldVitaminC" runat="server" Text="Vitamin C:"></asp:Label>
-         <asp:TextBox ID="txtOldVitaminC" runat="server"></asp:TextBox>
-         <asp:Label ID="lblOldCalcium" runat="server" Text="Calcium:"></asp:Label>
-         <asp:TextBox ID="txtOldCalcium" runat="server"></asp:TextBox>
-         <asp:Label ID="lblOldIron" runat="server" Text="Iron:"></asp:Label>
-         <asp:TextBox ID="txtOldIron" runat="server"></asp:TextBox>
-         <asp:Label ID="lblOldSaturatedFat" runat="server" Text="Saturated Fat:"></asp:Label>
-         <asp:TextBox ID="txtOldSaturatedFat" runat="server"></asp:TextBox>
-         <asp:Label ID="lblOldTotalSugar" runat="server" Text="Total Sugar:"></asp:Label>
-         <asp:TextBox ID="txtOldTotalSugar" runat="server"></asp:TextBox>
-         <asp:Label ID="lblOldSodium" runat="server" Text="Sodium:"></asp:Label>
-         <asp:TextBox ID="txtOldSodium" runat="server"></asp:TextBox>
-         <asp:Label ID="lblOldKCal" runat="server" Text="KCal:"></asp:Label><asp:TextBox ID="TextBox10" runat="server"></asp:TextBox>
-         <asp:TextBox ID="txtOldKCal" runat="server"></asp:TextBox>
-         <asp:Button ID="btnCalculateOldNRF6" runat="server" Text="Calculate" />
-         <asp:Label ID="lblOldNRF6" runat="server" Text="ND_Score"></asp:Label>
-         <asp:Button ID="btnSaveOldItem" runat="server" Text="Save" />
-         <br>
-
-         <asp:Label ID="lblNewProtein" runat="server" Text="Protein:"></asp:Label>
-         <asp:TextBox ID="txtNewProtein" runat="server"></asp:TextBox>
-         <asp:Label ID="lblNewFiber" runat="server" Text="Fiber:"></asp:Label>
-         <asp:TextBox ID="txtNewFiber" runat="server"></asp:TextBox>
-         <asp:Label ID="lblNewVitaminD" runat="server" Text="Vitamin D:"></asp:Label>
-         <asp:TextBox ID="txtNewVitaminD" runat="server"></asp:TextBox>
-         <asp:Label ID="lblNewPotassium" runat="server" Text="Potassium:"></asp:Label>
-         <asp:TextBox ID="txtNewPotassium" runat="server"></asp:TextBox>
-         <asp:Label ID="lblNewCalcium" runat="server" Text="Calcium:"></asp:Label>
-         <asp:TextBox ID="txtNewCalcium" runat="server"></asp:TextBox>
-         <asp:Label ID="lblNewIron" runat="server" Text="Iron:"></asp:Label>
-         <asp:TextBox ID="txtNewIron" runat="server"></asp:TextBox>
-         <asp:Label ID="lblNewSaturatedFat" runat="server" Text="Saturated Fat:"></asp:Label>
-         <asp:TextBox ID="txtNewSaturatedFat" runat="server"></asp:TextBox>
-         <asp:Label ID="lblNewAddedSugar" runat="server" Text="Added Sugar:"></asp:Label>
-         <asp:TextBox ID="txtNewAddedSugar" runat="server"></asp:TextBox>
-         <asp:Label ID="lblNewSodium" runat="server" Text="Sodium:"></asp:Label>
-         <asp:TextBox ID="txtNewSodium" runat="server"></asp:TextBox>
-         <asp:Label ID="lblNewKCal" runat="server" Text="KCal:"></asp:Label>
-         <asp:TextBox ID="txtNewKCal" runat="server"></asp:TextBox>
-         <asp:Button ID="btnCalculateOldNDScore" runat="server" Text="Calculate" />
-         <asp:Label ID="lblNewNRF6" runat="server" Text="ND_Score"></asp:Label>
-         <asp:Button ID="btnSaveNewItem" runat="server" Text="Save" />
-         
-         <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
-         <asp:Button ID="btnSearch" runat="server" Text="Search USDA" />
-	</div>
-
-                     
-      
-  <div id="divmanual" runat="server" visible="false">
-     <select id="DropDownList2" runat="server" name="form_select" onchange="showDiv(this)" >
-        <option value="0">Manual: Old Label</option>
-        <option value="1">Manual: New Label</option>
-         <option value="2">USDA</option>
-     </select>
-
-  <div id="divold" runat="server" style="display:none">
-  <%--<table>
-  <tr>
-    <td>kCal: </td>
-    <td><asp:TextBox ID="txtOldKCal" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtOldKCal" ID="RequiredFieldValidator1" ValidationGroup="CalculateOld" runat="server" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Saturated Fat:</td>
-    <td><asp:TextBox ID="txtOldSatFat" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtOldSatFat" ID="RequiredFieldValidator2" ValidationGroup="CalculateOld" runat="server" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Sodium:</td>
-    <td><asp:TextBox ID="txtOldSodium" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtOldSodium" ID="RequiredFieldValidator3" runat="server" ValidationGroup="CalculateOld" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Fiber:</td>
-    <td><asp:TextBox ID="txtOldFiber" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtOldFiber" ID="RequiredFieldValidator4" runat="server" ValidationGroup="CalculateOld" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Total Sugar:</td>
-    <td><asp:TextBox ID="txtOldTotalSugar" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtOldTotalSugar" ID="RequiredFieldValidator5" runat="server" ValidationGroup="CalculateOld" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Protein:</td>
-    <td><asp:TextBox ID="txtOldProtein" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtOldProtein" ID="RequiredFieldValidator6" ValidationGroup="CalculateOld" runat="server" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Vitamin A|%:</td>
-    <td><asp:TextBox ID="txtOldVA" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtOldVA" ID="RequiredFieldValidator7" ValidationGroup="CalculateOld" runat="server" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Vitamin C|%:</td>
-    <td> <asp:TextBox ID="txtOldVC" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtOldVC" ID="RequiredFieldValidator8" runat="server" ErrorMessage="(Required)" ValidationGroup="CalculateOld"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Calcium |%</td>
-    <td><asp:TextBox ID="txtOldCalcium" runat="server"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtOldCalcium" ErrorMessage="(Required)" ValidationGroup="CalculateOld"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Iron |%:</td>
-    <td><asp:TextBox ID="txtOldIron" runat="server"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator10" ControlToValidate="txtOldIron" runat="server" ErrorMessage="(Required)" ValidationGroup="CalculateOld"></asp:RequiredFieldValidator></td>
-  </tr>
-</table>
-  <asp:Button ID="btnCalculateOld" runat="server" OnClick="btnCalculateOld_Click" Text="Calculate Index" CssClass="btncss" ValidationGroup="CalculateOld" />
-  <asp:Button ID="btnOldSaveItem" runat="server" OnClick="btnOldSaveItem_Click" Text="Save Item" CssClass="btncss"/>
-  <asp:Label ID="lblOldResult" runat="server" Text=" "></asp:Label>--%>
-</div>
-
-<div id="divnew" runat="server" style="display:none">
-<%--<table>
-  <tr>
-    <td>kCal: </td>
-    <td><asp:TextBox ID="txtNewKCal" runat="server"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="(Required)" ValidationGroup ="CalcNew" ControlToValidate="txtNewKCal"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Saturated Fat:</td>
-    <td><asp:TextBox ID="txtNewSatFat" runat="server"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="(Required)" ControlToValidate="txtNewSatFat" ValidationGroup ="CalcNew"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Sodium:</td>
-    <td><asp:TextBox ID="txtNewSodium" runat="server"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="(Required)" ControlToValidate="txtNewSodium" ValidationGroup ="CalcNew"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Fiber:</td>
-    <td><asp:TextBox ID="txtNewFiber" runat="server"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator14" ControlToValidate="txtNewFiber" runat="server" ErrorMessage="(Required)" ValidationGroup ="CalcNew"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Added Sugar:</td>
-    <td><asp:TextBox ID="txtNewAddedSugar" runat="server"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator15" ControlToVallidate="txtNewAddedSugar" runat="server" ErrorMessage="(Required)" ValidationGroup ="CalcNew" ControlToValidate="txtNewAddedSugar"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Protein:</td>
-    <td><asp:TextBox ID="txtNewProtein" runat="server"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator16" ControlToValidate="txtNewProtein" runat="server" ErrorMessage="(Required)" ValidationGroup ="CalcNew"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Vitamin D:</td>
-    <td><asp:TextBox ID="txtNewVD" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNewVD" ID="RequiredFieldValidator17" runat="server" ErrorMessage="(Required)" ValidationGroup ="CalcNew"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Potassium:</td>
-    <td><asp:TextBox ID="txtNewPotassium" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNewPotassium" ID="RequiredFieldValidator18" runat="server" ErrorMessage="(Required)" ValidationGroup ="CalcNew"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Calcium:</td>
-    <td><asp:TextBox ID="txtNewCalcium" runat="server"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator19" ControlToValidate="txtNewCalcium" runat="server" ErrorMessage="(Required)" ValidationGroup ="CalcNew"></asp:RequiredFieldValidator></td>
-  </tr>
-  <tr>
-    <td>Iron:</td>
-    <td><asp:TextBox ID="txtNewIron" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNewIron" ID="RequiredFieldValidator20" runat="server" ErrorMessage="(Required)" ValidationGroup ="CalcNew"></asp:RequiredFieldValidator></td>
-  </tr>
-</table>
-    <asp:Button ID="btnCalculateNew" runat="server" ValidationGroup="CalcNew" OnClick="btnCalculateNew_Click" Text="Calculate Index" CssClass="btncss" />
-  <asp:Button ID="btnNewSaveItem" runat="server" OnClick="btnNewSaveItem_Click" Text="Save Item" CssClass="btncss"/>
-    <asp:Label ID="lblNewResult" runat="server" Text=" "></asp:Label>--%>
-</div>
+	<section>
+		<div class="row">
+			<div class="col-sm-offset-3 col-sm-6">
+				<div class="input-group">
+					<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
+					<span class="input-group-btn">
+						<asp:Button ID="btnSearch" runat="server" Text="Search USDA" CssClass="btn btn-default" />
+					</span>
+				</div>
+			</div>
+		</div>
 
 		<!-- nav to change between old/new/usda view -->
 		<h3><asp:Literal ID="view_mode" runat="server" /></h3>
@@ -353,7 +175,7 @@
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
-								<asp:Button ID="btnCalculateOldNRF6" runat="server" Text="Calculate" CssClass="btn btn-primary" />
+								<asp:Button ID="btnCalculateOldNRF6" OnClick="btnCalculateOldNRF6_Click" runat="server" Text="Calculate" CssClass="btn btn-primary" />
 								<asp:Button ID="btnSaveOldItem" runat="server" Text="Save" CssClass="btn btn-success" />
 							</div>
 						</ContentTemplate>
@@ -471,5 +293,4 @@
     <script type="text/javascript" src="/Scripts/Vendor/jquery.matchHeight-min.js"></script>
     <script type="text/javascript" src="/Scripts/Custom/update_item.js"></script>
  </asp:Content>
-
 
