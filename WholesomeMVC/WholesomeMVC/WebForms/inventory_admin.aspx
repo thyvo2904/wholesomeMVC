@@ -35,16 +35,22 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
-	<section id="content_header" class="row">
-		<nav class="navbar navbar-inverse">
-			<ul class="nav nav-pills">
-				<li><a href="#" class="active">Current Inventory</a></li>
+	<section id="content_header">
+		<nav class="navbar">
+			<h4>Quick Links</h4>
+			<ul class="footer-link">
+				<li><a href="#" class="active">Current Item Overview</a></li>
+				<li>&bull;</li>
 				<li><a href="Settings.aspx">Settings</a></li>
+				<li>&bull;</li>
 				<li><a href="account_management.aspx">Account Management</a></li>
+				<li>&bull;</li>
 				<li><a href="#">History</a></li>
+				<li>&bull;</li>
 				<li><a href="Item_Management.aspx">Item Management</a></li>
 			</ul>
 		</nav>
+	</section>
 
 		<section>
 			<!-- chart #1 -->
