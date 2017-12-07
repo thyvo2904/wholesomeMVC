@@ -334,11 +334,12 @@ namespace WholesomeMVC.WebForms
 			{
 				using (SqlConnection connection = new SqlConnection(ConnectionString))
 				{
-					SqlCommand command1 = new SqlCommand();
-					command1.Connection = connection;
-					command1.CommandType = System.Data.CommandType.Text;
+                    SqlCommand command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
-					command1.CommandText = @"
+                        CommandText = @"
 						INSERT INTO [wholesomeDB].[dbo].[SavedItems] (
 							[ndb_no],
 							[name],
@@ -351,9 +352,10 @@ namespace WholesomeMVC.WebForms
 							@NRF6,
 							@savedby,
 							@savedate)
-					";
+					"
+                    };
 
-					command1.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = newFoodArray[intItemIndex].ndbNo;
+                    command1.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = newFoodArray[intItemIndex].ndbNo;
 					command1.Parameters.Add("@name", SqlDbType.NVarChar, 500).Value = newFoodArray[intItemIndex].name;
 					command1.Parameters.Add("@NRF6", SqlDbType.Decimal).Value = newFoodArray[intItemIndex].NRF6;
 					command1.Parameters.Add("@savedby", SqlDbType.VarChar, 50).Value = "Nathan Hamrick";

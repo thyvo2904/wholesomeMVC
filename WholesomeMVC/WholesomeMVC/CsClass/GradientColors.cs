@@ -35,14 +35,16 @@ namespace WholesomeMVC.WebForms
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 {
-                    SqlCommand command1 = new SqlCommand();
-                    command1.Connection = connection;
-                    command1.CommandType = System.Data.CommandType.Text;
+                    SqlCommand command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
 
-                    command1.CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] ([HexColor]) VALUES
+                        CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] ([HexColor]) VALUES
 
-               (@HexColor) WHERE GradientValue = '1'";
+               (@HexColor) WHERE GradientValue = '1'"
+                    };
 
                     command1.Parameters.Add("@HexColor", SqlDbType.NChar, 10).Value = newColor1;
                     //command1.Parameters.Add("@GradientValue", SqlDbType.Date).Value = ;
@@ -68,14 +70,16 @@ namespace WholesomeMVC.WebForms
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 {
-                    SqlCommand command1 = new SqlCommand();
-                    command1.Connection = connection;
-                    command1.CommandType = System.Data.CommandType.Text;
+                    SqlCommand command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
 
-                    command1.CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] ([HexColor]) VALUES
+                        CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] ([HexColor]) VALUES
 
-               (@HexColor) WHERE GradientValue = '2'";
+               (@HexColor) WHERE GradientValue = '2'"
+                    };
 
                     command1.Parameters.Add("@HexColor", SqlDbType.NChar, 10).Value = newColor2;
                     //command1.Parameters.Add("@GradientValue", SqlDbType.Date).Value = ;
@@ -101,14 +105,16 @@ namespace WholesomeMVC.WebForms
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 {
-                    SqlCommand command1 = new SqlCommand();
-                    command1.Connection = connection;
-                    command1.CommandType = System.Data.CommandType.Text;
+                    SqlCommand command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
 
-                    command1.CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] ([HexColor]) VALUES
+                        CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] ([HexColor]) VALUES
 
-               (@HexColor) WHERE GradientValue = '3'";
+               (@HexColor) WHERE GradientValue = '3'"
+                    };
 
                     command1.Parameters.Add("@HexColor", SqlDbType.NChar, 10).Value = newColor3;
                     //command1.Parameters.Add("@GradientValue", SqlDbType.Date).Value = ;

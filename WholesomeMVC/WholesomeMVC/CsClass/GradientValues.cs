@@ -38,14 +38,16 @@ namespace WholesomeMVC.WebForms
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 {
-                    SqlCommand command1 = new SqlCommand();
-                    command1.Connection = connection;
-                    command1.CommandType = System.Data.CommandType.Text;
+                    SqlCommand command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
 
-                    command1.CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] SET
+                        CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] SET
 
-               MaxValue = @MaxValue, LastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE GradientEntry = '1'";
+               MaxValue = @MaxValue, LastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE GradientEntry = '1'"
+                    };
 
                     command1.Parameters.Add("@MaxValue", SqlDbType.Decimal, 18).Value = value;
                     //command1.Parameters.Add("@GradientValue", SqlDbType.Date).Value = ;
@@ -57,14 +59,16 @@ namespace WholesomeMVC.WebForms
                     command1.ExecuteNonQuery();
                     connection.Close();
 
-                    command1 = new SqlCommand();
-                    command1.Connection = connection;
-                    command1.CommandType = System.Data.CommandType.Text;
+                    command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
 
-                    command1.CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] SET
+                        CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] SET
 
-               MinValue = @MinValue, LastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE GradientEntry = '2'";
+               MinValue = @MinValue, LastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE GradientEntry = '2'"
+                    };
 
                     command1.Parameters.Add("@MinValue", SqlDbType.Decimal, 18).Value = value;
                     //command1.Parameters.Add("@GradientValue", SqlDbType.Date).Value = ;
@@ -88,14 +92,16 @@ namespace WholesomeMVC.WebForms
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 {
-                    SqlCommand command1 = new SqlCommand();
-                    command1.Connection = connection;
-                    command1.CommandType = System.Data.CommandType.Text;
+                    SqlCommand command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
 
-                    command1.CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] SET
+                        CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] SET
 
-               MaxValue = @MaxValue, LastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE GradientEntry = '2'";
+               MaxValue = @MaxValue, LastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE GradientEntry = '2'"
+                    };
 
                     command1.Parameters.Add("@MaxValue", SqlDbType.Decimal, 18).Value = value;
                     //command1.Parameters.Add("@GradientValue", SqlDbType.Date).Value = ;
@@ -107,14 +113,16 @@ namespace WholesomeMVC.WebForms
                     command1.ExecuteNonQuery();
                     connection.Close();
 
-                    command1 = new SqlCommand();
-                    command1.Connection = connection;
-                    command1.CommandType = System.Data.CommandType.Text;
+                    command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
 
-                    command1.CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] SET
+                        CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] SET
 
-               MinValue = @MinValue, LastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE GradientEntry = '3'";
+               MinValue = @MinValue, LastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE GradientEntry = '3'"
+                    };
 
                     command1.Parameters.Add("@MinValue", SqlDbType.Decimal, 18).Value = value;
                     //command1.Parameters.Add("@GradientValue", SqlDbType.Date).Value = ;
@@ -138,14 +146,16 @@ namespace WholesomeMVC.WebForms
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 {
-                    SqlCommand command1 = new SqlCommand();
-                    command1.Connection = connection;
-                    command1.CommandType = System.Data.CommandType.Text;
+                    SqlCommand command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
 
-                    command1.CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] SET
+                        CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] SET
 
-               MaxValue = @MaxValue, LastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE GradientEntry = '3'";
+               MaxValue = @MaxValue, LastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE GradientEntry = '3'"
+                    };
 
                     command1.Parameters.Add("@MaxValue", SqlDbType.Decimal, 18).Value = value;
                     //command1.Parameters.Add("@GradientValue", SqlDbType.Date).Value = ;
@@ -157,14 +167,16 @@ namespace WholesomeMVC.WebForms
                     command1.ExecuteNonQuery();
                     connection.Close();
 
-                    command1 = new SqlCommand();
-                    command1.Connection = connection;
-                    command1.CommandType = System.Data.CommandType.Text;
+                    command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
 
-                    command1.CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] SET
+                        CommandText = @"UPDATE [wholesomeDB].[dbo].[GradientValue] SET
 
-               MinValue = @MinValue, LastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE GradientEntry = '4'";
+               MinValue = @MinValue, LastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE GradientEntry = '4'"
+                    };
 
                     command1.Parameters.Add("@MinValue", SqlDbType.Decimal, 18).Value = value;
                     //command1.Parameters.Add("@GradientValue", SqlDbType.Date).Value = ;

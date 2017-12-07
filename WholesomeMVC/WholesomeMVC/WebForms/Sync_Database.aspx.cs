@@ -41,8 +41,10 @@ namespace WholesomeMVC.WebForms
 
 
                 SqlCommand myCommand = new SqlCommand("Pull_New_Ceres_Items",
-                                                         sc);
-                myCommand.CommandType = CommandType.StoredProcedure;
+                                                         sc)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
 
                 myCommand.ExecuteNonQuery();
 
@@ -434,18 +436,20 @@ namespace WholesomeMVC.WebForms
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 {
-                    SqlCommand command1 = new SqlCommand();
-                    command1.Connection = connection;
-                    command1.CommandType = System.Data.CommandType.Text;
+                    SqlCommand command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
 
-                    command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
+                        CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
                      + " Description = @Description, Long_Desc = @Long_Desc,"
                      + " protein = @protein, fiber = @fiber, vitaminA = @vitaminA, vitaminC = @vitaminC, " +
                      "vitaminD = @vitaminD, Potassium = @Potassium,"
                      + " calcium = @calcium, iron = @iron, saturatedFat = @saturatedFat, TotalSugar = @TotalSugar, " +
                      "AddedSugar = @AddedSugar, Sodium = @Sodium,"
-                     + " KCal = @KCal, nrf6 = @nrf6, lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE No_ = @No_";
+                     + " KCal = @KCal, nrf6 = @nrf6, lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE No_ = @No_"
+                    };
 
 
                     command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
