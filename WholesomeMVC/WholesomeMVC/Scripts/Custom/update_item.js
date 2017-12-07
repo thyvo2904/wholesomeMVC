@@ -1,18 +1,11 @@
 $(document).ready(function () {
-	$('.equal-height').matchHeight({
-		byRow: true,
-		property: 'height',
-		target: null,
-		remove: false
-	});
-
 	$("#gridMatchedCeresIDS").footable({
 		// options go here
-		"expandFirst": true,
+		"expandFirst": false,
 		"showToggle": true,
 		"paging": {
 			"enabled": true,
-			"position": "center"
+			"position": "left"
 		},
 		"sorting": {
 			"enabled": true
@@ -22,38 +15,45 @@ $(document).ready(function () {
 			"delay": 0,
 			"dropdownTitle": "Search in:",
 			"position": "right",
+		},
+		"editing": {
+			"enabled": true,
+			"allowDelete": false,
+			"editRow": function (row) {
+				$("#hidden_ceresid").val(row.value["col1"]);
+				$("#hidden_ceres_name").val(row.value["col2"]);
+				$("#hidden_ndbno").val(row.value["col5"]);
+				$(".modal").modal("show");
+				$("#button_expand_item").click();
+			}
 		}
 	});
 });
 
-$(".expend-button").click(function () {
-	$("#hidden_ceres_name").val($(this).siblings(".hidden_ceres_name").val());
-	$("#hidden_ceresid").val($(this).siblings(".hidden_ceresid").val());
-	$("#hidden_ndbno").val($(this).siblings(".hidden_ndbno").val());
-	$("#button_expand_item").click();
-});
-
-$(function () {
-    $('[id*=gridMatchedCeresIDS]').footable();
-});
+//$(".expend-button").click(function () {
+//	$("#hidden_ceres_name").val($(this).siblings(".hidden_ceres_name").val());
+//	$("#hidden_ceresid").val($(this).siblings(".hidden_ceresid").val());
+//	$("#hidden_ndbno").val($(this).siblings(".hidden_ndbno").val());
+//	$("#button_expand_item").click();
+//});
 
 function showDiv(elem) {
     if (elem.value === 0) {
-        document.getElementById('document.getElementById("divold")').style.display = "block";
-        document.getElementById('divnew').style.display = "none";
-        document.getElementById('divgridview').style.display = "none";
+        $("#divold").style.display = "block";
+        $("#divnew").style.display = "none";
+        $("#divgridview").style.display = "none";
     } else if (elem.value === 1) {
-        document.getElementById('divnew').style.display = "block";
-        document.getElementById('divold').style.display = "none";
-        document.getElementById('divnew').style.display = "none";
+        $("#divnew").style.display = "block";
+        $("#divold").style.display = "none";
+        $("#divnew").style.display = "none";
     } else if (elem.value === 2) {
-        document.getElementById('divnew').style.display = "none";
-        document.getElementById('divold').style.display = "none";
-        document.getElementById('divgridview').style.display = "block";
+        $("#divnew").style.display = "none";
+        $("#divold").style.display = "none";
+        $("#divgridview").style.display = "block";
 
     } else {
-        document.getElementById('divold').style.display = "block";
-        document.getElementById('divnew').style.display = "none";
-        document.getElementById('divgridview').style.display = "block";
+        $("#divold").style.display = "block";
+        $("#divnew").style.display = "none";
+        $("#divgridview").style.display = "block";
     }
 }
