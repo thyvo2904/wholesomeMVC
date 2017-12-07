@@ -89,8 +89,7 @@ namespace WholesomeMVC.WebForms
             }
 
             //check usda api first, if result null, use second api
-            if (result.list.item != null)
-            {
+           
                 for (int i = 0; i < result.list.item.Count; i++)
                 {
 
@@ -283,7 +282,7 @@ namespace WholesomeMVC.WebForms
                 indexresult.savedFoodGroup = newFood.foodGroup;
                 indexresult.savedNrf6 = newFood.NRF6;
 
-            }
+            
             //else
             //{
             //    string api2 = System.Web.HttpUtility.UrlPathEncode(foodSearch);
@@ -939,20 +938,20 @@ namespace WholesomeMVC.WebForms
                 //indexresult.savedNrf6 = newFood.NRF6;
 
             }
-            //else
-            //{
-            //    string api2 = System.Web.HttpUtility.UrlPathEncode(foodSearch);
-            //    //String urlAPI2pt1 = "https://api.edamam.com/api/food-database/parser?ingr=";
-            //    //String urlAPI2pt2 = "&app_id ={cd27db7d} &app_key ={9d149ec2802f86f42a15dcbd16891ff9}&page = 0";
+            else
+            {
+                string api2 = System.Web.HttpUtility.UrlPathEncode(foodSearch);
+                //String urlAPI2pt1 = "https://api.edamam.com/api/food-database/parser?ingr=";
+                //String urlAPI2pt2 = "&app_id ={cd27db7d} &app_key ={9d149ec2802f86f42a15dcbd16891ff9}&page = 0";
 
 
 
-            //    String apiRequest = urlPartOne + api2 + urlPartTwo;
+                String apiRequest = urlPartOne + api2 + urlPartTwo;
 
-            //    var json2 = new WebClient().DownloadString(apiRequest);
-            //    var result2 = JsonConvert.DeserializeObject<Search>(json2);
+                var json2 = new WebClient().DownloadString(apiRequest);
+                var result2 = JsonConvert.DeserializeObject<Search>(json2);
 
-            //}
+            }
 
         }
 

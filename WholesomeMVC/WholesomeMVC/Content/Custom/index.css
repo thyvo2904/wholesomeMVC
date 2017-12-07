@@ -40,8 +40,26 @@
 
 /* banner-button */
 .banner-button {
-    padding: 50px;
+    padding: 25px;
 }
 .banner-button > img {
     padding-bottom: 25px;
 }
+
+#easyPaginate {
+    width: 300px;
+}
+
+    #easyPaginate img {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+.easyPaginateNav a {
+    padding: 5px;
+}
+
+    .easyPaginateNav a.current {
+        font-weight: bold;
+        text-decoration: underline;
+    }

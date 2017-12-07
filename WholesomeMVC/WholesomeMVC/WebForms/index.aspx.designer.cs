@@ -85,21 +85,39 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.HyperLink link_recent;
         
         /// <summary>
-        /// image_saved_items control.
+        /// image_comparison control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image image_saved_items;
+        protected global::System.Web.UI.WebControls.Image image_comparison;
         
         /// <summary>
-        /// link_saved_items control.
+        /// link_comparison control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink link_saved_items;
+        protected global::System.Web.UI.WebControls.HyperLink link_comparison;
+        
+        /// <summary>
+        /// image_farmers_market control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image image_farmers_market;
+        
+        /// <summary>
+        /// link_farmers_market control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink link_farmers_market;
     }
 }
