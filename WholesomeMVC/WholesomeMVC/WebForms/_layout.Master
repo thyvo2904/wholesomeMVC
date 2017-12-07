@@ -129,11 +129,19 @@
 				</ul>
 				<br />
 				<p class="text-center">
+					<img src="/Content/Images/Blue-Ridge-Area-Food-Bank.png" class="img-responsive" width="200" />
+				</p>
+				<p class="text-center">
 					&copy;
 					<asp:Label runat="server" ID="label_year"></asp:Label>
 					- Wholesome Inc. All rights reserved.
 				</p>
+				<p class="text-center">
+					made with <i class="fa fa-heart"></i>, <i class="fa fa-hand-peace-o"></i>, and no <i class="fa fa-bed"></i> <i class="fa fa-moon-o"></i>
+				</p>
 			</section>
+            <section class="row">
+            </section>
 		</footer>
 	</form>
 

@@ -41,7 +41,6 @@ namespace WholesomeMVC.WebForms
                 btnCompare.Visible = false;
                 sook1.Visible = false;
                 sook2.Visible = false;
-                btnCompare.Attributes["Title"] = "Please login first!";
             }
             if (IsPostBack)
             {
@@ -50,10 +49,10 @@ namespace WholesomeMVC.WebForms
             else
             {
                 // add color_legend
-                String strScaleLegend = "Color Scale Legend";
+                //String strScaleLegend = "Color Scale Legend";
 
-                label_color_scale_legend.Text = strScaleLegend;
-                image_color_scale_legend.ImageUrl = "/Content/Images/image_color_scale_legend.png";
+                //label_color_scale_legend.Text = strScaleLegend;
+                //image_color_scale_legend.ImageUrl = "/Content/Images/image_color_scale_legend.png";
 
                 // set page variables
                 String strTitle = "Search Results";
@@ -134,11 +133,10 @@ namespace WholesomeMVC.WebForms
             String colorScaleStyle = "";
             double score = double.Parse(item["ND Score"].ToString());
 
-            if (score <= 4.65)
+            if (score <= 4.66)
             {
                 colorScaleStyle = GradientColors.getColor1();
             }
-
             else if ((score >= 4.66) && (score <= 27.99))
             {
                 colorScaleStyle = GradientColors.getColor2();
@@ -210,11 +208,10 @@ namespace WholesomeMVC.WebForms
             double score = FoodItem.newFood.NRF6;
             String colorScaleStyle = "";
 
-              if(score <= 4.65)
-              {
+            if(score <= 4.65)
+            {
                 colorScaleStyle = GradientColors.getColor1();
-              }
-
+            }
             else if ((score >= 4.66) && (score <= 27.99))
             {
                 colorScaleStyle = GradientColors.getColor2();
@@ -257,13 +254,13 @@ namespace WholesomeMVC.WebForms
 		 * If ceres item doesn't exist prompt the user to open ceres and enter it there first.
 		 */
 
-        protected String getuserid()
+        protected String getloginid()
         {
             string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             String getid;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                string result = "SELECT LoginID FROM dbo.Session WHERE Id = '" + HttpContext.Current.User.Identity.GetUserId() + "' ";
+                string result = "SELECT max(LoginID) FROM dbo.Session WHERE Id = '" + HttpContext.Current.User.Identity.GetUserId() + "' ";
                 SqlCommand showresult = new SqlCommand(result, con);
                 con.Open();
                 getid = showresult.ExecuteScalar().ToString();
@@ -350,10 +347,19 @@ namespace WholesomeMVC.WebForms
 					)
 				"
                     };
-                    command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
+                    if (lblIndexResult.Text == "NaN")
+                    {
+                        command1.Parameters.AddWithValue("@nrf6", DBNull.Value);
+                    }
+                    else
+                    {
                         command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
+                    }
+
+                    command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
+                        //command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
                         command1.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = lblName.Value;
-                        command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getuserid();
+                        command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getloginid();
                         command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
                         command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
                         command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;
@@ -477,16 +483,15 @@ namespace WholesomeMVC.WebForms
 
 
 
-                            CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([ndb_no], [description 2], [nrf6], [No_], [UserID], [LastUpdatedBy], [LastUpdated]) VALUES
-                                      (@ndbno, @name,  @ceresdescription, @nrf6, @ceresitemnumber, @userID, @lastupdatedby, @lastupdated)"
+                            CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([No_], [ndb_no], [Description], [nrf6], [LoginID], [LastUpdatedBy], [LastUpdated], [description 2]) VALUES
+                                      (@ceresitemnumber, @ndbno, @ceresdescription, @nrf6, @loginID, @lastupdatedby, @lastupdated, @name)"
                         };
-
+                        command1.Parameters.Add("@ceresitemnumber", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;
                         command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
-                        command1.Parameters.Add("@name", SqlDbType.VarChar, 500).Value = FoodItem.newFood.name;
-                        command1.Parameters.Add("@ceresdescription", SqlDbType.VarChar, 50).Value = txtCeresDescription.Text;
+                        command1.Parameters.Add("@ceresdescription", SqlDbType.NVarChar, 50).Value = txtCeresDescription.Text;
                         command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = FoodItem.newFood.NRF6;
-                        command1.Parameters.Add("@ceresitemnumber", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;            
-                        command1.Parameters.Add("@userID", SqlDbType.Int).Value = HttpContext.Current.User.Identity.GetUserId();
+                        command1.Parameters.Add("@name", SqlDbType.NVarChar, 500).Value = FoodItem.newFood.name;            
+                        command1.Parameters.Add("@loginID", SqlDbType.Int).Value = "1";
                         command1.Parameters.Add("@lastupdatedby", SqlDbType.NVarChar, 20).Value = "Nathan Hamrick";
                         command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
 

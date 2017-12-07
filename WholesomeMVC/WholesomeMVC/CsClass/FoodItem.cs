@@ -67,7 +67,7 @@ namespace WholesomeMVC.WebForms
 
 
             String urlPartOne = "https://api.nal.usda.gov/ndb/search/?format=json&q=";
-            String urlPartTwo = "&sort=n&max=50&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
+            String urlPartTwo = "&sort=r&max=50&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
 
 
             String url = urlPartOne + foodSearch + urlPartTwo;
@@ -284,20 +284,20 @@ namespace WholesomeMVC.WebForms
                 indexresult.savedNrf6 = newFood.NRF6;
 
             }
-            else
-            {
-                string api2 = System.Web.HttpUtility.UrlPathEncode(foodSearch);
-                String urlAPI2pt1 = "https://api.edamam.com/api/food-database/parser?ingr=";
-                String urlAPI2pt2 = "&app_id ={cd27db7d} &app_key ={9d149ec2802f86f42a15dcbd16891ff9}&page = 0";
+            //else
+            //{
+            //    string api2 = System.Web.HttpUtility.UrlPathEncode(foodSearch);
+            //   // String urlAPI2pt1 = "https://api.edamam.com/api/food-database/parser?ingr=";
+            //   // String urlAPI2pt2 = "&app_id ={cd27db7d} &app_key ={9d149ec2802f86f42a15dcbd16891ff9}&page = 0";
                 
 
 
-                String apiRequest = urlPartOne + api2 + urlPartTwo;
+            //    String apiRequest = urlPartOne + api2 + urlPartTwo;
 
-                var json2 = new WebClient().DownloadString(apiRequest);
-                var result2 = JsonConvert.DeserializeObject<Search>(json2);
+            //    var json2 = new WebClient().DownloadString(apiRequest);
+            //    var result2 = JsonConvert.DeserializeObject<Search>(json2);
             
-            }
+            //}
 
         }
         protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
@@ -329,7 +329,7 @@ namespace WholesomeMVC.WebForms
 
 
             String urlPartOne = "https://api.nal.usda.gov/ndb/search/?format=json&q=";
-            String urlPartTwo = "&sort=n&max=10&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
+            String urlPartTwo = "&sort=r&max=10&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
 
 
             String url = urlPartOne + foodSearch + urlPartTwo;
@@ -517,7 +517,7 @@ namespace WholesomeMVC.WebForms
 
 
             String urlPartOne = "https://api.nal.usda.gov/ndb/search/?format=json&q=";
-            String urlPartTwo = "&sort=n&max=10&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
+            String urlPartTwo = "&sort=r&max=10&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
 
 
             String url = urlPartOne + foodSearch + urlPartTwo;
@@ -756,7 +756,7 @@ namespace WholesomeMVC.WebForms
 
 
             String urlPartOne = "https://api.nal.usda.gov/ndb/search/?format=json&q=";
-            String urlPartTwo = "&sort=n&max=25&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
+            String urlPartTwo = "&sort=r&max=25&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
 
 
             String url = urlPartOne + foodSearch + urlPartTwo;
@@ -939,20 +939,20 @@ namespace WholesomeMVC.WebForms
                 //indexresult.savedNrf6 = newFood.NRF6;
 
             }
-            else
-            {
-                string api2 = System.Web.HttpUtility.UrlPathEncode(foodSearch);
-                String urlAPI2pt1 = "https://api.edamam.com/api/food-database/parser?ingr=";
-                String urlAPI2pt2 = "&app_id ={cd27db7d} &app_key ={9d149ec2802f86f42a15dcbd16891ff9}&page = 0";
+            //else
+            //{
+            //    string api2 = System.Web.HttpUtility.UrlPathEncode(foodSearch);
+            //    //String urlAPI2pt1 = "https://api.edamam.com/api/food-database/parser?ingr=";
+            //    //String urlAPI2pt2 = "&app_id ={cd27db7d} &app_key ={9d149ec2802f86f42a15dcbd16891ff9}&page = 0";
 
 
 
-                String apiRequest = urlPartOne + api2 + urlPartTwo;
+            //    String apiRequest = urlPartOne + api2 + urlPartTwo;
 
-                var json2 = new WebClient().DownloadString(apiRequest);
-                var result2 = JsonConvert.DeserializeObject<Search>(json2);
+            //    var json2 = new WebClient().DownloadString(apiRequest);
+            //    var result2 = JsonConvert.DeserializeObject<Search>(json2);
 
-            }
+            //}
 
         }
 

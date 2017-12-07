@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebForms/_layout.Master" AutoEventWireup="true" CodeBehind="indexresult.aspx.cs" Inherits="WholesomeMVC.WebForms.indexresult" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebForms/_layout.Master" AutoEventWireup="True" CodeBehind="indexresult.aspx.cs" Inherits="WholesomeMVC.WebForms.indexresult" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="style" runat="server">
     <link href="/Content/Custom/indexresult.css" rel="stylesheet" type="text/css" runat="server" />
@@ -53,14 +53,14 @@
 	<section>
 		<h3><asp:Literal ID="search_summary" runat="server" /></h3>
 		<%--<h4><asp:Literal ID="filter_applied" runat="server" /></h4>--%>
-	    <section id="content_header">
+	    <%--<section id="content_header">
 		<h4><asp:Label ID="label_color_scale_legend" runat="server" /></h4>
 		<div class="row">
 			<div class="col-md-offset-1 col-md-10">
 				<asp:Image ID="image_color_scale_legend" runat="server" CssClass="img-responsive img-rounded" />
 			</div>
 		</div>
-	</section>
+	</section>--%>
 
 		<!-- grid view of search result panels -->
 		<div id="search_results" runat="server" class="row"></div>

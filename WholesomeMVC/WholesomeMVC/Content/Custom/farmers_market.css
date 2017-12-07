@@ -1,0 +1,15 @@
+﻿.body-content > section:not(:first-child) {
+	margin: 50px 0;
+}
+
+/* override bootstrap update button */
+#btnSearchFarmersMarket {
+	background-color: #70C277 !important;
+	border-color: #70C277 !important;
+	color: #FFFFFF !important;
+}
+
+/* override footable search buttons */
+.footable-filtering-search button {
+	display: none;
+}

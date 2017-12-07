@@ -14,10 +14,9 @@ namespace WholesomeMVC.WebForms
 {
     public partial class advanced_search : System.Web.UI.Page
     {
-        string dataSource = "";
+ 
         string sortBy = "";
         string reportType = "";
-        string ndbNo = "";
         string searchTerms = "";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -43,134 +42,126 @@ namespace WholesomeMVC.WebForms
                 //    con.Close();
 
                 //    ddlCategory.Items.Insert(0, new ListItem("--Select Category--", "0"));
-                //}
+
+				/**
+				 * set up page variables
+				 */
+             	String strTitle = "Advanced Search";
+
+				Literal page_title = (Literal)Master.FindControl("page_title");
+				page_title.Text = strTitle;
+				Label body_title = (Label)Master.FindControl("body_title");
+				body_title.Text = strTitle;
             }
         }
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
 
-
-            if (txtSearch.Text != "")
-            {
-                String foodSearch = "";
-                foodSearch = txtSearch.Text;
-                FoodItem.findNdbno(foodSearch);
-                Response.Redirect("~/IndexResults.aspx");
-            }
-
-            else
-            {
-                Response.Write("<script>alert('Please enter a value');</script>");
-            }
-
-        }
         protected void btnAdvSearch_Click(object sender, EventArgs e)
         {
             if (cbxAPI.Checked)
             {
-                if (txtAdvSearch.Value != "" && DropDownList1.SelectedIndex == 0)
+                if (txtAdvSearch.Text != "" && ddlCategory.SelectedIndex == 0)
                 {
-                    searchTerms = txtAdvSearch.Value;
+                    searchTerms = txtAdvSearch.Text;
                 }
-                else if (DropDownList1.SelectedIndex == 1)
+                else if (ddlCategory.SelectedIndex == 1)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=0100";
+                    searchTerms = txtAdvSearch.Text + "&fg=0100";
                 }
-                else if (DropDownList1.SelectedIndex == 2)
+                else if (ddlCategory.SelectedIndex == 2)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=0200";
+                    searchTerms = txtAdvSearch.Text + "&fg=0200";
                 }
-                else if (DropDownList1.SelectedIndex == 3)
+                else if (ddlCategory.SelectedIndex == 3)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=0300";
+                    searchTerms = txtAdvSearch.Text + "&fg=0300";
                 }
-                else if (DropDownList1.SelectedIndex == 4)
+                else if (ddlCategory.SelectedIndex == 4)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=0400";
+                    searchTerms = txtAdvSearch.Text + "&fg=0400";
                 }
-                else if (DropDownList1.SelectedIndex == 5)
+                else if (ddlCategory.SelectedIndex == 5)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=0500";
+                    searchTerms = txtAdvSearch.Text + "&fg=0500";
                 }
-                else if (DropDownList1.SelectedIndex == 6)
+                else if (ddlCategory.SelectedIndex == 6)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=0600";
+                    searchTerms = txtAdvSearch.Text + "&fg=0600";
                 }
-                else if (DropDownList1.SelectedIndex == 7)
+                else if (ddlCategory.SelectedIndex == 7)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=0700";
+                    searchTerms = txtAdvSearch.Text + "&fg=0700";
                 }
-                else if (DropDownList1.SelectedIndex == 8)
+                else if (ddlCategory.SelectedIndex == 8)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=0800";
+                    searchTerms = txtAdvSearch.Text + "&fg=0800";
                 }
-                else if (DropDownList1.SelectedIndex == 9)
+                else if (ddlCategory.SelectedIndex == 9)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=0900";
+                    searchTerms = txtAdvSearch.Text + "&fg=0900";
                 }
-                else if (DropDownList1.SelectedIndex == 10)
+                else if (ddlCategory.SelectedIndex == 10)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=1000";
+                    searchTerms = txtAdvSearch.Text + "&fg=1000";
                 }
-                else if (DropDownList1.SelectedIndex == 11)
+                else if (ddlCategory.SelectedIndex == 11)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=1100";
+                    searchTerms = txtAdvSearch.Text + "&fg=1100";
                 }
-                else if (DropDownList1.SelectedIndex == 12)
+                else if (ddlCategory.SelectedIndex == 12)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=1200";
+                    searchTerms = txtAdvSearch.Text + "&fg=1200";
                 }
-                else if (DropDownList1.SelectedIndex == 13)
+                else if (ddlCategory.SelectedIndex == 13)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=1300";
+                    searchTerms = txtAdvSearch.Text + "&fg=1300";
                 }
-                else if (DropDownList1.SelectedIndex == 14)
+                else if (ddlCategory.SelectedIndex == 14)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=1400";
+                    searchTerms = txtAdvSearch.Text + "&fg=1400";
                 }
-                else if (DropDownList1.SelectedIndex == 15)
+                else if (ddlCategory.SelectedIndex == 15)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=1500";
+                    searchTerms = txtAdvSearch.Text + "&fg=1500";
                 }
-                else if (DropDownList1.SelectedIndex == 16)
+                else if (ddlCategory.SelectedIndex == 16)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=1600";
+                    searchTerms = txtAdvSearch.Text + "&fg=1600";
                 }
-                else if (DropDownList1.SelectedIndex == 17)
+                else if (ddlCategory.SelectedIndex == 17)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=1700";
+                    searchTerms = txtAdvSearch.Text + "&fg=1700";
                 }
-                else if (DropDownList1.SelectedIndex == 18)
+                else if (ddlCategory.SelectedIndex == 18)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=1800";
+                    searchTerms = txtAdvSearch.Text + "&fg=1800";
                 }
-                else if (DropDownList1.SelectedIndex == 19)
+                else if (ddlCategory.SelectedIndex == 19)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=1900";
+                    searchTerms = txtAdvSearch.Text + "&fg=1900";
                 }
-                else if (DropDownList1.SelectedIndex == 20)
+                else if (ddlCategory.SelectedIndex == 20)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=2000";
+                    searchTerms = txtAdvSearch.Text + "&fg=2000";
                 }
-                else if (DropDownList1.SelectedIndex == 21)
+                else if (ddlCategory.SelectedIndex == 21)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=2100";
+                    searchTerms = txtAdvSearch.Text + "&fg=2100";
                 }
-                else if (DropDownList1.SelectedIndex == 22)
+                else if (ddlCategory.SelectedIndex == 22)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=2200";
+                    searchTerms = txtAdvSearch.Text + "&fg=2200";
                 }
-                else if (DropDownList1.SelectedIndex == 23)
+                else if (ddlCategory.SelectedIndex == 23)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=2500";
+                    searchTerms = txtAdvSearch.Text + "&fg=2500";
                 }
-                else if (DropDownList1.SelectedIndex == 24)
+                else if (ddlCategory.SelectedIndex == 24)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=3500";
+                    searchTerms = txtAdvSearch.Text + "&fg=3500";
                 }
-                else if (DropDownList1.SelectedIndex == 25)
+                else if (ddlCategory.SelectedIndex == 25)
                 {
-                    searchTerms = txtAdvSearch.Value + "&fg=3600";
+                    searchTerms = txtAdvSearch.Text + "&fg=3600";
                 }
 
                 if (cbxBranded.Checked)
@@ -341,7 +332,7 @@ namespace WholesomeMVC.WebForms
             }
             else if (cbxCeres.Checked)
             {
-                if (txtAdvSearch.Value != "" && DropDownList1.SelectedIndex!=0)
+                if (txtAdvSearch.Text != "" && ddlCategory.SelectedIndex!=0)
                 {
                     if (!indexresult.dataSearchResults.Columns.Contains("NDBno") && !indexresult.dataSearchResults.Columns.Contains("Name")
                         && !indexresult.dataSearchResults.Columns.Contains("ND Score"))
@@ -359,8 +350,8 @@ namespace WholesomeMVC.WebForms
                             go.Connection = con;
                             go.CommandText = "SELECT ABBREV.NDB_No as NDB_No ,ABBREV.[Shrt_Desc] as Shrt_Desc, ABBREV.[NDScore] as NDScore FROM FD_GROUP" +
                                 " INNER JOIN FOOD_DES ON FD_GROUP.FdGrp_CD = FOOD_DES.FdGrp_Cd " +
-                                "INNER JOIN ABBREV ON FOOD_DES.NDB_No = ABBREV.NDB_No where ABBREV.Shrt_Desc like '%"+ txtAdvSearch.Value.ToString()+"%'" +
-                                " and [dbo].[FD_GROUP].[FdGrp_Desc] = '" + DropDownList1.SelectedValue.ToString()+"'";
+                                "INNER JOIN ABBREV ON FOOD_DES.NDB_No = ABBREV.NDB_No where ABBREV.Shrt_Desc like '%"+ txtAdvSearch.Text.ToString()+"%'" +
+                                " and [dbo].[FD_GROUP].[FdGrp_Desc] = '" + ddlCategory.SelectedValue.ToString()+"'";
                             go.ExecuteNonQuery();
 
                             SqlDataReader readIn = go.ExecuteReader();
@@ -380,7 +371,7 @@ namespace WholesomeMVC.WebForms
                     }
 
                 }
-                else if (txtAdvSearch.Value != "")
+                else if (txtAdvSearch.Text != "")
                 {
                     if (!indexresult.dataSearchResults.Columns.Contains("NDBno") && !indexresult.dataSearchResults.Columns.Contains("Name")
                         && !indexresult.dataSearchResults.Columns.Contains("ND Score"))
@@ -398,7 +389,7 @@ namespace WholesomeMVC.WebForms
                             go.Connection = con;
                             go.CommandText = "SELECT NDB_No, Shrt_Desc, Energ_Kcal, [Protein_(g)], " +
                                 "[Fiber_TD_(g)], [Sugar_Tot_(g)], [Calcium_(mg)], [Iron_(mg)]," +
-                                " [Sodium_(mg)], [Vit_C_(mg)], Vit_A_IU, [FA_Sat_(g)], NDScore FROM ABBREV where Shrt_Desc like '%" + txtAdvSearch.Value.ToString() + "%'";
+                                " [Sodium_(mg)], [Vit_C_(mg)], Vit_A_IU, [FA_Sat_(g)], NDScore FROM ABBREV where Shrt_Desc like '%" + txtAdvSearch.Text.ToString() + "%'";
                             go.ExecuteNonQuery();
 
                             SqlDataReader readIn = go.ExecuteReader();
@@ -425,10 +416,10 @@ namespace WholesomeMVC.WebForms
 
             }
             Response.Redirect("~/IndexResults.aspx");
-            DropDownList1.ClearSelection();
-            txtAdvSearch.Value = String.Empty;
-        }
-    }
+			ddlCategory.ClearSelection();
+			txtAdvSearch.Text = String.Empty;
+		}
+	}
 }
 
 
