@@ -872,44 +872,20 @@ namespace WholesomeMVC.WebForms
 
             FoodItem.findNdbno(ndbno);
 
-            double score = FoodItem.newFood.NRF6;
-            String colorScaleStyle = "";
+			double score = FoodItem.newFood.NRF6;
+			String colorScaleStyle = "";
+            if (score <= 4.65)
+            {
+                colorScaleStyle = GradientColors.getColor1();
+            }
 
-            if (score < 0)
+            else if ((score >= 4.66) && (score <= 27.99))
             {
-                colorScaleStyle = GradientColors.getColor1() + " !important; color: white !important;";
+                colorScaleStyle = GradientColors.getColor2();
             }
-            else if ((score >= 0) && (score <= 2.33))
+            else if (score >= 28)
             {
-                colorScaleStyle = GradientColors.getColor2() + " !important; color: white !important;";
-            }
-            else if ((score > 2.33) && (score <= 4.66))
-            {
-                colorScaleStyle = GradientColors.getColor3() + " !important; color: white !important;";
-            }
-            else if ((score > 4.66) && (score <= 12.44))
-            {
-                colorScaleStyle = GradientColors.getColor4() + " !important; color: black !important;";
-            }
-            else if ((score > 12.44) && (score <= 20.22))
-            {
-                colorScaleStyle = GradientColors.getColor5() + " !important; color: black !important;";
-            }
-            else if ((score > 20.22) && (score <= 28))
-            {
-                colorScaleStyle = GradientColors.getColor6() + " !important; color: black !important;";
-            }
-            else if ((score > 28) && (score <= 35.33))
-            {
-                colorScaleStyle = GradientColors.getColor7() + " !important; color: white !important;";
-            }
-            else if ((score > 35.33) && (score <= 42.67))
-            {
-                colorScaleStyle = GradientColors.getColor8() + " !important; color: white !important;";
-            }
-            else if (score > 42.67)
-            {
-                colorScaleStyle = GradientColors.getColor9() + " !important; color: white !important;";
+                colorScaleStyle = GradientColors.getColor3();
             }
             else
             {
@@ -999,59 +975,53 @@ namespace WholesomeMVC.WebForms
             nR6 = (protein) + (fiber) + (vitaminA) + (vitaminC) + (calcium) + (iron);
             liMT = (saturatedFat / 20) + (totalSugar / 125) + (sodium / 2400);
 
+            NRF6 = nR6 - liMT;
 
-            //    //this.liMT = (((100 / kCal) * satFat / 20) + ((100 / kCal) * totalSugar / 125) + ((100 / kCal) * sodium / 2400) * 100);
-
-            //    //DV for Vitamin A: 5000UI
-            //    //DV for Vitamin C: 60mg
-            //    //DV for Iron: 18mg
-            //    //DV for Calcium: 1000mg
-            //    //DV for potassium: 4700mg
-            //    //Conversion: 1IU = 0.025mcg
-            //    double kCal = (Double.Parse(txtOldKCal.Text));
+            lblIndexResult.Text = NRF6.ToString();
 
 
-            //    double calcium = (((Double.Parse(txtOldCalcium.Text.Trim())) / 100) * 1000);
-            //    double vitA = (((Double.Parse(txtOldVA.Text.Trim()) / 100)) * 5000);
-            //    double vitC = (((Double.Parse(txtOldVC.Text.Trim())) / 100) * 60);
-            //    double protein = (Double.Parse(txtOldProtein.Text));
-            //    double fiber = (Double.Parse(txtOldFiber.Text));
-            //    double satFat = (Double.Parse(txtOldSatFat.Text));
-            //    double sugar = (Double.Parse(txtOldTotalSugar.Text));
-            //    double sodium = (Double.Parse(txtOldSodium.Text));
-            //    double iron = (((Double.Parse(txtOldIron.Text.Trim())) / 100) * 18);
 
 
-            //    nR6 = ((((100 / kCal) * protein / 50) + ((100 / kCal) * fiber / 25) + ((100 / kCal) * vitA / 5000)
-            //               + ((100 / kCal) * vitC / 60) + ((100 / kCal) * calcium / 1000) + ((100 / kCal) * iron / 18)) * 100);
 
-            //    liMT = (((100 / kCal) * satFat / 20) + ((100 / kCal) * sugar / 125) + ((100 / kCal) * sodium / 2400) * 100);
+            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
 
-            //    NRF6 = Math.Round(nR6 - liMT, 5);
-            //    lblOldResult.Text = Convert.ToString(NRF6);
 
-            //    if (txtOldKCal.Text.Equals(0))
-            //    {
-            //        lblOldResult.Text = "Uncategorized";
-            //        lblOldResult.Attributes["style"] = "font-weight:bold;text-align: center; font-size: 110%";
-            //    }
-            //    else if (NRF6 < 4.66)
-            //    {
-            //        lblOldResult.Attributes["style"] = "color:red; font-weight:bold;text-align: center; font-size: 110%";
-            //    }
-            //    else if ((NRF6 >= 4.66) && (NRF6 <= 28))
-            //    {
-            //        lblOldResult.Attributes["style"] = "color:yellow; font-weight:bold;background: black;text-align: center; font-size: 110%";
-            //    }
-            //    else if (NRF6 > 28)
-            //    {
-            //        lblOldResult.Attributes["style"] = "color:green; font-weight:bold;text-align: center; font-size: 110%";
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Response.Write("<script>alert('Please enter a valid value');</script>");
-            //}
-        }
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                {
+                    SqlCommand command1 = new SqlCommand();
+                    command1.Connection = connection;
+                    command1.CommandType = System.Data.CommandType.Text;
+
+                    //String description = txtDescription.Text;
+
+                    //if (description.Length > 48)
+                    //{
+                    //    description = description.Substring(0, 48);
+                    //}
+
+                    // UPDATE Wholesome_Item SET No_ = , ndb_no = , Description = , Long_Desc = ,
+                    // protein = , fiber = , vitaminA = , vitaminC = , vitaminD = , Potassium = ,
+                    // calcium = , iron = , saturatedFat = , TotalSugar = , AddedSugar = , Sodium = ,
+                    // KCal = , nrf6 = , lastUpdatedBy = , LastUpdated = WHERE No_ = 
+                    command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
+                    + " nrf6 = @nrf6, Loginid = @loginid"
+                    + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE No_ = @No_";
+
+
+                    //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+                    command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = "";
+                    //command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = description;
+                    command1.Parameters.Add("@Long_Desc", SqlDbType.NVarChar, 500).Value = "";
+                    command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
+                    command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = "Charles Moore";
+                    command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+
+
+                    connection.Open();
+                    command1.ExecuteNonQuery();
+                    connection.Close();
+                }
     }
 }
