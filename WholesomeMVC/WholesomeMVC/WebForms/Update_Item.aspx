@@ -23,9 +23,9 @@
 		<!-- nav to change between old/new/usda view -->
 		<h3><asp:Literal ID="view_mode" runat="server" /></h3>
 		<ul class="nav nav-pills" id="view_nav">
-			<li role="presentation"><a id="link_old_view" href="#">Manual: Old Label</a></li>
-			<li role="presentation"><a id="link_new_view" href="#">Manual: New Label</a></li>
-			<li role="presentation"><a id="link_usda_view" href="#">USDA</a></li>
+			<li role="presentation"><a id="link_old_view">Manual: Old Label</a></li>
+			<li role="presentation"><a id="link_new_view">Manual: New Label</a></li>
+			<li role="presentation"><a id="link_usda_view">USDA</a></li>
 		</ul>
 
 		<!-- Search items will show here -->
@@ -375,8 +375,8 @@
 
 					<div class="modal-body">
 						<ul class="nav nav-tabs">
-							<li role="presentation"><a id="link_add_manual" href="#">Manual Input</a></li>
-							<li role="presentation"><a id="link_add_usda_match" href="#">Closest USDA Match</a></li>
+							<li role="presentation"><a id="link_add_manual">Manual Input</a></li>
+							<li role="presentation"><a id="link_add_usda_match">Closest USDA Match</a></li>
 						</ul>
 						<br	/>
 						<table id="add_manual_view" class="table form-horizontal">

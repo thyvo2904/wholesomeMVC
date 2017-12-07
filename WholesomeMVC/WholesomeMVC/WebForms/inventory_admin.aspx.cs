@@ -32,7 +32,8 @@ namespace WholesomeMVC.WebForms
 				chart_1_header.Text = strChart1Header;
 				String strChart2Header = "Inventory Overview";
 				chart_2_header.Text = strChart2Header;
-                
+				String strWhatIfHeader = "What-If Scenario";
+				whatif_header.Text = strWhatIfHeader;
 			}
 
 		}
