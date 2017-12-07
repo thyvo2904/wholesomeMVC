@@ -851,10 +851,8 @@ namespace WholesomeMVC.WebForms
         protected void ExpandItem(object sender, EventArgs e)
         {
             // get data from front end
-            string ceresid = hidden_ceresid.Value;
-            
-            string ceres_name = hidden_ceres_name.Value;
-            
+            string ceresid = hidden_ceresid.Value;           
+            string ceres_name = hidden_ceres_name.Value;           
             string ndbno = hidden_ndbno.Value;
 			string view_mode = hidden_view_mode.Value;
 

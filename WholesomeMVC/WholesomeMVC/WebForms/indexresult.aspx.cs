@@ -485,6 +485,7 @@ namespace WholesomeMVC.WebForms
 
 
 
+
                             CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([No_], [ndb_no], [Description], [nrf6], [LoginID], [LastUpdatedBy], [LastUpdated], [description 2]) VALUES
                                       (@ceresitemnumber, @ndbno, @ceresdescription, @nrf6, @loginID, @lastupdatedby, @lastupdated, @name)"
                         };
@@ -492,8 +493,8 @@ namespace WholesomeMVC.WebForms
                         command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
                         command1.Parameters.Add("@ceresdescription", SqlDbType.NVarChar, 50).Value = txtCeresDescription.Text;
                         command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = FoodItem.newFood.NRF6;
-                        command1.Parameters.Add("@name", SqlDbType.NVarChar, 500).Value = FoodItem.newFood.name;            
-                        command1.Parameters.Add("@loginID", SqlDbType.Int).Value = "1";
+                        command1.Parameters.Add("@name", SqlDbType.NVarChar, 500).Value = FoodItem.newFood.name;
+                        command1.Parameters.Add("@loginID", SqlDbType.Int).Value = getloginid();
                         command1.Parameters.Add("@lastupdatedby", SqlDbType.NVarChar, 20).Value = "Nathan Hamrick";
                         command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
 
@@ -505,6 +506,8 @@ namespace WholesomeMVC.WebForms
             }
         }
 
+
     }
 }
+
 

@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="style" runat="server">
     <link href="/Content/Custom/indexresult.css" rel="stylesheet" type="text/css" runat="server" />
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="jquery.easyPaginate.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
@@ -63,7 +65,9 @@
 	</section>--%>
 
 		<!-- grid view of search result panels -->
+        
 		<div id="search_results" runat="server" class="row"></div>
+         
 
 		<!-- Modal for expanded view -->
 		<div class="modal fade" id="expanded_view" tabindex="-1" role="dialog" aria-labelledby="expanded view">
