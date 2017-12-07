@@ -10,13 +10,14 @@
 
 /* banner */
 #banner {
-    margin: 50px auto;
+   
     background-image: url(https://source.unsplash.com/1140x600/?food);
 	background-color: white;
-    background-size: cover;
+    background-size:cover;
 	border-radius: 4px;
-    min-height: 600px;
-    position: relative;
+   
+  
+   min-width:100%;
 }
 #banner > .background-color {
     min-height: 600px;
@@ -24,6 +25,7 @@
 }
 #banner > .background-color > div {
     position: absolute;
+    background-size:cover;
     top: 50%;
     left: 50%;
     height: 30%;
@@ -35,7 +37,7 @@
     font-weight: 600;
 }
 #banner > .background-color > div > #search-panel {
-    margin: 50px auto;
+    
 }
 
 /* banner-button */
