@@ -132,41 +132,18 @@ namespace WholesomeMVC.WebForms
             String colorScaleStyle = "";
             double score = double.Parse(item["ND Score"].ToString());
 
-            if (score < 0)
+            if (score <= 4.65)
             {
                 colorScaleStyle = GradientColors.getColor1();
             }
-            else if ((score >= 0) && (score <= 2.33))
+
+            else if ((score >= 4.66) && (score <= 27.99))
             {
                 colorScaleStyle = GradientColors.getColor2();
             }
-            else if ((score > 2.33) && (score <= 4.66))
+            else if (score >= 28)
             {
                 colorScaleStyle = GradientColors.getColor3();
-            }
-            else if ((score > 4.66) && (score <= 12.44))
-            {
-                colorScaleStyle = GradientColors.getColor4();
-            }
-            else if ((score > 12.44) && (score <= 20.22))
-            {
-                colorScaleStyle = GradientColors.getColor5();
-            }
-            else if ((score > 20.22) && (score <= 28))
-            {
-                colorScaleStyle = GradientColors.getColor6();
-            }
-            else if ((score > 28) && (score <= 35.33))
-            {
-                colorScaleStyle = GradientColors.getColor7();
-            }
-            else if ((score > 35.33) && (score <= 42.67))
-            {
-                colorScaleStyle = GradientColors.getColor8();
-            }
-            else if (score > 42.67)
-            {
-                colorScaleStyle = GradientColors.getColor9();
             }
             else
             {
@@ -218,6 +195,11 @@ namespace WholesomeMVC.WebForms
                 if (reader.HasRows)
                 {
                     btnSaveItem.Visible = false;
+                    txtCeresStatus.Text = "Matched";
+                }
+                else
+                {
+                    txtCeresStatus.Text = "Unmatched";
                 }
             }
 
@@ -226,41 +208,18 @@ namespace WholesomeMVC.WebForms
             double score = FoodItem.newFood.NRF6;
             String colorScaleStyle = "";
 
-            if (score < 0)
-            {
+              if(score <= 4.65)
+              {
                 colorScaleStyle = GradientColors.getColor1();
-            }
-            else if ((score >= 0) && (score <= 2.33))
+              }
+
+            else if ((score >= 4.66) && (score <= 27.99))
             {
                 colorScaleStyle = GradientColors.getColor2();
             }
-            else if ((score > 2.33) && (score <= 4.66))
+            else if (score >= 28)
             {
                 colorScaleStyle = GradientColors.getColor3();
-            }
-            else if ((score > 4.66) && (score <= 12.44))
-            {
-                colorScaleStyle = GradientColors.getColor4();
-            }
-            else if ((score > 12.44) && (score <= 20.22))
-            {
-                colorScaleStyle = GradientColors.getColor5();
-            }
-            else if ((score > 20.22) && (score <= 28))
-            {
-                colorScaleStyle = GradientColors.getColor6();
-            }
-            else if ((score > 28) && (score <= 35.33))
-            {
-                colorScaleStyle = GradientColors.getColor7();
-            }
-            else if ((score > 35.33) && (score <= 42.67))
-            {
-                colorScaleStyle = GradientColors.getColor8();
-            }
-            else if (score > 42.67)
-            {
-                colorScaleStyle = GradientColors.getColor9();
             }
             else
             {
