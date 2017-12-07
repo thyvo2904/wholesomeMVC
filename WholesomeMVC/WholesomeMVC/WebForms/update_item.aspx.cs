@@ -843,8 +843,11 @@ namespace WholesomeMVC.WebForms
         {
             // get data from front end
             string ceresid = hidden_ceresid.Value;
+            
             string ceres_name = hidden_ceres_name.Value;
+            
             string ndbno = hidden_ndbno.Value;
+			string view_mode = hidden_view_mode.Value;
 
             FoodItem.findNdbno(ndbno);
 
@@ -854,7 +857,6 @@ namespace WholesomeMVC.WebForms
             {
                 colorScaleStyle = GradientColors.getColor1();
             }
-
             else if ((score >= 4.66) && (score <= 27.99))
             {
                 colorScaleStyle = GradientColors.getColor2();
@@ -867,25 +869,48 @@ namespace WholesomeMVC.WebForms
             {
                 // do nothing
             }
+			colorScaleStyle = "background-color: " + colorScaleStyle;
 
-            nd_score_panel.Attributes["style"] = String.Format("background-color: {0}", colorScaleStyle);
+			switch (view_mode)
+			{
+				case "old":
+					nd_old_score_panel.Attributes["style"] = colorScaleStyle;
 
-            lblFoodName.Text = FoodItem.newFood.name;
-            lblIndexResult.Text = Convert.ToString(Math.Round(score, 2));
+					lblOldFoodName.Text = FoodItem.newFood.name;
+					lblOldIndexResult.Text = Convert.ToString(Math.Round(score, 2));
 
-            txtOldKCal.Text = FoodItem.newFood.kCal.ToString();
-            txtOldSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
-            txtOldSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
-            txtOldFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
-            txtOldTotalSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
-            txtOldProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
-            txtOldVitaminA.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
-            txtOldVitaminC.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
-            txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
-            txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+					txtOldKCal.Text = FoodItem.newFood.kCal.ToString();
+					txtOldSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
+					txtOldSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
+					txtOldFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
+					txtOldTotalSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
+					txtOldProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
+					txtOldVitaminA.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
+					txtOldVitaminC.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
+					txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
+					txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
 
-           // txtCeresNumber.Text = ceresid;
-            //txtCeresDescription.Text = ceres_name;
+					break;
+				case "new":
+					nd_new_score_panel.Attributes["style"] = colorScaleStyle;
+
+					lblNewFoodName.Text = FoodItem.newFood.name;
+					lblNewIndexResult.Text = Convert.ToString(Math.Round(score, 2));
+
+					txtNewKCal.Text = FoodItem.newFood.kCal.ToString();
+					txtNewSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
+					txtNewSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
+					txtNewFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
+					txtNewAddedSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
+					txtNewProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
+					txtNewVitaminD.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
+					txtNewCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
+					txtNewIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+					txtNewPotassium.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
+					break;
+				default:
+					break;
+			}
         }
 
         protected void btnCalculateOldNRF6_Click(object sender, EventArgs e)
@@ -953,7 +978,7 @@ namespace WholesomeMVC.WebForms
 
             NRF6 = nR6 - liMT;
 
-            lblIndexResult.Text = NRF6.ToString();
+            lblOldIndexResult.Text = NRF6.ToString();
 
 
 
@@ -983,18 +1008,21 @@ namespace WholesomeMVC.WebForms
                         // calcium = , iron = , saturatedFat = , TotalSugar = , AddedSugar = , Sodium = ,
                         // KCal = , nrf6 = , lastUpdatedBy = , LastUpdated = WHERE No_ = 
                         CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
-                    + " nrf6 = @nrf6, Loginid = @loginid"
-                    + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE No_ = @No_"
+                    + " nrf6 = @nrf6, Loginid = @loginid, GradientEntry = @GradientEntry,"
+                    + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [description 2] = @description2, FBC_Code = @FBC_Code " +
+                    "WHERE No_ = @No_"
                     };
 
 
-                    //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
-                    command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = "";
-                    //command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = description;
-                    command1.Parameters.Add("@Long_Desc", SqlDbType.NVarChar, 500).Value = "";
-                    //command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
+                    command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+                    command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = ;
+                    command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = ;
+                    command1.Parameters.Add("@loginid", SqlDbType.Int).Value = ;
+                    command1.Parameters.Add("@GradientEntry", SqlDbType.Int).Value = ;
+                    command1.Parameters.Add("@description2", SqlDbType.NVarChar, 50).Value = "";
+                    command1.Parameters.Add("@FBC_Code", SqlDbType.NVarChar, 10).Value = lblOldResult.Text;
                     command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value =HttpContext.Current.User.Identity.GetUserName();
-                    command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+                    command1.Parameters.Add("@lastupdated", SqlDbType.DateTime).Value = DateTime.Now;
 
 
                     connection.Open();
