@@ -274,19 +274,21 @@ namespace WholesomeMVC.WebForms
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 {
-                    SqlCommand command1 = new SqlCommand();
-                    command1.Connection = connection;
-                    command1.CommandType = System.Data.CommandType.Text;
+                    SqlCommand command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
-                    
 
-                    //UPDATE Wholesome_Item SET No_ = , ndb_no = , Description = , Long_Desc = ,
-                    //protein = , fiber = , vitaminA = , vitaminC = , vitaminD = , Potassium = ,
-                    //calcium = , iron = , saturatedFat = , TotalSugar = , AddedSugar = , Sodium = ,
-                    //KCal = , nrf6 = , lastUpdatedBy = , LastUpdated = WHERE No_ =
-                   command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
+
+                        //UPDATE Wholesome_Item SET No_ = , ndb_no = , Description = , Long_Desc = ,
+                        //protein = , fiber = , vitaminA = , vitaminC = , vitaminD = , Potassium = ,
+                        //calcium = , iron = , saturatedFat = , TotalSugar = , AddedSugar = , Sodium = ,
+                        //KCal = , nrf6 = , lastUpdatedBy = , LastUpdated = WHERE No_ =
+                        CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
                     + " [Description 2] = @Description, nrf6 = @nrf6, Loginid = @loginid,"
-                    + " GradientEntry = @GradientEntry, lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE No_ = @No_";
+                    + " GradientEntry = @GradientEntry, lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE No_ = @No_"
+                    };
 
 
                     //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
@@ -306,7 +308,7 @@ namespace WholesomeMVC.WebForms
                     command1.Parameters.Add("@AddedSugar", SqlDbType.Decimal, 18).Value = 0;
                     command1.Parameters.Add("@Sodium", SqlDbType.Decimal, 18).Value = txtOldSodium.Text;
                     command1.Parameters.Add("@KCal", SqlDbType.Decimal, 18).Value = txtOldKCal.Text;
-                    command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
+                   // command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
                     command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = "Charles Moore";
                     command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
 
@@ -323,7 +325,7 @@ namespace WholesomeMVC.WebForms
                         con.Open();
                         go.Connection = con;
                         go.CommandText = "SELECT No_ FROM Wholesome_Item WHERE No_ = @No_";
-                        go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+                        go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;
 
                         SqlDataReader readIn = go.ExecuteReader();
                         while (readIn.Read())
@@ -342,20 +344,22 @@ namespace WholesomeMVC.WebForms
 
                         try
                         {
-                            command1 = new SqlCommand();
-                            command1.Connection = connection;
-                            command1.CommandType = System.Data.CommandType.Text;
+                            command1 = new SqlCommand
+                            {
+                                Connection = connection,
+                                CommandType = System.Data.CommandType.Text,
 
-                            command1.CommandText = @"UPDATE item SET [CHOP Points] = @CHOPPoints
-                    WHERE No_ = @No_";
+                                CommandText = @"UPDATE item SET [CHOP Points] = @CHOPPoints
+                    WHERE No_ = @No_"
+                            };
 
-                            command1.Parameters.Add("@CHOPPoints", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
-                            command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+                            //command1.Parameters.Add("@CHOPPoints", SqlDbType.Decimal, 18).Value = txt.Text;
+                            command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;
                             command1.ExecuteNonQuery();
                             connection.Close();
                         }
 
-                        catch (Exception k)
+                        catch (Exception)
                         {
 
                         }
@@ -553,9 +557,11 @@ namespace WholesomeMVC.WebForms
             {
                 ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
             };
-            SqlCommand command = new SqlCommand();
-                    command.Connection = sc;
-                    command.CommandType = System.Data.CommandType.Text;
+            SqlCommand command = new SqlCommand
+            {
+                Connection = sc,
+                CommandType = System.Data.CommandType.Text
+            };
             sc.Open();
 
 
@@ -573,14 +579,16 @@ namespace WholesomeMVC.WebForms
             if (foodGroupNumber != "")
             {
                 sc.Open();
-                SqlCommand command1 = new SqlCommand();
-                command1.Connection = sc;
-                command1.CommandType = System.Data.CommandType.Text;
+                SqlCommand command1 = new SqlCommand
+                {
+                    Connection = sc,
+                    CommandType = System.Data.CommandType.Text,
 
-                // ADD SESSION INFO
-                command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
+                    // ADD SESSION INFO
+                    CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
                  + " FdGrp_CD = @FdGrp_CD, nrf6 = @nrf6, "
-                 + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_";
+                 + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_"
+                };
 
 
                 //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
@@ -751,14 +759,16 @@ namespace WholesomeMVC.WebForms
             };
 
             sc.Open();
-            SqlCommand command1 = new SqlCommand();
-            command1.Connection = sc;
-            command1.CommandType = System.Data.CommandType.Text;
+            SqlCommand command1 = new SqlCommand
+            {
+                Connection = sc,
+                CommandType = System.Data.CommandType.Text,
 
-            // ADD SESSION INFO
-            command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
+                // ADD SESSION INFO
+                CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
              + " FBC_Code = @FBC_Code, GradientEntry = @GradientEntry, nrf6 = @nrf6, "
-             + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_";
+             + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_"
+            };
 
 
             //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;

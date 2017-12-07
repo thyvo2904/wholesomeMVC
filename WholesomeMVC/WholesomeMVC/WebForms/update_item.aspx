@@ -352,7 +352,7 @@
 								</div>
 							</div>
 							<div class="modal-footer">
-								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
+								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" />
 								<asp:Button ID="btnCalculateOldNRF6" runat="server" Text="Calculate" CssClass="btn btn-primary" />
 								<asp:Button ID="btnSaveOldItem" runat="server" Text="Save" CssClass="btn btn-success" />
 							</div>
@@ -472,4 +472,4 @@
     <script type="text/javascript" src="/Scripts/Custom/update_item.js"></script>
  </asp:Content>
 
-
+</div>
