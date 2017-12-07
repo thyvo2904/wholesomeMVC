@@ -52,8 +52,8 @@ namespace WholesomeMVC.WebForms
                 // add color_legend
                 String strScaleLegend = "Color Scale Legend";
 
-                label_color_scale_legend.Text = strScaleLegend;
-                image_color_scale_legend.ImageUrl = "/Content/Images/image_color_scale_legend.png";
+                //label_color_scale_legend.Text = strScaleLegend;
+                //image_color_scale_legend.ImageUrl = "/Content/Images/image_color_scale_legend.png";
 
                 // set page variables
                 String strTitle = "Search Results";
@@ -210,11 +210,10 @@ namespace WholesomeMVC.WebForms
             double score = FoodItem.newFood.NRF6;
             String colorScaleStyle = "";
 
-              if(score <= 4.65)
-              {
+            if(score <= 4.65)
+            {
                 colorScaleStyle = GradientColors.getColor1();
-              }
-
+            }
             else if ((score >= 4.66) && (score <= 27.99))
             {
                 colorScaleStyle = GradientColors.getColor2();
@@ -350,8 +349,17 @@ namespace WholesomeMVC.WebForms
 					)
 				"
                     };
-                        command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
+                    if (lblIndexResult.Text == "NaN")
+                    {
+                        command1.Parameters.AddWithValue("@nrf6", DBNull.Value);
+                    }
+                    else
+                    {
                         command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
+                    }
+
+                    command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
+                        //command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
                         command1.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = lblName.Value;
                         command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getloginid();
                         command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
