@@ -1,5 +1,23 @@
 $(document).ready(function () {
-	// set up toggle function
+	// set up toggle function for edit view
+	$("#link_add_manual").click(function () {
+		$(this).parent().addClass("active");
+		$(this).parent().siblings().removeClass("active");
+
+		$("#add_usda_match_view").hide();
+		$("#add_manual_view").show();
+	});
+	$("#link_add_usda_match").click(function () {
+		$(this).parent().addClass("active");
+		$(this).parent().siblings().removeClass("active");
+
+		$("#add_manual_view").hide();
+		$("#add_usda_match_view").show();
+	})
+	// set up default add view
+	$("#link_add_manual").click();
+
+	// set up toggle function for edit view
 	$("#link_old_view").click(function () {
 		$(this).parent().addClass("active");
 		$(this).parent().siblings().removeClass("active");
@@ -12,7 +30,7 @@ $(document).ready(function () {
 
 		$("#hidden_view_mode").val("new");
 	})
-	// set up default view
+	// set up default edit view
 	$("#link_old_view").click();
 
 
@@ -37,6 +55,9 @@ $(document).ready(function () {
 		"editing": {
 			"enabled": true,
 			"allowDelete": false,
+			"addRow": function () {
+				$("#add_item_view").modal("show");
+			},
 			"editRow": function (row) {
 				// get data
 				$("#hidden_ceresid").val(row.value["col1"]);

@@ -120,3 +120,11 @@ footer img {
 .fatter {
 	border-top: 12px solid black;
 }
+.thin-air,
+.thin-air > th,
+.thin-air > td {
+	border-top: none !important;
+}
+th, td {
+	vertical-align: middle !important;
+}
