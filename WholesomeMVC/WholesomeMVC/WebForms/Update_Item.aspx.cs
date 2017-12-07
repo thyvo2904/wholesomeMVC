@@ -869,7 +869,7 @@ namespace WholesomeMVC.WebForms
             string ceresid = hidden_ceresid.Value;
             string ceres_name = hidden_ceres_name.Value;
             string ndbno = hidden_ndbno.Value;
-
+            
             FoodItem.findNdbno(ndbno);
 
 			double score = FoodItem.newFood.NRF6;
