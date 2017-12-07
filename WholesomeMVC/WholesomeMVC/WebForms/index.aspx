@@ -49,24 +49,31 @@
     </section>
 
     <div class="row">
-        <div class="col-md-4 text-center">
+        <div class="col-sm-6 col-lg-3 text-center">
             <div class="panel panel-default text-center banner-button">
                 <asp:Image ID="image_nutrient_calculator" runat="server" />
                 <asp:HyperLink ID="link_nutrient_calculator" runat="server" CssClass="btn btn-success btn-lg btn-block" />
             </div>
         </div>
 
-        <div class="col-md-4 text-center">
+        <div class="col-sm-6 col-lg-3 text-center">
             <div class="panel panel-default text-center banner-button">
                 <asp:Image ID="image_recent" runat="server" />
                 <asp:HyperLink ID="link_recent" runat="server" CssClass="btn btn-success btn-lg btn-block" />
             </div>
         </div>
 
-        <div class="col-md-4 text-center">
+        <div class="col-sm-6 col-lg-3 text-center">
             <div class="panel panel-default text-center banner-button">
-                <asp:Image ID="image_saved_items" runat="server" />
-                <asp:HyperLink ID="link_saved_items" runat="server" CssClass="btn btn-success btn-lg btn-block" />
+                <asp:Image ID="image_comparison" runat="server" />
+                <asp:HyperLink ID="link_comparison" runat="server" CssClass="btn btn-success btn-lg btn-block" />
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3 text-center">
+            <div class="panel panel-default text-center banner-button">
+                <asp:Image ID="image_farmers_market" runat="server" />
+                <asp:HyperLink ID="link_farmers_market" runat="server" CssClass="btn btn-success btn-lg btn-block" />
             </div>
         </div>
     </div>
