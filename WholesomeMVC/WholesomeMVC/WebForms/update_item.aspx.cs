@@ -708,51 +708,19 @@ namespace WholesomeMVC.WebForms
             double ndscore = 0; // Double.Parse(gridUSDAChoices.SelectedRow.Cells[3].Text);
             String gradientEntry = "";
 
-            if(ndscore < 0)
+            if (ndscore <= 4.65)
             {
                 gradientEntry = "1";
             }
-
-            else if(ndscore >= 0 && ndscore < 2.33)
+            else if ((ndscore >= 4.66) && (ndscore <= 27.99))
             {
                 gradientEntry = "2";
             }
-
-            else if (ndscore >= 2.33 && ndscore < 4.66)
+            else if (ndscore >= 28)
             {
                 gradientEntry = "3";
             }
-
-            else if (ndscore >= 4.66 && ndscore < 12.44)
-            {
-                gradientEntry = "4";
-            }
-
-            else if (ndscore >= 12.44 && ndscore < 20.22)
-            {
-                gradientEntry = "5";
-            }
-
-            else if (ndscore >= 20.22 && ndscore < 28)
-            {
-                gradientEntry = "6";
-            }
-
-            else if (ndscore >= 28 && ndscore < 35.33)
-            {
-                gradientEntry = "7";
-            }
-
-            else if (ndscore >= 35.33 && ndscore < 42.67)
-            {
-                gradientEntry = "8";
-            }
-
-            else if (ndscore >= 42.67)
-            {
-                gradientEntry = "9";
-            }
-
+           
             System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
             {
                 ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
