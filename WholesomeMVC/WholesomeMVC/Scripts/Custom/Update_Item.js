@@ -30,13 +30,6 @@ $(document).ready(function () {
 	});
 });
 
-//$(".expend-button").click(function () {
-//	$("#hidden_ceres_name").val($(this).siblings(".hidden_ceres_name").val());
-//	$("#hidden_ceresid").val($(this).siblings(".hidden_ceresid").val());
-//	$("#hidden_ndbno").val($(this).siblings(".hidden_ndbno").val());
-//	$("#button_expand_item").click();
-//});
-
 function showDiv(elem) {
     if (elem.value === 0) {
         $("#divold").style.display = "block";
