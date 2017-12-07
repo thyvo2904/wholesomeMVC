@@ -233,7 +233,7 @@ namespace WholesomeMVC.WebForms
 			String strCommand = @"
 				SELECT NDB_NO
 				FROM RECENT_INDEX
-				ORDER BY SearchDate DESC
+				ORDER BY LastUpdated DESC
 			";
 			SqlCommand myCommand = new SqlCommand(strCommand, sc);
 
