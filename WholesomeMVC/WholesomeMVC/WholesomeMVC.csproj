@@ -37,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,6 +47,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
@@ -218,12 +220,12 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="CsClass\Desc.cs" />
     <Compile Include="CsClass\FarmersMarketResult.cs" />
-    <Compile Include="WebForms\Comparison.aspx.cs">
-      <DependentUpon>Comparison.aspx</DependentUpon>
+    <Compile Include="WebForms\comparison.aspx.cs">
+      <DependentUpon>comparison.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForms\Comparison.aspx.designer.cs">
-      <DependentUpon>Comparison.aspx</DependentUpon>
+    <Compile Include="WebForms\comparison.aspx.designer.cs">
+      <DependentUpon>comparison.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\Farmers_Market.aspx.cs">
       <DependentUpon>farmers_market.aspx</DependentUpon>
@@ -306,12 +308,9 @@
     <Compile Include="WebForms\system_settings.aspx.designer.cs">
       <DependentUpon>system_settings.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForms\Update_Item.aspx.cs">
-      <DependentUpon>Update_Item.aspx</DependentUpon>
+    <Compile Include="WebForms\update_item.aspx.cs">
+      <DependentUpon>update_item.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForms\Update_Item.aspx.designer.cs">
-      <DependentUpon>Update_Item.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\recent.aspx.cs">
       <DependentUpon>recent.aspx</DependentUpon>
@@ -319,6 +318,9 @@
     </Compile>
     <Compile Include="WebForms\recent.aspx.designer.cs">
       <DependentUpon>recent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\update_item.aspx.designer.cs">
+      <DependentUpon>update_item.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\_layout.Master.cs">
       <DependentUpon>_layout.Master</DependentUpon>
@@ -333,7 +335,7 @@
     <Content Include="Content\bootstrap.cosmo.min.css" />
     <Content Include="Content\Custom\comparison.css" />
     <Content Include="Content\Custom\indexresult.css" />
-    <Content Include="Scripts\Custom\Update_Item.js" />
+    <Content Include="Content\Custom\update_item.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap4.css" />
@@ -512,6 +514,8 @@
     <Content Include="Content\Images\icons8-wine-bottle-100.png" />
     <Content Include="Content\Images\image_color_scale_legend.png" />
     <Content Include="Content\Images\icons8-wine-glass-100.png" />
+    <Content Include="Content\Vendor\footable.bootstrap.min.css" />
+    <Content Include="Content\Vendor\footable.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Scripts\Custom\Fb_categories.js" />
     <Content Include="Scripts\Custom\indexresult.js" />
@@ -595,6 +599,8 @@
     <Content Include="Scripts\DataTables\responsive.semanticui.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
     <Content Include="Scripts\Vendor\bootstrap3-typeahead.min.js" />
+    <Content Include="Scripts\Vendor\footable.min.js" />
+    <Content Include="Scripts\Vendor\moment.min.js" />
     <Content Include="WebForms\add_item.aspx" />
     <Content Include="WebForms\advanced_search.aspx" />
     <Content Include="Content\Custom\manual_input.css" />
@@ -611,7 +617,7 @@
     <Content Include="Content\Images\icons8-microsoft-100.png" />
     <Content Include="Content\Images\image_brand.png" />
     <Content Include="Content\Custom\index.css" />
-    <Content Include="WebForms\Comparison.aspx" />
+    <Content Include="WebForms\comparison.aspx" />
     <Content Include="WebForms\farmers_market.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -654,12 +660,13 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="WebForms\Sync_Database.aspx" />
     <Content Include="WebForms\system_settings.aspx" />
-    <Content Include="WebForms\Update_Item.aspx" />
+    <Content Include="WebForms\update_item.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>

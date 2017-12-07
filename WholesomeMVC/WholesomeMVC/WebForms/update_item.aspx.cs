@@ -17,7 +17,7 @@ using System.Drawing;
 
 namespace WholesomeMVC.WebForms
 {
-    public partial class Update_Item : System.Web.UI.Page
+    public partial class update_item : System.Web.UI.Page
     {
         public static DataTable matchedCeresIDS = new DataTable();
         public static DataTable dataSearchResults = new DataTable();
@@ -79,15 +79,15 @@ namespace WholesomeMVC.WebForms
 
 				BindDataFromDB();
 			} else {
-				if (!String.IsNullOrEmpty(txtNewAddedSugar.Text) && !String.IsNullOrEmpty(txtNewFiber.Text)) {
-					divnew.Style.Add("display", "block");
-					divold.Style.Add("display", "none");
-					DropDownList2.SelectedIndex = 2;
-				} else if (!String.IsNullOrEmpty(txtOldCalcium.Text) && !String.IsNullOrEmpty(txtOldIron.Text)) {
-					divold.Style.Add("display", "block");
-					divnew.Style.Add("display", "none");
-					DropDownList2.SelectedIndex = 1;
-				}
+				//if (!String.IsNullOrEmpty(txtNewAddedSugar.Text) && !String.IsNullOrEmpty(txtNewFiber.Text)) {
+				//	divnew.Style.Add("display", "block");
+				//	divold.Style.Add("display", "none");
+				//	DropDownList2.SelectedIndex = 2;
+				//} else if (!String.IsNullOrEmpty(txtOldCalcium.Text) && !String.IsNullOrEmpty(txtOldIron.Text)) {
+				//	divold.Style.Add("display", "block");
+				//	divnew.Style.Add("display", "none");
+				//	DropDownList2.SelectedIndex = 1;
+				//}
 
 				gridMatchedCeresIDS.HeaderRow.Cells[0].Attributes["data-class"] = "expand";
 				gridMatchedCeresIDS.HeaderRow.Cells[2].Attributes["data-hide"] = "all";
@@ -267,111 +267,106 @@ namespace WholesomeMVC.WebForms
 
         protected void btnOldSaveItem_Click(object sender, EventArgs e)
         {
-            //String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
 
 
 
-            //using (SqlConnection connection = new SqlConnection(ConnectionString))
-            //{
-            //    {
-            //        SqlCommand command1 = new SqlCommand();
-            //        command1.Connection = connection;
-            //        command1.CommandType = System.Data.CommandType.Text;
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                {
+                    SqlCommand command1 = new SqlCommand();
+                    command1.Connection = connection;
+                    command1.CommandType = System.Data.CommandType.Text;
 
-            //        //String description = txtDescription.Text;
+                    
 
-            //        //if (description.Length > 48)
-            //        //{
-            //        //    description = description.Substring(0, 48);
-            //        //}
-
-            //        // UPDATE Wholesome_Item SET No_ = , ndb_no = , Description = , Long_Desc = ,
-            //        // protein = , fiber = , vitaminA = , vitaminC = , vitaminD = , Potassium = ,
-            //        // calcium = , iron = , saturatedFat = , TotalSugar = , AddedSugar = , Sodium = ,
-            //        // KCal = , nrf6 = , lastUpdatedBy = , LastUpdated = WHERE No_ = 
-            //        command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
-            //        + " Description = @Description, nrf6 = @nrf6, Loginid = @loginid"
-            //        + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE No_ = @No_";
+                    //UPDATE Wholesome_Item SET No_ = , ndb_no = , Description = , Long_Desc = ,
+                    //protein = , fiber = , vitaminA = , vitaminC = , vitaminD = , Potassium = ,
+                    //calcium = , iron = , saturatedFat = , TotalSugar = , AddedSugar = , Sodium = ,
+                    //KCal = , nrf6 = , lastUpdatedBy = , LastUpdated = WHERE No_ =
+                   command1.CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndb_no,"
+                    + " [Description 2] = @Description, nrf6 = @nrf6, Loginid = @loginid,"
+                    + " GradientEntry = @GradientEntry, lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated WHERE No_ = @No_";
 
 
-            //        //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
-            //        command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = "";
-            //        //command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = description;
-            //        command1.Parameters.Add("@Long_Desc", SqlDbType.NVarChar, 500).Value = "";
-            //        command1.Parameters.Add("@protein", SqlDbType.Decimal, 18).Value = txtOldProtein.Text;
-            //        command1.Parameters.Add("@fiber", SqlDbType.Decimal, 18).Value = txtOldFiber.Text;
-            //        command1.Parameters.Add("@vitaminA", SqlDbType.Decimal, 18).Value = txtOldVA.Text;
-            //        command1.Parameters.Add("@vitaminC", SqlDbType.Decimal, 18).Value = txtOldVC.Text;
-            //        command1.Parameters.Add("@vitaminD", SqlDbType.Decimal, 18).Value = 0;
-            //        command1.Parameters.Add("@Potassium", SqlDbType.Decimal, 18).Value = 0;
-            //        command1.Parameters.Add("@Calcium", SqlDbType.Decimal, 18).Value = txtOldCalcium.Text;
-            //        command1.Parameters.Add("@Iron", SqlDbType.Decimal, 18).Value = txtOldIron.Text;
-            //        command1.Parameters.Add("@saturatedFat", SqlDbType.Decimal, 18).Value = txtOldSatFat.Text;
-            //        command1.Parameters.Add("@TotalSugar", SqlDbType.Decimal, 18).Value = txtOldTotalSugar.Text;
-            //        command1.Parameters.Add("@AddedSugar", SqlDbType.Decimal, 18).Value = 0;
-            //        command1.Parameters.Add("@Sodium", SqlDbType.Decimal, 18).Value = txtOldSodium.Text;
-            //        command1.Parameters.Add("@KCal", SqlDbType.Decimal, 18).Value = txtOldKCal.Text;
-            //        command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
-            //        command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = "Charles Moore";
-            //        command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+                    //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+                    command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = "";
+                    //command1.Parameters.Add("@Description", SqlDbType.NVarChar, 50).Value = description;
+                    command1.Parameters.Add("@Long_Desc", SqlDbType.NVarChar, 500).Value = "";
+                    command1.Parameters.Add("@protein", SqlDbType.Decimal, 18).Value = txtOldProtein.Text;
+                    command1.Parameters.Add("@fiber", SqlDbType.Decimal, 18).Value = txtOldFiber.Text;
+                    command1.Parameters.Add("@vitaminA", SqlDbType.Decimal, 18).Value = txtOldVitaminA.Text;
+                    command1.Parameters.Add("@vitaminC", SqlDbType.Decimal, 18).Value = txtOldVitaminC.Text;
+                    command1.Parameters.Add("@vitaminD", SqlDbType.Decimal, 18).Value = 0;
+                    command1.Parameters.Add("@Potassium", SqlDbType.Decimal, 18).Value = 0;
+                    command1.Parameters.Add("@Calcium", SqlDbType.Decimal, 18).Value = txtOldCalcium.Text;
+                    command1.Parameters.Add("@Iron", SqlDbType.Decimal, 18).Value = txtOldIron.Text;
+                    command1.Parameters.Add("@saturatedFat", SqlDbType.Decimal, 18).Value = txtOldSaturatedFat.Text;
+                    command1.Parameters.Add("@TotalSugar", SqlDbType.Decimal, 18).Value = txtOldTotalSugar.Text;
+                    command1.Parameters.Add("@AddedSugar", SqlDbType.Decimal, 18).Value = 0;
+                    command1.Parameters.Add("@Sodium", SqlDbType.Decimal, 18).Value = txtOldSodium.Text;
+                    command1.Parameters.Add("@KCal", SqlDbType.Decimal, 18).Value = txtOldKCal.Text;
+                    command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
+                    command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = "Charles Moore";
+                    command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
 
 
-            //        connection.Open();
-            //        command1.ExecuteNonQuery();
-            //        connection.Close();
+                    connection.Open();
+                    command1.ExecuteNonQuery();
+                    connection.Close();
 
-            //        //int count = 0;
-            //        //using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
-            //        //{
-            //        //    System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
+                    int count = 0;
+                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+                    {
+                        System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
 
-            //        //    con.Open();
-            //        //    go.Connection = con;
-            //        //    go.CommandText = "SELECT No_ FROM Item WHERE No_ = @No_";
-            //        //    go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+                        con.Open();
+                        go.Connection = con;
+                        go.CommandText = "SELECT No_ FROM Wholesome_Item WHERE No_ = @No_";
+                        go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
 
-            //        //    SqlDataReader readIn = go.ExecuteReader();
-            //        //    while (readIn.Read())
-            //        //    {
-            //        //        ++count;
-            //        //    }
+                        SqlDataReader readIn = go.ExecuteReader();
+                        while (readIn.Read())
+                        {
+                            ++count;
+                        }
 
-            //        //    con.Close();
+                        con.Close();
 
 
-            //        //}
+                    }
 
-            //        //if (count == 1)
-            //        //{
-            //        //    connection.Open();
+                    if (count == 1)
+                    {
+                        connection.Open();
 
-            //        //    try
-            //        //    {
-            //        //        command1 = new SqlCommand();
-            //        //        command1.Connection = connection;
-            //        //        command1.CommandType = System.Data.CommandType.Text;
+                        try
+                        {
+                            command1 = new SqlCommand();
+                            command1.Connection = connection;
+                            command1.CommandType = System.Data.CommandType.Text;
 
-            //        //        command1.CommandText = @"UPDATE item SET [CHOP Points] = @CHOPPoints
-            //        //WHERE No_ = @No_";
+                            command1.CommandText = @"UPDATE item SET [CHOP Points] = @CHOPPoints
+                    WHERE No_ = @No_";
 
-            //        //        command1.Parameters.Add("@CHOPPoints", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
-            //        //        command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
-            //        //        command1.ExecuteNonQuery();
-            //        //        connection.Close();
-            //        //    }
+                            command1.Parameters.Add("@CHOPPoints", SqlDbType.Decimal, 18).Value = lblOldResult.Text;
+                            command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+                            command1.ExecuteNonQuery();
+                            connection.Close();
+                        }
 
-            //        //    catch (Exception k)
-            //        //    {
+                        catch (Exception k)
+                        {
 
-            //        //    }
-            //        //}
+                        }
+                    }
 
-            //        //else
-            //        //{
-            //        //    Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
-            //        //}
-            //    }
-            //}
+                    else
+                    {
+                        Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
+                    }
+                }
+            }
         }
 
         protected void btnNewSaveItem_Click(object sender, EventArgs e)
@@ -604,76 +599,69 @@ namespace WholesomeMVC.WebForms
                 sc.Close();
             }
 
-            //int count = 0;
-            //using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
-            //{
-            //    System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
+			//int count = 0;
+			//using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+			//{
+			//    System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
 
-            //    con.Open();
-            //    go.Connection = con;
-            //    go.CommandText = "SELECT No_ FROM Item WHERE No_ = @No_";
-            //    go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
-
-
-            //    SqlDataReader readIn = go.ExecuteReader();
-            //    while (readIn.Read())
-            //    {
-            //        ++count;
-            //    }
-
-            //    con.Close();
+			//    con.Open();
+			//    go.Connection = con;
+			//    go.CommandText = "SELECT No_ FROM Item WHERE No_ = @No_";
+			//    go.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
 
 
-            //}
+			//    SqlDataReader readIn = go.ExecuteReader();
+			//    while (readIn.Read())
+			//    {
+			//        ++count;
+			//    }
 
-            //if (count == 1)
-            //{
-            //    connection.Open();
+			//    con.Close();
 
-            //    try
-            //    {
-            //        command1 = new SqlCommand();
-            //        command1.Connection = connection;
-            //        command1.CommandType = System.Data.CommandType.Text;
 
-            //        command1.CommandText = @"UPDATE item SET [No_ 2] = @No_2,  [Description 2] = @Description2, [CHOP Points] = @CHOPPoints
-            //WHERE No_ = '" + txtNumber.Text + "'";
+			//}
 
-            //        command1.Parameters.Add("@No_2", SqlDbType.NVarChar, 20).Value = ndbno;
-            //        command1.Parameters.Add("@Description2", SqlDbType.NVarChar, 50).Value = description;
-            //        command1.Parameters.Add("@CHOPPoints", SqlDbType.Decimal, 18).Value = ndscore;
-            //        command1.ExecuteNonQuery();
-            //        connection.Close();
-            //    }
+			//if (count == 1)
+			//{
+			//    connection.Open();
 
-            //    catch (Exception l)
-            //    {
-            //        Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
-            //    }
+			//    try
+			//    {
+			//        command1 = new SqlCommand();
+			//        command1.Connection = connection;
+			//        command1.CommandType = System.Data.CommandType.Text;
 
-            //}
+			//        command1.CommandText = @"UPDATE item SET [No_ 2] = @No_2,  [Description 2] = @Description2, [CHOP Points] = @CHOPPoints
+			//WHERE No_ = '" + txtNumber.Text + "'";
 
-            //else
-            //{
-            //    Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
-            //}
+			//        command1.Parameters.Add("@No_2", SqlDbType.NVarChar, 20).Value = ndbno;
+			//        command1.Parameters.Add("@Description2", SqlDbType.NVarChar, 50).Value = description;
+			//        command1.Parameters.Add("@CHOPPoints", SqlDbType.Decimal, 18).Value = ndscore;
+			//        command1.ExecuteNonQuery();
+			//        connection.Close();
+			//    }
 
-            lblFBCategories.Visible = true;
-                ddlFBCategories.Visible = true;
-                btnSelectFBCategory.Visible = true;
-                
+			//    catch (Exception l)
+			//    {
+			//        Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
+			//    }
 
-            
+			//}
 
-        }
+			//else
+			//{
+			//    Response.Write("<script>alert('Nutritional value recorded! Please remember to submit Ceres information!');</script>");
+			//}
 
-        protected void gridMatchedCeresIDS_SelectedIndexChanged(object sender, EventArgs e)
+			lblFBCategories.Visible = true;
+			ddlFBCategories.Visible = true;
+			btnSelectFBCategory.Visible = true;
+		}
+
+		protected void gridMatchedCeresIDS_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String idToMatch = gridMatchedCeresIDS.SelectedRow.Cells[0].Text;
-            
 
-
-        }
+		}
 
         protected void OnSelectedIndexChanged(object sender, EventArgs e)
         {
@@ -695,7 +683,11 @@ namespace WholesomeMVC.WebForms
             //    divold.Style.Add("display", "block");
 
             //}
+        }
 
+		protected void ddlChooseMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
 
         protected void btnSelectFBCategory_Click(object sender, EventArgs e)
@@ -786,31 +778,12 @@ namespace WholesomeMVC.WebForms
             sc.Close();
         }
 
+		/***
+		 * Get data from DB.
+		 * Bind data to a gridview and format gridview table with footable in front-end.
+		 */
         protected void BindDataFromDB()
         {
-            //section.Visible = true;
-            //System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
-            //{
-            //    ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
-            //};
-
-            //sc.Open();
-
-            //SqlCommand myCommand = new SqlCommand("Pull_New_Ceres_Items", sc);
-            //myCommand.CommandType = CommandType.StoredProcedure;
-            //myCommand.ExecuteNonQuery();
-
-            //myCommand = new SqlCommand("Update_Ceres_Items", sc);
-            //myCommand.ExecuteNonQuery();
-
-            //myCommand = new SqlCommand("Update_Wholesome_Items", sc);
-            //myCommand.ExecuteNonQuery();
-
-            //sc.Close();
-
-            //gridSearchResults.DataSource = dataSearchResults;
-            //gridSearchResults.DataBind();
-
 			if (!matchedCeresIDS.Columns.Contains("NDBno") &&
 				!matchedCeresIDS.Columns.Contains("Name") &&
 				!matchedCeresIDS.Columns.Contains("ND Score"))
@@ -833,13 +806,13 @@ namespace WholesomeMVC.WebForms
 
 			SqlDataReader newReader = null;
 			SqlCommand newCommand = new SqlCommand(@"
-					SELECT
-						Wholesome_Item.No_,
-						Wholesome_Item.description,
-						Wholesome_item.ndb_no,
-						Wholesome_item.[description 2] AS description2,
-						nrf6
-					FROM Wholesome_Item WHERE nrf6 IS NOT NULL", conn);
+				SELECT
+					Wholesome_Item.No_,
+					Wholesome_Item.description,
+					Wholesome_item.ndb_no,
+					Wholesome_item.[description 2] AS description2,
+					nrf6
+				FROM Wholesome_Item WHERE nrf6 IS NOT NULL", conn);
 			newReader = newCommand.ExecuteReader();
 			if (newReader.HasRows)
 			{
@@ -858,104 +831,20 @@ namespace WholesomeMVC.WebForms
 
 			gridMatchedCeresIDS.DataSource = matchedCeresIDS;
 			gridMatchedCeresIDS.DataBind();
-			gridMatchedCeresIDS.HeaderRow.Cells[0].Attributes["data-class"] = "expand";
-			gridMatchedCeresIDS.HeaderRow.Cells[2].Attributes["data-hide"] = "all";
-			gridMatchedCeresIDS.HeaderRow.Cells[3].Attributes["data-hide"] = "all";
-			gridMatchedCeresIDS.HeaderRow.Cells[4].Attributes["data-hide"] = "phone";
+
+			gridMatchedCeresIDS.HeaderRow.Cells[2].Attributes["data-breakpoints"] = "all";
+			gridMatchedCeresIDS.HeaderRow.Cells[3].Attributes["data-breakpoints"] = "all";
+			gridMatchedCeresIDS.HeaderRow.Cells[4].Attributes["data-breakpoints"] = "xs";
+			gridMatchedCeresIDS.HeaderRow.Cells[4].Attributes["data-type"] = "number";
+			gridMatchedCeresIDS.HeaderRow.Cells[4].Attributes["class"] = "text-right";
+
 			gridMatchedCeresIDS.HeaderRow.TableSection = TableRowSection.TableHeader;
 
 			conn.Close();
 
             search_summary.Text = String.Format("Found {0} matched items", matchedCeresIDS.Rows.Count);
-            filter_applied.Text = String.Format("Filter applied: {0}", "none");
-
-			String strHTML = "";
-            foreach (DataRow row in matchedCeresIDS.Rows)
-            {
-                strHTML += GenerateHtmlForEachItem(row);
-            }
-
-            search_results.InnerHtml = strHTML;
-        }
-
-		/***
-		 * Take a data row (aka item) of the result set as argument.
-		 * Generate a string contains a snippet of HTML code and the item's name and score.
-		 * Style the foreground color of the score and the background color of the expand button.
-		 * Return generated string.
-		 */
-		protected String GenerateHtmlForEachItem(DataRow item)
-        {
-            String returnValue = "";
-            String colorScaleStyle = "";
-            double score = double.Parse(item["ND Score"].ToString());
-
-            if (score < 0)
-            {
-                colorScaleStyle = GradientColors.getColor1();
-            }
-            else if ((score >= 0) && (score <= 2.33))
-            {
-                colorScaleStyle = GradientColors.getColor2();
-            }
-            else if ((score > 2.33) && (score <= 4.66))
-            {
-                colorScaleStyle = GradientColors.getColor3();
-            }
-            else if ((score > 4.66) && (score <= 12.44))
-            {
-                colorScaleStyle = GradientColors.getColor4();
-            }
-            else if ((score > 12.44) && (score <= 20.22))
-            {
-                colorScaleStyle = GradientColors.getColor5();
-            }
-            else if ((score > 20.22) && (score <= 28))
-            {
-                colorScaleStyle = GradientColors.getColor6();
-            }
-            else if ((score > 28) && (score <= 35.33))
-            {
-                colorScaleStyle = GradientColors.getColor7();
-            }
-            else if ((score > 35.33) && (score <= 42.67))
-            {
-                colorScaleStyle = GradientColors.getColor8();
-            }
-            else if (score > 42.67)
-            {
-                colorScaleStyle = GradientColors.getColor9();
-            }
-            else
-            {
-                // do nothing
-            }
-
-            colorScaleStyle += " !important";
-
-            returnValue = String.Format(@"
-				<div class='col-sm-6 col-md-4 col-lg-3'>
-					<div class='panel panel-default' style='border-bottom: 5px solid {0};'>
-						<div class='panel-body'>
-							<h4 class='panel-title equal-height'>{1}</h4>
-							<h4><strong>ND_Score: <span style='color: {0};'>{2}<span></strong></h4>
-							<button class='btn btn-default btn-block expend-button' data-toggle='modal' data-target='#expanded_view'>Expand</button>
-							<input type='hidden' class='hidden_ceres_name' value='{1}' />
-							<input type='hidden' class='hidden_ceresid' value='{3}' />
-							<input type='hidden' class='hidden_ndbno' value='{4}' />
-						</div>
-					</div>
-				</div>
-			",
-            colorScaleStyle,
-            item["Ceres_Name"].ToString(),
-            item["ND score"].ToString(),
-            item["CeresID"].ToString(),
-            item["USDA Number"].ToString());
-
-            return returnValue;
-        }
-
+            view_mode.Text = String.Format("View mode");
+		}
 		/***
 		 * Get the ndbno from a hidden field in front-end.
 		 * Get data using FoodItem.findNdbno method and ndbno.
@@ -964,72 +853,57 @@ namespace WholesomeMVC.WebForms
 		 */
 		protected void ExpandItem(object sender, EventArgs e)
 		{
-			String ceres_name = hidden_ceres_name.Value;
-			String ceresid = hidden_ceresid.Value;
-			String ndbno = hidden_ndbno.Value;
+			// get data from front end
+			string ceresid = hidden_ceresid.Value;
+			string ceres_name = hidden_ceres_name.Value;
+			string ndbno = hidden_ndbno.Value;
 
-			FoodItem.expandLabel(ndbno);
+			FoodItem.findNdbno(ndbno);
 
 			double score = FoodItem.newFood.NRF6;
 			String colorScaleStyle = "";
 
-			if (score < 0)
-			{
-				colorScaleStyle = GradientColors.getColor1();
-			} else if ((score >= 0) && (score <= 2.33))
-			{
-				colorScaleStyle = GradientColors.getColor2();
-			} else if ((score > 2.33) && (score <= 4.66))
-			{
-				colorScaleStyle = GradientColors.getColor3();
-			} else if ((score > 4.66) && (score <= 12.44))
-			{
-				colorScaleStyle = GradientColors.getColor4();
-			} else if ((score > 12.44) && (score <= 20.22))
-			{
-				colorScaleStyle = GradientColors.getColor5();
-			} else if ((score > 20.22) && (score <= 28))
-			{
-				colorScaleStyle = GradientColors.getColor6();
-			} else if ((score > 28) && (score <= 35.33))
-			{
-				colorScaleStyle = GradientColors.getColor7();
-			} else if ((score > 35.33) && (score <= 42.67))
-			{
-				colorScaleStyle = GradientColors.getColor8();
-			} else if (score > 42.67)
-			{
-				colorScaleStyle = GradientColors.getColor9();
-			} else
-			{
+			if (score < 0) {
+				colorScaleStyle = GradientColors.getColor1() + " !important; color: white !important;";
+			} else if ((score >= 0) && (score <= 2.33)) {
+				colorScaleStyle = GradientColors.getColor2() + " !important; color: white !important;";
+			} else if ((score > 2.33) && (score <= 4.66)) {
+				colorScaleStyle = GradientColors.getColor3() + " !important; color: white !important;";
+			} else if ((score > 4.66) && (score <= 12.44)) {
+				colorScaleStyle = GradientColors.getColor4() + " !important; color: black !important;";
+			} else if ((score > 12.44) && (score <= 20.22)) {
+				colorScaleStyle = GradientColors.getColor5() + " !important; color: black !important;";
+			} else if ((score > 20.22) && (score <= 28)) {
+				colorScaleStyle = GradientColors.getColor6() + " !important; color: black !important;";
+			} else if ((score > 28) && (score <= 35.33)) {
+				colorScaleStyle = GradientColors.getColor7() + " !important; color: white !important;";
+			} else if ((score > 35.33) && (score <= 42.67)) {
+				colorScaleStyle = GradientColors.getColor8() + " !important; color: white !important;";
+			} else if (score > 42.67) {
+				colorScaleStyle = GradientColors.getColor9() + " !important; color: white !important;";
+			} else {
 				// do nothing
 			}
 
-			lblIndexResult.ForeColor = ColorTranslator.FromHtml(colorScaleStyle);
-			modal_header.Attributes["style"] = String.Format("border-bottom: 5px solid {0};", colorScaleStyle);
+			nd_score_panel.Attributes["style"] = String.Format("background-color: {0}", colorScaleStyle);
 
 			lblFoodName.Text = FoodItem.newFood.name;
 			lblIndexResult.Text = Convert.ToString(Math.Round(score, 2));
-			hidden_ndbno.Value = FoodItem.newFood.ndbNo;
 
-			txtcalories.Text = FoodItem.newFood.kCal.ToString();
-			txtsatfat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
-			txtsodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
-			txtfiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
-			txtsugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
-			txtprotein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
-			txtva.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
-			txtvc.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
-			txtcalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
-			txtiron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+			txtOldKCal.Text = FoodItem.newFood.kCal.ToString();
+			txtOldSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
+			txtOldSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
+			txtOldFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
+			txtOldTotalSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
+			txtOldProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
+			txtOldVitaminA.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
+			txtOldVitaminC.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
+			txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
+			txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
 
-			txtCeresDescription.Text = ceres_name;
 			txtCeresNumber.Text = ceresid;
+			txtCeresDescription.Text = ceres_name;
 		}
 
-        protected void ddlChooseMethod_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
     }
 }
