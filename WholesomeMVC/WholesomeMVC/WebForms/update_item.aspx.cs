@@ -856,6 +856,8 @@ namespace WholesomeMVC.WebForms
             string ndbno = hidden_ndbno.Value;
 			string view_mode = hidden_view_mode.Value;
 
+            
+
             FoodItem.findNdbno(ndbno);
 
             double score = FoodItem.newFood.NRF6;
