@@ -1,0 +1,12 @@
+﻿/* banner-button */
+.banner-button {
+	padding: 25px;
+}
+.banner-button > img {
+	padding-bottom: 25px;
+}
+
+/* fix body shifting to the right when open modals */
+.modal-open {
+	margin-right: 0 !important;
+}

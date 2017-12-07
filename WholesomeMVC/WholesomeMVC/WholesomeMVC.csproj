@@ -338,6 +338,7 @@
     <Content Include="Content\Custom\comparison.css" />
     <Content Include="Content\Custom\farmers_market.css" />
     <Content Include="Content\Custom\indexresult.css" />
+    <Content Include="Content\Custom\system_settings.css" />
     <Content Include="Content\Custom\update_item.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
@@ -499,8 +500,11 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Images\Blue-Ridge-Area-Food-Bank.png" />
+    <Content Include="Content\Images\icons8-adjust-100.png" />
     <Content Include="Content\Images\icons8-compare-100.png" />
     <Content Include="Content\Images\icons8-near-me-100.png" />
+    <Content Include="Content\Images\icons8-paint-palette-100.png" />
+    <Content Include="Content\Images\icons8-workflow-100.png" />
     <Content Include="Content\Images\image_color_scale_legend.png" />
     <Content Include="Content\Vendor\footable.bootstrap.min.css" />
     <Content Include="Content\Vendor\footable.min.css" />
