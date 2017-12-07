@@ -1014,15 +1014,15 @@ namespace WholesomeMVC.WebForms
                     };
 
 
-                    command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
-                    command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = ;
-                    command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = ;
-                    command1.Parameters.Add("@loginid", SqlDbType.Int).Value = ;
-                    command1.Parameters.Add("@GradientEntry", SqlDbType.Int).Value = ;
-                    command1.Parameters.Add("@description2", SqlDbType.NVarChar, 50).Value = "";
-                    command1.Parameters.Add("@FBC_Code", SqlDbType.NVarChar, 10).Value = lblOldResult.Text;
-                    command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value =HttpContext.Current.User.Identity.GetUserName();
-                    command1.Parameters.Add("@lastupdated", SqlDbType.DateTime).Value = DateTime.Now;
+                    //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = txtNumber.Text;
+                    //command1.Parameters.Add("@ndb_no", SqlDbType.VarChar, 8).Value = ;
+                    //command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = ;
+                    //command1.Parameters.Add("@loginid", SqlDbType.Int).Value = ;
+                    //command1.Parameters.Add("@GradientEntry", SqlDbType.Int).Value = ;
+                    //command1.Parameters.Add("@description2", SqlDbType.NVarChar, 50).Value = "";
+                    //command1.Parameters.Add("@FBC_Code", SqlDbType.NVarChar, 10).Value = lblOldResult.Text;
+                    //command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value =HttpContext.Current.User.Identity.GetUserName();
+                    //command1.Parameters.Add("@lastupdated", SqlDbType.DateTime).Value = DateTime.Now;
 
 
                     connection.Open();
