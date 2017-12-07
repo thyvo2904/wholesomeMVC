@@ -33,10 +33,10 @@ namespace WholesomeMVC.WebForms
 				Label body_title = (Label)Master.FindControl("body_title");
 				body_title.Text = strTitle;
 
-				String strScaleLegend = "Color Scale Legend";
+				//String strScaleLegend = "Color Scale Legend";
 
-				label_color_scale_legend.Text = strScaleLegend;
-				image_color_scale_legend.ImageUrl = "/Content/Images/image_color_scale_legend.png";
+				//label_color_scale_legend.Text = strScaleLegend;
+				//image_color_scale_legend.ImageUrl = "/Content/Images/image_color_scale_legend.png";
 
 				String strRecentItems = "Recently Search Items";
 				label_recent_items.Text = strRecentItems;

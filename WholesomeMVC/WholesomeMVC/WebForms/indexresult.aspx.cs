@@ -50,10 +50,10 @@ namespace WholesomeMVC.WebForms
             else
             {
                 // add color_legend
-                String strScaleLegend = "Color Scale Legend";
+                //String strScaleLegend = "Color Scale Legend";
 
-                label_color_scale_legend.Text = strScaleLegend;
-                image_color_scale_legend.ImageUrl = "/Content/Images/image_color_scale_legend.png";
+                //label_color_scale_legend.Text = strScaleLegend;
+                //image_color_scale_legend.ImageUrl = "/Content/Images/image_color_scale_legend.png";
 
                 // set page variables
                 String strTitle = "Search Results";
@@ -301,13 +301,13 @@ namespace WholesomeMVC.WebForms
 		 * If ceres item doesn't exist prompt the user to open ceres and enter it there first.
 		 */
 
-        protected String getuserid()
+        protected String getloginid()
         {
             string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             String getid;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                string result = "SELECT LoginID FROM dbo.Session WHERE Id = '" + HttpContext.Current.User.Identity.GetUserId() + "' ";
+                string result = "SELECT max(LoginID) FROM dbo.Session WHERE Id = '" + HttpContext.Current.User.Identity.GetUserId() + "' ";
                 SqlCommand showresult = new SqlCommand(result, con);
                 con.Open();
                 getid = showresult.ExecuteScalar().ToString();
@@ -392,25 +392,117 @@ namespace WholesomeMVC.WebForms
                         @lastupdated
 					)
 				";
-                        command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
-                        command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
-                        command1.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = lblName.Value;
-                        command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getuserid();
-                        command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
-                        command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
-                        command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;
-                        command1.Parameters.Add("@vc", SqlDbType.Decimal).Value = txtvc.Text;
-                        command1.Parameters.Add("@calcium", SqlDbType.Decimal).Value = txtcalcium.Text;
-                        command1.Parameters.Add("@iron", SqlDbType.Decimal).Value = txtiron.Text;
-                        command1.Parameters.Add("@satfat", SqlDbType.Decimal, 20).Value = txtsatfat.Text;
-                        command1.Parameters.Add("@sugar", SqlDbType.Decimal).Value = txtsugar.Text;
-                        command1.Parameters.Add("@sodium", SqlDbType.Decimal).Value = txtsodium.Text;
-                        command1.Parameters.Add("@calories", SqlDbType.Decimal).Value = txtcalories.Text;
-                        command1.Parameters.Add("@lastupdatedby", SqlDbType.VarChar, 20).Value = "Yihui Zhou";
-                        command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+                
+                    //if (string.IsNullOrEmpty(lblIndexResult.Text))
+                    //{
+                    //    command1.Parameters.AddWithValue("@nrf6",DBNull.Value);
+                    //}
+                    //else
+                    //{
+                    //    command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
+                    //}
+                    //if (string.IsNullOrEmpty(txtprotein.Text))
+                    //{
+                    //    command1.Parameters.AddWithValue("@protein", DBNull.Value);
+                    //}
+                    //else
+                    //{
+                    //    command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
+                    //}
+                    //if (string.IsNullOrEmpty(txtfiber.Text))
+                    //{
+                    //    command1.Parameters.AddWithValue("@fiber", DBNull.Value);
+                    //}
+                    //else
+                    //{
+                    //    command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
+                    //}
+                    //if (string.IsNullOrEmpty(txtva.Text))
+                    //{
+                    //    command1.Parameters.AddWithValue("@va", DBNull.Value);
+                    //}
+                    //else
+                    //{
+                    //    command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;
+                    //}
+                    //if (string.IsNullOrEmpty(txtvc.Text))
+                    //{
+                    //    command1.Parameters.AddWithValue("@vc", DBNull.Value);
+                    //}
+                    //else
+                    //{
+                    //    command1.Parameters.Add("@vc", SqlDbType.Decimal).Value = txtvc.Text;
+                    //}
+                    //if (string.IsNullOrEmpty(txtcalcium.Text))
+                    //{
+                    //    command1.Parameters.AddWithValue("@calcium", DBNull.Value);
+                    //}
+                    //else
+                    //{
+                    //    command1.Parameters.Add("@calcium", SqlDbType.Decimal).Value = txtcalcium.Text;
+                    //}
+                    //if (string.IsNullOrEmpty(txtiron.Text))
+                    //{
+                    //    command1.Parameters.AddWithValue("@iron", DBNull.Value);
+                    //}
+                    //else
+                    //{
+                    //    command1.Parameters.Add("@iron", SqlDbType.Decimal).Value = txtiron.Text;
+                    //}
+                    //if (string.IsNullOrEmpty(txtsatfat.Text))
+                    //{
+                    //    command1.Parameters.AddWithValue("@satfat", DBNull.Value);
+                    //}
+                    //else
+                    //{
+                    //    command1.Parameters.Add("@satfat", SqlDbType.Decimal).Value = txtsatfat.Text;
+                    //}
+                    //if (string.IsNullOrEmpty(txtsugar.Text))
+                    //{
+                    //    command1.Parameters.AddWithValue("@sugar", DBNull.Value);
+                    //}
+                    //else
+                    //{
+                    //    command1.Parameters.Add("@sugar", SqlDbType.Decimal).Value = txtsugar.Text;
+                    //}
+                    //if (string.IsNullOrEmpty(txtsodium.Text))
+                    //{
+                    //    command1.Parameters.AddWithValue("@sodium", DBNull.Value);
+                    //}
+                    //else
+                    //{
+                    //    command1.Parameters.Add("@sodium", SqlDbType.Decimal).Value = txtsodium.Text;
+                    //}
+                    //if (string.IsNullOrEmpty(txtcalories.Text))
+                    //{
+                    //    command1.Parameters.AddWithValue("@calories", DBNull.Value);
+                    //}
+                    //else
+                    //{
+                    //    command1.Parameters.Add("@calories", SqlDbType.Decimal).Value = txtcalories.Text;
+                    //}
+                   
 
-                        command1.ExecuteNonQuery();
-                        connection.Close();
+
+                    command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
+                    command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
+                    command1.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = lblName.Value;
+                    command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getloginid();
+                    command1.Parameters.Add("@protein", SqlDbType.Decimal).Value = txtprotein.Text;
+                    command1.Parameters.Add("@fiber", SqlDbType.Decimal).Value = txtfiber.Text;
+                    command1.Parameters.Add("@va", SqlDbType.Decimal).Value = txtva.Text;
+                    command1.Parameters.Add("@vc", SqlDbType.Decimal).Value = txtvc.Text;
+                    command1.Parameters.Add("@calcium", SqlDbType.Decimal).Value = txtcalcium.Text;
+                    command1.Parameters.Add("@iron", SqlDbType.Decimal).Value = txtiron.Text;
+                    command1.Parameters.Add("@satfat", SqlDbType.Decimal, 20).Value = txtsatfat.Text;
+                    command1.Parameters.Add("@sugar", SqlDbType.Decimal).Value = txtsugar.Text;
+                    command1.Parameters.Add("@sodium", SqlDbType.Decimal).Value = txtsodium.Text;
+                    command1.Parameters.Add("@calories", SqlDbType.Decimal).Value = txtcalories.Text;
+                    command1.Parameters.Add("@lastupdatedby", SqlDbType.VarChar, 20).Value = "Yihui Zhou";
+                    command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+
+                    command1.ExecuteNonQuery();
+                    connection.Close();
 
                     }
                 }
