@@ -477,7 +477,7 @@ namespace WholesomeMVC.WebForms
 
 
 
-                            CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([ndb_no], [description 2], [nrf6], [No_], [UserID], [LastUpdatedBy], [LastUpdated]) VALUES
+                            CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([Item_ID], [ndb_no], [description 2], [nrf6], [No_], [UserID], [LastUpdatedBy], [LastUpdated]) VALUES
                                       (@ndbno, @name,  @ceresdescription, @nrf6, @ceresitemnumber, @userID, @lastupdatedby, @lastupdated)"
                         };
 

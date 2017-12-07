@@ -18,12 +18,13 @@
 			</div>
 		</div>
 
+	<section>
 		<!-- nav to change between old/new/usda view -->
 		<h3><asp:Literal ID="view_mode" runat="server" /></h3>
 		<ul class="nav nav-pills" id="view_nav">
-			<li role="presentation" class="active"><a href="#">Manual: Old Label</a></li>
-			<li role="presentation"><a href="#">Manual: New Label</a></li>
-			<li role="presentation"><a href="#">USDA</a></li>
+			<li role="presentation"><a id="link_old_view" href="#">Manual: Old Label</a></li>
+			<li role="presentation"><a id="link_new_view" href="#">Manual: New Label</a></li>
+			<li role="presentation"><a id="link_usda_view" href="#">USDA</a></li>
 		</ul>
 
 		<!-- Search items will show here -->
@@ -50,9 +51,10 @@
 		<asp:HiddenField runat="server" ID="hidden_ceresid" ClientIDMode="Static"></asp:HiddenField>
 		<asp:HiddenField runat="server" ID="hidden_ceres_name" ClientIDMode="Static"></asp:HiddenField>
 		<asp:HiddenField runat="server" ID="hidden_ndbno" ClientIDMode="Static"></asp:HiddenField>
+		<asp:HiddenField runat="server" ID="hidden_view_mode" ClientIDMode="Static"></asp:HiddenField>
 		<asp:Button runat="server" ID="button_expand_item" OnClick="ExpandItem" ClientIDMode="Static" CssClass="hidden" />
 		
-		<!-- Modal for expanded view -->
+		<!-- Modal for expanded manual view -->
 		<div class="modal fade" id="expanded_view" tabindex="-1" role="dialog" aria-labelledby="expanded view">
 			<div class="modal-dialog modal-sm" role="document">
 				<div class="modal-content">
@@ -78,7 +80,7 @@
 
 							<div class="modal-body">
 								<h4><strong>Nutrition Facts</strong></h4>
-								<table class="table form-horizontal">
+								<table id="old_view" class="table form-horizontal">
 									<tbody>
 										<tr class='fatter'>
 											<th>Calories</th>
@@ -186,6 +188,81 @@
 									</tbody>
 								</table>
 
+								<table id="new_view" class="table form-horizontal">
+									<tbody>
+										<tr class='fatter'>
+											<th>Calories</th>
+											<td>
+												<asp:TextBox ID="txtNewKCal" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>g</td>
+										</tr>
+										<tr class='fat'>
+											<th>Saturated Fat</th>
+											<td>
+												<asp:TextBox ID="txtNewSaturatedFat" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Sodium</th>
+											<td>
+												<asp:TextBox ID="txtNewSodium" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Dietary Fiber</th>
+											<td>
+												<asp:TextBox ID="txtNewFiber" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Added Sugars</th>
+											<td>
+												<asp:TextBox ID="txtNewAddedSugar" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Protein</th>
+											<td>
+												<asp:TextBox ID="txtNewProtein" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>g</td>
+										</tr>
+										<tr class='fatter'>
+											<th>Vitamin D</th>
+											<td>
+												<asp:TextBox ID="txtNewVitaminD" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>%</td>
+										</tr>
+										<tr>
+											<th>Calcium</th>
+											<td>
+												<asp:TextBox ID="txtNewCalcium" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>%</td>
+										</tr>
+										<tr>
+											<th>Iron</th>
+											<td>
+												<asp:TextBox ID="txtNewIron" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>%</td>
+										</tr>
+										<tr>
+											<th>Potassium</th>
+											<td>
+												<asp:TextBox ID="txtNewPotassium" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>%</td>
+										</tr>
+									</tbody>
+								</table>
+
 								<hr />
 								<div>
 									<div class="form-group">
@@ -208,8 +285,12 @@
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
-								<asp:Button ID="btnCalculateOldNRF6" OnClick="btnCalculateOldNRF6_Click" runat="server" Text="Calculate" CssClass="btn btn-primary" />
-								<asp:Button ID="btnSaveOldItem" runat="server" Text="Save" CssClass="btn btn-success" />
+
+								<asp:Button ID="btnCalculateOldNRF6" runat="server" Text="Calculate" CssClass="btn btn-primary old_buttons" />
+								<asp:Button ID="btnSaveOldItem" runat="server" Text="Save" CssClass="btn btn-success old_buttons" />
+
+								<asp:Button ID="btnCalculateNewNRF6" runat="server" Text="Calculate" CssClass="btn btn-primary new_buttons" />
+								<asp:Button ID="btnSaveNewItem" runat="server" Text="Save" CssClass="btn btn-success new_buttons" />
 							</div>
 						</ContentTemplate>
 						<Triggers>
@@ -223,36 +304,10 @@
 
 	<div class="wrapper">
 		<div id="divitem">
-
-
-			<%--<td><asp:TextBox ID="txtNumber" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNumber" ID="chkItemNumber" runat="server" ValidationGroup="UpdateItem" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td> </tr>--%>
+			<%--<td><asp:TextBox ID="txtNumber" runat="server"></asp:TextBox>
+				<asp:RequiredFieldValidator ControlToValidate="txtNumber" ID="chkItemNumber" runat="server" ValidationGroup="UpdateItem" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td> </tr>--%>
 			<%--<select id="ddlMatchedCeresID" runat="server" name="Matched Ceres ID's">--%>
 			<%--</select>--%>
-
-			<asp:Label ID="lblNewProtein" runat="server" Text="Protein:"></asp:Label>
-			<asp:TextBox ID="txtNewProtein" runat="server"></asp:TextBox>
-			<asp:Label ID="lblNewFiber" runat="server" Text="Fiber:"></asp:Label>
-			<asp:TextBox ID="txtNewFiber" runat="server"></asp:TextBox>
-			<asp:Label ID="lblNewVitaminD" runat="server" Text="Vitamin D:"></asp:Label>
-			<asp:TextBox ID="txtNewVitaminD" runat="server"></asp:TextBox>
-			<asp:Label ID="lblNewPotassium" runat="server" Text="Potassium:"></asp:Label>
-			<asp:TextBox ID="txtNewPotassium" runat="server"></asp:TextBox>
-			<asp:Label ID="lblNewCalcium" runat="server" Text="Calcium:"></asp:Label>
-			<asp:TextBox ID="txtNewCalcium" runat="server"></asp:TextBox>
-			<asp:Label ID="lblNewIron" runat="server" Text="Iron:"></asp:Label>
-			<asp:TextBox ID="txtNewIron" runat="server"></asp:TextBox>
-			<asp:Label ID="lblNewSaturatedFat" runat="server" Text="Saturated Fat:"></asp:Label>
-			<asp:TextBox ID="txtNewSaturatedFat" runat="server"></asp:TextBox>
-			<asp:Label ID="lblNewAddedSugar" runat="server" Text="Added Sugar:"></asp:Label>
-			<asp:TextBox ID="txtNewAddedSugar" runat="server"></asp:TextBox>
-			<asp:Label ID="lblNewSodium" runat="server" Text="Sodium:"></asp:Label>
-			<asp:TextBox ID="txtNewSodium" runat="server"></asp:TextBox>
-			<asp:Label ID="lblNewKCal" runat="server" Text="KCal:"></asp:Label>
-			<asp:TextBox ID="txtNewKCal" runat="server"></asp:TextBox>
-			<asp:Button ID="btnCalculateOldNDScore" runat="server" Text="Calculate" />
-			<asp:Label ID="lblNewNRF6" runat="server" Text="ND_Score"></asp:Label>
-			<asp:Button ID="btnSaveNewItem" runat="server" Text="Save" />
-
 		</div>
 	</div>
 

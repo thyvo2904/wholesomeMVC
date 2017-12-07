@@ -80,3 +80,4 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:WholesomeMVC.WebForms.FoodItem.findNdbno(System.String)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:WholesomeMVC.WebForms.FoodItem.findNdbnoAddItem(System.String)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~P:WholesomeMVC.WebForms.FoodItem.fiber")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:WholesomeMVC.WebForms.update_item.btnCalculateOldNRF6_Click(System.Object,System.EventArgs)")]
