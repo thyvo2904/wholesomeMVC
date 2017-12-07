@@ -211,7 +211,7 @@ namespace WholesomeMVC.WebForms
             }
 
             // Add the table to the page.
-            return table1;
+            return table1; 
 
         }
 

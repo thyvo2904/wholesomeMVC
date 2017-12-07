@@ -50,8 +50,10 @@ namespace WholesomeMVC.WebForms
 				String strFiber = "Dietary Fiber";
 				String strSugar = "Total Sugar";
 				String strProtein = "Protein";
+                String strSugar2 = "Added Sugar";
 
-				label_txtKcal0.Text = strKcal;
+
+                label_txtKcal0.Text = strKcal;
 				label_txtsatfat0.Text = strSatFat;
 				label_txtsodium0.Text = strSodium;
 				label_txtfiber0.Text = strFiber;
@@ -62,7 +64,7 @@ namespace WholesomeMVC.WebForms
 				label_txtsatfat1.Text = strSatFat;
 				label_txtsodium1.Text = strSodium;
 				label_txtfiber1.Text = strFiber;
-				label_txtsugar1.Text = strSugar;
+				label_txtsugar1.Text = strSugar2;
 				label_txtprotein1.Text = strProtein;
 
 				String strVitaminA = "Vitamin A";
