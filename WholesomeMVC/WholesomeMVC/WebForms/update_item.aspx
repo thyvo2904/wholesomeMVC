@@ -90,7 +90,7 @@
 											<td>
 												<asp:TextBox ID="txtOldKCal" runat="server" CssClass="form-control"></asp:TextBox>
 											</td>
-											<td>g</td>
+											<td></td>
 										</tr>
 										<tr class='fat'>
 											<th>Saturated Fat</th>
@@ -214,8 +214,8 @@
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
 
-								<asp:Button ID="btnCalculateOldNRF6" OnClick="btnCalculateOldNRF6_Click" runat="server" Text="Calculate" CssClass="btn btn-primary old_buttons" />
-								<asp:Button ID="btnSaveOldItem" OnClick="btnOldSaveItem_Click" runat="server" Text="Save" CssClass="btn btn-success old_buttons" />
+								<asp:Button ID="btnCalculateOldNRF6" onserverclick="btnCalculateOldNRF6_Click" runat="server"  Text="Calculate" CssClass="btn btn-primary old_buttons" type="button" />
+								<asp:Button ID="btnSaveOldItem" OnClick="btnOldSaveItem_Click" runat="server" Text="Save" CssClass="btn btn-success old_buttons" type="button" />
 							</div>
 						</ContentTemplate>
 						<Triggers>
@@ -348,7 +348,7 @@
 								</div>
 							</div>
 							<div class="modal-footer">
-								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
+								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal"  ClientIDMode="Static" type="button" />
 								<asp:Button ID="btnCalculateNewNRF6" runat="server" Text="Calculate" CssClass="btn btn-primary new_buttons" />
 								<asp:Button ID="btnSaveNewItem"  runat="server" Text="Save" CssClass="btn btn-success new_buttons" />
 							</div>
