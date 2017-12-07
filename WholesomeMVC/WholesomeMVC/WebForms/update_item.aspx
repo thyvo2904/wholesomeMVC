@@ -88,7 +88,7 @@
          <asp:Button ID="btnSaveNewItem" runat="server" Text="Save" />
          
          <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
-         <asp:Button ID="btnSearch" runat="server" Text="Search USDA" OnClick="btnSearch_Click" />
+         <asp:Button ID="btnSearch" runat="server" Text="Search USDA" />
 	</div>
 
                      
@@ -196,15 +196,221 @@
     <asp:Label ID="lblNewResult" runat="server" Text=" "></asp:Label>--%>
 </div>
 
-	  <div id="divgridview" style="display: none">
-		  <h4>Search a Similar Item:</h4>
-		  <div>
-			  <asp:TextBox ID="txtSearchDescription" runat="server"></asp:TextBox>
-		  </div>
-		  <div>
-			  <asp:Button ID="btnUpdateItem" runat="server" Text="Update Item" CssClass="btncss" OnClick="btnUpdateItem_Click" ValidationGroup="UpdateItem" />
-		  </div>
-		  <%--<asp:GridView ID="gridUSDAChoices" runat="server" OnRowDataBound="gridUSDAChoices_RowDataBound" AutoGenerateColumns="false" onselectedindexchanged="gridSearchResults_SelectedIndexChanged" HorizontalAlign="Center">
+		<!-- nav to change between old/new/usda view -->
+		<h3><asp:Literal ID="view_mode" runat="server" /></h3>
+		<ul class="nav nav-pills" id="view_nav">
+			<li role="presentation" class="active"><a href="#">Manual: Old Label</a></li>
+			<li role="presentation"><a href="#">Manual: New Label</a></li>
+			<li role="presentation"><a href="#">USDA</a></li>
+		</ul>
+
+		<!-- Search items will show here -->
+		<h3><asp:Literal ID="search_summary" runat="server" /></h3>
+		<asp:GridView
+			ID="gridMatchedCeresIDS" 
+			runat="server" 
+			CssClass="table table-bordered table-hover"
+			OnRowDataBound="ceresMatchedOnRowDataBound"
+			AutoGenerateColumns="False"
+			ClientIDMode="Static"
+			RowStyle-Wrap="false">
+			<Columns>
+				<asp:BoundField DataField="CeresID" HeaderText="CeresID" />
+				<asp:BoundField DataField="Ceres_Name" HeaderText="Ceres_Name" />
+				<asp:BoundField DataField="USDA Number" HeaderText="NDBno" />
+				<asp:BoundField DataField="Name" HeaderText="Name" />
+				<asp:BoundField DataField="ND score" HeaderText="ND Score" />
+			</Columns>
+		</asp:GridView>
+		<asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+
+		<!-- hack to expand modal after postback -->
+		<asp:HiddenField runat="server" ID="hidden_ceresid" ClientIDMode="Static"></asp:HiddenField>
+		<asp:HiddenField runat="server" ID="hidden_ceres_name" ClientIDMode="Static"></asp:HiddenField>
+		<asp:HiddenField runat="server" ID="hidden_ndbno" ClientIDMode="Static"></asp:HiddenField>
+		<asp:Button runat="server" ID="button_expand_item" OnClick="ExpandItem" ClientIDMode="Static" CssClass="hidden" />
+		
+		<!-- Modal for expanded view -->
+		<div class="modal fade" id="expanded_view" tabindex="-1" role="dialog" aria-labelledby="expanded view">
+			<div class="modal-dialog modal-sm" role="document">
+				<div class="modal-content">
+					<asp:ScriptManager runat="server" EnablePartialRendering="true"></asp:ScriptManager>
+					<asp:UpdatePanel runat="server">
+						<ContentTemplate>
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class='panel-title equal-height'>
+									<strong>
+										<asp:Literal ID="lblFoodName" runat="server"></asp:Literal>
+									</strong>
+								</h4>
+							</div>
+
+							<div runat="server" id="nd_score_panel" class="modal-body">
+								<h4>
+									<strong>ND_Score:
+									<asp:Label runat="server" ID="lblIndexResult"></asp:Label>
+									</strong>
+								</h4>
+							</div>
+
+							<div class="modal-body">
+								<h4><strong>Nutrition Facts</strong></h4>
+								<table class="table form-horizontal">
+									<tbody>
+										<tr class='fatter'>
+											<th>Calories</th>
+											<td>
+												<asp:TextBox ID="txtOldKCal" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>g</td>
+										</tr>
+										<tr class='fat'>
+											<th>Saturated Fat</th>
+											<td>
+												<asp:TextBox ID="txtOldSaturatedFat" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Sodium</th>
+											<td>
+												<asp:TextBox ID="txtOldSodium" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Dietary Fiber</th>
+											<td>
+												<asp:TextBox ID="txtOldFiber" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Total Sugars</th>
+											<td>
+												<asp:TextBox ID="txtOldTotalSugar" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>g</td>
+										</tr>
+										<tr>
+											<th>Protein</th>
+											<td>
+												<asp:TextBox ID="txtOldProtein" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>g</td>
+										</tr>
+										<tr class='fatter'>
+											<th>Vitamin A</th>
+											<td>
+												<asp:TextBox ID="txtOldVitaminA" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>IU</td>
+										</tr>
+										<tr>
+											<th>Vitamin C</th>
+											<td>
+												<asp:TextBox ID="txtOldVitaminC" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>IU</td>
+										</tr>
+										<tr>
+											<th>Calcium</th>
+											<td>
+												<asp:TextBox ID="txtOldCalcium" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>mg</td>
+										</tr>
+										<tr>
+											<th>Iron</th>
+											<td>
+												<asp:TextBox ID="txtOldIron" runat="server" CssClass="form-control"></asp:TextBox>
+											</td>
+											<td>mg</td>
+										</tr>
+									</tbody>
+								</table>
+
+								<hr />
+								<div>
+									<div class="form-group">
+										<label for="txtCeresNumber">
+											<asp:Literal Text="Ceres Number" runat="server" />
+										</label>
+										<p>
+											<asp:Literal ID="txtCeresNumber" runat="server"></asp:Literal>
+										</p>
+									</div>
+									<div class="form-group">
+										<label for="txtCeresDescription">
+											<asp:Literal Text="Ceres Description" runat="server" />
+										</label>
+										<p>
+											<asp:Literal ID="txtCeresDescription" runat="server"></asp:Literal>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
+								<asp:Button ID="btnCalculateOldNRF6" runat="server" Text="Calculate" CssClass="btn btn-primary" />
+								<asp:Button ID="btnSaveOldItem" runat="server" Text="Save" CssClass="btn btn-success" />
+							</div>
+						</ContentTemplate>
+						<Triggers>
+							<asp:AsyncPostBackTrigger ControlID="button_expand_item" EventName="Click" />
+						</Triggers>
+					</asp:UpdatePanel>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="wrapper">
+		<div id="divitem">
+
+
+			<%--<td><asp:TextBox ID="txtNumber" runat="server"></asp:TextBox><asp:RequiredFieldValidator ControlToValidate="txtNumber" ID="chkItemNumber" runat="server" ValidationGroup="UpdateItem" ErrorMessage="(Required)"></asp:RequiredFieldValidator></td> </tr>--%>
+			<%--<select id="ddlMatchedCeresID" runat="server" name="Matched Ceres ID's">--%>
+			<%--</select>--%>
+
+			<asp:Label ID="lblNewProtein" runat="server" Text="Protein:"></asp:Label>
+			<asp:TextBox ID="txtNewProtein" runat="server"></asp:TextBox>
+			<asp:Label ID="lblNewFiber" runat="server" Text="Fiber:"></asp:Label>
+			<asp:TextBox ID="txtNewFiber" runat="server"></asp:TextBox>
+			<asp:Label ID="lblNewVitaminD" runat="server" Text="Vitamin D:"></asp:Label>
+			<asp:TextBox ID="txtNewVitaminD" runat="server"></asp:TextBox>
+			<asp:Label ID="lblNewPotassium" runat="server" Text="Potassium:"></asp:Label>
+			<asp:TextBox ID="txtNewPotassium" runat="server"></asp:TextBox>
+			<asp:Label ID="lblNewCalcium" runat="server" Text="Calcium:"></asp:Label>
+			<asp:TextBox ID="txtNewCalcium" runat="server"></asp:TextBox>
+			<asp:Label ID="lblNewIron" runat="server" Text="Iron:"></asp:Label>
+			<asp:TextBox ID="txtNewIron" runat="server"></asp:TextBox>
+			<asp:Label ID="lblNewSaturatedFat" runat="server" Text="Saturated Fat:"></asp:Label>
+			<asp:TextBox ID="txtNewSaturatedFat" runat="server"></asp:TextBox>
+			<asp:Label ID="lblNewAddedSugar" runat="server" Text="Added Sugar:"></asp:Label>
+			<asp:TextBox ID="txtNewAddedSugar" runat="server"></asp:TextBox>
+			<asp:Label ID="lblNewSodium" runat="server" Text="Sodium:"></asp:Label>
+			<asp:TextBox ID="txtNewSodium" runat="server"></asp:TextBox>
+			<asp:Label ID="lblNewKCal" runat="server" Text="KCal:"></asp:Label>
+			<asp:TextBox ID="txtNewKCal" runat="server"></asp:TextBox>
+			<asp:Button ID="btnCalculateOldNDScore" runat="server" Text="Calculate" />
+			<asp:Label ID="lblNewNRF6" runat="server" Text="ND_Score"></asp:Label>
+			<asp:Button ID="btnSaveNewItem" runat="server" Text="Save" />
+
+		</div>
+	</div>
+
+
+	<div id="divgridview" style="display: none">
+		<h4>Search a Similar Item:</h4>
+		<div>
+			<asp:TextBox ID="txtSearchDescription" runat="server"></asp:TextBox>
+		</div>
+		<div>
+			<asp:Button ID="btnUpdateItem" runat="server" Text="Update Item" CssClass="btncss" OnClick="btnUpdateItem_Click" ValidationGroup="UpdateItem" />
+		</div>
+		<%--<asp:GridView ID="gridUSDAChoices" runat="server" OnRowDataBound="gridUSDAChoices_RowDataBound" AutoGenerateColumns="false" onselectedindexchanged="gridSearchResults_SelectedIndexChanged" HorizontalAlign="Center">
 <Columns>
 <asp:BoundField DataField ="NDBno" HeaderText ="NDBno"/>
 <asp:BoundField DataField ="Name" HeaderText ="Name"/>
@@ -213,12 +419,10 @@
 <asp:commandfield showselectbutton="True" selectText ="Select"/>
 </Columns>
 </asp:GridView>--%>
-		  <%--<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">--%>
+		<%--<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">--%>
 
-		  <%--</asp:Content>--%>
-	  </div>
-  </div>
-
+		<%--</asp:Content>--%>
+	</div>
 
 	<div>
 		<asp:Label ID="lblFBCategories" Visible="false" runat="server" Text="Choose a Food Bank Category"></asp:Label>
@@ -252,153 +456,6 @@
 		</asp:DropDownList>
 		<asp:Button ID="btnSelectFBCategory" runat="server" OnClick="btnSelectFBCategory_Click" Text="Select" Visible="False" />
 	</div>
-
-
-	<section runat="server" id="section" visible="true">
-		<h3><asp:Literal ID="search_summary" runat="server" /></h3>
-
-		<!-- Search items will show here -->
-		<asp:GridView
-			ID="gridMatchedCeresIDS" 
-			runat="server" 
-			CssClass="table table-bordered table-hover"
-			OnRowDataBound="ceresMatchedOnRowDataBound"
-			AutoGenerateColumns="False"
-			ClientIDMode="Static"
-			RowStyle-Wrap="false">
-			<Columns>
-				<asp:BoundField DataField="CeresID" HeaderText="CeresID" />
-				<asp:BoundField DataField="Ceres_Name" HeaderText="Ceres_Name" />
-				<asp:BoundField DataField="USDA Number" HeaderText="NDBno" />
-				<asp:BoundField DataField="Name" HeaderText="Name" />
-				<asp:BoundField DataField="ND score" HeaderText="ND Score" />
-			</Columns>
-		</asp:GridView>
-		<asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
-		<div id="search_results" runat="server" class="row"></div>
-
-		<!-- Modal for expanded view -->
-		<div class="modal fade" id="expanded_view" tabindex="-1" role="dialog" aria-labelledby="expanded view">
-			<div class="modal-dialog modal-sm" role="document">
-				<div class="modal-content">
-					<asp:ScriptManager runat="server" EnablePartialRendering="true"></asp:ScriptManager>
-					<asp:UpdatePanel runat="server">
-						<ContentTemplate>
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								<h4 class='panel-title equal-height'>
-									<asp:Label ID="lblFoodName" runat="server"></asp:Label>
-								</h4>
-							</div>
-
-							<div runat="server" id="nd_score_panel" class="modal-body">
-								<h4>
-									<strong>ND_Score:
-									<asp:Label runat="server" ID="lblIndexResult"></asp:Label>
-									</strong>
-								</h4>
-							</div>
-
-							<div class="modal-body">
-								<h4><strong>Nutrition Facts</strong></h4>
-								<table class='table table-condensed table-hover'>
-									<tbody>
-										<tr class='fatter'>
-											<th>Calories</th>
-											<td>
-												<asp:Label ID="txtcalories" runat="server" /></td>
-											<td></td>
-										</tr>
-										<tr class='fat'>
-											<th>Saturated Fat</th>
-											<td>
-												<asp:Label ID="txtsatfat" runat="server" /></td>
-											<td>g</td>
-										</tr>
-										<tr>
-											<th>Sodium</th>
-											<td>
-												<asp:Label ID="txtsodium" runat="server" /></td>
-											<td>g</td>
-										</tr>
-										<tr>
-											<th>Dietary Fiber</th>
-											<td>
-												<asp:Label ID="txtfiber" runat="server" /></td>
-											<td>g</td>
-										</tr>
-										<tr>
-											<th>Total Sugars</th>
-											<td>
-												<asp:Label ID="txtsugar" runat="server" /></td>
-											<td>g</td>
-										</tr>
-										<tr>
-											<th>Protein</th>
-											<td>
-												<asp:Label ID="txtprotein" runat="server" /></td>
-											<td>g</td>
-										</tr>
-										<tr class='fatter'>
-											<th>Vitamin A</th>
-											<td>
-												<asp:Label ID="txtva" runat="server" /></td>
-											<td>IU</td>
-										</tr>
-										<tr>
-											<th>Vitamin C</th>
-											<td>
-												<asp:Label ID="txtvc" runat="server" /></td>
-											<td>IU</td>
-										</tr>
-										<tr>
-											<th>Calcium</th>
-											<td>
-												<asp:Label ID="txtcalcium" runat="server" /></td>
-											<td>mg</td>
-										</tr>
-										<tr>
-											<th>Iron</th>
-											<td>
-												<asp:Label ID="txtiron" runat="server" /></td>
-											<td>mg</td>
-										</tr>
-									</tbody>
-								</table>
-
-								<hr />
-								<div>
-									<div class="form-group">
-										<label for="txtCeresNumber">
-											<asp:Label Text="Ceres Number" runat="server" /></label>
-										<asp:TextBox ID="txtCeresNumber" CssClass="form-control" runat="server" placeholder="12345..."></asp:TextBox>
-									</div>
-									<div class="form-group">
-										<label for="txtCeresDescription">
-											<asp:Label Text="Ceres Description" runat="server" /></label>
-										<asp:TextBox ID="txtCeresDescription" CssClass="form-control" runat="server" placeholder="Item description..."></asp:TextBox><br>
-										<%--<button type="button" class="btn btn-sm btn-default" id="btnSaveItem" runat="server" onserverclick="btnSaveItem_Click"><span class="glyphicon glyphicon-floppy-saved"></span>Save</button></span>--%>
-									</div>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
-								<%--<asp:Button Text="Compare Item" runat="server" CssClass="btn btn-success" OnClick="CompareItem" />--%>
-							</div>
-							<!-- hack to expand modal after postback -->
-							<asp:HiddenField runat="server" ID="hidden_ceresid" ClientIDMode="Static"></asp:HiddenField>
-							<asp:HiddenField runat="server" ID="hidden_ceres_name" ClientIDMode="Static"></asp:HiddenField>
-							<asp:HiddenField runat="server" ID="hidden_ndbno" ClientIDMode="Static"></asp:HiddenField>
-							<asp:Button runat="server" ID="button_expand_item" OnClick="ExpandItem" ClientIDMode="Static" CssClass="hidden" />
-						</ContentTemplate>
-						<Triggers>
-							<asp:AsyncPostBackTrigger ControlID="button_expand_item" EventName="Click" />
-						</Triggers>
-					</asp:UpdatePanel>
-				</div>
-			</div>
-		</div>
-	</section>
 </asp:Content>
     
  <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
@@ -407,29 +464,7 @@
 
 	 <link href="/css/additem.css" rel="stylesheet" type="text/css" runat="server" />
 	 <link href="Fb_category.css" rel="stylesheet" type="text/css" runat="server" />
-
-	 <script>
-        function showDiv(elem) {
-            if (elem.value == 0) {
-                document.getElementById('document.getElementById("divold")').style.display = "block";
-                document.getElementById('divnew').style.display = "none";
-                document.getElementById('divgridview').style.display = "none";
-            } else if (elem.value == 1) {
-                document.getElementById('divnew').style.display = "block";
-                document.getElementById('divold').style.display = "none";
-                document.getElementById('divnew').style.display = "none";
-            } else if (elem.value == 2) {
-                document.getElementById('divnew').style.display = "none";
-                document.getElementById('divold').style.display = "none";
-                document.getElementById('divgridview').style.display = "block";
-
-            } else {
-                document.getElementById('divold').style.display = "block";
-                document.getElementById('divnew').style.display = "none";
-                document.getElementById('divgridview').style.display = "block";
-            }
-        }
-	 </script>--%>
+--%>
 	
 	<script type="text/javascript" src="/Scripts/Vendor/moment.min.js"></script>
 	<script type="text/javascript" src="/Scripts/Vendor/footable.min.js"></script>
