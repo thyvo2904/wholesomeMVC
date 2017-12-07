@@ -344,7 +344,7 @@ namespace WholesomeMVC.WebForms
 					command1.CommandType = System.Data.CommandType.Text;
 
 					command1.CommandText = @"
-						INSERT INTO [testDB].[dbo].[SavedItems] (
+						INSERT INTO [wholesomeDB].[dbo].[SavedItems] (
 							[ndb_no],
 							[name],
 							[ND_Score],

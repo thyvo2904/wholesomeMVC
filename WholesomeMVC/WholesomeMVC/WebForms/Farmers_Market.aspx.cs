@@ -86,25 +86,7 @@ namespace WholesomeMVC.WebForms
 
         }
 
-        protected void btnSearch(object sender, EventArgs e)
-        {
-
-
-            if (txtSearch.Text != "")
-            {
-                String foodSearch = "";
-                foodSearch = txtSearch.Text;
-                FoodItem.findNdbno(foodSearch);
-                Response.Redirect("~/IndexResults.aspx");
-            }
-
-            else
-            {
-                Response.Write("<script>alert('Please enter a value');</script>");
-            }
-
-
-        }
+        
 
     }
 }
