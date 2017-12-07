@@ -96,8 +96,10 @@ namespace WholesomeMVC.WebForms
 
             sc.Open();
 
-            SqlCommand myCommand = new SqlCommand("Pull_New_Ceres_Items", sc);
-            myCommand.CommandType = CommandType.StoredProcedure;
+            SqlCommand myCommand = new SqlCommand("Pull_New_Ceres_Items", sc)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
             myCommand.ExecuteNonQuery();
 
             myCommand = new SqlCommand("Update_Ceres_Items", sc);
@@ -305,11 +307,12 @@ namespace WholesomeMVC.WebForms
                     else
                     {
                         connection.Open();
-                        SqlCommand command1 = new SqlCommand();
-                        command1.Connection = connection;
-                        command1.CommandType = System.Data.CommandType.Text;
+                    SqlCommand command1 = new SqlCommand
+                    {
+                        Connection = connection,
+                        CommandType = System.Data.CommandType.Text,
 
-                        command1.CommandText = @"
+                        CommandText = @"
 					INSERT INTO [wholesomeDB].[dbo].[Comparison_Item] (
 						[ndb_no],
 						[nrf6],
@@ -345,8 +348,9 @@ namespace WholesomeMVC.WebForms
                         @lastupdatedby,
                         @lastupdated
 					)
-				";
-                        command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
+				"
+                    };
+                    command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = lblNdbno.Value;
                         command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = lblIndexResult.Text;
                         command1.Parameters.Add("@name", SqlDbType.VarChar, 50).Value = lblName.Value;
                         command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getuserid();
@@ -466,14 +470,16 @@ namespace WholesomeMVC.WebForms
                 {
                     //String name = lblName.Text;
                     {
-                        SqlCommand command1 = new SqlCommand();
-                        command1.Connection = connection;
-                        command1.CommandType = System.Data.CommandType.Text;
+                        SqlCommand command1 = new SqlCommand
+                        {
+                            Connection = connection,
+                            CommandType = System.Data.CommandType.Text,
 
-                    
 
-                        command1.CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([ndb_no], [description 2], [nrf6], [No_], [UserID], [LastUpdatedBy], [LastUpdated]) VALUES
-                                      (@ndbno, @name,  @ceresdescription, @nrf6, @ceresitemnumber, @userID, @lastupdatedby, @lastupdated)";
+
+                            CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([ndb_no], [description 2], [nrf6], [No_], [UserID], [LastUpdatedBy], [LastUpdated]) VALUES
+                                      (@ndbno, @name,  @ceresdescription, @nrf6, @ceresitemnumber, @userID, @lastupdatedby, @lastupdated)"
+                        };
 
                         command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
                         command1.Parameters.Add("@name", SqlDbType.VarChar, 500).Value = FoodItem.newFood.name;

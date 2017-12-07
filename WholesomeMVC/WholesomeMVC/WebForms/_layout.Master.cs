@@ -120,11 +120,12 @@ namespace WholesomeMVC.WebForms
                 {
                     using (SqlConnection connection = new SqlConnection(ConnectionString))
                     {
-                        SqlCommand command1 = new SqlCommand();
-                        command1.Connection = connection;
-                        command1.CommandType = System.Data.CommandType.Text;
+                        SqlCommand command1 = new SqlCommand
+                        {
+                            Connection = connection,
+                            CommandType = System.Data.CommandType.Text,
 
-                        command1.CommandText = @"
+                            CommandText = @"
 						INSERT INTO [wholesomeDB].[dbo].[Session] (
 							[ID],
 							[LastUpdated],
@@ -133,7 +134,8 @@ namespace WholesomeMVC.WebForms
 							@ID,
 							@LastUpdated,
 							@LastUpdatedBy)
-					";
+					"
+                        };
 
                         command1.Parameters.Add("@ID", SqlDbType.NVarChar, 128).Value = HttpContext.Current.User.Identity.GetUserId();
                         command1.Parameters.Add("@LastUpdated", SqlDbType.DateTime).Value = DateTime.Now;
