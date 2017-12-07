@@ -214,8 +214,8 @@
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
 
-								<asp:Button ID="btnCalculateOldNRF6" runat="server" Text="Calculate" CssClass="btn btn-primary old_buttons" />
-								<asp:Button ID="btnSaveOldItem" runat="server" Text="Save" CssClass="btn btn-success old_buttons" />
+								<asp:Button ID="btnCalculateOldNRF6" OnClick="btnCalculateOldNRF6_Click" runat="server" Text="Calculate" CssClass="btn btn-primary old_buttons" />
+								<asp:Button ID="btnSaveOldItem" OnClick="btnOldSaveItem_Click" runat="server" Text="Save" CssClass="btn btn-success old_buttons" />
 							</div>
 						</ContentTemplate>
 						<Triggers>
@@ -350,7 +350,7 @@
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
 								<asp:Button ID="btnCalculateNewNRF6" runat="server" Text="Calculate" CssClass="btn btn-primary new_buttons" />
-								<asp:Button ID="btnSaveNewItem" runat="server" Text="Save" CssClass="btn btn-success new_buttons" />
+								<asp:Button ID="btnSaveNewItem"  runat="server" Text="Save" CssClass="btn btn-success new_buttons" />
 							</div>
 						</ContentTemplate>
 						<Triggers>
