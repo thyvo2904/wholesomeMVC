@@ -1033,10 +1033,14 @@ namespace WholesomeMVC.WebForms
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             String foodSearch = txtSearchUsdaSimilar.Text;
+            string ceresid = hidden_ceresid.Value;
+            string ceresDescription = hidden_ceres_name.Value;
+            Session["sharedCeresID"] = ceresid;
+            Session["sharedCeresDescription"] = ceresDescription;
 
             WebForms.FoodItem.findNdbno(foodSearch);
             Server.Transfer("/WebForms/indexresult.aspx");
-            Session["Shared_Hidden_CeresID"] = hidden_ceresid;
+            
         }
 
         protected void btnCalculateNewNRF6_Click(object sender, EventArgs e)
