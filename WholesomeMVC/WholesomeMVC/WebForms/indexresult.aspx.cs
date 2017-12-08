@@ -662,8 +662,11 @@ namespace WholesomeMVC.WebForms
 
 
 
-                                CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([No_], [ndb_no], [Description], [nrf6], [LoginID], [LastUpdatedBy], [LastUpdated], [description 2], FBC_Code, GradientEntry) VALUES
-                                      (@ceresitemnumber, @ndbno, @ceresdescription, @nrf6, @loginID, @lastupdatedby, @lastupdated, @name, @fbcCode, @gradientEntry)"
+                                CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item]
+                                        ([No_], [ndb_no], [Description], [nrf6], [LoginID], [LastUpdatedBy],
+                                    [LastUpdated], [description 2], FBC_Code, GradientEntry) VALUES
+                                      (@ceresitemnumber, @ndbno, @ceresdescription, @nrf6,
+                                    @loginID, @lastupdatedby, @lastupdated, @name, @fbcCode, @GradientEntry)"
                             };
                             // dealing with uncatogirzed food which has NaN nd_score
                             if (lblIndexResult.Text == "NaN")
