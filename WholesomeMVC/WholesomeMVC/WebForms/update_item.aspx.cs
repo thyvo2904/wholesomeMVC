@@ -879,7 +879,7 @@ namespace WholesomeMVC.WebForms
 			string view_mode = hidden_view_mode.Value;
 
             
-
+            if(ndbno != "") { }
             FoodItem.findNdbno(ndbno);
 
             double score = FoodItem.newFood.NRF6;
@@ -920,6 +920,7 @@ namespace WholesomeMVC.WebForms
 					txtOldVitaminC.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
 					txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
 					txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+                    lblNewCeresNumber.Text = ceresid;
 
 					break;
 				case "new":
@@ -1007,7 +1008,7 @@ namespace WholesomeMVC.WebForms
             nR6 = (protein) + (fiber) + (vitaminA) + (vitaminC) + (calcium) + (iron);
             liMT = (saturatedFat / 20) + (totalSugar / 125) + (sodium / 2400);
 
-            FoodItem.newFood.ndbNo = Convert.ToString(nR6 - liMT);
+            FoodItem.newFood.NRF6 = (nR6 - liMT);
 
 
 
@@ -1034,5 +1035,78 @@ namespace WholesomeMVC.WebForms
             return getid;
         }
 
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            String foodSearch = "";
+
+            WebForms.FoodItem.findNdbno(foodSearch);
+            Server.Transfer("/WebForms/indexresult.aspx");
+        }
+
+        protected void btnCalculateNewNRF6_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //   lblOldResult.Text = String.Empty;
+            double nR6 = 0;
+            double liMT = 0;
+            //double NRF6 = 0;
+            double kCal = Double.Parse(txtNewKCal.Text);
+            double protein = Double.Parse(txtNewProtein.Text);
+            double vitaminA = Double.Parse(txtNewVitaminD.Text);
+            double vitaminC = Double.Parse(txtNewPotassium.Text);
+            double fiber = Double.Parse(txtOldFiber.Text);
+            double calcium = Double.Parse(txtOldCalcium.Text);
+            double iron = Double.Parse(txtOldIron.Text);
+            double saturatedFat = Double.Parse(txtOldSaturatedFat.Text);
+            double totalSugar = Double.Parse(txtOldTotalSugar.Text);
+            double sodium = Double.Parse(txtOldSodium.Text);
+
+
+            protein = protein / 50;
+            fiber = fiber / 25;
+            vitaminA = vitaminA / 5000;
+            vitaminC = vitaminC / 60;
+            calcium = calcium / 1000;
+            iron = iron / 18;
+
+            //if any of the good value ratios are > 1, set them equal to 1 to follow algorithm rule 
+            if (protein > 1)
+            {
+                protein = 1;
+            }
+
+            if (fiber > 1)
+            {
+                fiber = 1;
+            }
+
+            if (vitaminA > 1)
+            {
+                vitaminA = 1;
+            }
+
+            if (vitaminC > 1)
+            {
+                vitaminC = 1;
+            }
+
+            if (calcium > 1)
+            {
+                calcium = 1;
+            }
+
+            if (iron > 1)
+            {
+                iron = 1;
+            }
+
+
+
+            nR6 = (protein) + (fiber) + (vitaminA) + (vitaminC) + (calcium) + (iron);
+            liMT = (saturatedFat / 20) + (totalSugar / 125) + (sodium / 2400);
+
+            FoodItem.newFood.NRF6 = (nR6 - liMT);
+        }
     }
 }

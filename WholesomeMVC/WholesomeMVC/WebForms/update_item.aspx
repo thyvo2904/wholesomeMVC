@@ -12,7 +12,8 @@
 				<div class="input-group">
 					<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
 					<span class="input-group-btn">
-						<asp:Button ID="btnSearch" runat="server" Text="Search USDA" CssClass="btn btn-default" />
+						<asp:Button ID="btnSearch" OnClick="btnSearch_Click"
+                            runat="server" Text="Search USDA" CssClass="btn btn-default" />
 					</span>
 				</div>
 			</div>
@@ -214,7 +215,7 @@
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
 
-								<asp:Button ID="btnCalculateOldNRF6" onserverclick="btnCalculateOldNRF6_Click" runat="server"  Text="Calculate" CssClass="btn btn-primary old_buttons" type="button" />
+								<asp:Button ID="btnCalculateOldNRF6" OnClick="btnCalculateOldNRF6_Click" runat="server"  Text="Calculate" CssClass="btn btn-primary old_buttons" type="button" />
 								<asp:Button ID="btnSaveOldItem" OnClick="btnOldSaveItem_Click" runat="server" Text="Save" CssClass="btn btn-success old_buttons" type="button" />
 							</div>
 						</ContentTemplate>
@@ -331,10 +332,11 @@
 								<div>
 									<div class="form-group">
 										<label for="txtNewCeresNumber">
-											<asp:Literal Text="Ceres Number" runat="server" />
+											<asp:Literal id="literalCeresID" Text="Ceres Number" runat="server" />
 										</label>
+                                        <asp:Label ID="lblNewCeresNumber" runat="server"></asp:Label>
 										<p>
-											<asp:Literal ID="txtNewCeresNumber" runat="server"></asp:Literal>
+											
 										</p>
 									</div>
 									<div class="form-group">
@@ -349,7 +351,7 @@
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal"  ClientIDMode="Static" type="button" />
-								<asp:Button ID="btnCalculateNewNRF6" runat="server" Text="Calculate" CssClass="btn btn-primary new_buttons" />
+								<asp:Button ID="btnCalculateNewNRF6" OnClick="btnCalculateNewNRF6_Click" runat="server" Text="Calculate" CssClass="btn btn-primary new_buttons" />
 								<asp:Button ID="btnSaveNewItem"  runat="server" Text="Save" CssClass="btn btn-success new_buttons" />
 							</div>
 						</ContentTemplate>
