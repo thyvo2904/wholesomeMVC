@@ -30,17 +30,26 @@ namespace WholesomeMVC.WebForms
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (!IsPostBack)
+            {
+                txtCeresNumber.Text = (string)Session["sharedCeresID"];
+                txtCeresDescription.Text = (string)Session["sharedCeresDescription"];
+            }
+
             if (HttpContext.Current.User.IsInRole("Admin"))
             {
                 btnCompare.Visible = true;
                 sook.Visible = true;
                 txtCeresStatus.Visible = true;
+                btnSaveItem.Visible = true;
             }
             else
             {
                 btnCompare.Visible = false;
                 sook.Visible = false;
                 txtCeresStatus.Visible = false;
+                btnSaveItem.Visible = false;
             }
             if (IsPostBack)
             {
