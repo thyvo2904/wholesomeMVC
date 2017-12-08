@@ -237,16 +237,16 @@ namespace WholesomeMVC.WebForms
 
 			String strCommand = @"
 				SELECT        Recent_Index.ndb_no
-FROM            Recent_Index INNER JOIN
+                FROM            Recent_Index INNER JOIN
                          Session ON Recent_Index.LoginId = Session.LoginID
 						 Where Session.ID = @ID
-ORDER BY Recent_Index.LastUpdated DESC
+                ORDER BY Recent_Index.LastUpdated DESC
 			";
 			SqlCommand myCommand = new SqlCommand(strCommand, sc);
-            if (HttpContext.Current.User.Identity.GetUserName() != null)
+            if (HttpContext.Current.User.IsInRole("Admin"))
                 myCommand.Parameters.Add("@ID", SqlDbType.NVarChar,128).Value = HttpContext.Current.User.Identity.GetUserId();
             else
-                myCommand.Parameters.Add("@ID", SqlDbType.NVarChar,128).Value = null;
+                myCommand.Parameters.Add("@ID", SqlDbType.NVarChar,128).Value = DBNull.Value;
 
             SqlDataReader newReader = null;
 			newReader = myCommand.ExecuteReader();

@@ -106,7 +106,7 @@ namespace WholesomeMVC.WebForms
 		protected void Page_Load(object sender, EventArgs e)
         {
             label_year.Text = DateTime.Now.Year.ToString();
-            if(HttpContext.Current.User.Identity.GetUserName()==null)
+            if(HttpContext.Current.User.IsInRole("Admin"))
             {
                 log_out.Visible = false;
             }
