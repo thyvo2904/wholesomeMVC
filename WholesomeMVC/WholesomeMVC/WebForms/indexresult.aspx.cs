@@ -338,8 +338,9 @@ namespace WholesomeMVC.WebForms
             String getid;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                string result = "SELECT max(LoginID) FROM dbo.Session WHERE Id = '" + HttpContext.Current.User.Identity.GetUserId() + "' ";
+                string result = "SELECT max(LoginID) FROM dbo.Session WHERE Id =@ID";
                 SqlCommand showresult = new SqlCommand(result, con);
+                showresult.Parameters.Add("@ID", SqlDbType.NVarChar, 128).Value = HttpContext.Current.User.Identity.GetUserId();
                 con.Open();
                 getid = showresult.ExecuteScalar().ToString();
                 con.Close();
@@ -668,8 +669,11 @@ namespace WholesomeMVC.WebForms
 
 
 
-                                CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([No_], [ndb_no], [Description], [nrf6], [LoginID], [LastUpdatedBy], [LastUpdated], [description 2], FBC_Code, GradientEntry) VALUES
-                                      (@ceresitemnumber, @ndbno, @ceresdescription, @nrf6, @loginID, @lastupdatedby, @lastupdated, @name, @fbcCode, @GradientEntry)"
+                                CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item]
+                                        ([No_], [ndb_no], [Description], [nrf6], [LoginID], [LastUpdatedBy],
+                                    [LastUpdated], [description 2], FBC_Code, GradientEntry) VALUES
+                                      (@ceresitemnumber, @ndbno, @ceresdescription, @nrf6,
+                                    @loginID, @lastupdatedby, @lastupdated, @name, @fbcCode, @GradientEntry)"
                             };
                             // dealing with uncatogirzed food which has NaN nd_score
                             if (lblIndexResult.Text == "NaN")

@@ -63,12 +63,12 @@
 	} else {
 		$(".admin").hide();
 	}
-	if (authorization.indexOf("warehouse") !== -1) {
+	if (authorization.indexOf("warehouse_staff") !== -1) {
 		$(".warehouse").show();
 	} else {
 		$(".warehouse").hide();
 	}
-	if (authorization.indexOf("purchasing") !== -1) {
+	if (authorization.indexOf("purchasing_staff") !== -1) {
 		$(".purchasing").show();
 	} else {
 		$(".purchasing").hide();
