@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WholesomeMVC.Models;
 
 namespace WholesomeMVC.WebForms
 {
@@ -20,6 +22,7 @@ namespace WholesomeMVC.WebForms
 				Literal page_title = (Literal)Master.FindControl("page_title");
 				page_title.Text = strTitle;
 
+				banner.Style.Add("background-color", "red");
 				banner_message.Text = @"
 					Using Wholesome, you can quickly find out the different nutritional values of your 
                     food options and decide for yourself what works for you and your needs.

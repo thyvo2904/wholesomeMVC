@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Web;
 using System.Web.Security;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Data;
-using System.Text;
-using System.Web.Helpers;
-using Microsoft.AspNet.Identity;
 
 namespace WholesomeMVC.WebForms
 {
@@ -23,9 +22,14 @@ namespace WholesomeMVC.WebForms
 				label_user.Text = HttpContext.Current.User.Identity.GetUserName();
 
 				// set authentication and authorization
+				ApplicationUserManager userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+				var roles = userManager.GetRoles(HttpContext.Current.User.Identity.GetUserId());
+
 				authentication.Value = "authenticated";
 				authorization.Value = "";
-				foreach (String role in Roles.GetRolesForUser()) {
+
+				foreach (var role in roles)
+				{
 					authorization.Value += role + "#";
 				}
 
