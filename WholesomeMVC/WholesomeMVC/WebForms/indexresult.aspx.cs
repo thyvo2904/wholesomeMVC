@@ -199,7 +199,7 @@ namespace WholesomeMVC.WebForms
 
             //saved into recent_index 
             //check if they login
-            if (checkNDB_No(ndbno).Equals(ndbno) == false)
+            if (!checkndbno(ndbno))
             {
 
                 if (HttpContext.Current.User.IsInRole("Admin"))
@@ -300,6 +300,30 @@ namespace WholesomeMVC.WebForms
             return getNdb_No;
             
         }
+
+        public static bool checkndbno(String ndbno)
+        {
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                SqlCommand command = new SqlCommand("Select ndb_No From dbo.recent_index WHERE ndb_no = @ndb_no", connection);
+                command.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader["ndb_no"].ToString().Equals(ndbno))
+                    {
+                        return true;
+                    }
+
+                }
+                connection.Close();
+            }
+            return false;
+            }
         public static String getloginid()
         {
             string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
