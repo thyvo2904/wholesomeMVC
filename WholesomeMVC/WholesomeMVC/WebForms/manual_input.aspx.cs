@@ -21,10 +21,9 @@ namespace WholesomeMVC.WebForms
 				page_title.Text = strTitle;
 				Label body_title = (Label) Master.FindControl("body_title");
 				body_title.Text = strTitle;
-                body_title.Style.Add("color", "#FF9500");
 
                 body_description.Text = @"
-                Manually input the value of each nutrient to calculate
+                Input the value of each nutrient to calculate
                 a score to compare to the nutrition grade";
 
 				// configure forms
@@ -44,46 +43,6 @@ namespace WholesomeMVC.WebForms
 				label_score1.Text = strScore;
 				label_score_help1.Text = strScoreHelp;
 
-				String strKcal = "Calories";
-				String strSatFat = "Saturated Fat";
-				String strSodium = "Sodium";
-				String strFiber = "Dietary Fiber";
-				String strSugar = "Total Sugar";
-				String strProtein = "Protein";
-                String strSugar2 = "Added Sugar";
-
-
-                label_txtKcal0.Text = strKcal;
-				label_txtsatfat0.Text = strSatFat;
-				label_txtsodium0.Text = strSodium;
-				label_txtfiber0.Text = strFiber;
-				label_txtsugar0.Text = strSugar;
-				label_txtprotein0.Text = strProtein;
-
-				label_txtKcal1.Text = strKcal;
-				label_txtsatfat1.Text = strSatFat;
-				label_txtsodium1.Text = strSodium;
-				label_txtfiber1.Text = strFiber;
-				label_txtsugar1.Text = strSugar2;
-				label_txtprotein1.Text = strProtein;
-
-				String strVitaminA = "Vitamin A";
-				String strVitaminC = "Vitamin C";
-				String strVitaminD = "Vitamin D";
-				String strCalcium = "Calcium";
-				String strIron = "Iron";
-				String strPotassium = "Potassium";
-
-				label_txtva0.Text = strVitaminA;
-				label_txtvc0.Text = strVitaminC;
-				label_txtcalcium0.Text = strCalcium;
-				label_txtiron0.Text = strIron;
-
-				label_txtvd1.Text = strVitaminD;
-				label_txtcalcium1.Text = strCalcium;
-				label_txtiron1.Text = strIron;
-				label_txtpotassium.Text = strPotassium;
-
 				String strCalculate = "Calculate";
 				String strReset = "Reset";
 
@@ -99,16 +58,16 @@ namespace WholesomeMVC.WebForms
 		{
 			txtindex0.Text = "0.0";
 
-			txtKcal0.Text = null;
-			txtcalcium0.Text = null;
-			txtva0.Text = null;
-			txtvc0.Text = null;
-			txtprotein0.Text = null;
-			txtfiber0.Text = null;
-			txtsatfat0.Text = null;
-			txtsugar0.Text = null;
-			txtsodium0.Text = null;
-			txtiron0.Text = null;
+			txtKcal0.Text = String.Empty;
+			txtcalcium0.Text = String.Empty;
+			txtva0.Text = String.Empty;
+			txtvc0.Text = String.Empty;
+			txtprotein0.Text = String.Empty;
+			txtfiber0.Text = String.Empty;
+			txtsatfat0.Text = String.Empty;
+			txtsugar0.Text = String.Empty;
+			txtsodium0.Text = String.Empty;
+			txtiron0.Text = String.Empty;
 
 			view_mode.Value = "old";
 		}

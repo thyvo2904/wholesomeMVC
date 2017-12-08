@@ -29,73 +29,61 @@ namespace WholesomeMVC.WebForms
         {
             if (!IsPostBack)
             {
-                //if (indexresult.number != "") {
-                //	//txtNumber.Text = indexresult.number;
-                //}
+				//if (indexresult.number != "") {
+				//	//txtNumber.Text = indexresult.number;
+				//}
 
-                //if (FoodItem.getCeresID() != "" || FoodItem.getDescription() != "") {
-                //	//txtNumber.Text = FoodItem.getCeresID();
-                //	//txtDescription.Text = FoodItem.getDescription();
-                //	FoodItem.clearCeresData();
-                //}
+				//if (FoodItem.getCeresID() != "" || FoodItem.getDescription() != "") {
+				//	//txtNumber.Text = FoodItem.getCeresID();
+				//	//txtDescription.Text = FoodItem.getDescription();
+				//	FoodItem.clearCeresData();
+				//}
 
-                //	//string ConnectString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
-                //	//string QueryString = "select No_ + ' ' + description AS itemdescription from wholesome_item WHERE nrf6 IS NOT NULL";
+				//	//string ConnectString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+				//	//string QueryString = "select No_ + ' ' + description AS itemdescription from wholesome_item WHERE nrf6 IS NOT NULL";
 
-                //	//SqlConnection myConnection = new SqlConnection(ConnectString);
-                //	//SqlDataAdapter myCommand = new SqlDataAdapter(QueryString, myConnection);
-                //	//DataSet ds = new DataSet();
-                //	//myCommand.Fill(ds, "wholesome_item");
+				//	//SqlConnection myConnection = new SqlConnection(ConnectString);
+				//	//SqlDataAdapter myCommand = new SqlDataAdapter(QueryString, myConnection);
+				//	//DataSet ds = new DataSet();
+				//	//myCommand.Fill(ds, "wholesome_item");
 
-                //	//ddlMatchedCeresID.DataSource = ds;
-                //	//ddlMatchedCeresID.DataTextField = "itemdescription";
-                //	//ddlMatchedCeresID.DataValueField = "itemdescription";
-                //	//ddlMatchedCeresID.DataBind();
+				//	//ddlMatchedCeresID.DataSource = ds;
+				//	//ddlMatchedCeresID.DataTextField = "itemdescription";
+				//	//ddlMatchedCeresID.DataValueField = "itemdescription";
+				//	//ddlMatchedCeresID.DataBind();
 
-                //	System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection {
-                //		ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
-                //	};
+				//	System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection {
+				//		ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString
+				//	};
 
-                //	sc.Open();
+				//	sc.Open();
 
-                //	SqlCommand myCommand = new SqlCommand("Pull_New_Ceres_Items", sc);
-                //	myCommand.CommandType = CommandType.StoredProcedure;
+				//	SqlCommand myCommand = new SqlCommand("Pull_New_Ceres_Items", sc);
+				//	myCommand.CommandType = CommandType.StoredProcedure;
 
-                //	myCommand.ExecuteNonQuery();
+				//	myCommand.ExecuteNonQuery();
 
-                //	myCommand = new SqlCommand("Update_Ceres_Items", sc);
-                //	myCommand.ExecuteNonQuery();
+				//	myCommand = new SqlCommand("Update_Ceres_Items", sc);
+				//	myCommand.ExecuteNonQuery();
 
-                //	//myCommand = new SqlCommand("Update_Wholesome_Items", sc);
-                //	//myCommand.ExecuteNonQuery();
+				//	//myCommand = new SqlCommand("Update_Wholesome_Items", sc);
+				//	//myCommand.ExecuteNonQuery();
 
-                //	sc.Close();
-
-
+				//	sc.Close();
 
 
-                // set page variables
-                String strTitle = "Update Item";
+				// set page variables
+				String strTitle = "Update Item";
 
-                Literal page_title = (Literal)Master.FindControl("page_title");
-                page_title.Text = strTitle;
-                Label body_title = (Label)Master.FindControl("body_title");
-                body_title.Text = strTitle;
+				Literal page_title = (Literal) Master.FindControl("page_title");
+				page_title.Text = strTitle;
+				Label body_title = (Label) Master.FindControl("body_title");
+				body_title.Text = strTitle;
 
-                BindDataFromDB();
-            }
+				BindDataFromDB();
+			}
             else
             {
-                //if (!String.IsNullOrEmpty(txtNewAddedSugar.Text) && !String.IsNullOrEmpty(txtNewFiber.Text)) {
-                //	divnew.Style.Add("display", "block");
-                //	divold.Style.Add("display", "none");
-                //	DropDownList2.SelectedIndex = 2;
-                //} else if (!String.IsNullOrEmpty(txtOldCalcium.Text) && !String.IsNullOrEmpty(txtOldIron.Text)) {
-                //	divold.Style.Add("display", "block");
-                //	divnew.Style.Add("display", "none");
-                //	DropDownList2.SelectedIndex = 1;
-                //}
-
                 gridMatchedCeresIDS.HeaderRow.Cells[0].Attributes["data-class"] = "expand";
                 gridMatchedCeresIDS.HeaderRow.Cells[2].Attributes["data-hide"] = "all";
                 gridMatchedCeresIDS.HeaderRow.Cells[3].Attributes["data-hide"] = "all";
@@ -879,7 +867,7 @@ namespace WholesomeMVC.WebForms
 			string view_mode = hidden_view_mode.Value;
 
             
-
+            if(ndbno != "") { }
             FoodItem.findNdbno(ndbno);
 
             double score = FoodItem.newFood.NRF6;
@@ -920,6 +908,7 @@ namespace WholesomeMVC.WebForms
 					txtOldVitaminC.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
 					txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
 					txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+                    lblNewCeresNumber.Text = ceresid;
 
 					break;
 				case "new":
@@ -942,7 +931,14 @@ namespace WholesomeMVC.WebForms
 				default:
 					break;
 			}
-        }
+
+			// re-render bootstrap-select component
+			ddlFBCategories.CssClass = "selectpicker";
+			ddlFBCategories.Attributes["title"] = "Select a category";
+			ddlFBCategories.Attributes["data-width"] = "100%";
+			ddlFBCategories.Attributes["data-live-search"] = "true";
+			ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "rerender", "$('.selectpicker').selectpicker('render');", true);
+		}
 
         protected void btnCalculateOldNRF6_Click(object sender, EventArgs e)
         {
@@ -1007,7 +1003,7 @@ namespace WholesomeMVC.WebForms
             nR6 = (protein) + (fiber) + (vitaminA) + (vitaminC) + (calcium) + (iron);
             liMT = (saturatedFat / 20) + (totalSugar / 125) + (sodium / 2400);
 
-            FoodItem.newFood.ndbNo = Convert.ToString(nR6 - liMT);
+            FoodItem.newFood.NRF6 = (nR6 - liMT);
 
 
 
@@ -1034,5 +1030,78 @@ namespace WholesomeMVC.WebForms
             return getid;
         }
 
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            String foodSearch = "";
+
+            WebForms.FoodItem.findNdbno(foodSearch);
+            Server.Transfer("/WebForms/indexresult.aspx");
+        }
+
+        protected void btnCalculateNewNRF6_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //   lblOldResult.Text = String.Empty;
+            double nR6 = 0;
+            double liMT = 0;
+            //double NRF6 = 0;
+            double kCal = Double.Parse(txtNewKCal.Text);
+            double protein = Double.Parse(txtNewProtein.Text);
+            double vitaminA = Double.Parse(txtNewVitaminD.Text);
+            double vitaminC = Double.Parse(txtNewPotassium.Text);
+            double fiber = Double.Parse(txtOldFiber.Text);
+            double calcium = Double.Parse(txtOldCalcium.Text);
+            double iron = Double.Parse(txtOldIron.Text);
+            double saturatedFat = Double.Parse(txtOldSaturatedFat.Text);
+            double totalSugar = Double.Parse(txtOldTotalSugar.Text);
+            double sodium = Double.Parse(txtOldSodium.Text);
+
+
+            protein = protein / 50;
+            fiber = fiber / 25;
+            vitaminA = vitaminA / 5000;
+            vitaminC = vitaminC / 60;
+            calcium = calcium / 1000;
+            iron = iron / 18;
+
+            //if any of the good value ratios are > 1, set them equal to 1 to follow algorithm rule 
+            if (protein > 1)
+            {
+                protein = 1;
+            }
+
+            if (fiber > 1)
+            {
+                fiber = 1;
+            }
+
+            if (vitaminA > 1)
+            {
+                vitaminA = 1;
+            }
+
+            if (vitaminC > 1)
+            {
+                vitaminC = 1;
+            }
+
+            if (calcium > 1)
+            {
+                calcium = 1;
+            }
+
+            if (iron > 1)
+            {
+                iron = 1;
+            }
+
+
+
+            nR6 = (protein) + (fiber) + (vitaminA) + (vitaminC) + (calcium) + (iron);
+            liMT = (saturatedFat / 20) + (totalSugar / 125) + (sodium / 2400);
+
+            FoodItem.newFood.NRF6 = (nR6 - liMT);
+        }
     }
 }

@@ -8,6 +8,7 @@
 /*------------------------------------------------------------------------------
     CUSTOM CSS START HERE
 ------------------------------------------------------------------------------*/
+/* general style */
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-family: 'Nunito Sans' !important;
@@ -15,9 +16,14 @@ h1, h2, h3, h4, h5, h6,
 html, body {
 	font-family: 'Nunito' !important;
 }
-
 body {
 	background-color: #fafafa;
+}
+th, td {
+	vertical-align: middle !important;
+}
+a {
+	cursor: pointer;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -124,7 +130,4 @@ footer img {
 .thin-air > th,
 .thin-air > td {
 	border-top: none !important;
-}
-th, td {
-	vertical-align: middle !important;
 }

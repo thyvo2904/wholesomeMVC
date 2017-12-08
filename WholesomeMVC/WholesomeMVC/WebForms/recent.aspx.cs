@@ -65,24 +65,17 @@ namespace WholesomeMVC.WebForms
 		protected String GenerateRecentItem(int intItemIndex)
 		{
 			String returnValue = "";
-			String colorScaleStyle = "";
 
+			String colorScaleStyle = "background-color: ";
 			double score = newFoodArray[intItemIndex].NRF6;
-            if (score <= 4.65)
-            {
-                colorScaleStyle = GradientColors.getColor1();
-            }
 
-            else if ((score >= 4.66) && (score <= 27.99))
-            {
-                colorScaleStyle = GradientColors.getColor2();
-            }
-            else if (score >= 28)
-            {
-                colorScaleStyle = GradientColors.getColor3();
-            }
-            else
-            {
+            if (score <= 4.65) {
+                colorScaleStyle = GradientColors.getColor1().Trim() + "; color: white;";
+            } else if ((score >= 4.66) && (score <= 27.99)) {
+                colorScaleStyle = GradientColors.getColor2().Trim() + "; color: black;";
+            } else if (score >= 28) {
+                colorScaleStyle = GradientColors.getColor3().Trim() + "; color: white;";
+            } else {
                 // do nothing
             }
 
@@ -95,8 +88,8 @@ namespace WholesomeMVC.WebForms
 							</h4>
 						</div>
 
-						<div class='panel-body' style='background-color: {0};'>
-							<h4><strong>ND_Score: <span style='color: {0};'>{2}</span></strong></h4>
+						<div class='panel-body' style='{0}'>
+							<h4><strong>ND_Score: {2}</strong></h4>
 						</div>
 
 						<div class='panel-body'>

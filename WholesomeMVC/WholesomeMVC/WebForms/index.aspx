@@ -7,22 +7,23 @@
 <asp:Content ContentPlaceHolderID="body" runat="server">
     <section id="banner">
         <div class="background-color">
-            <div class="text-center">
-                <h1 class="hidden-xs"><asp:Label ID="banner_message" runat="server" /></h1>
+            <div>
+                <h1 class="hidden-xs text-center"><asp:Label ID="banner_message" runat="server" /></h1>
 
                 <div class="container-fluid" id="search-panel">
                     <div class="col-sm-4">
                         <asp:DropDownList
                             ID="ddlCategory"
                             runat="server"
-                            CssClass="btn btn-default btn-lg dropdown-toggle equal-height"
+                            CssClass="selectpicker equal-height"
+							data-width="100%"
+							data-live-search="true"
+							title="Select a category"
                             AppendDataBoundItems="True"
                             OnSelectedIndexChanged="Page_Load"
                             DataSourceID="Category"
                             DataTextField="FdGrp_Desc"
-							style="width: 100%;"
                             DataValueField="FdGrp_Desc">
-                            <asp:ListItem Selected="True">Select a category</asp:ListItem>
                         </asp:DropDownList>
                         <asp:SqlDataSource
                             ID="Category"
@@ -32,7 +33,7 @@
                     </div>
 
                     <div class="col-sm-8">
-                        <div class="input-group input-group-lg">
+                        <div class="input-group">
                             <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control typeahead equal-height" autocomplete="off"></asp:TextBox>
                             <span class="input-group-btn">
                                 <button type="submit" class="btn btn-default equal-height" runat="server"  onserverclick="btnSearch" >

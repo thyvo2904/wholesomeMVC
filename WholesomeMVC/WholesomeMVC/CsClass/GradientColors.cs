@@ -144,14 +144,13 @@ namespace WholesomeMVC.WebForms
             sc.Open();
 
             SqlDataReader newReader = null;
-            SqlCommand myCommand = new SqlCommand("SELECT HexColor FROM GradientValue WHERE GradientEntry = 1",
+            SqlCommand myCommand = new SqlCommand("SELECT HexColor FROM GradientValue WHERE GradientEntry = '1'",
                                                      sc);
             newReader = myCommand.ExecuteReader();
 
             while (newReader.Read())
             {
-                count++;
-                if (count == 1)
+                
                 color = newReader["HexColor"].ToString();
             }
 
@@ -173,7 +172,7 @@ namespace WholesomeMVC.WebForms
             sc.Open();
 
             SqlDataReader newReader = null;
-            SqlCommand myCommand = new SqlCommand("SELECT HexColor FROM GradientValue",
+            SqlCommand myCommand = new SqlCommand("SELECT HexColor FROM GradientValue WHERE GradientEntry = '2'",
                                                      sc);
             newReader = myCommand.ExecuteReader();
 
@@ -204,17 +203,16 @@ namespace WholesomeMVC.WebForms
             sc.Open();
 
             SqlDataReader newReader = null;
-            SqlCommand myCommand = new SqlCommand("SELECT HexColor FROM GradientValue",
+            SqlCommand myCommand = new SqlCommand("SELECT HexColor FROM GradientValue WHERE GradientEntry = '3'",
                                                      sc);
             newReader = myCommand.ExecuteReader();
 
             while (newReader.Read())
             {
-                count++;
-                if (count == 2)
-                {
+                
+                
                     color = newReader["HexColor"].ToString();
-                }
+                
 
             }
 

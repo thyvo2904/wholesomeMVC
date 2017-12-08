@@ -12,12 +12,14 @@
 				<asp:DropDownList
 					ID="ddlCategory"
 					runat="server"
-					CssClass="btn btn-default btn-lg dropdown-toggle equal-height"
+					CssClass="selectpicker equal-height"
+					data-width="100%"
+					data-live-search="true"
+					title="Select a category"
 					AppendDataBoundItems="True"
 					OnSelectedIndexChanged="Page_Load"
 					DataSourceID="Category"
 					DataTextField="FdGrp_Desc"
-					Style="width: 100%;"
 					DataValueField="FdGrp_Desc">
 					<asp:ListItem Selected="True">Select a category</asp:ListItem>
 				</asp:DropDownList>
@@ -29,7 +31,7 @@
 			</div>
 
 			<div class="col-sm-8">
-				<div class="input-group input-group-lg">
+				<div class="input-group">
 					<asp:TextBox ID="txtAdvSearch" runat="server" CssClass="form-control typeahead equal-height" autocomplete="off"></asp:TextBox>
 					<span class="input-group-btn">
 						<button type="submit" class="btn btn-default equal-height" runat="server" onserverclick="btnAdvSearch_Click">

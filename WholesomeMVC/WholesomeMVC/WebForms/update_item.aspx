@@ -12,7 +12,8 @@
 				<div class="input-group">
 					<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
 					<span class="input-group-btn">
-						<asp:Button ID="btnSearch" runat="server" Text="Search USDA" CssClass="btn btn-default" />
+						<asp:Button ID="btnSearch" OnClick="btnSearch_Click"
+                            runat="server" Text="Search USDA" CssClass="btn btn-default" />
 					</span>
 				</div>
 			</div>
@@ -23,9 +24,9 @@
 		<!-- nav to change between old/new/usda view -->
 		<h3><asp:Literal ID="view_mode" runat="server" /></h3>
 		<ul class="nav nav-pills" id="view_nav">
-			<li role="presentation"><a id="link_old_view" href="#">Manual: Old Label</a></li>
-			<li role="presentation"><a id="link_new_view" href="#">Manual: New Label</a></li>
-			<li role="presentation"><a id="link_usda_view" href="#">USDA</a></li>
+			<li role="presentation"><a id="link_old_view">Manual: Old Label</a></li>
+			<li role="presentation"><a id="link_new_view">Manual: New Label</a></li>
+			<li role="presentation"><a id="link_usda_view">USDA</a></li>
 		</ul>
 
 		<!-- Search items will show here -->
@@ -154,11 +155,11 @@
 												<asp:TextBox ID="txtOldIron" runat="server" CssClass="form-control"></asp:TextBox>
 											</td>
 											<td>mg</td>
-                                            </tr>
+                                        </tr>
 										<tr>
                                             <th>Category</th>
 											<td>
-												<asp:DropDownList ID="ddlFBCategories" runat="server">
+												<asp:DropDownList ID="ddlFBCategories" runat="server" ClientIDMode="Static">
 													<asp:ListItem>Baby</asp:ListItem>
 													<asp:ListItem>Beverage</asp:ListItem>
 													<asp:ListItem>Bread</asp:ListItem>
@@ -330,10 +331,11 @@
 								<div>
 									<div class="form-group">
 										<label for="txtNewCeresNumber">
-											<asp:Literal Text="Ceres Number" runat="server" />
+											<asp:Literal id="literalCeresID" Text="Ceres Number" runat="server" />
 										</label>
+                                        <asp:Label ID="lblNewCeresNumber" runat="server"></asp:Label>
 										<p>
-											<asp:Literal ID="txtNewCeresNumber" runat="server"></asp:Literal>
+											
 										</p>
 									</div>
 									<div class="form-group">
@@ -348,8 +350,8 @@
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal"  ClientIDMode="Static" type="button" />
-								<asp:Button ID="btnCalculateNewNRF6" runat="server" Text="Calculate" CssClass="btn btn-primary" />
-								<asp:Button ID="btnSaveNewItem"  runat="server" Text="Save" CssClass="btn btn-success" />
+								<asp:Button ID="btnCalculateNewNRF6" OnClick="btnCalculateNewNRF6_Click" runat="server" Text="Calculate" CssClass="btn btn-primary new_buttons" />
+								<asp:Button ID="btnSaveNewItem"  runat="server" Text="Save" CssClass="btn btn-success new_buttons" />
 							</div>
 						</ContentTemplate>
 						<Triggers>
@@ -375,8 +377,8 @@
 
 					<div class="modal-body">
 						<ul class="nav nav-tabs">
-							<li role="presentation"><a id="link_add_manual" href="#">Manual Input</a></li>
-							<li role="presentation"><a id="link_add_usda_match" href="#">Closest USDA Match</a></li>
+							<li role="presentation"><a id="link_add_manual">Manual Input</a></li>
+							<li role="presentation"><a id="link_add_usda_match">Closest USDA Match</a></li>
 						</ul>
 						<br	/>
 						<table id="add_manual_view" class="table form-horizontal">
