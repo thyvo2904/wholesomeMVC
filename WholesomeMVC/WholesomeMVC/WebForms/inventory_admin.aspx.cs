@@ -19,8 +19,7 @@ namespace WholesomeMVC.WebForms
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (IsPostBack) {
-                ddlCereItem.DataBind();
-                ddlFBGroup.DataBind();
+                
             } else {
 				
 				String strTitle = "Current Inventory";
@@ -30,7 +29,10 @@ namespace WholesomeMVC.WebForms
 				Label body_title = (Label) Master.FindControl("body_title");
 				body_title.Text = strTitle;
 
-				String strChart1Header = "Purchased Item Overview";
+                ddlCereItem.DataBind();
+                ddlFBGroup.DataBind();
+
+                String strChart1Header = "Purchased Item Overview";
 				chart_1_header.Text = strChart1Header;
 				String strWhatIfHeader = "What-If Scenario";
 				whatif_header.Text = strWhatIfHeader;
@@ -44,7 +46,15 @@ namespace WholesomeMVC.WebForms
                 SqlCommand myCommand = new SqlCommand("Pull_Weight_WhatIf", sc)
                 {
                     CommandType = CommandType.StoredProcedure
+                   
                 };
+                System.Data.SqlClient.SqlParameter LastUpdated = new System.Data.SqlClient.SqlParameter();
+                LastUpdated.ParameterName = "@LastUpdated";
+                LastUpdated.Value = DateTime.Now;
+                myCommand.Parameters.Add(LastUpdated); System.Data.SqlClient.SqlParameter LastUpdatedBy = new System.Data.SqlClient.SqlParameter();
+                LastUpdatedBy.ParameterName = "@LastUpdatedBy";
+                LastUpdatedBy.Value = HttpContext.Current.User.Identity.GetUserName();
+                myCommand.Parameters.Add(LastUpdatedBy);
                 myCommand.ExecuteNonQuery();
                 sc.Close();
 
@@ -107,19 +117,28 @@ namespace WholesomeMVC.WebForms
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+            try
             {
-                System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
-                con.Open();
-                go.Connection = con;
-                for (int i = 0; i < scenarioID.Count; i++)
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
                 {
-                    go.CommandText = "Delete from Whatif_scenario where ScrenarioID=@ScenarioID";
-                    go.Parameters.Add("@ScenarioID", SqlDbType.Int).Value = scenarioID[i];
-                    go.ExecuteNonQuery();
+                    System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
+                    con.Open();
+                    go.Connection = con;
+                    for (int i = 0; i < scenarioID.Count; i++)
+                    {
+                        go.CommandText = "Delete from Whatif_scenario where ScrenarioID=@ScenarioID";
+                        go.Parameters.Add("@ScenarioID", SqlDbType.Int).Value = scenarioID[i];
+                        go.ExecuteNonQuery();
+                    }
+                    con.Close();
                 }
-                con.Close();
+                scenarioID.Clear();
             }
+            catch
+            {
+
+            }
+            
         }
     }
 }

@@ -2,6 +2,7 @@
 
 <asp:Content ContentPlaceHolderID="style" runat="server">
     <link href="/Content/Custom/index.css" rel="stylesheet" type="text/css" runat="server" />
+	<link href="/Content/Vendor/vegas.min.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
@@ -24,6 +25,8 @@
                             DataSourceID="Category"
                             DataTextField="FdGrp_Desc"
                             DataValueField="FdGrp_Desc">
+                            <asp:ListItem Selected="True">Select a category</asp:ListItem>
+
                         </asp:DropDownList>
                         <asp:SqlDataSource
                             ID="Category"
@@ -75,9 +78,32 @@
                 <asp:HyperLink ID="link_farmers_market" runat="server" CssClass="btn btn-success btn-lg btn-block" />
             </div>
         </div>
+
+        <div class="col-sm-6 col-lg-3 text-center">
+            <div class="panel panel-default text-center banner-button">
+                <asp:Image ID="image_advanced_search" runat="server" />
+                <asp:HyperLink ID="link_advanced_search" runat="server" CssClass="btn btn-success btn-lg btn-block" />
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3 text-center">
+            <div class="panel panel-default text-center banner-button">
+                <asp:Image ID="image_update_item" runat="server" />
+                <asp:HyperLink ID="link_update_item" runat="server" CssClass="btn btn-success btn-lg btn-block" />
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3 text-center">
+            <div class="panel panel-default text-center banner-button">
+                <asp:Image ID="image_inventory_projection" runat="server" />
+                <asp:HyperLink ID="link_inventory_projection" runat="server" CssClass="btn btn-success btn-lg btn-block" />
+            </div>
+        </div>
     </div>
 
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="script" runat="server">
+	<script type="text/javascript" src="/Scripts/Vendor/vegas.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Custom/index.js"></script>
 </asp:Content>
