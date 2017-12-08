@@ -2,6 +2,7 @@
 
 <asp:Content ContentPlaceHolderID="style" runat="server">
     <link href="/Content/Custom/index.css" rel="stylesheet" type="text/css" runat="server" />
+	<link href="/Content/Vendor/vegas.min.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
@@ -101,4 +102,6 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="script" runat="server">
+	<script type="text/javascript" src="/Scripts/Vendor/vegas.min.js"></script>
+	<script type="text/javascript" src="/Scripts/Custom/index.js"></script>
 </asp:Content>
