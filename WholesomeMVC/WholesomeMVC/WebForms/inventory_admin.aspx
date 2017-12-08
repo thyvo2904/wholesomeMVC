@@ -86,6 +86,7 @@
 										runat="server"
 										ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
 										SelectCommand="SELECT [Description] FROM [Wholesome_Item]"></asp:SqlDataSource>
+								    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlCereItem" ErrorMessage="Required" ForeColor="Red" ValidationGroup="btnWhatif"></asp:RequiredFieldValidator>
 								</td>
 							</tr>
 							<tr>
@@ -107,19 +108,21 @@
 										runat="server"
 										ConnectionString="<%$ ConnectionStrings:constr2 %>"
 										SelectCommand="SELECT [FBC_CODE] FROM [FB_FOOD] ORDER BY [FBC_CODE]"></asp:SqlDataSource>
+								    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlFBGroup" ErrorMessage="Required" ForeColor="Red" ValidationGroup="btnWhatif"></asp:RequiredFieldValidator>
 								</td>
 							</tr>
 							<tr>
 								<th>Quantity (lbs)</th>
 								<td>
 									<asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control"></asp:TextBox>
+								    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtQuantity" ErrorMessage="Required" ForeColor="Red" ValidationGroup="btnWhatif"></asp:RequiredFieldValidator>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 					<div class="text-right">
 						<asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btn btn-default btn-lg" OnClick="btnReset_Click" />
-						<asp:Button ID="btnWhatif" runat="server" OnClick="btnWhatif_Click" Text="What If" CssClass="btn btn-primary btn-lg" />
+						<asp:Button ID="btnWhatif" runat="server" OnClick="btnWhatif_Click" Text="What If" CssClass="btn btn-primary btn-lg" ValidationGroup="btnWhatif" />
 					</div>
 				</div>
 			</div>
