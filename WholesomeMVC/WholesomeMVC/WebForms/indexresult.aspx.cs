@@ -237,27 +237,26 @@ namespace WholesomeMVC.WebForms
             }
 
             double score = FoodItem.newFood.NRF6;
-            String colorScaleStyle = "";
+            String colorScaleStyle = "background-color: ";
 
             if(score < 4.66)
             {
-                colorScaleStyle = GradientColors.getColor1();
+                colorScaleStyle += GradientColors.getColor1() + "; color: white;";
             }
             else if ((score >= 4.66) && (score <= 28))
             {
-                colorScaleStyle = GradientColors.getColor2();
+                colorScaleStyle += GradientColors.getColor2() + "; color: black;";
             }
             else if (score > 28)
             {
-                colorScaleStyle = GradientColors.getColor3();
+                colorScaleStyle += GradientColors.getColor3() + "; color: white;";
             }
             else
             {
                 // do nothing
             }
 
-            lblIndexResult.ForeColor = ColorTranslator.FromHtml(colorScaleStyle);
-            modal_header.Attributes["style"] = String.Format("border-bottom: 5px solid {0};", colorScaleStyle);
+            nd_score_panel.Attributes["style"] = colorScaleStyle;
 
             lblFoodName.Text = FoodItem.newFood.name;
             lblFoodName.Attributes["style"] = "font-weight: bold;";
@@ -275,16 +274,23 @@ namespace WholesomeMVC.WebForms
             txtvc.Text = Math.Round(FoodItem.newFood.vitaminC, 2).ToString();
             txtcalcium.Text = Math.Round(FoodItem.newFood.calcium, 2).ToString();
             txtiron.Text = Math.Round(FoodItem.newFood.iron, 2).ToString();
-        }
 
-        /***
+			// re-render bootstrap-select component
+			ddlFBCategories.CssClass = "selectpicker";
+			ddlFBCategories.Attributes["title"] = "Select a category";
+			ddlFBCategories.Attributes["data-width"] = "100%";
+			ddlFBCategories.Attributes["data-live-search"] = "true";
+			ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "rerender", "$('.selectpicker').selectpicker('render');", true);
+		}
+
+		/***
 		 * Using the static saved data in this class, update Wholesome_Item table.
 		 * 
 		 * TODO: 
 		 * Check if the ceres item is null.
 		 * If ceres item doesn't exist prompt the user to open ceres and enter it there first.
 		 */
-         public static String checkNDB_No(string ndbno)
+		public static String checkNDB_No(string ndbno)
         {
             string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             String getNdb_No = "";
@@ -530,7 +536,7 @@ namespace WholesomeMVC.WebForms
 
         }
 
-        protected void btnUpdate_Click(object sendend, EventArgs e)
+        protected void btnUpdate_Click(object sender, EventArgs e)
         {
 
             String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
