@@ -106,12 +106,17 @@ namespace WholesomeMVC.WebForms
 		protected void Page_Load(object sender, EventArgs e)
         {
             label_year.Text = DateTime.Now.Year.ToString();
-
+            if(HttpContext.Current.User.Identity.GetUserName()==null)
+            {
+                log_out.Visible = false;
+            }
+             
             if (Request.IsAuthenticated) {
 				// User is authenticated
 				//log_in_out.NavigateUrl = "~/Manage/Index";
 				//log_in_out.NavigateUrl = "javascript:document.getElementById('logoutForm').submit()";
 				log_in.Visible = false;
+                log_out.Visible = true;
 				label_user.Text = HttpContext.Current.User.Identity.GetUserName();
 
                 String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;

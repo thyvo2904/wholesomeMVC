@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -218,7 +219,18 @@ namespace WholesomeMVC.WebForms
 		 */
 		protected Boolean IfHasRowsSetNdbnoFromDb()
 		{
-			Boolean returnValue = true;
+            //using (SqlConnection connection = new SqlConnection(ConnectionString))
+            //{
+            //    SqlCommand command = new SqlCommand("INSERT INTO RECENT_INDEX(NDB_NO,ID,LastUpdated,LastUpdatedBy) VALUES (@NBD_NO, @ID,@LastUpdated, @LastUpdatedby);", connection);
+            //    command.Parameters.Add("@NDB_NO", SqlDbType.NVarChar, 8).Value = ndbno;
+            //    command.Parameters.Add("@ID", SqlDbType.NVarChar, 128).Value = getloginid();
+            //    command.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 20).Value = HttpContext.Current.User.Identity.GetUserName();
+            //    command.Parameters.Add("@LastUpdated", SqlDbType.DateTime, 128).Value = DateTime.Now;
+            //    connection.Open();
+            //    command.ExecuteNonQuery();
+            //    connection.Close();
+            //}
+            Boolean returnValue = true;
 			marker = 0;
 			Array.Clear(ndbnoArray, 0, ndbnoArray.Length);
 			Array.Clear(newFoodArray, 0, newFoodArray.Length);
@@ -231,13 +243,19 @@ namespace WholesomeMVC.WebForms
 			sc.Open();
 
 			String strCommand = @"
-				SELECT NDB_NO
-				FROM RECENT_INDEX
-				ORDER BY LastUpdated DESC
+				SELECT        Recent_Index.ndb_no
+FROM            Recent_Index INNER JOIN
+                         Session ON Recent_Index.LoginId = Session.LoginID
+						 Where Session.ID = @ID
+ORDER BY Recent_Index.LastUpdated DESC
 			";
 			SqlCommand myCommand = new SqlCommand(strCommand, sc);
+            if (HttpContext.Current.User.Identity.GetUserName() != null)
+                myCommand.Parameters.Add("@ID", SqlDbType.NVarChar,128).Value = HttpContext.Current.User.Identity.GetUserId();
+            else
+                myCommand.Parameters.Add("@ID", SqlDbType.NVarChar,128).Value = null;
 
-			SqlDataReader newReader = null;
+            SqlDataReader newReader = null;
 			newReader = myCommand.ExecuteReader();
 			if (newReader.HasRows) {
 				int counter = 0;
