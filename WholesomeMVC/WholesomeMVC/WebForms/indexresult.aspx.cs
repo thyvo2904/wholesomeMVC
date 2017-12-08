@@ -294,7 +294,7 @@ namespace WholesomeMVC.WebForms
          public static String checkNDB_No(string ndbno)
         {
             string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            String getNdb_No;
+            String getNdb_No = "";
             using (SqlConnection con = new SqlConnection(constr))
             {
                 SqlCommand command = new SqlCommand("Select TOP 1 ndb_No  from recent_index where ndb_no=@ndb_no;", con);
