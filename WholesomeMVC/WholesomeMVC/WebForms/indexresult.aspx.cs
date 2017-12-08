@@ -194,21 +194,25 @@ namespace WholesomeMVC.WebForms
            
             String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
-            //check if item already exists in database, if it does hide the save button 
+            //check if item already exists in database, if it does hide the save button and show the update button
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 SqlCommand command = new SqlCommand("Select * FROM wholesome_item WHERE ndb_no = @ndbno", connection);
                 command.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = ndbno;
                 connection.Open();
-               SqlDataReader reader = command.ExecuteReader();
+                SqlDataReader reader = command.ExecuteReader();
+
                 if (reader.HasRows)
                 {
+                    btnUpdate.Visible = true;
                     btnSaveItem.Visible = false;
                     txtCeresStatus.Text = "Matched";
                 }
                 else
                 {
+                    btnSaveItem.Visible = true;
                     txtCeresStatus.Text = "Unmatched";
+                    btnUpdate.Visible = false;
                 }
                 connection.Close();
             }
@@ -309,6 +313,7 @@ namespace WholesomeMVC.WebForms
                 SqlCommand command = new SqlCommand("Select TOP 1 ndb_No  from recent_index where ndb_no=@ndb_no;", con);
                 command.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
                 con.Open();
+                
                 getNdb_No = command.ExecuteScalar().ToString();
                 con.Close();
             }
@@ -519,6 +524,55 @@ namespace WholesomeMVC.WebForms
 
             //	savedNdb_no = "";
 
+        }
+
+        protected void btnUpdate_Click(object sendend, EventArgs e)
+        {
+
+            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+
+            String gradientEntry = "";
+
+            if (FoodItem.newFood.NRF6 <= 4.65)
+            {
+                gradientEntry = "1";
+            }
+            else if ((FoodItem.newFood.NRF6 >= 4.66) && (FoodItem.newFood.NRF6 <= 27.99))
+            {
+                gradientEntry = "2";
+            }
+            else if (FoodItem.newFood.NRF6 >= 28)
+            {
+                gradientEntry = "3";
+            }
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+
+                SqlCommand command1 = new SqlCommand
+                {
+                    Connection = connection,
+                    CommandType = System.Data.CommandType.Text,
+
+
+                    CommandText = @"UPDATE Wholesome_Item SET"
+                        + " nrf6 = @nrf6, Loginid = @loginid, GradientEntry = @GradientEntry,"
+                        + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [description 2] = @description2, FBC_Code = @FBC_Code " +
+                        "WHERE ndb_no = @ndbno"
+                };
+
+                command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = FoodItem.newFood.NRF6;
+                command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getloginid();
+                command1.Parameters.Add("@GradientEntry", SqlDbType.Int).Value = gradientEntry;
+                command1.Parameters.Add("@description2", SqlDbType.NVarChar, 50).Value = FoodItem.newFood.name;
+                command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = HttpContext.Current.User.Identity.GetUserName();
+                command1.Parameters.Add("@lastupdated", SqlDbType.DateTime).Value = DateTime.Now;
+                command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
+                command1.Parameters.Add("@FBC_Code", SqlDbType.NVarChar, 10).Value = ddlFBCategories.SelectedValue;
+                connection.Open();
+                command1.ExecuteNonQuery();
+                connection.Close();
+            }
         }
 
         protected void btnSaveItem_Click(object sender, EventArgs e)
