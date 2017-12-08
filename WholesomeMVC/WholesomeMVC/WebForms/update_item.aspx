@@ -24,9 +24,9 @@
 		<!-- nav to change between old/new/usda view -->
 		<h3><asp:Literal ID="view_mode" runat="server" /></h3>
 		<ul class="nav nav-pills" id="view_nav">
-			<li role="presentation"><a id="link_old_view" href="#">Manual: Old Label</a></li>
-			<li role="presentation"><a id="link_new_view" href="#">Manual: New Label</a></li>
-			<li role="presentation"><a id="link_usda_view" href="#">USDA</a></li>
+			<li role="presentation"><a id="link_old_view">Manual: Old Label</a></li>
+			<li role="presentation"><a id="link_new_view">Manual: New Label</a></li>
+			<li role="presentation"><a id="link_usda_view">USDA</a></li>
 		</ul>
 
 		<!-- Search items will show here -->
@@ -156,38 +156,38 @@
 											</td>
 											<td>mg</td>
                                             </tr>
+										<tr>
                                             <th>Category</th>
 											<td>
 												<asp:DropDownList ID="ddlFBCategories" runat="server">
-			<asp:ListItem>Baby</asp:ListItem>
-			<asp:ListItem>Beverage</asp:ListItem>
-			<asp:ListItem>Bread</asp:ListItem>
-			<asp:ListItem>Cereal/Brk</asp:ListItem>
-			<asp:ListItem>complete</asp:ListItem>
-			<asp:ListItem>Condiment</asp:ListItem>
-			<asp:ListItem>dairy</asp:ListItem>
-			<asp:ListItem>dessert</asp:ListItem>
-			<asp:ListItem>Dough</asp:ListItem>
-			<asp:ListItem>Dressing</asp:ListItem>
-			<asp:ListItem>Entree</asp:ListItem>
-			<asp:ListItem>Fruit/veg</asp:ListItem>
-			<asp:ListItem>Fruits</asp:ListItem>
-			<asp:ListItem>Grain</asp:ListItem>
-			<asp:ListItem>Juice</asp:ListItem>
-			<asp:ListItem>Mixed/Asst</asp:ListItem>
-			<asp:ListItem>NF</asp:ListItem>
-			<asp:ListItem>Non-Dairy</asp:ListItem>
-			<asp:ListItem>Nutrition</asp:ListItem>
-			<asp:ListItem>Pasta</asp:ListItem>
-			<asp:ListItem>Pro-Meat</asp:ListItem>
-			<asp:ListItem>Pro-Non</asp:ListItem>
-			<asp:ListItem>Rice</asp:ListItem>
-			<asp:ListItem>Salvage</asp:ListItem>
-			<asp:ListItem>Snack</asp:ListItem>
-			<asp:ListItem>Vegetables</asp:ListItem>
-		</asp:DropDownList>
+													<asp:ListItem>Baby</asp:ListItem>
+													<asp:ListItem>Beverage</asp:ListItem>
+													<asp:ListItem>Bread</asp:ListItem>
+													<asp:ListItem>Cereal/Brk</asp:ListItem>
+													<asp:ListItem>complete</asp:ListItem>
+													<asp:ListItem>Condiment</asp:ListItem>
+													<asp:ListItem>dairy</asp:ListItem>
+													<asp:ListItem>dessert</asp:ListItem>
+													<asp:ListItem>Dough</asp:ListItem>
+													<asp:ListItem>Dressing</asp:ListItem>
+													<asp:ListItem>Entree</asp:ListItem>
+													<asp:ListItem>Fruit/veg</asp:ListItem>
+													<asp:ListItem>Fruits</asp:ListItem>
+													<asp:ListItem>Grain</asp:ListItem>
+													<asp:ListItem>Juice</asp:ListItem>
+													<asp:ListItem>Mixed/Asst</asp:ListItem>
+													<asp:ListItem>NF</asp:ListItem>
+													<asp:ListItem>Non-Dairy</asp:ListItem>
+													<asp:ListItem>Nutrition</asp:ListItem>
+													<asp:ListItem>Pasta</asp:ListItem>
+													<asp:ListItem>Pro-Meat</asp:ListItem>
+													<asp:ListItem>Pro-Non</asp:ListItem>
+													<asp:ListItem>Rice</asp:ListItem>
+													<asp:ListItem>Salvage</asp:ListItem>
+													<asp:ListItem>Snack</asp:ListItem>
+													<asp:ListItem>Vegetables</asp:ListItem>
+												</asp:DropDownList>
 											</td>
-											
 										</tr>
 									</tbody>
 								</table>
@@ -215,8 +215,8 @@
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
 
-								<asp:Button ID="btnCalculateOldNRF6" OnClick="btnCalculateOldNRF6_Click" runat="server"  Text="Calculate" CssClass="btn btn-primary old_buttons" type="button" />
-								<asp:Button ID="btnSaveOldItem" OnClick="btnOldSaveItem_Click" runat="server" Text="Save" CssClass="btn btn-success old_buttons" type="button" />
+								<asp:Button ID="btnCalculateOldNRF6" OnClick="btnCalculateOldNRF6_Click" runat="server"  Text="Calculate" CssClass="btn btn-primary" type="button" />
+								<asp:Button ID="btnSaveOldItem" OnClick="btnOldSaveItem_Click" runat="server" Text="Save" CssClass="btn btn-success" type="button" />
 							</div>
 						</ContentTemplate>
 						<Triggers>
@@ -226,7 +226,6 @@
 				</div>
 			</div>
 		</div>
-
 
 		<!-- Modal for expanded new view -->
 		<div class="modal fade" id="expanded_new_view" tabindex="-1" role="dialog" aria-labelledby="expanded view">
@@ -359,6 +358,60 @@
 							<asp:AsyncPostBackTrigger ControlID="button_expand_item" EventName="Click" />
 						</Triggers>
 					</asp:UpdatePanel>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal for add item view -->
+		<div class="modal fade" id="add_item_view" tabindex="-1" role="dialog" aria-labelledby="expanded view">
+			<div class="modal-dialog modal-sm" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class='panel-title equal-height'>
+							<strong>
+								<asp:Literal ID="lblAddItem" runat="server" Text="Add New Item"></asp:Literal>
+							</strong>
+						</h4>
+					</div>
+
+					<div class="modal-body">
+						<ul class="nav nav-tabs">
+							<li role="presentation"><a id="link_add_manual">Manual Input</a></li>
+							<li role="presentation"><a id="link_add_usda_match">Closest USDA Match</a></li>
+						</ul>
+						<br	/>
+						<table id="add_manual_view" class="table form-horizontal">
+							<tbody>
+								<tr class="thin-air">
+									<th>Item Number</th>
+									<td>
+										<asp:TextBox ID="txtAddItemNumber" runat="server" CssClass="form-control"></asp:TextBox>
+									</td>
+								</tr>
+								<tr>
+									<th>CERES Description</th>
+									<td>
+										<asp:TextBox ID="txtAddCeresDescription" runat="server" CssClass="form-control"></asp:TextBox>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table id="add_usda_match_view" class="table form-horizontal">
+							<tbody>
+								<tr class="thin-air">
+									<th>Search A Similar Item</th>
+									<td>
+										<asp:TextBox ID="txtSearchUsdaSimilar" runat="server" CssClass="form-control"></asp:TextBox>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
+						<asp:Button ID="btnAddItem" runat="server" Text="Add Item" CssClass="btn btn-success" type="button" />
+					</div>
 				</div>
 			</div>
 		</div>

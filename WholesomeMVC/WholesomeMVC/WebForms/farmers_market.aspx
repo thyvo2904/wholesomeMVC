@@ -12,7 +12,7 @@
 		</h4>
 		<div class="col-sm-offset-3 col-sm-6">
 			<div class="input-group input-group-lg">
-				<asp:TextBox ID="txtFarmersMarket" runat="server" CssClass="form-control typeahead equal-height" placeholder="22807"></asp:TextBox>
+				<asp:TextBox ID="txtFarmersMarket" runat="server" CssClass="form-control equal-height" placeholder="22807"></asp:TextBox>
 				<span class="input-group-btn">
 					<asp:Button ID="btnSearchFarmersMarket" runat="server" CssClass="btn btn-default equal-height" Text="Search" ClientIDMode="Static" OnClick="btnSearchFarmersMarket_Click" />
 				</span>

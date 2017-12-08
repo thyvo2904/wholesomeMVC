@@ -6,7 +6,6 @@
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
 	<!-- hack to make on-server-generated buttons work -->
-
 	<asp:Button runat="server" ID="button_save_item" ClientIDMode="Static" OnClick="SaveItem" CssClass="hidden" />
 	<asp:HiddenField runat="server" ID="hidden_item_index" ClientIDMode="Static" />
 	<asp:HiddenField runat="server" ID="error_message" ClientIDMode="Static" />

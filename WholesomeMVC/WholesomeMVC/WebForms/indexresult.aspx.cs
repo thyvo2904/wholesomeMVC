@@ -203,8 +203,21 @@ namespace WholesomeMVC.WebForms
                 {
                     txtCeresStatus.Text = "Unmatched";
                 }
+                connection.Close();
             }
 
+            //saved into recent_index 
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                SqlCommand command = new SqlCommand("INSERT INTO RECENT_INDEX(NDB_NO,ID,LastUpdated,LastUpdatedBy) VALUES (@NBD_NO, @ID,@LastUpdated, @LastUpdatedby);", connection);
+                command.Parameters.Add("@NDB_NO", SqlDbType.NVarChar, 8).Value = ndbno;
+                command.Parameters.Add("@ID", SqlDbType.NVarChar, 128).Value = getloginid();
+                command.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 20).Value = HttpContext.Current.User.Identity.GetUserName() ;
+                command.Parameters.Add("@LastUpdated", SqlDbType.DateTime, 128).Value = DateTime.Now;
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
 
 
             double score = FoodItem.newFood.NRF6;

@@ -333,11 +333,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.cosmo.css" />
-    <Content Include="Content\bootstrap.cosmo.min.css" />
     <Content Include="Content\Custom\comparison.css" />
     <Content Include="Content\Custom\farmers_market.css" />
     <Content Include="Content\Custom\indexresult.css" />
+    <Content Include="Content\Custom\system_settings.css" />
     <Content Include="Content\Custom\update_item.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
@@ -499,18 +498,21 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Images\Blue-Ridge-Area-Food-Bank.png" />
+    <Content Include="Content\Images\icons8-adjust-100.png" />
     <Content Include="Content\Images\icons8-compare-100.png" />
     <Content Include="Content\Images\icons8-near-me-100.png" />
+    <Content Include="Content\Images\icons8-paint-palette-100.png" />
+    <Content Include="Content\Images\icons8-workflow-100.png" />
     <Content Include="Content\Images\image_color_scale_legend.png" />
+    <Content Include="Content\Vendor\bootstrap-select.min.css" />
     <Content Include="Content\Vendor\footable.bootstrap.min.css" />
-    <Content Include="Content\Vendor\footable.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Scripts\Custom\advanced_search.js" />
     <Content Include="Scripts\Custom\farmers_market.js" />
     <Content Include="Scripts\Custom\Fb_categories.js" />
     <Content Include="Scripts\Custom\indexresult.js" />
     <Content Include="Scripts\Custom\inventory_admin.js" />
-    <Content Include="Scripts\Custom\site.js" />
+    <Content Include="Scripts\Custom\_layout.js" />
     <Content Include="Scripts\Custom\update_item.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -588,6 +590,7 @@
     <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
+    <Content Include="Scripts\Vendor\bootstrap-select.min.js" />
     <Content Include="Scripts\Vendor\bootstrap3-typeahead.min.js" />
     <Content Include="Scripts\Vendor\footable.min.js" />
     <Content Include="Scripts\Vendor\moment.min.js" />
@@ -611,7 +614,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\site.css" />
+    <Content Include="Content\Custom\_layout.css" />
     <Content Include="Scripts\Vendor\jquery.matchHeight-min.js" />
     <Content Include="Scripts\Custom\manual_input.js" />
     <Content Include="Scripts\Custom\recent.js" />

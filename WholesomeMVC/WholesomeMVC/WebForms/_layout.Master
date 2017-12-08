@@ -15,12 +15,14 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Nunito|Nunito+Sans" rel="stylesheet"> 
 
-    <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" runat="server" />
     <link href="/Content/font-awesome.min.css" rel="stylesheet" type="text/css" runat="server" />
-    <link href="/Content/Site.css" rel="stylesheet" type="text/css" runat="server" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" type="text/css" runat="server" />
+    <link href="/Content/Vendor/bootstrap-select.min.css" rel="stylesheet" type="text/css" runat="server" />
+    <link href="/Content/Custom/_layout.css" rel="stylesheet" type="text/css" runat="server" />
     
     <asp:ContentPlaceHolder ID="style" runat="server"></asp:ContentPlaceHolder>
 
+	<!-- modernizr is the only script allowed to be in head to prevent FOUC -->
 	<script type="text/javascript" src="/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
@@ -46,12 +48,14 @@
 										<asp:DropDownList
 											ID="ddlCategory"
 											runat="server"
-											CssClass="btn btn-default dropdown-toggle equal-height"
+											CssClass="equal-height selectpicker"
+											data-width="100%"
+											data-live-search="true"
+											title="Select a category"
 											AppendDataBoundItems="True"
 											OnSelectedIndexChanged="Page_Load"
 											DataSourceID="Category"
 											DataTextField="FdGrp_Desc"
-											Style="width: 100%;"
 											DataValueField="FdGrp_Desc">
 											<asp:ListItem Selected="True">Select a category</asp:ListItem>
 										</asp:DropDownList>
@@ -64,7 +68,7 @@
 
 									<div class="col-sm-8">
 										<div class="input-group">
-											<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control typeahead equal-height" autocomplete="off"></asp:TextBox>
+											<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control typeahead equal-height" autocomplete="off" placeholder="Search"></asp:TextBox>
 											<span class="input-group-btn">
 												<button type="submit" class="btn btn-default equal-height" runat="server" onserverclick="btnSearch">
 													<span class="glyphicon glyphicon-search"></span>
@@ -152,9 +156,10 @@
 
 	<script src="/Scripts/jquery-1.10.2.min.js"></script>
     <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/Vendor/bootstrap-select.min.js"></script>
     <script src="/Scripts/Vendor/bootstrap3-typeahead.min.js"></script>
     <script src="/Scripts/Vendor/jquery.matchHeight-min.js"></script>
-    <script src="/Scripts/Custom/site.js"></script>
+    <script src="/Scripts/Custom/_layout.js"></script>
 
     <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
 </body>

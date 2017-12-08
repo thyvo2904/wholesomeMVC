@@ -76,15 +76,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.Label txtindex0;
         
         /// <summary>
-        /// label_txtKcal0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtKcal0;
-        
-        /// <summary>
         /// txtKcal0 control.
         /// </summary>
         /// <remarks>
@@ -92,15 +83,6 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtKcal0;
-        
-        /// <summary>
-        /// label_txtsatfat0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtsatfat0;
         
         /// <summary>
         /// txtsatfat0 control.
@@ -112,15 +94,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtsatfat0;
         
         /// <summary>
-        /// label_txtsodium0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtsodium0;
-        
-        /// <summary>
         /// txtsodium0 control.
         /// </summary>
         /// <remarks>
@@ -128,15 +101,6 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsodium0;
-        
-        /// <summary>
-        /// label_txtfiber0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtfiber0;
         
         /// <summary>
         /// txtfiber0 control.
@@ -148,15 +112,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtfiber0;
         
         /// <summary>
-        /// label_txtsugar0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtsugar0;
-        
-        /// <summary>
         /// txtsugar0 control.
         /// </summary>
         /// <remarks>
@@ -164,15 +119,6 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsugar0;
-        
-        /// <summary>
-        /// label_txtprotein0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtprotein0;
         
         /// <summary>
         /// txtprotein0 control.
@@ -184,15 +130,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtprotein0;
         
         /// <summary>
-        /// label_txtva0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtva0;
-        
-        /// <summary>
         /// txtva0 control.
         /// </summary>
         /// <remarks>
@@ -200,15 +137,6 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtva0;
-        
-        /// <summary>
-        /// label_txtvc0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtvc0;
         
         /// <summary>
         /// txtvc0 control.
@@ -220,15 +148,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtvc0;
         
         /// <summary>
-        /// label_txtcalcium0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtcalcium0;
-        
-        /// <summary>
         /// txtcalcium0 control.
         /// </summary>
         /// <remarks>
@@ -236,15 +155,6 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtcalcium0;
-        
-        /// <summary>
-        /// label_txtiron0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtiron0;
         
         /// <summary>
         /// txtiron0 control.
@@ -256,15 +166,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtiron0;
         
         /// <summary>
-        /// button_calculate0 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_calculate0;
-        
-        /// <summary>
         /// button_reset0 control.
         /// </summary>
         /// <remarks>
@@ -272,6 +173,15 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button button_reset0;
+        
+        /// <summary>
+        /// button_calculate0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button button_calculate0;
         
         /// <summary>
         /// label_score1 control.
@@ -310,15 +220,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.Label txtindex1;
         
         /// <summary>
-        /// label_txtKcal1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtKcal1;
-        
-        /// <summary>
         /// txtKcal1 control.
         /// </summary>
         /// <remarks>
@@ -326,15 +227,6 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtKcal1;
-        
-        /// <summary>
-        /// label_txtsatfat1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtsatfat1;
         
         /// <summary>
         /// txtsatfat1 control.
@@ -346,15 +238,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtsatfat1;
         
         /// <summary>
-        /// label_txtsodium1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtsodium1;
-        
-        /// <summary>
         /// txtsodium1 control.
         /// </summary>
         /// <remarks>
@@ -362,15 +245,6 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsodium1;
-        
-        /// <summary>
-        /// label_txtfiber1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtfiber1;
         
         /// <summary>
         /// txtfiber1 control.
@@ -382,15 +256,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtfiber1;
         
         /// <summary>
-        /// label_txtsugar1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtsugar1;
-        
-        /// <summary>
         /// txtsugar1 control.
         /// </summary>
         /// <remarks>
@@ -398,15 +263,6 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtsugar1;
-        
-        /// <summary>
-        /// label_txtprotein1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtprotein1;
         
         /// <summary>
         /// txtprotein1 control.
@@ -418,15 +274,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtprotein1;
         
         /// <summary>
-        /// label_txtvd1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtvd1;
-        
-        /// <summary>
         /// txtvd1 control.
         /// </summary>
         /// <remarks>
@@ -434,15 +281,6 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtvd1;
-        
-        /// <summary>
-        /// label_txtcalcium1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtcalcium1;
         
         /// <summary>
         /// txtcalcium1 control.
@@ -454,15 +292,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtcalcium1;
         
         /// <summary>
-        /// label_txtiron1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtiron1;
-        
-        /// <summary>
         /// txtiron1 control.
         /// </summary>
         /// <remarks>
@@ -470,15 +299,6 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtiron1;
-        
-        /// <summary>
-        /// label_txtpotassium control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label_txtpotassium;
         
         /// <summary>
         /// txtpotassium control.
@@ -490,15 +310,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtpotassium;
         
         /// <summary>
-        /// button_calculate1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button_calculate1;
-        
-        /// <summary>
         /// button_reset1 control.
         /// </summary>
         /// <remarks>
@@ -506,5 +317,14 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button button_reset1;
+        
+        /// <summary>
+        /// button_calculate1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button button_calculate1;
     }
 }

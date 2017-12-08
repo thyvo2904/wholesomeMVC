@@ -1,20 +1,25 @@
 ﻿$(document).ready(function () {
-    // set default view
-    if ($("#view_mode").val() === "old") {
-        $("#old_li").addClass("active");
+	// set up toggle function for view
+	$("#old_li").click(function () {
+		$(this).parent().addClass("active");
+		$(this).parent().siblings().removeClass("active");
 
-        $("#old_view").css("display", "block");
-        $("#new_view").css("display", "none");
-
-        $("#view_mode").val("old");
-    } else {
-        $("#new_li").addClass("active");
-
-        $("#new_view").css("display", "block");
-        $("#old_view").css("display", "none");
+		$("#new_view").hide();
+		$("#old_view").show();
 
         $("#view_mode").val("new");
-    }
+	});
+	$("#new_li").click(function () {
+		$(this).parent().addClass("active");
+		$(this).parent().siblings().removeClass("active");
+
+		$("#old_view").hide();
+		$("#new_view").show();
+
+        $("#view_mode").val("old");
+	})
+	// set up default view
+	$("#old_li").click();
 
     // create error message box when an error message exists
     if ($("#error_message").val()) {
@@ -29,26 +34,3 @@
 		`);
     }
 });
-
-/**
- * switch view when click nab-tab
- */
-function switchView() {
-    if ($("#view_mode").val() === "old") {
-        $("#old_li").removeClass("active");
-        $("#old_view").css("display", "none");
-
-        $("#new_li").addClass("active");
-        $("#new_view").css("display", "block");
-
-        $("#view_mode").val("new");
-    } else {
-        $("#new_li").removeClass("active");
-        $("#new_view").css("display", "none");
-
-        $("#old_li").addClass("active");
-        $("#old_view").css("display", "block");
-
-        $("#view_mode").val("old");
-    }
-}
