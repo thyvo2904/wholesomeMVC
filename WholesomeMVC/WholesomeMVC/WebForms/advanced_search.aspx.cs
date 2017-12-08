@@ -326,7 +326,7 @@ namespace WholesomeMVC.WebForms
                     row[2] = NRF6;
                     indexresult.dataSearchResults.Rows.Add(row);
                 }
-                Response.Redirect("~/IndexResults.aspx");
+                Server.Transfer("/WebForms/indexresult.aspx");
 
 
             }
@@ -415,8 +415,8 @@ namespace WholesomeMVC.WebForms
 
 
             }
-            Response.Redirect("~/IndexResults.aspx");
-			ddlCategory.ClearSelection();
+            Server.Transfer("/WebForms/indexresult.aspx");
+            ddlCategory.ClearSelection();
 			txtAdvSearch.Text = String.Empty;
 		}
 	}
