@@ -34,9 +34,23 @@ namespace WholesomeMVC.WebForms
 				chart_1_header.Text = strChart1Header;
 				String strWhatIfHeader = "What-If Scenario";
 				whatif_header.Text = strWhatIfHeader;
-			}
 
-		}
+                System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
+                {
+                    ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
+                };
+
+                sc.Open();
+                SqlCommand myCommand = new SqlCommand("Pull_Weight_WhatIf", sc)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                myCommand.ExecuteNonQuery();
+                sc.Close();
+
+            }
+
+        }
 
         protected void btnWhatif_Click(object sender, EventArgs e)
         {
