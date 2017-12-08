@@ -23,29 +23,6 @@ namespace WholesomeMVC.WebForms
         {
             if (!IsPostBack)
             {
-
-                //using (SqlConnection con = new SqlConnection(@"Server =mydbwholesome.cqar83yqn60f.us-west-2.rds.amazonaws.com;Database=testDB;User ID=thyvo2904;Password=Cis484!!"))
-                //{
-                //    System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
-
-                //    con.Open();
-                //    go.Connection = con;
-                //    go.CommandText = "SELECT FdGrp_Desc FROM [FD_Group]";
-                //    go.ExecuteNonQuery();
-
-                //    SqlDataReader readIn = go.ExecuteReader();
-                //    while (readIn.Read())
-                //    {
-                //        ddlCategory.Items.Add(new ListItem(readIn["FdGrp_Desc"].ToString()));
-                //    }
-
-                //    con.Close();
-
-                //    ddlCategory.Items.Insert(0, new ListItem("--Select Category--", "0"));
-
-				/**
-				 * set up page variables
-				 */
              	String strTitle = "Advanced Search";
 
 				Literal page_title = (Literal)Master.FindControl("page_title");
