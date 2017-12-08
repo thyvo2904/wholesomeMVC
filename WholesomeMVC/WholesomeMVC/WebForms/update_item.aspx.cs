@@ -15,18 +15,23 @@ using System.Configuration;
 using System.Linq;
 using System.Drawing;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using WholesomeMVC.Models;
 
 namespace WholesomeMVC.WebForms
 {
     public partial class update_item : System.Web.UI.Page
     {
-
+        
         private static double oldNRF6 = 0;
 
         public static DataTable matchedCeresIDS = new DataTable();
         public static DataTable dataSearchResults = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            this.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
+
             if (!IsPostBack)
             {
 				//if (indexresult.number != "") {
