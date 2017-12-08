@@ -7,6 +7,8 @@ using System.Data;
 using System.Text;
 using System.Web.Helpers;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using WholesomeMVC.Models;
 
 namespace WholesomeMVC.WebForms
 {
@@ -25,7 +27,8 @@ namespace WholesomeMVC.WebForms
 				// set authentication and authorization
 				authentication.Value = "authenticated";
 				authorization.Value = "";
-				foreach (String role in Roles.GetRolesForUser()) {
+                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+                foreach (String role in Roles.GetRolesForUser()) {
 					authorization.Value += role + "#";
 				}
 
