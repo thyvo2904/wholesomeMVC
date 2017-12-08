@@ -87,8 +87,7 @@
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><asp:HyperLink runat="server" ID="log_in" Text="Log In" NavigateUrl="~/Account/Login"></asp:HyperLink></li>
-								<li><asp:LinkButton runat="server" ID="log_out" Text="Log Off" OnClick="LogOut"></asp:LinkButton></li>
+								<li><asp:HyperLink runat="server" ID="authentication"></asp:HyperLink></li>
 								<li><asp:HyperLink runat="server" ID="register" Text="Register" NavigateUrl="~/Account/Register"></asp:HyperLink></li>
 							</ul>
 						</li>
