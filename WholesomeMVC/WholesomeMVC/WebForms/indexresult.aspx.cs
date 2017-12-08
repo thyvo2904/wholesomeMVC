@@ -33,15 +33,13 @@ namespace WholesomeMVC.WebForms
             if (HttpContext.Current.User.IsInRole("Admin"))
             {
                 btnCompare.Visible = true;
-                sook1.Visible = true;
-                sook2.Visible = true;
+                sook.Visible = true;
                 txtCeresStatus.Visible = true;
             }
             else
             {
                 btnCompare.Visible = false;
-                sook1.Visible = false;
-                sook2.Visible = false;
+                sook.Visible = false;
                 txtCeresStatus.Visible = false;
             }
             if (IsPostBack)
