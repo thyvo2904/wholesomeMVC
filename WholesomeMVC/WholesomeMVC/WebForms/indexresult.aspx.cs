@@ -142,15 +142,17 @@ namespace WholesomeMVC.WebForms
             colorScaleStyle += " !important";
 
             returnValue = String.Format(@"
-				<div class='col-sm-6 col-md-4 col-lg-3'>
-					<div class='panel panel-default' style='border-bottom: 5px solid {0};'>
-						<div class='panel-body'>
-							<h4 id='{3}_name' class='panel-title equal-height'>{1}</h4>
-							<h4><strong>ND_Score: <span style='color: {0};'>{2}<span></strong></h4>
-							<button id='{3}' class='btn btn-default btn-block expend-button' data-toggle='modal' data-target='#expanded_view'>Expand</button>
+				<li>
+					<div class='col-sm-6 col-md-4 col-lg-3'>
+						<div class='panel panel-default' style='border-bottom: 5px solid {0};'>
+							<div class='panel-body'>
+								<h4 id='{3}_name' class='panel-title equal-height'>{1}</h4>
+								<h4><strong>ND_Score: <span style='color: {0};'>{2}<span></strong></h4>
+								<button id='{3}' class='btn btn-default btn-block expend-button' data-toggle='modal' data-target='#expanded_view'>Expand</button>
+							</div>
 						</div>
 					</div>
-				</div>
+				</li>
 			",
             colorScaleStyle,
             item["name"].ToString(),

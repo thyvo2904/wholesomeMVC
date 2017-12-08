@@ -8,8 +8,13 @@
 	<section>
 		<h3><asp:Literal ID="search_summary" runat="server" /></h3>
 
-		<!-- grid view of search result panels -->
-		<div id="search_results" runat="server" class="row"></div>
+		<nav aria-label="Page navigation">
+			<ul class="pagination"></ul>
+		</nav>
+
+			<!-- grid view of search result panels -->
+		<ul id="search_results" runat="server" class="row search_results">
+		</ul>
 
 		<!-- Modal for expanded view -->
 		<div class="modal fade" id="expanded_view" tabindex="-1" role="dialog" aria-labelledby="expanded view">
@@ -167,5 +172,6 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
+	<script type="text/javascript" src="/Scripts/Vendor/jquery.easyPaginate.js"></script>
     <script type="text/javascript" src="/Scripts/Custom/indexresult.js"></script>
 </asp:Content>
