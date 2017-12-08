@@ -47,4 +47,30 @@
 		target: null,
 		remove: false
 	});
+
+	// set visibility for authenticated users
+	if ($("#authentication").val() === "authenticated") {
+		$(".authenticated").show();
+	} else {
+		$(".authenticated").hide();
+	}
+
+	// set visibility for different authorization
+	let authorization = $("#authorization").val().toLowerCase();
+	console.log(authorization);
+	if (authorization.indexOf("admin") !== -1) {
+		$(".admin").show();
+	} else {
+		$(".admin").hide();
+	}
+	if (authorization.indexOf("warehouse") !== -1) {
+		$(".warehouse").show();
+	} else {
+		$(".warehouse").hide();
+	}
+	if (authorization.indexOf("purchasing") !== -1) {
+		$(".purchasing").show();
+	} else {
+		$(".purchasing").hide();
+	}
 });
