@@ -111,7 +111,7 @@
 										<tr class='fatter'>
 											<th>Calories</th>
 											<td>
-												<asp:Literal ID="txtOldKCal" runat="server"></asp:Literal>
+												<asp:Literal ID="txtOldKCal" Text="" runat="server"></asp:Literal>
                                                 <%--<asp:RequiredFieldValidator ID="reqOldKCal" ControlToValidate="txtOldKCal" ValidationGroup="OldLabel" runat="server" ErrorMessage="(Required)"></asp:RequiredFieldValidator>--%>
 											</td>
 											<td></td>
@@ -119,7 +119,7 @@
 										<tr class='fat'>
 											<th>Saturated Fat</th>
 											<td>
-												<asp:Literal ID="txtOldSaturatedFat" runat="server"></asp:Literal>
+												<asp:Literal ID="txtOldSaturatedFat" Text="" runat="server"></asp:Literal>
                                                 
 											</td>
 											<td>g</td>
@@ -127,7 +127,7 @@
 										<tr>
 											<th>Sodium</th>
 											<td>
-												<asp:Literal ID="txtOldSodium" runat="server"></asp:Literal>
+												<asp:Literal ID="txtOldSodium" Text="" runat="server"></asp:Literal>
                                                 
 											</td>
 											<td>g</td>
@@ -135,7 +135,7 @@
 										<tr>
 											<th>Dietary Fiber</th>
 											<td>
-												<asp:Literal ID="txtOldFiber" runat="server"></asp:Literal>
+												<asp:Literal ID="txtOldFiber" Text="" runat="server"></asp:Literal>
                                                 
 											</td>
 											<td>g</td>
@@ -143,7 +143,7 @@
 										<tr>
 											<th>Total Sugars</th>
 											<td>
-												<asp:Literal ID="txtOldTotalSugar" runat="server"></asp:Literal>
+												<asp:Literal ID="txtOldTotalSugar" Text="" runat="server"></asp:Literal>
                                                 
 											</td>
 											<td>g</td>
@@ -151,7 +151,7 @@
 										<tr>
 											<th>Protein</th>
 											<td>
-												<asp:Literal ID="txtOldProtein" runat="server"></asp:Literal>
+												<asp:Literal ID="txtOldProtein" Text="" runat="server"></asp:Literal>
                                                 
 											</td>
 											<td>g</td>
@@ -159,7 +159,7 @@
 										<tr class='fatter'>
 											<th>Vitamin A</th>
 											<td>
-												<asp:Literal ID="txtOldVitaminA" runat="server"></asp:Literal>
+												<asp:Literal ID="txtOldVitaminA" Text="" runat="server"></asp:Literal>
                                                 
 											</td>
 											<td>IU</td>
@@ -167,7 +167,7 @@
 										<tr>
 											<th>Vitamin C</th>
 											<td>
-												<asp:Literal ID="txtOldVitaminC" runat="server"></asp:Literal>
+												<asp:Literal ID="txtOldVitaminC" Text="" runat="server"></asp:Literal>
                                                 
 											</td>
 											<td>IU</td>
@@ -175,7 +175,7 @@
 										<tr>
 											<th>Calcium</th>
 											<td>
-												<asp:Literal ID="txtOldCalcium" runat="server"></asp:Literal>
+												<asp:Literal ID="txtOldCalcium" Text="" runat="server"></asp:Literal>
                                                 
 											</td>
 											<td>mg</td>
@@ -183,7 +183,7 @@
 										<tr>
 											<th>Iron</th>
 											<td>
-												<asp:Literal ID="txtOldIron" runat="server"></asp:Literal>
+												<asp:Literal ID="txtOldIron" Text="" runat="server"></asp:Literal>
                                                 
 											</td>
 											<td>mg</td>
