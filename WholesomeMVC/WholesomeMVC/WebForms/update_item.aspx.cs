@@ -893,6 +893,9 @@ namespace WholesomeMVC.WebForms
                     case "old":
                         nd_old_score_panel.Attributes["style"] = colorScaleStyle;
 
+                        lblOldNdbno.Text = FoodItem.newFood.ndbNo;
+                        lblOldCeresId.Text = ceresid;
+                        lblOldCeresName.Text = ceres_name;
                         lblOldFoodName.Text = FoodItem.newFood.name;
                         lblOldIndexResult.Text = Convert.ToString(Math.Round(score, 2));
 
@@ -1107,7 +1110,7 @@ namespace WholesomeMVC.WebForms
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            String foodSearch = txtSearchUsdaSimilar.Text;
+            String foodSearch = txtSearch.Text;
             string ceresid = hidden_ceresid.Value;
             string ceresDescription = hidden_ceres_name.Value;
             Session["sharedCeresID"] = ceresid;
