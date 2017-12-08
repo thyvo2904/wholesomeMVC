@@ -33,15 +33,15 @@ namespace WholesomeMVC.WebForms
             if (HttpContext.Current.User.IsInRole("Admin"))
             {
                 btnCompare.Visible = true;
-                sook1.Visible = true;
-                sook2.Visible = true;
+                btnSaveItem.Visible = true;
+                sook.Visible = true;
                 txtCeresStatus.Visible = true;
             }
             else
             {
                 btnCompare.Visible = false;
-                sook1.Visible = false;
-                sook2.Visible = false;
+                btnSaveItem.Visible = false;
+                sook.Visible = false;
                 txtCeresStatus.Visible = false;
             }
             if (IsPostBack)
@@ -50,12 +50,6 @@ namespace WholesomeMVC.WebForms
             }
             else
             {
-                // add color_legend
-                //String strScaleLegend = "Color Scale Legend";
-
-                //label_color_scale_legend.Text = strScaleLegend;
-                //image_color_scale_legend.ImageUrl = "/Content/Images/image_color_scale_legend.png";
-
                 // set page variables
                 String strTitle = "Search Results";
 
@@ -63,20 +57,6 @@ namespace WholesomeMVC.WebForms
                 page_title.Text = strTitle;
                 Label body_title = (Label)Master.FindControl("body_title");
                 body_title.Text = strTitle;
-
-                //image_grain.ImageUrl = "/Content/Images/icons8-wheat-100.png";
-                //image_vegetables.ImageUrl = "/Content/Images/icons8-broccoli-100.png";
-                //image_fruit.ImageUrl = "/Content/Images/icons8-apple-100.png";
-                //image_dairy.ImageUrl = "/Content/Images/icons8-cheese-100.png";
-                //image_baby_food.ImageUrl = "/Content/Images/icons8-baby-bottle-100.png";
-                //image_beverages.ImageUrl = "/Content/Images/icons8-wine-glass-100.png";
-
-                //button_grain.Text = "Grain";
-                //button_vegetables.Text = "Vegetables";
-                //button_fruit.Text = "Fruit";
-                //button_dairy.Text = "Dairy";
-                //button_baby_food.Text = "Baby Food";
-                //button_beverages.Text = "Beverages";
 
                 BindDataFromDB();
             }
@@ -206,21 +186,21 @@ namespace WholesomeMVC.WebForms
                 connection.Close();
             }
 
-            //saved into recent_index 
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
-                SqlCommand command = new SqlCommand("INSERT INTO RECENT_INDEX(NDB_NO,ID,LastUpdated,LastUpdatedBy) VALUES (@NBD_NO, @ID,@LastUpdated, @LastUpdatedby);", connection);
-                command.Parameters.Add("@NDB_NO", SqlDbType.NVarChar, 8).Value = ndbno;
-                command.Parameters.Add("@ID", SqlDbType.NVarChar, 128).Value = getloginid();
-                command.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 20).Value = HttpContext.Current.User.Identity.GetUserName() ;
-                command.Parameters.Add("@LastUpdated", SqlDbType.DateTime, 128).Value = DateTime.Now;
-                connection.Open();
-                command.ExecuteNonQuery();
-                connection.Close();
-            }
+			//saved into recent_index 
+			using (SqlConnection connection = new SqlConnection(ConnectionString))
+			{
+				SqlCommand command = new SqlCommand("INSERT INTO RECENT_INDEX(NDB_NO,ID,LastUpdated,LastUpdatedBy) VALUES (@NBD_NO, @ID,@LastUpdated, @LastUpdatedby);", connection);
+				command.Parameters.Add("@NDB_NO", SqlDbType.NVarChar, 8).Value = ndbno;
+				command.Parameters.Add("@ID", SqlDbType.NVarChar, 128).Value = getloginid();
+				command.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 20).Value = HttpContext.Current.User.Identity.GetUserName();
+				command.Parameters.Add("@LastUpdated", SqlDbType.DateTime, 128).Value = DateTime.Now;
+				connection.Open();
+				command.ExecuteNonQuery();
+				connection.Close();
+			}
 
 
-            double score = FoodItem.newFood.NRF6;
+			double score = FoodItem.newFood.NRF6;
             String colorScaleStyle = "";
 
             if(score < 4.66)
