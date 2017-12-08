@@ -91,7 +91,8 @@ namespace WholesomeMVC.WebForms
 			int cutter = result.marketdetails.GoogleLink.IndexOf('=');
 			String googleResultPart2 = result.marketdetails.GoogleLink.Substring(cutter + 1);
 
-			String googleResultFull = googleResult + googleResultPart2;
+			//String googleResultFull = googleResult + googleResultPart2;
+			String googleResultFull = googleResult + result.marketdetails.Address;
 
 			lblFarmersMarketName.Text = marketname;
 			lblFarmersMarketLocation.Text = result.marketdetails.Address;

@@ -166,15 +166,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtCeresStatus;
         
         /// <summary>
-        /// sook1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sook1;
-        
-        /// <summary>
         /// txtCeresNumber control.
         /// </summary>
         /// <remarks>
@@ -182,15 +173,6 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCeresNumber;
-        
-        /// <summary>
-        /// sook2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sook2;
         
         /// <summary>
         /// txtCeresDescription control.
@@ -202,15 +184,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtCeresDescription;
         
         /// <summary>
-        /// btnSaveItem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnSaveItem;
-        
-        /// <summary>
         /// btnCompare control.
         /// </summary>
         /// <remarks>
@@ -218,6 +191,15 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCompare;
+        
+        /// <summary>
+        /// btnSaveItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaveItem;
         
         /// <summary>
         /// lblNdbno control.

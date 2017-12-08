@@ -1,50 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebForms/_layout.Master" AutoEventWireup="true" CodeBehind="inventory_admin.aspx.cs" Inherits="WholesomeMVC.WebForms.inventory_admin" %>
 
 <asp:Content ContentPlaceHolderID="style" runat="server">
-    <link href="/Content/Custom/recent.css" rel="stylesheet" type="text/css" runat="server" />
-    <style type="text/css">
-        .auto-style2 {
-            width: 270px;
-        }
-        .auto-style3 {
-            width: 158px;
-        }
-        .auto-style4 {
-            width: 158px;
-            height: 67px;
-        }
-        .auto-style5 {
-            width: 270px;
-            height: 67px;
-        }
-        .auto-style6 {
-            height: 67px;
-        }
-        .auto-style7 {
-            width: 158px;
-            height: 47px;
-        }
-        .auto-style8 {
-            width: 270px;
-            height: 47px;
-        }
-        .auto-style9 {
-            height: 47px;
-        }
-
-        /*style html table*/
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 8px;
-        }
-
-        /*tr:nth-child(even) {background-color: #f2f2f2;}*/
-    </style>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
@@ -70,8 +26,11 @@
 			<h4><asp:Label ID="chart_1_header" runat="server" /></h4>
 			<div>
                 <div class='tableauPlaceholder' id='viz1512618751938' style='position: relative'>
-                    <noscript><a href='#'>
-                        <img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;De&#47;Dec6&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript>
+                    <noscript>
+						<a href='#'>
+							<img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;De&#47;Dec6&#47;Dashboard1&#47;1_rss.png' style='border: none' />
+						</a>
+                    </noscript>
                     <object class='tableauViz' style='display: none;'>
                         <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
                         <param name='embed_code_version' value='3' />
@@ -96,56 +55,68 @@
                     var scriptElement = document.createElement('script');
                     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
                     vizElement.parentNode.insertBefore(scriptElement, vizElement);               
-
                 </script>
 			</div>
-            <div>
-                <table style="width: 50%;">
-                    <tr>
-                        <td class="auto-style4">Cere&#39;s Item:</td>
-                        <td class="auto-style5">
-                            <asp:DropDownList ID="ddlCereItem" runat="server" DataSourceID="SqlDataSource1" DataTextField="Description" DataValueField="Description" CssClass="form-control">
-                            </asp:DropDownList>
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Description] FROM [Wholesome_Item]"></asp:SqlDataSource>
-                        </td>
-                        <td class="auto-style6">
-                            <asp:SqlDataSource ID="constr2" runat="server" ConnectionString="<%$ ConnectionStrings:constr2 %>" SelectCommand="SELECT [FBC_CODE] FROM [FB_FOOD] ORDER BY [FBC_CODE]"></asp:SqlDataSource>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style7">FB Food Group:</td>
-                        <td class="auto-style8">
-                            <asp:DropDownList ID="ddlFBGroup" runat="server" DataSourceID="constr2" DataTextField="FBC_CODE" DataValueField="FBC_CODE" Height="32px" CssClass="form-control">
-                                <asp:ListItem>BABY</asp:ListItem>
-                                <asp:ListItem>BEVERAGE</asp:ListItem>
-                                <asp:ListItem></asp:ListItem>
-                            </asp:DropDownList>
-                        </td>
-                        <td class="auto-style9"></td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style3">Quantity (lbs):</td>
-                        <td class="auto-style2">
-                            <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control"></asp:TextBox>
-                        </td>
-                        <td>
-                            <asp:Button ID="btnWhatif" runat="server" OnClick="btnWhatif_Click" Text="What If" CssClass="form-control" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style3">&nbsp;</td>
-                        <td class="auto-style2">&nbsp;</td>
-                        <td>
-                            <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="form-control"/>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-			<!-- chart #2 -->
-			<h4><asp:Label ID="chart_2_header" runat="server" /></h4>
-			<div>
 
+			<div class="row">
+				<div class="col-md-6">
+					<h4><asp:Label ID="whatif_header" runat="server" /></h4>
+					<table class="table form-horizontal">
+						<tbody>
+							<tr>
+								<th>Cere&#39;s Item</th>
+								<td>
+									<asp:DropDownList
+										ID="ddlCereItem"
+										runat="server"
+										DataSourceID="SqlDataSource1"
+										DataTextField="Description"
+										DataValueField="Description"
+										CssClass="form-control">
+									</asp:DropDownList>
+									<asp:SqlDataSource
+										ID="SqlDataSource1"
+										runat="server"
+										ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+										SelectCommand="SELECT [Description] FROM [Wholesome_Item]"></asp:SqlDataSource>
+								</td>
+							</tr>
+							<tr>
+								<th>FB Food Group</th>
+								<td>
+									<asp:DropDownList
+										ID="ddlFBGroup"
+										runat="server"
+										DataSourceID="SqlDataSource2"
+										DataTextField="FBC_CODE"
+										DataValueField="FBC_CODE"
+										CssClass="form-control">
+									</asp:DropDownList>
+									<asp:SqlDataSource
+										ID="SqlDataSource2"
+										runat="server"
+										ConnectionString="<%$ ConnectionStrings:constr2 %>"
+										SelectCommand="SELECT [FBC_CODE] FROM [FB_FOOD] ORDER BY [FBC_CODE]"></asp:SqlDataSource>
+								</td>
+							</tr>
+							<tr>
+								<th>Quantity (lbs)</th>
+								<td>
+									<asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control"></asp:TextBox>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="text-right">
+						<asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btn btn-default btn-lg" />
+						<asp:Button ID="btnWhatif" runat="server" OnClick="btnWhatif_Click" Text="What If" CssClass="btn btn-primary btn-lg" />
+					</div>
+				</div>
 			</div>
+
+			<!-- chart #2 -->
+			<%--<h4><asp:Label ID="chart_2_header" runat="server" /></h4>
+			<div></div>--%>
 		</section>
 	
 </asp:Content>
