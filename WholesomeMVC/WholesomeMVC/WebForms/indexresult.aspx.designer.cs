@@ -31,15 +31,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl search_results;
         
         /// <summary>
-        /// modal_header control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl modal_header;
-        
-        /// <summary>
         /// lblFoodName control.
         /// </summary>
         /// <remarks>
@@ -47,6 +38,15 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFoodName;
+        
+        /// <summary>
+        /// nd_score_panel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nd_score_panel;
         
         /// <summary>
         /// lblIndexResult control.
@@ -148,15 +148,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.Label txtiron;
         
         /// <summary>
-        /// ddlFBCategories control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFBCategories;
-        
-        /// <summary>
         /// sook control.
         /// </summary>
         /// <remarks>
@@ -166,13 +157,22 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl sook;
         
         /// <summary>
+        /// ddlFBCategories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFBCategories;
+        
+        /// <summary>
         /// txtCeresStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCeresStatus;
+        protected global::System.Web.UI.WebControls.Label txtCeresStatus;
         
         /// <summary>
         /// txtCeresNumber control.

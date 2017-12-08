@@ -18,15 +18,17 @@
 					<asp:ScriptManager runat="server" EnablePartialRendering="true"></asp:ScriptManager>
 					<asp:UpdatePanel runat="server">
 						<ContentTemplate>
-							<div id="modal_header" runat="server" class="modal-header">
+							<div runat="server" class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 								<h4 class='panel-title equal-height'>
 									<asp:Label ID="lblFoodName" runat="server"></asp:Label>
 								</h4>
+							</div>
+
+							<div runat="server" id="nd_score_panel" class="modal-body">
 								<h4>
-									<strong>
-										ND_Score:
-										<asp:Label runat="server" ID="lblIndexResult"></asp:Label>
+									<strong>ND_Score:
+									<asp:Label runat="server" ID="lblIndexResult"></asp:Label>
 									</strong>
 								</h4>
 							</div>
@@ -85,55 +87,61 @@
 											<td><asp:Label ID="txtiron" runat="server" /></td>
 											<td>mg</td>
 										</tr>
-                                        <tr>
-                                            <th>Category</th>
-											<td>
-												<asp:DropDownList ID="ddlFBCategories" runat="server" ClientIDMode="Static">
-													<asp:ListItem>Baby</asp:ListItem>
-													<asp:ListItem>Beverage</asp:ListItem>
-													<asp:ListItem>Bread</asp:ListItem>
-													<asp:ListItem>Cereal/Brk</asp:ListItem>
-													<asp:ListItem>complete</asp:ListItem>
-													<asp:ListItem>Condiment</asp:ListItem>
-													<asp:ListItem>dairy</asp:ListItem>
-													<asp:ListItem>dessert</asp:ListItem>
-													<asp:ListItem>Dough</asp:ListItem>
-													<asp:ListItem>Dressing</asp:ListItem>
-													<asp:ListItem>Entree</asp:ListItem>
-													<asp:ListItem>Fruit/veg</asp:ListItem>
-													<asp:ListItem>Fruits</asp:ListItem>
-													<asp:ListItem>Grain</asp:ListItem>
-													<asp:ListItem>Juice</asp:ListItem>
-													<asp:ListItem>Mixed/Asst</asp:ListItem>
-													<asp:ListItem>NF</asp:ListItem>
-													<asp:ListItem>Non-Dairy</asp:ListItem>
-													<asp:ListItem>Nutrition</asp:ListItem>
-													<asp:ListItem>Pasta</asp:ListItem>
-													<asp:ListItem>Pro-Meat</asp:ListItem>
-													<asp:ListItem>Pro-Non</asp:ListItem>
-													<asp:ListItem>Rice</asp:ListItem>
-													<asp:ListItem>Salvage</asp:ListItem>
-													<asp:ListItem>Snack</asp:ListItem>
-													<asp:ListItem>Vegetables</asp:ListItem>
-												</asp:DropDownList>
-											</td>
-										</tr>
 									</tbody>
 								</table>
 
 								<div id="sook" runat="server">
 									<hr />
-                                    <div class="form-group" runat="server">
-										<label for="lblCeresStatus"><asp:Label Text="" runat="server" /></label>
-										<asp:TextBox ID="txtCeresStatus" CssClass="form-control" runat="server"></asp:TextBox>
+									<div class="form-group" runat="server">
+										<label for="ddlFBCategories"><asp:Label Text="Categories" runat="server" /></label>
+										<p>
+											<asp:DropDownList ID="ddlFBCategories" runat="server" ClientIDMode="Static">
+												<asp:ListItem>Baby</asp:ListItem>
+												<asp:ListItem>Beverage</asp:ListItem>
+												<asp:ListItem>Bread</asp:ListItem>
+												<asp:ListItem>Cereal/Brk</asp:ListItem>
+												<asp:ListItem>complete</asp:ListItem>
+												<asp:ListItem>Condiment</asp:ListItem>
+												<asp:ListItem>dairy</asp:ListItem>
+												<asp:ListItem>dessert</asp:ListItem>
+												<asp:ListItem>Dough</asp:ListItem>
+												<asp:ListItem>Dressing</asp:ListItem>
+												<asp:ListItem>Entree</asp:ListItem>
+												<asp:ListItem>Fruit/veg</asp:ListItem>
+												<asp:ListItem>Fruits</asp:ListItem>
+												<asp:ListItem>Grain</asp:ListItem>
+												<asp:ListItem>Juice</asp:ListItem>
+												<asp:ListItem>Mixed/Asst</asp:ListItem>
+												<asp:ListItem>NF</asp:ListItem>
+												<asp:ListItem>Non-Dairy</asp:ListItem>
+												<asp:ListItem>Nutrition</asp:ListItem>
+												<asp:ListItem>Pasta</asp:ListItem>
+												<asp:ListItem>Pro-Meat</asp:ListItem>
+												<asp:ListItem>Pro-Non</asp:ListItem>
+												<asp:ListItem>Rice</asp:ListItem>
+												<asp:ListItem>Salvage</asp:ListItem>
+												<asp:ListItem>Snack</asp:ListItem>
+												<asp:ListItem>Vegetables</asp:ListItem>
+											</asp:DropDownList>
+										</p>
+									</div>
+									<div class="form-group" runat="server">
+										<label for="lblCeresStatus"><asp:Label Text="Ceres Status" runat="server" /></label>
+										<p>
+											<asp:Label ID="txtCeresStatus" runat="server" CssClass="form-control-static"></asp:Label>
+										</p>
 									</div>
 									<div class="form-group" runat="server">
 										<label for="txtCeresNumber"><asp:Label Text="Ceres Number" runat="server" /></label>
-										<asp:TextBox ID="txtCeresNumber" CssClass="form-control" runat="server" placeholder="12345..."></asp:TextBox>
+										<p>
+											<asp:TextBox ID="txtCeresNumber" CssClass="form-control" runat="server" placeholder="12345..."></asp:TextBox>
+										</p>
 									</div>
 									<div class="form-group" runat="server">
 										<label for="txtCeresDescription"><asp:Label Text="Ceres Description" runat="server" /></label>
-										<asp:TextBox ID="txtCeresDescription" CssClass="form-control" runat="server" placeholder="Item description..."></asp:TextBox><br>
+										<p>
+											<asp:TextBox ID="txtCeresDescription" CssClass="form-control" runat="server" placeholder="Item description..."></asp:TextBox><br>
+										</p>
 									</div>
 								</div>
 							</div>
