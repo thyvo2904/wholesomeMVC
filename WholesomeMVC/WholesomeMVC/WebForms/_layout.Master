@@ -27,6 +27,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+		<asp:HiddenField runat="server" ID="authentication" ClientIDMode="Static" />
+		<asp:HiddenField runat="server" ID="authorization" ClientIDMode="Static" />
 		<nav class="navbar navbar-default">
 			<div class="container">
 				<div class="navbar-header">
@@ -44,7 +46,7 @@
 						<li>
 							<div class="container-fluid" id="search-panel">
 								<div class="row">
-									<div class="col-sm-4">
+									<div class="col-sm-5">
 										<asp:DropDownList
 											ID="ddlCategory"
 											runat="server"
@@ -66,7 +68,7 @@
 											SelectCommand="SELECT [FdGrp_Desc] FROM [FD_GROUP]"></asp:SqlDataSource>
 									</div>
 
-									<div class="col-sm-8">
+									<div class="col-sm-7">
 										<div class="input-group">
 											<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control typeahead equal-height" autocomplete="off" placeholder="Search"></asp:TextBox>
 											<span class="input-group-btn">
@@ -87,7 +89,7 @@
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><asp:HyperLink runat="server" ID="authentication"></asp:HyperLink></li>
+								<li><asp:HyperLink runat="server" ID="log_in_out"></asp:HyperLink></li>
 								<li><asp:HyperLink runat="server" ID="register" Text="Register" NavigateUrl="~/Account/Register"></asp:HyperLink></li>
 							</ul>
 						</li>
@@ -101,10 +103,10 @@
 								<li role="separator" class="divider"></li>
 								<li><a href="manual_input.aspx">Nutrient Calculator</a></li>
 								<li><a href="recent.aspx">Recent</a></li>
-								<li><a href="comparison.aspx">Comparison</a></li>
-                                <li><a href="advanced_search.aspx">Advance Search</a></li>
-                                <li><a href="update_item.aspx">Update Item</a></li>
-                                <li><a href="inventory_admin.aspx">Inventory Projection</a></li>
+								<li><a href="comparison.aspx" class="authenticated purchasing">Comparison</a></li>
+                                <li><a href="advanced_search.aspx" class="authenticated">Advance Search</a></li>
+                                <li><a href="update_item.aspx" class="authenticated">Update Item</a></li>
+                                <li><a href="inventory_admin.aspx" class="authenticated purchasing">Inventory Projection</a></li>
 								<li><a href="farmers_market.aspx">Farmers Market Finder</a></li>
 							</ul>
 						</li>
@@ -126,18 +128,42 @@
 				<hr />
 				<ul class="text-center footer-link">
 					<li><a href="index.aspx">Home</a></li>
-					<li>&bull;</li>
-					<li><a href="manual_input.aspx">Nutrient Calculator</a></li>
-					<li>&bull;</li>
-					<li><a href="recent.aspx">Recent</a></li>
-					<li>&bull;</li>
-					<li><a href="comparison.aspx">Comparison Tool</a></li>
-					<li>&bull;</li>
-					<li><a href="update_item.aspx">Update Item</a></li>
-                    <li>&bull;</li>
-					<li><a href="inventory_admin.aspx">Inventory Projection</a></li>
-					<li>&bull;</li>
-					<li><a href="farmers_market.aspx">Farmers Market Finder</a></li>
+					<li>
+						<ul>
+							<li>&bull;</li>
+							<li><a href="manual_input.aspx">Nutrient Calculator</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li>&bull;</li>
+							<li><a href="recent.aspx">Recent</a></li>
+						</ul>
+					</li>
+					<li class="authenticated purchasing">
+						<ul>
+							<li>&bull;</li>
+							<li><a href="comparison.aspx">Comparison Tool</a></li>
+						</ul>
+					</li>
+					<li class="authenticated">
+						<ul>
+							<li>&bull;</li>
+							<li><a href="update_item.aspx">Update Item</a></li>
+						</ul>
+					</li>
+					<li class="authenticated purchasing">
+						<ul>
+							<li>&bull;</li>
+							<li><a href="inventory_admin.aspx">Inventory Projection</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li>&bull;</li>
+							<li><a href="farmers_market.aspx">Farmers Market Finder</a></li>
+						</ul>
+					</li>
 				</ul>
 				<br />
 				<p class="text-center">

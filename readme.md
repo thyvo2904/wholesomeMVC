@@ -6,7 +6,7 @@
 5. verify all links
 6. ~add add_item to update_item~
 7. ~boostrap-select~
-8. vegas bg
+8. ~vegas bg~
 9. ~paginate indexresult~
 
 _add more here_

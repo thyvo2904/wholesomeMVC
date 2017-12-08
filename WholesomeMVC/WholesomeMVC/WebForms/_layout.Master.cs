@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Web;
 using System.Web.Security;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Data;
-using System.Text;
-using System.Web.Helpers;
-using Microsoft.AspNet.Identity;
 
 namespace WholesomeMVC.WebForms
 {
@@ -18,9 +17,23 @@ namespace WholesomeMVC.WebForms
              
             if (Request.IsAuthenticated) {
 				// User is authenticated
-				authentication.NavigateUrl = "~/Manage/Index";
-				authentication.Text = "Account";
+				log_in_out.NavigateUrl = "~/Manage/Index";
+				log_in_out.Text = "Logout";
 				label_user.Text = HttpContext.Current.User.Identity.GetUserName();
+
+				// set authentication and authorization
+				ApplicationUserManager userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+				var roles = userManager.GetRoles(HttpContext.Current.User.Identity.GetUserId());
+
+				authentication.Value = "authenticated";
+				authorization.Value = "";
+
+				foreach (var role in roles)
+				{
+					authorization.Value += role + "#";
+				}
+
+				register.Visible = false;
 
                 String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
@@ -59,9 +72,13 @@ namespace WholesomeMVC.WebForms
                 }
             } else {
 				// User is NOT authenticated
-				authentication.NavigateUrl = "~/Account/Login";
-				authentication.Text = "Login";
+				log_in_out.NavigateUrl = "~/Account/Login";
+				log_in_out.Text = "Login";
 				label_user.Text = "Account";
+
+				// clear authentication and authorization
+				authentication.Value = "";
+				authorization.Value = "";
 			}
 		}
 

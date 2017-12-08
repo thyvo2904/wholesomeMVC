@@ -6,7 +6,7 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
-    <section id="banner">
+    <section id="banner" runat="server" class="banner">
         <div class="background-color">
             <div>
                 <h1 class="hidden-xs text-center"><asp:Label ID="banner_message" runat="server" /></h1>
@@ -25,6 +25,8 @@
                             DataSourceID="Category"
                             DataTextField="FdGrp_Desc"
                             DataValueField="FdGrp_Desc">
+                            <asp:ListItem Selected="True">Select a category</asp:ListItem>
+
                         </asp:DropDownList>
                         <asp:SqlDataSource
                             ID="Category"

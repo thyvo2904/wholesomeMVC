@@ -9,12 +9,15 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WholesomeMVC.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WholesomeMVC.Controllers
 {
+
     [Authorize]
     public class AccountController : Controller
     {
+       
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         ApplicationDbContext context;
@@ -27,6 +30,7 @@ namespace WholesomeMVC.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
         }
 
         public ApplicationSignInManager SignInManager

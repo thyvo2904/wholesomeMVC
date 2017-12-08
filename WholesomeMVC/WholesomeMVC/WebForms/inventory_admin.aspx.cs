@@ -18,10 +18,12 @@ namespace WholesomeMVC.WebForms
         ArrayList scenarioID = new ArrayList();
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (IsPostBack) {
-                ddlCereItem.DataBind();
-                ddlFBGroup.DataBind();
-            } else {
+          //  this.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
+
+            if (IsPostBack) {
+
+            }
+            else {
 				
 				String strTitle = "Current Inventory";
 
@@ -30,36 +32,40 @@ namespace WholesomeMVC.WebForms
 				Label body_title = (Label) Master.FindControl("body_title");
 				body_title.Text = strTitle;
 
-				String strChart1Header = "Purchased Item Overview";
+                ddlCereItem.DataBind();
+                ddlFBGroup.DataBind();
+
+                String strChart1Header = "Purchased Item Overview";
 				chart_1_header.Text = strChart1Header;
 				String strWhatIfHeader = "What-If Scenario";
 				whatif_header.Text = strWhatIfHeader;
-
-                System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
+                if (CheckWhatIf() == true)
                 {
-                    ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
-                };
+                    System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
+                    {
+                        ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
+                    };
 
-                sc.Open();
-                SqlCommand myCommand = new SqlCommand("Pull_Weight_WhatIf", sc)
-                {
-                    CommandType = CommandType.StoredProcedure
-                   
-                };
-                System.Data.SqlClient.SqlParameter LastUpdated = new System.Data.SqlClient.SqlParameter();
-                LastUpdated.ParameterName = "@LastUpdated";
-                LastUpdated.Value = DateTime.Now;
-                myCommand.Parameters.Add(LastUpdated); System.Data.SqlClient.SqlParameter LastUpdatedBy = new System.Data.SqlClient.SqlParameter();
-                LastUpdatedBy.ParameterName = "@LastUpdatedBy";
-                LastUpdatedBy.Value = HttpContext.Current.User.Identity.GetUserName();
-                myCommand.Parameters.Add(LastUpdatedBy);
-                myCommand.ExecuteNonQuery();
-                sc.Close();
+                    sc.Open();
+                    SqlCommand myCommand = new SqlCommand("Pull_Weight_WhatIf", sc)
+                    {
+                        CommandType = CommandType.StoredProcedure
 
+                    };
+                    System.Data.SqlClient.SqlParameter LastUpdated = new System.Data.SqlClient.SqlParameter();
+                    LastUpdated.ParameterName = "@LastUpdated";
+                    LastUpdated.Value = DateTime.Now;
+                    myCommand.Parameters.Add(LastUpdated); System.Data.SqlClient.SqlParameter LastUpdatedBy = new System.Data.SqlClient.SqlParameter();
+                    LastUpdatedBy.ParameterName = "@LastUpdatedBy";
+                    LastUpdatedBy.Value = HttpContext.Current.User.Identity.GetUserName();
+                    myCommand.Parameters.Add(LastUpdatedBy);
+                    myCommand.ExecuteNonQuery();
+                    sc.Close();
+                }
             }
 
         }
-
+        
         protected void btnWhatif_Click(object sender, EventArgs e)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
@@ -112,23 +118,53 @@ namespace WholesomeMVC.WebForms
             }
             return itemID;
         }
-
-        protected void btnReset_Click(object sender, EventArgs e)
+        protected bool CheckWhatIf()
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
             {
                 System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
+
                 con.Open();
                 go.Connection = con;
-                for (int i = 0; i < scenarioID.Count; i++)
+                go.CommandText = "SELECT count(item_id) as COUNTER FROM [DBO].[Whatif_scenario];";
+                go.ExecuteNonQuery();
+                SqlDataReader readIn = go.ExecuteReader();
+                while (readIn.Read())
                 {
-                    go.CommandText = "Delete from Whatif_scenario where ScrenarioID=@ScenarioID";
-                    go.Parameters.Add("@ScenarioID", SqlDbType.Int).Value = scenarioID[i];
-                    go.ExecuteNonQuery();
+                    if(readIn["COUNTER"].Equals(0))
+                        return true;
                 }
                 con.Close();
             }
-            scenarioID.Clear();
+            return false;
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            if (scenarioID.Count != 0)
+            {
+                try
+                {
+                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+                    {
+                        System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
+                        con.Open();
+                        go.Connection = con;
+                        for (int i = 0; i < scenarioID.Count; i++)
+                        {
+                            go.CommandText = "Delete from Whatif_scenario where ScrenarioID=@ScenarioID";
+                            go.Parameters.Add("@ScenarioID", SqlDbType.Int).Value = scenarioID[i];
+                            go.ExecuteNonQuery();
+                        }
+                        con.Close();
+                    }
+                    scenarioID.Clear();
+                }
+                catch
+                {
+
+                }
+            }
         }
     }
 }
