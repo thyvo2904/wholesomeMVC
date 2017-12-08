@@ -34,11 +34,6 @@ namespace WholesomeMVC.WebForms
 				Label body_title = (Label)Master.FindControl("body_title");
 				body_title.Text = strTitle;
 
-				//String strScaleLegend = "Color Scale Legend";
-
-				//label_color_scale_legend.Text = strScaleLegend;
-				//image_color_scale_legend.ImageUrl = "/Content/Images/image_color_scale_legend.png";
-
 				String strRecentItems = "Recently Search Items";
 				label_recent_items.Text = strRecentItems;
 
@@ -70,11 +65,11 @@ namespace WholesomeMVC.WebForms
 			double score = newFoodArray[intItemIndex].NRF6;
 
             if (score <= 4.65) {
-                colorScaleStyle = GradientColors.getColor1().Trim() + "; color: white;";
+                colorScaleStyle = GradientColors.getColor1() + "; color: white;";
             } else if ((score >= 4.66) && (score <= 27.99)) {
-                colorScaleStyle = GradientColors.getColor2().Trim() + "; color: black;";
+                colorScaleStyle = GradientColors.getColor2() + "; color: black;";
             } else if (score >= 28) {
-                colorScaleStyle = GradientColors.getColor3().Trim() + "; color: white;";
+                colorScaleStyle = GradientColors.getColor3() + "; color: white;";
             } else {
                 // do nothing
             }
@@ -148,8 +143,6 @@ namespace WholesomeMVC.WebForms
 									</tr>
 								</tbody>
 							</table>
-
-							//<button id='{13}' class='btn btn-default btn-block save-button'>Save Item</button>
 						</div>
 					</div>
 				</div>
