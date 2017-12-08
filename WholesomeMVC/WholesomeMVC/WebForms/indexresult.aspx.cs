@@ -174,28 +174,32 @@ namespace WholesomeMVC.WebForms
            
             String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
-            //check if item already exists in database, if it does hide the save button 
+            //check if item already exists in database, if it does hide the save button and show the update button
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 SqlCommand command = new SqlCommand("Select * FROM wholesome_item WHERE ndb_no = @ndbno", connection);
                 command.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = ndbno;
                 connection.Open();
-               SqlDataReader reader = command.ExecuteReader();
+                SqlDataReader reader = command.ExecuteReader();
+
                 if (reader.HasRows)
                 {
+                    btnUpdate.Visible = true;
                     btnSaveItem.Visible = false;
                     txtCeresStatus.Text = "Matched";
                 }
                 else
                 {
+                    btnSaveItem.Visible = true;
                     txtCeresStatus.Text = "Unmatched";
+                    btnUpdate.Visible = false;
                 }
                 connection.Close();
             }
 
             //saved into recent_index 
             //check if they login
-            if (checkNDB_No(ndbno).Equals(ndbno) == false)
+            if (!checkndbno(ndbno))
             {
 
                 if (HttpContext.Current.User.IsInRole("Admin"))
@@ -233,27 +237,26 @@ namespace WholesomeMVC.WebForms
             }
 
             double score = FoodItem.newFood.NRF6;
-            String colorScaleStyle = "";
+            String colorScaleStyle = "background-color: ";
 
             if(score < 4.66)
             {
-                colorScaleStyle = GradientColors.getColor1();
+                colorScaleStyle += GradientColors.getColor1() + "; color: white;";
             }
             else if ((score >= 4.66) && (score <= 28))
             {
-                colorScaleStyle = GradientColors.getColor2();
+                colorScaleStyle += GradientColors.getColor2() + "; color: black;";
             }
             else if (score > 28)
             {
-                colorScaleStyle = GradientColors.getColor3();
+                colorScaleStyle += GradientColors.getColor3() + "; color: white;";
             }
             else
             {
                 // do nothing
             }
 
-            lblIndexResult.ForeColor = ColorTranslator.FromHtml(colorScaleStyle);
-            modal_header.Attributes["style"] = String.Format("border-bottom: 5px solid {0};", colorScaleStyle);
+            nd_score_panel.Attributes["style"] = colorScaleStyle;
 
             lblFoodName.Text = FoodItem.newFood.name;
             lblFoodName.Attributes["style"] = "font-weight: bold;";
@@ -271,16 +274,23 @@ namespace WholesomeMVC.WebForms
             txtvc.Text = Math.Round(FoodItem.newFood.vitaminC, 2).ToString();
             txtcalcium.Text = Math.Round(FoodItem.newFood.calcium, 2).ToString();
             txtiron.Text = Math.Round(FoodItem.newFood.iron, 2).ToString();
-        }
 
-        /***
+			// re-render bootstrap-select component
+			ddlFBCategories.CssClass = "selectpicker";
+			ddlFBCategories.Attributes["title"] = "Select a category";
+			ddlFBCategories.Attributes["data-width"] = "100%";
+			ddlFBCategories.Attributes["data-live-search"] = "true";
+			ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "rerender", "$('.selectpicker').selectpicker('render');", true);
+		}
+
+		/***
 		 * Using the static saved data in this class, update Wholesome_Item table.
 		 * 
 		 * TODO: 
 		 * Check if the ceres item is null.
 		 * If ceres item doesn't exist prompt the user to open ceres and enter it there first.
 		 */
-         public static String checkNDB_No(string ndbno)
+		public static String checkNDB_No(string ndbno)
         {
             string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             String getNdb_No = "";
@@ -289,12 +299,37 @@ namespace WholesomeMVC.WebForms
                 SqlCommand command = new SqlCommand("Select TOP 1 ndb_No  from recent_index where ndb_no=@ndb_no;", con);
                 command.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
                 con.Open();
+                
                 getNdb_No = command.ExecuteScalar().ToString();
                 con.Close();
             }
             return getNdb_No;
             
         }
+
+        public static bool checkndbno(String ndbno)
+        {
+            String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                SqlCommand command = new SqlCommand("Select ndb_No From dbo.recent_index WHERE ndb_no = @ndb_no", connection);
+                command.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader["ndb_no"].ToString().Equals(ndbno))
+                    {
+                        return true;
+                    }
+
+                }
+                connection.Close();
+            }
+            return false;
+            }
         public static String getloginid()
         {
             string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
@@ -501,8 +536,72 @@ namespace WholesomeMVC.WebForms
 
         }
 
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+            String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
+
+            String gradientEntry = "";
+
+            if (FoodItem.newFood.NRF6 <= 4.65)
+            {
+                gradientEntry = "1";
+            }
+            else if ((FoodItem.newFood.NRF6 >= 4.66) && (FoodItem.newFood.NRF6 <= 27.99))
+            {
+                gradientEntry = "2";
+            }
+            else if (FoodItem.newFood.NRF6 >= 28)
+            {
+                gradientEntry = "3";
+            }
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+
+                SqlCommand command1 = new SqlCommand
+                {
+                    Connection = connection,
+                    CommandType = System.Data.CommandType.Text,
+
+
+                    CommandText = @"UPDATE Wholesome_Item SET"
+                        + " nrf6 = @nrf6, Loginid = @loginid, GradientEntry = @GradientEntry,"
+                        + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [description 2] = @description2, FBC_Code = @FBC_Code " +
+                        "WHERE ndb_no = @ndbno"
+                };
+
+                command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = FoodItem.newFood.NRF6;
+                command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getloginid();
+                command1.Parameters.Add("@GradientEntry", SqlDbType.Int).Value = gradientEntry;
+                command1.Parameters.Add("@description2", SqlDbType.NVarChar, 50).Value = FoodItem.newFood.name;
+                command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = HttpContext.Current.User.Identity.GetUserName();
+                command1.Parameters.Add("@lastupdated", SqlDbType.DateTime).Value = DateTime.Now;
+                command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
+                command1.Parameters.Add("@FBC_Code", SqlDbType.NVarChar, 10).Value = ddlFBCategories.SelectedValue;
+                connection.Open();
+                command1.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
         protected void btnSaveItem_Click(object sender, EventArgs e)
         {
+
+            String gradientEntry = "";
+
+            if (FoodItem.newFood.NRF6 <= 4.65)
+            {
+                gradientEntry = "1";
+            }
+            else if ((FoodItem.newFood.NRF6 >= 4.66) && (FoodItem.newFood.NRF6 <= 27.99))
+            {
+                gradientEntry = "2";
+            }
+            else if (FoodItem.newFood.NRF6 >= 28)
+            {
+                gradientEntry = "3";
+            }
 
             String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
 
@@ -525,7 +624,7 @@ namespace WholesomeMVC.WebForms
 
 
                             CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([No_], [ndb_no], [Description], [nrf6], [LoginID], [LastUpdatedBy], [LastUpdated], [description 2]) VALUES
-                                      (@ceresitemnumber, @ndbno, @ceresdescription, @nrf6, @loginID, @lastupdatedby, @lastupdated, @name)"
+                                      (@ceresitemnumber, @ndbno, @ceresdescription, @nrf6, @loginID, @lastupdatedby, @lastupdated, @name, @fbcCode, @gradientEntry)"
                         };
                         // dealing with uncatogirzed food which has NaN nd_score
                         if (lblIndexResult.Text == "NaN")
@@ -539,11 +638,12 @@ namespace WholesomeMVC.WebForms
                         command1.Parameters.Add("@ceresitemnumber", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;
                         command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
                         command1.Parameters.Add("@ceresdescription", SqlDbType.NVarChar, 50).Value = txtCeresDescription.Text;
-                        ////command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = FoodItem.newFood.NRF6;
                         command1.Parameters.Add("@name", SqlDbType.NVarChar, 500).Value = FoodItem.newFood.name;            
                         command1.Parameters.Add("@loginID", SqlDbType.Int).Value = getloginid();
-                        command1.Parameters.Add("@lastupdatedby", SqlDbType.NVarChar, 20).Value = "Nathan Hamrick";
+                        command1.Parameters.Add("@lastupdatedby", SqlDbType.NVarChar, 20).Value = HttpContext.Current.User.Identity.GetUserName();
                         command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+                        command1.Parameters.Add("@fbcCode", SqlDbType.NVarChar, 10).Value = ddlFBCategories.SelectedValue;
+                        command1.Parameters.Add("@GradientEntry", SqlDbType.Int).Value = gradientEntry;
 
                         connection.Open();
                         command1.ExecuteNonQuery();

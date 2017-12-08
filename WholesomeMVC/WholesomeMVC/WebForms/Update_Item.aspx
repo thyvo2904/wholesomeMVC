@@ -69,11 +69,28 @@
 						<ContentTemplate>
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								<h4 class='panel-title equal-height'>
-									<strong>
-										<asp:Literal ID="lblOldFoodName" runat="server"></asp:Literal>
-									</strong>
-								</h4>
+								<div class='panel-title equal-height'>
+									<h4>
+										<strong>USDA Description:
+											<asp:Literal ID="lblOldFoodName" runat="server"></asp:Literal>
+										</strong>
+									</h4>
+									<h4>
+										<strong>Ceres Name:
+										<asp:Literal ID="lblOldCeresName" runat="server"></asp:Literal>
+										</strong>
+									</h4>
+									<h4>
+										<strong>NDB_NO:
+										<asp:Literal ID="lblOldNdbno" runat="server"></asp:Literal>
+										</strong>
+									</h4>
+									<h4>
+										<strong>Ceres ID:
+										<asp:Literal ID="lblOldCeresId" runat="server"></asp:Literal>
+										</strong>
+									</h4>
+								</div>
 							</div>
 
 							<div runat="server" id="nd_old_score_panel" class="modal-body">
@@ -91,117 +108,120 @@
 										<tr class='fatter'>
 											<th>Calories</th>
 											<td>
-												<asp:TextBox ID="txtOldKCal" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtOldKCal" runat="server"></asp:Literal>
 											</td>
 											<td></td>
 										</tr>
 										<tr class='fat'>
 											<th>Saturated Fat</th>
 											<td>
-												<asp:TextBox ID="txtOldSaturatedFat" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtOldSaturatedFat" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Sodium</th>
 											<td>
-												<asp:TextBox ID="txtOldSodium" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtOldSodium" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Dietary Fiber</th>
 											<td>
-												<asp:TextBox ID="txtOldFiber" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtOldFiber" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Total Sugars</th>
 											<td>
-												<asp:TextBox ID="txtOldTotalSugar" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtOldTotalSugar" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Protein</th>
 											<td>
-												<asp:TextBox ID="txtOldProtein" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtOldProtein" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr class='fatter'>
 											<th>Vitamin A</th>
 											<td>
-												<asp:TextBox ID="txtOldVitaminA" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtOldVitaminA" runat="server"></asp:Literal>
 											</td>
 											<td>IU</td>
 										</tr>
 										<tr>
 											<th>Vitamin C</th>
 											<td>
-												<asp:TextBox ID="txtOldVitaminC" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtOldVitaminC" runat="server"></asp:Literal>
 											</td>
 											<td>IU</td>
 										</tr>
 										<tr>
 											<th>Calcium</th>
 											<td>
-												<asp:TextBox ID="txtOldCalcium" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtOldCalcium" runat="server"></asp:Literal>
 											</td>
 											<td>mg</td>
 										</tr>
 										<tr>
 											<th>Iron</th>
 											<td>
-												<asp:TextBox ID="txtOldIron" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtOldIron" runat="server"></asp:Literal>
 											</td>
 											<td>mg</td>
                                         </tr>
-										<tr>
-                                            <th>Category</th>
-											<td>
-												<asp:DropDownList ID="ddlFBCategories" runat="server" ClientIDMode="Static">
-													<asp:ListItem>Baby</asp:ListItem>
-													<asp:ListItem>Beverage</asp:ListItem>
-													<asp:ListItem>Bread</asp:ListItem>
-													<asp:ListItem>Cereal/Brk</asp:ListItem>
-													<asp:ListItem>complete</asp:ListItem>
-													<asp:ListItem>Condiment</asp:ListItem>
-													<asp:ListItem>dairy</asp:ListItem>
-													<asp:ListItem>dessert</asp:ListItem>
-													<asp:ListItem>Dough</asp:ListItem>
-													<asp:ListItem>Dressing</asp:ListItem>
-													<asp:ListItem>Entree</asp:ListItem>
-													<asp:ListItem>Fruit/veg</asp:ListItem>
-													<asp:ListItem>Fruits</asp:ListItem>
-													<asp:ListItem>Grain</asp:ListItem>
-													<asp:ListItem>Juice</asp:ListItem>
-													<asp:ListItem>Mixed/Asst</asp:ListItem>
-													<asp:ListItem>NF</asp:ListItem>
-													<asp:ListItem>Non-Dairy</asp:ListItem>
-													<asp:ListItem>Nutrition</asp:ListItem>
-													<asp:ListItem>Pasta</asp:ListItem>
-													<asp:ListItem>Pro-Meat</asp:ListItem>
-													<asp:ListItem>Pro-Non</asp:ListItem>
-													<asp:ListItem>Rice</asp:ListItem>
-													<asp:ListItem>Salvage</asp:ListItem>
-													<asp:ListItem>Snack</asp:ListItem>
-													<asp:ListItem>Vegetables</asp:ListItem>
-												</asp:DropDownList>
-											</td>
-										</tr>
 									</tbody>
 								</table>
 
 								<hr />
+
 								<div>
+									<div class="form-group">
+										<label for="ddlFBCategories">
+											<asp:Literal Text="Category" runat="server" />
+										</label>
+										<p>
+											<asp:DropDownList ID="ddlFBCategories" runat="server" ClientIDMode="Static">
+												<asp:ListItem>Baby</asp:ListItem>
+												<asp:ListItem>Beverage</asp:ListItem>
+												<asp:ListItem>Bread</asp:ListItem>
+												<asp:ListItem>Cereal/Brk</asp:ListItem>
+												<asp:ListItem>complete</asp:ListItem>
+												<asp:ListItem>Condiment</asp:ListItem>
+												<asp:ListItem>dairy</asp:ListItem>
+												<asp:ListItem>dessert</asp:ListItem>
+												<asp:ListItem>Dough</asp:ListItem>
+												<asp:ListItem>Dressing</asp:ListItem>
+												<asp:ListItem>Entree</asp:ListItem>
+												<asp:ListItem>Fruit/veg</asp:ListItem>
+												<asp:ListItem>Fruits</asp:ListItem>
+												<asp:ListItem>Grain</asp:ListItem>
+												<asp:ListItem>Juice</asp:ListItem>
+												<asp:ListItem>Mixed/Asst</asp:ListItem>
+												<asp:ListItem>NF</asp:ListItem>
+												<asp:ListItem>Non-Dairy</asp:ListItem>
+												<asp:ListItem>Nutrition</asp:ListItem>
+												<asp:ListItem>Pasta</asp:ListItem>
+												<asp:ListItem>Pro-Meat</asp:ListItem>
+												<asp:ListItem>Pro-Non</asp:ListItem>
+												<asp:ListItem>Rice</asp:ListItem>
+												<asp:ListItem>Salvage</asp:ListItem>
+												<asp:ListItem>Snack</asp:ListItem>
+												<asp:ListItem>Vegetables</asp:ListItem>
+											</asp:DropDownList>
+										</p>
+									</div>
 									<div class="form-group">
 										<label for="txtOldCeresNumber">
 											<asp:Literal Text="Ceres Number" runat="server" />
 										</label>
 										<p>
-											<asp:Literal ID="txtOldCeresNumber" runat="server"></asp:Literal>
+											<asp:TextBox ID="txtOldCeresNumber" runat="server" CssClass="form-control"></asp:TextBox>
 										</p>
 									</div>
 									<div class="form-group">
@@ -209,15 +229,13 @@
 											<asp:Literal Text="Ceres Description" runat="server" />
 										</label>
 										<p>
-											<asp:Literal ID="txtOldCeresDescription" runat="server"></asp:Literal>
+											<asp:TextBox ID="txtOldCeresDescription" runat="server" CssClass="form-control"></asp:TextBox>
 										</p>
 									</div>
 								</div>
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
-
-								<asp:Button ID="btnCalculateOldNRF6" OnClick="btnCalculateOldNRF6_Click" runat="server"  Text="Calculate" CssClass="btn btn-primary" type="button" />
 								<asp:Button ID="btnSaveOldItem" OnClick="btnOldSaveItem_Click" runat="server" Text="Save" CssClass="btn btn-success" type="button" />
 							</div>
 						</ContentTemplate>
@@ -237,11 +255,28 @@
 						<ContentTemplate>
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								<h4 class='panel-title equal-height'>
-									<strong>
-										<asp:Literal ID="lblNewFoodName" runat="server"></asp:Literal>
-									</strong>
-								</h4>
+								<div class='panel-title equal-height'>
+									<h4>
+										<strong>USDA Description:
+											<asp:Literal ID="lblNewFoodName" runat="server"></asp:Literal>
+										</strong>
+									</h4>
+									<h4>
+										<strong>Ceres Name:
+										<asp:Literal ID="lblNewCeresName" runat="server"></asp:Literal>
+										</strong>
+									</h4>
+									<h4>
+										<strong>NDB_NO:
+										<asp:Literal ID="lblNewNdbno" runat="server"></asp:Literal>
+										</strong>
+									</h4>
+									<h4>
+										<strong>Ceres ID:
+										<asp:Literal ID="lblNewCeresId" runat="server"></asp:Literal>
+										</strong>
+									</h4>
+								</div>
 							</div>
 
 							<div runat="server" id="nd_new_score_panel" class="modal-body">
@@ -259,70 +294,70 @@
 										<tr class='fatter'>
 											<th>Calories</th>
 											<td>
-												<asp:TextBox ID="txtNewKCal" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtNewKCal" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr class='fat'>
 											<th>Saturated Fat</th>
 											<td>
-												<asp:TextBox ID="txtNewSaturatedFat" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtNewSaturatedFat" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Sodium</th>
 											<td>
-												<asp:TextBox ID="txtNewSodium" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtNewSodium" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Dietary Fiber</th>
 											<td>
-												<asp:TextBox ID="txtNewFiber" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtNewFiber" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Added Sugars</th>
 											<td>
-												<asp:TextBox ID="txtNewAddedSugar" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtNewAddedSugar" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Protein</th>
 											<td>
-												<asp:TextBox ID="txtNewProtein" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtNewProtein" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr class='fatter'>
 											<th>Vitamin D</th>
 											<td>
-												<asp:TextBox ID="txtNewVitaminD" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtNewVitaminD" runat="server"></asp:Literal>
 											</td>
 											<td>%</td>
 										</tr>
 										<tr>
 											<th>Calcium</th>
 											<td>
-												<asp:TextBox ID="txtNewCalcium" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtNewCalcium" runat="server"></asp:Literal>
 											</td>
 											<td>%</td>
 										</tr>
 										<tr>
 											<th>Iron</th>
 											<td>
-												<asp:TextBox ID="txtNewIron" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtNewIron" runat="server"></asp:Literal>
 											</td>
 											<td>%</td>
 										</tr>
 										<tr>
 											<th>Potassium</th>
 											<td>
-												<asp:TextBox ID="txtNewPotassium" runat="server" CssClass="form-control"></asp:TextBox>
+												<asp:Literal ID="txtNewPotassium" runat="server"></asp:Literal>
 											</td>
 											<td>%</td>
 										</tr>
@@ -335,9 +370,8 @@
 										<label for="txtNewCeresNumber">
 											<asp:Literal id="literalCeresID" Text="Ceres Number" runat="server" />
 										</label>
-                                        <asp:Label ID="lblNewCeresNumber" runat="server"></asp:Label>
 										<p>
-											
+											<asp:TextBox ID="lblNewCeresNumber" runat="server" CssClass="form-control"></asp:TextBox>
 										</p>
 									</div>
 									<div class="form-group">
@@ -345,14 +379,13 @@
 											<asp:Literal Text="Ceres Description" runat="server" />
 										</label>
 										<p>
-											<asp:Literal ID="txtNewCeresDescription" runat="server"></asp:Literal>
+											<asp:TextBox ID="txtNewCeresDescription" runat="server" CssClass="form-control"></asp:TextBox>
 										</p>
 									</div>
 								</div>
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal"  ClientIDMode="Static" type="button" />
-								<asp:Button ID="btnCalculateNewNRF6" OnClick="btnCalculateNewNRF6_Click" runat="server" Text="Calculate" CssClass="btn btn-primary new_buttons" />
 								<asp:Button ID="btnSaveNewItem"  runat="server" Text="Save" CssClass="btn btn-success new_buttons" />
 							</div>
 						</ContentTemplate>
