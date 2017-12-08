@@ -35,12 +35,14 @@ namespace WholesomeMVC.WebForms
                 btnCompare.Visible = true;
                 sook.Visible = true;
                 txtCeresStatus.Visible = true;
+                btnSaveItem.Visible = true;
             }
             else
             {
                 btnCompare.Visible = false;
                 sook.Visible = false;
                 txtCeresStatus.Visible = false;
+                btnSaveItem.Visible = false;
             }
             if (IsPostBack)
             {

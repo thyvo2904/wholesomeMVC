@@ -149,7 +149,7 @@ namespace WholesomeMVC.WebForms
 								</tbody>
 							</table>
 
-							<button id='{13}' class='btn btn-default btn-block save-button'>Save Item</button>
+							//<button id='{13}' class='btn btn-default btn-block save-button'>Save Item</button>
 						</div>
 					</div>
 				</div>
@@ -332,57 +332,57 @@ namespace WholesomeMVC.WebForms
 			}
 		}
 
-		/***
+        /***
 		 * Save item to SavedItems table.
 		 */
-		protected void SaveItem(object sender, EventArgs e)
-		{
-			int intItemIndex = int.Parse(hidden_item_index.Value);
+        //	protected void SaveItem(object sender, EventArgs e)
+        //	{
+        //		int intItemIndex = int.Parse(hidden_item_index.Value);
 
-			String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        //		String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
-			try
-			{
-				using (SqlConnection connection = new SqlConnection(ConnectionString))
-				{
-                    SqlCommand command1 = new SqlCommand
-                    {
-                        Connection = connection,
-                        CommandType = System.Data.CommandType.Text,
+        //		try
+        //		{
+        //			using (SqlConnection connection = new SqlConnection(ConnectionString))
+        //			{
+        //                   SqlCommand command1 = new SqlCommand
+        //                   {
+        //                       Connection = connection,
+        //                       CommandType = System.Data.CommandType.Text,
 
-                        CommandText = @"
-						INSERT INTO [wholesomeDB].[dbo].[SavedItems] (
-							[ndb_no],
-							[name],
-							[ND_Score],
-							[saved by],
-							[date saved]
-						) VALUES (
-							@ndb_no,
-							@name,
-							@NRF6,
-							@savedby,
-							@savedate)
-					"
-                    };
+        //                       CommandText = @"
+        //					INSERT INTO [wholesomeDB].[dbo].[SavedItems] (
+        //						[ndb_no],
+        //						[name],
+        //						[ND_Score],
+        //						[saved by],
+        //						[date saved]
+        //					) VALUES (
+        //						@ndb_no,
+        //						@name,
+        //						@NRF6,
+        //						@savedby,
+        //						@savedate)
+        //				"
+        //                   };
 
-                    command1.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = newFoodArray[intItemIndex].ndbNo;
-					command1.Parameters.Add("@name", SqlDbType.NVarChar, 500).Value = newFoodArray[intItemIndex].name;
-					command1.Parameters.Add("@NRF6", SqlDbType.Decimal).Value = newFoodArray[intItemIndex].NRF6;
-					command1.Parameters.Add("@savedby", SqlDbType.VarChar, 50).Value = "Nathan Hamrick";
-					command1.Parameters.Add("@savedate", SqlDbType.Date).Value = DateTime.Now;
+        //                   command1.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = newFoodArray[intItemIndex].ndbNo;
+        //				command1.Parameters.Add("@name", SqlDbType.NVarChar, 500).Value = newFoodArray[intItemIndex].name;
+        //				command1.Parameters.Add("@NRF6", SqlDbType.Decimal).Value = newFoodArray[intItemIndex].NRF6;
+        //				command1.Parameters.Add("@savedby", SqlDbType.VarChar, 50).Value = "Nathan Hamrick";
+        //				command1.Parameters.Add("@savedate", SqlDbType.Date).Value = DateTime.Now;
 
-					connection.Open();
-					command1.ExecuteNonQuery();
-					connection.Close();
-				}
+        //				connection.Open();
+        //				command1.ExecuteNonQuery();
+        //				connection.Close();
+        //			}
 
-				success_message.Value = String.Format("Successfully saved {0}", newFoodArray[intItemIndex].name);
-			} catch (Exception q)
-			{
-				error_message.Value = String.Format("{0} is already saved!", newFoodArray[intItemIndex].name);
-				Console.WriteLine(q.ToString());
-			}
-		}
-	}
+        //			success_message.Value = String.Format("Successfully saved {0}", newFoodArray[intItemIndex].name);
+        //		} catch (Exception q)
+        //		{
+        //			error_message.Value = String.Format("{0} is already saved!", newFoodArray[intItemIndex].name);
+        //			Console.WriteLine(q.ToString());
+        //		}
+        //	}
+    }
 }
