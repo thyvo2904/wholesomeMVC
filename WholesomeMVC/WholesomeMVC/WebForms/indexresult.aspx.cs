@@ -37,8 +37,8 @@ namespace WholesomeMVC.WebForms
                 txtCeresDescription.Text = (string)Session["sharedCeresDescription"];
             }
 
-            if (HttpContext.Current.User.IsInRole("Admin") && HttpContext.Current.User.IsInRole("purchasing_staff")
-                && HttpContext.Current.User.IsInRole("warehouse_staff"))
+            if (HttpContext.Current.User.IsInRole("Purchasing_Staff")
+               || HttpContext.Current.User.IsInRole("Warehouse_Staff"))
             {
                 btnCompare.Visible = true;
                 sook.Visible = true;
@@ -205,7 +205,8 @@ namespace WholesomeMVC.WebForms
             if (!checkndbno(ndbno))
             {
 
-                if (HttpContext.Current.User.IsInRole("Admin"))
+                if (HttpContext.Current.User.IsInRole("Purchasing_Staff")
+               || HttpContext.Current.User.IsInRole("Warehouse_Staff"))
                 {
                     using (SqlConnection connection = new SqlConnection(ConnectionString))
                     {
