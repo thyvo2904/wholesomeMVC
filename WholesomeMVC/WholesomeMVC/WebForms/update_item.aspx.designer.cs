@@ -94,6 +94,15 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.HiddenField hidden_ndbno;
         
         /// <summary>
+        /// hidden_nrf6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hidden_nrf6;
+        
+        /// <summary>
         /// hidden_view_mode control.
         /// </summary>
         /// <remarks>
