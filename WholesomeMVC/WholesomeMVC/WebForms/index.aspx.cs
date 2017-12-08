@@ -22,7 +22,12 @@ namespace WholesomeMVC.WebForms
 				Literal page_title = (Literal)Master.FindControl("page_title");
 				page_title.Text = strTitle;
 
-				banner.Style.Add("background-color", "red");
+				Random random = new Random();
+				String image = random.Next(1, 18).ToString().PadLeft(2, '0');
+
+				banner.Style.Add("background-color", "#FAFAFA");
+				banner.Style.Add("background-image", String.Format("url('/Content/Images/Backgrounds/{0}.png')", image));
+				banner.Style.Add("background-size", "cover");
 				banner_message.Text = @"
 					Using Wholesome, you can quickly find out the different nutritional values of your 
                     food options and decide for yourself what works for you and your needs.
