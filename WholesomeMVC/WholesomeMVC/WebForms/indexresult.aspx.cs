@@ -582,6 +582,21 @@ namespace WholesomeMVC.WebForms
         protected void btnSaveItem_Click(object sender, EventArgs e)
         {
 
+            String gradientEntry = "";
+
+            if (FoodItem.newFood.NRF6 <= 4.65)
+            {
+                gradientEntry = "1";
+            }
+            else if ((FoodItem.newFood.NRF6 >= 4.66) && (FoodItem.newFood.NRF6 <= 27.99))
+            {
+                gradientEntry = "2";
+            }
+            else if (FoodItem.newFood.NRF6 >= 28)
+            {
+                gradientEntry = "3";
+            }
+
             String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
 
             if (txtCeresNumber.Text == "" || txtCeresDescription.Text == "")
@@ -603,7 +618,7 @@ namespace WholesomeMVC.WebForms
 
 
                             CommandText = @"INSERT INTO [wholesomeDB].[dbo].[Wholesome_Item] ([No_], [ndb_no], [Description], [nrf6], [LoginID], [LastUpdatedBy], [LastUpdated], [description 2]) VALUES
-                                      (@ceresitemnumber, @ndbno, @ceresdescription, @nrf6, @loginID, @lastupdatedby, @lastupdated, @name)"
+                                      (@ceresitemnumber, @ndbno, @ceresdescription, @nrf6, @loginID, @lastupdatedby, @lastupdated, @name, @fbcCode, @gradientEntry)"
                         };
                         // dealing with uncatogirzed food which has NaN nd_score
                         if (lblIndexResult.Text == "NaN")
@@ -617,11 +632,12 @@ namespace WholesomeMVC.WebForms
                         command1.Parameters.Add("@ceresitemnumber", SqlDbType.NVarChar, 20).Value = txtCeresNumber.Text;
                         command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
                         command1.Parameters.Add("@ceresdescription", SqlDbType.NVarChar, 50).Value = txtCeresDescription.Text;
-                        ////command1.Parameters.Add("@nrf6", SqlDbType.Decimal).Value = FoodItem.newFood.NRF6;
                         command1.Parameters.Add("@name", SqlDbType.NVarChar, 500).Value = FoodItem.newFood.name;            
                         command1.Parameters.Add("@loginID", SqlDbType.Int).Value = getloginid();
-                        command1.Parameters.Add("@lastupdatedby", SqlDbType.NVarChar, 20).Value = "Nathan Hamrick";
+                        command1.Parameters.Add("@lastupdatedby", SqlDbType.NVarChar, 20).Value = HttpContext.Current.User.Identity.GetUserName();
                         command1.Parameters.Add("@lastupdated", SqlDbType.Date).Value = DateTime.Now;
+                        command1.Parameters.Add("@fbcCode", SqlDbType.NVarChar, 10).Value = ddlFBCategories.SelectedValue;
+                        command1.Parameters.Add("@GradientEntry", SqlDbType.Int).Value = gradientEntry;
 
                         connection.Open();
                         command1.ExecuteNonQuery();
