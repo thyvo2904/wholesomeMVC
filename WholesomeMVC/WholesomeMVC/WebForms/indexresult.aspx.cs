@@ -541,6 +541,12 @@ namespace WholesomeMVC.WebForms
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
+            String description2 = FoodItem.newFood.name;
+            if (description2.Length > 48)
+            {
+                description2 = description2.Substring(0, 48);
+            }
+
 
             String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
 

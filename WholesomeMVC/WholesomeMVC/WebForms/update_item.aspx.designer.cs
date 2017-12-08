@@ -31,6 +31,15 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.Button btnSearch;
         
         /// <summary>
+        /// reqTxtSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqTxtSearch;
+        
+        /// <summary>
         /// view_mode control.
         /// </summary>
         /// <remarks>
