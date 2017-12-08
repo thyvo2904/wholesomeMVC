@@ -1107,7 +1107,7 @@ namespace WholesomeMVC.WebForms
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            String foodSearch = txtSearchUsdaSimilar.Text;
+            String foodSearch = txtSearch.Text;
             string ceresid = hidden_ceresid.Value;
             string ceresDescription = hidden_ceres_name.Value;
             Session["sharedCeresID"] = ceresid;
