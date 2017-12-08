@@ -55,7 +55,8 @@ $("#log_in_out").click(function () {
 	if ($("#generatedToken").val() === "") {
 		// do nothing
 	} else {
-		$("#tokenToSubmit").val($("#generatedToken").val());
+        $("#
+            ").val($("#generatedToken").val());
 		$("#logoutForm").submit();
 	}
 });
