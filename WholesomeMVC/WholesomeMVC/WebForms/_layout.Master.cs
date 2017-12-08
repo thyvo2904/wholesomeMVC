@@ -219,20 +219,22 @@ namespace WholesomeMVC.WebForms
 			StringBuilder sbRenderOnMe = new StringBuilder();
 
 			// the form and the data
-			sbRenderOnMe.AppendFormat(@"
-			<html>
-				<body>
-					<form action='/Account/LogOff' class='hidden' id='logoutForm' method='post'>
-						<input id='tokenToSubmit' name='__RequestVerificationToken' type ='hidden' value='{0}' />
-					</form>",
-			AntiForgery.GetHtml());
+			//sbRenderOnMe.AppendFormat(@"
+			//<html>
+			//	<body>
+			//		<form action='/Account/LogOff' class='hidden' id='logoutForm' method='post'>
+			//			<input id='tokenToSubmit' name='__RequestVerificationToken' type ='hidden' value='{0}' />
+			//		</form>",
+			//AntiForgery.GetHtml());
 
 			// the auto submit
 			sbRenderOnMe.AppendFormat("<script>javascript:document.getElementById('logoutForm').submit();</script>");
 			sbRenderOnMe.AppendFormat("</body></html>");
+            HttpContext.Current.Session.Clear();
 
-			Response.Write(sbRenderOnMe.ToString());
-			Response.End();
+
+			//Response.Write(sbRenderOnMe.ToString());
+			//Response.End();
             
         }
 	}

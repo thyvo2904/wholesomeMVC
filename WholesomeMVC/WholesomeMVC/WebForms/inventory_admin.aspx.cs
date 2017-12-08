@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -14,6 +15,7 @@ namespace WholesomeMVC.WebForms
 {
 	public partial class inventory_admin : System.Web.UI.Page
 	{
+        ArrayList scenarioID = new ArrayList();
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (IsPostBack) {
@@ -21,7 +23,7 @@ namespace WholesomeMVC.WebForms
                 ddlFBGroup.DataBind();
             } else {
 				
-				String strTitle = "Inventory Admin";
+				String strTitle = "Current Inventory";
 
 				Literal page_title = (Literal) Master.FindControl("page_title");
 				page_title.Text = strTitle;
@@ -30,8 +32,6 @@ namespace WholesomeMVC.WebForms
 
 				String strChart1Header = "Purchased Item Overview";
 				chart_1_header.Text = strChart1Header;
-				//String strChart2Header = "Inventory Overview";
-				//chart_2_header.Text = strChart2Header;
 				String strWhatIfHeader = "What-If Scenario";
 				whatif_header.Text = strWhatIfHeader;
 			}
@@ -54,7 +54,16 @@ namespace WholesomeMVC.WebForms
                 go.Parameters.Add("@LASTUPDATED", SqlDbType.DateTime).Value = DateTime.Now;
                 go.Parameters.Add("@LASTUPDATEDBY", SqlDbType.NVarChar, 20).Value = HttpContext.Current.User.Identity.GetUserName();
                 go.ExecuteNonQuery();
-                
+
+                go.Parameters.Clear();
+
+                go.CommandText = "Select max(ScenarioID) from whatif_scenario;";
+                go.ExecuteNonQuery();
+                SqlDataReader readIn = go.ExecuteReader();
+                while (readIn.Read())
+                {
+                    scenarioID.Add(readIn["ScenarioID"].ToString());
+                }
                 con.Close();
 
 
@@ -80,6 +89,23 @@ namespace WholesomeMVC.WebForms
                 con.Close();
             }
             return itemID;
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
+            {
+                System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
+                con.Open();
+                go.Connection = con;
+                for (int i = 0; i < scenarioID.Count; i++)
+                {
+                    go.CommandText = "Delete from Whatif_scenario where ScrenarioID=@ScenarioID";
+                    go.Parameters.Add("@ScenarioID", SqlDbType.Int).Value = scenarioID[i];
+                    go.ExecuteNonQuery();
+                }
+                con.Close();
+            }
         }
     }
 }
