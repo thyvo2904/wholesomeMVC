@@ -42,12 +42,14 @@ namespace WholesomeMVC.WebForms
                 btnCompare.Visible = true;
                 sook.Visible = true;
                 txtCeresStatus.Visible = true;
+                btnSaveItem.Visible = true;
             }
             else
             {
                 btnCompare.Visible = false;
                 sook.Visible = false;
                 txtCeresStatus.Visible = false;
+                btnSaveItem.Visible = false;
             }
             if (IsPostBack)
             {
@@ -213,35 +215,42 @@ namespace WholesomeMVC.WebForms
 
             //saved into recent_index 
             //check if they login
-            if (HttpContext.Current.User.IsInRole("Admin"))
+            if (checkNDB_No(ndbno).Equals(ndbno) == false)
             {
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
+
+                if (HttpContext.Current.User.IsInRole("Admin"))
                 {
-                    SqlCommand command = new SqlCommand("INSERT INTO RECENT_INDEX(NDB_NO,LOGINID,LastUpdated,LastUpdatedBy) VALUES (@NDB_NO, @ID,@LastUpdated, @LastUpdatedby);", connection);
-                    command.Parameters.Add("@NDB_NO", SqlDbType.NVarChar, 8).Value = ndbno;
-                    command.Parameters.Add("@ID", SqlDbType.Int).Value = getloginid();
-                    command.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 20).Value = HttpContext.Current.User.Identity.GetUserName();
-                    command.Parameters.Add("@LastUpdated", SqlDbType.DateTime, 128).Value = DateTime.Now;
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
+                    using (SqlConnection connection = new SqlConnection(ConnectionString))
+                    {
+                        SqlCommand command = new SqlCommand("INSERT INTO RECENT_INDEX(NDB_NO,LOGINID,LastUpdated,LastUpdatedBy) VALUES (@NDB_NO, @ID,@LastUpdated, @LastUpdatedby);", connection);
+                        command.Parameters.Add("@NDB_NO", SqlDbType.NVarChar, 8).Value = ndbno;
+                        command.Parameters.Add("@ID", SqlDbType.Int).Value = getloginid();
+                        command.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 20).Value = HttpContext.Current.User.Identity.GetUserName();
+                        command.Parameters.Add("@LastUpdated", SqlDbType.DateTime, 128).Value = DateTime.Now;
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+                else
+                {
+                    using (SqlConnection connection = new SqlConnection(ConnectionString))
+                    {
+                        SqlCommand command = new SqlCommand("INSERT INTO RECENT_INDEX(NDB_NO,LOGINID,LastUpdated,LastUpdatedBy) VALUES (@NDB_NO, @ID,@LastUpdated, @LastUpdatedby);", connection);
+                        command.Parameters.Add("@NDB_NO", SqlDbType.NVarChar, 8).Value = ndbno;
+                        command.Parameters.Add("@ID", SqlDbType.Int).Value = DBNull.Value;
+                        command.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 20).Value = "Guest";
+                        command.Parameters.Add("@LastUpdated", SqlDbType.DateTime, 128).Value = DateTime.Now;
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
                 }
             }
             else
             {
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
-                {
-                    SqlCommand command = new SqlCommand("INSERT INTO RECENT_INDEX(NDB_NO,LOGINID,LastUpdated,LastUpdatedBy) VALUES (@NDB_NO, @ID,@LastUpdated, @LastUpdatedby);", connection);
-                    command.Parameters.Add("@NDB_NO", SqlDbType.NVarChar, 8).Value = ndbno;
-                    command.Parameters.Add("@ID", SqlDbType.Int).Value = DBNull.Value;
-                    command.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 20).Value = "Guest";
-                    command.Parameters.Add("@LastUpdated", SqlDbType.DateTime, 128).Value = DateTime.Now;
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
+               //do nothing
             }
-
 
             double score = FoodItem.newFood.NRF6;
             String colorScaleStyle = "";
@@ -291,7 +300,21 @@ namespace WholesomeMVC.WebForms
 		 * Check if the ceres item is null.
 		 * If ceres item doesn't exist prompt the user to open ceres and enter it there first.
 		 */
-
+         public static String checkNDB_No(string ndbno)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            String getNdb_No = "";
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                SqlCommand command = new SqlCommand("Select TOP 1 ndb_No  from recent_index where ndb_no=@ndb_no;", con);
+                command.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
+                con.Open();
+                getNdb_No = command.ExecuteScalar().ToString();
+                con.Close();
+            }
+            return getNdb_No;
+            
+        }
         public static String getloginid()
         {
             string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
