@@ -225,7 +225,7 @@ namespace WholesomeMVC.WebForms
                         SqlCommand command = new SqlCommand("INSERT INTO RECENT_INDEX(NDB_NO,LOGINID,LastUpdated,LastUpdatedBy) VALUES (@NDB_NO, @ID,@LastUpdated, @LastUpdatedby);", connection);
                         command.Parameters.Add("@NDB_NO", SqlDbType.NVarChar, 8).Value = ndbno;
                         command.Parameters.Add("@ID", SqlDbType.Int).Value = DBNull.Value;
-                        command.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 20).Value = "Guest";
+                        command.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 20).Value = HttpContext.Current.User.Identity.GetUserName(); ;
                         command.Parameters.Add("@LastUpdated", SqlDbType.DateTime, 128).Value = DateTime.Now;
                         connection.Open();
                         command.ExecuteNonQuery();
