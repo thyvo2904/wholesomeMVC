@@ -765,7 +765,6 @@ namespace WholesomeMVC.WebForms
              + "lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [Description 2] = @Description2 WHERE No_ = @No_"
             };
 
-
             //command1.Parameters.Add("@No_", SqlDbType.NVarChar, 20).Value = no_;
             command1.Parameters.Add("@GradientEntry", SqlDbType.NVarChar, 20).Value = gradientEntry;
             command1.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = ndbno;
@@ -773,11 +772,8 @@ namespace WholesomeMVC.WebForms
             command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = ndscore;
             command1.Parameters.Add("FBC_Code", SqlDbType.NVarChar, 10).Value = ddlFBCategories.SelectedValue;
 
-
             command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = "Charles Moore";
             command1.Parameters.Add("@Lastupdated", SqlDbType.Date).Value = DateTime.Now;
-
-
 
             command1.ExecuteNonQuery();
             sc.Close();
@@ -874,24 +870,23 @@ namespace WholesomeMVC.WebForms
 
 
                 double score = FoodItem.newFood.NRF6;
-                String colorScaleStyle = "";
+                String colorScaleStyle = "background-color: ";
                 if (score <= 4.65)
                 {
-                    colorScaleStyle = GradientColors.getColor1();
+                    colorScaleStyle += GradientColors.getColor1() + "; color: white;";
                 }
                 else if ((score >= 4.66) && (score <= 27.99))
                 {
-                    colorScaleStyle = GradientColors.getColor2();
+                    colorScaleStyle += GradientColors.getColor2() + "; color: black;";
                 }
                 else if (score >= 28)
                 {
-                    colorScaleStyle = GradientColors.getColor3();
+                    colorScaleStyle += GradientColors.getColor3() + "; color: white;";
                 }
                 else
                 {
                     // do nothing
                 }
-                colorScaleStyle = "background-color: " + colorScaleStyle;
 
                 switch (view_mode)
                 {
