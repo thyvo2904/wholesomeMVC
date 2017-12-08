@@ -11,9 +11,11 @@
 			<div class="col-sm-offset-3 col-sm-6">
 				<div class="input-group">
 					<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
+                    
 					<span class="input-group-btn">
 						<asp:Button ID="btnSearch" OnClick="btnSearch_Click"
-                            runat="server" Text="Search USDA" CssClass="btn btn-default" />
+                            runat="server" Text="Search USDA" ValidationGroup="UpdateSearch" CssClass="btn btn-default" />
+                        <asp:RequiredFieldValidator ControlToValidate="txtSearch" ID="reqTxtSearch" ValidationGroup="UpdateSearch" runat="server" ErrorMessage="(Invalid Submission)"></asp:RequiredFieldValidator>
 					</span>
 				</div>
 			</div>
@@ -97,6 +99,7 @@
 								<h4>
 									<strong>ND_Score:
 									<asp:Label runat="server" ID="lblOldIndexResult"></asp:Label>
+
 									</strong>
 								</h4>
 							</div>
@@ -109,6 +112,7 @@
 											<th>Calories</th>
 											<td>
 												<asp:Literal ID="txtOldKCal" runat="server"></asp:Literal>
+                                                <%--<asp:RequiredFieldValidator ID="reqOldKCal" ControlToValidate="txtOldKCal" ValidationGroup="OldLabel" runat="server" ErrorMessage="(Required)"></asp:RequiredFieldValidator>--%>
 											</td>
 											<td></td>
 										</tr>
@@ -116,6 +120,7 @@
 											<th>Saturated Fat</th>
 											<td>
 												<asp:Literal ID="txtOldSaturatedFat" runat="server"></asp:Literal>
+                                                
 											</td>
 											<td>g</td>
 										</tr>
@@ -123,6 +128,7 @@
 											<th>Sodium</th>
 											<td>
 												<asp:Literal ID="txtOldSodium" runat="server"></asp:Literal>
+                                                
 											</td>
 											<td>g</td>
 										</tr>
@@ -130,6 +136,7 @@
 											<th>Dietary Fiber</th>
 											<td>
 												<asp:Literal ID="txtOldFiber" runat="server"></asp:Literal>
+                                                
 											</td>
 											<td>g</td>
 										</tr>
@@ -137,6 +144,7 @@
 											<th>Total Sugars</th>
 											<td>
 												<asp:Literal ID="txtOldTotalSugar" runat="server"></asp:Literal>
+                                                
 											</td>
 											<td>g</td>
 										</tr>
@@ -144,6 +152,7 @@
 											<th>Protein</th>
 											<td>
 												<asp:Literal ID="txtOldProtein" runat="server"></asp:Literal>
+                                                
 											</td>
 											<td>g</td>
 										</tr>
@@ -151,6 +160,7 @@
 											<th>Vitamin A</th>
 											<td>
 												<asp:Literal ID="txtOldVitaminA" runat="server"></asp:Literal>
+                                                
 											</td>
 											<td>IU</td>
 										</tr>
@@ -158,6 +168,7 @@
 											<th>Vitamin C</th>
 											<td>
 												<asp:Literal ID="txtOldVitaminC" runat="server"></asp:Literal>
+                                                
 											</td>
 											<td>IU</td>
 										</tr>
@@ -165,6 +176,7 @@
 											<th>Calcium</th>
 											<td>
 												<asp:Literal ID="txtOldCalcium" runat="server"></asp:Literal>
+                                                
 											</td>
 											<td>mg</td>
 										</tr>
@@ -172,6 +184,7 @@
 											<th>Iron</th>
 											<td>
 												<asp:Literal ID="txtOldIron" runat="server"></asp:Literal>
+                                                
 											</td>
 											<td>mg</td>
                                         </tr>
@@ -236,7 +249,7 @@
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
-								<asp:Button ID="btnSaveOldItem" OnClick="btnOldSaveItem_Click" runat="server" Text="Save" CssClass="btn btn-success" type="button" />
+								<asp:Button ID="btnSaveOldItem" ValidationGroup="OldLabel" OnClick="btnOldSaveItem_Click" runat="server" Text="Save" CssClass="btn btn-success" type="button" />
 							</div>
 						</ContentTemplate>
 						<Triggers>
@@ -493,7 +506,7 @@
 </asp:Content>
     
  <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
-<%--	
+     <%--	
 	 <script src="Fb_categories.js"></script>
 
 	 <link href="/css/additem.css" rel="stylesheet" type="text/css" runat="server" />
