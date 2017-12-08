@@ -85,6 +85,39 @@
 											<td><asp:Label ID="txtiron" runat="server" /></td>
 											<td>mg</td>
 										</tr>
+                                        <tr>
+                                            <th>Category</th>
+											<td>
+												<asp:DropDownList ID="ddlFBCategories" runat="server" ClientIDMode="Static">
+													<asp:ListItem>Baby</asp:ListItem>
+													<asp:ListItem>Beverage</asp:ListItem>
+													<asp:ListItem>Bread</asp:ListItem>
+													<asp:ListItem>Cereal/Brk</asp:ListItem>
+													<asp:ListItem>complete</asp:ListItem>
+													<asp:ListItem>Condiment</asp:ListItem>
+													<asp:ListItem>dairy</asp:ListItem>
+													<asp:ListItem>dessert</asp:ListItem>
+													<asp:ListItem>Dough</asp:ListItem>
+													<asp:ListItem>Dressing</asp:ListItem>
+													<asp:ListItem>Entree</asp:ListItem>
+													<asp:ListItem>Fruit/veg</asp:ListItem>
+													<asp:ListItem>Fruits</asp:ListItem>
+													<asp:ListItem>Grain</asp:ListItem>
+													<asp:ListItem>Juice</asp:ListItem>
+													<asp:ListItem>Mixed/Asst</asp:ListItem>
+													<asp:ListItem>NF</asp:ListItem>
+													<asp:ListItem>Non-Dairy</asp:ListItem>
+													<asp:ListItem>Nutrition</asp:ListItem>
+													<asp:ListItem>Pasta</asp:ListItem>
+													<asp:ListItem>Pro-Meat</asp:ListItem>
+													<asp:ListItem>Pro-Non</asp:ListItem>
+													<asp:ListItem>Rice</asp:ListItem>
+													<asp:ListItem>Salvage</asp:ListItem>
+													<asp:ListItem>Snack</asp:ListItem>
+													<asp:ListItem>Vegetables</asp:ListItem>
+												</asp:DropDownList>
+											</td>
+										</tr>
 									</tbody>
 								</table>
 
@@ -108,6 +141,7 @@
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
 								<asp:Button Text="Compare Item" runat="server" ID="btnCompare" CssClass="btn btn-success" OnClick="CompareItem" />
 								<asp:Button Text="Save" runat="server" ID="btnSaveItem" CssClass="btn btn-success" OnClick="btnSaveItem_Click" />
+                                <asp:Button Text="Update" runat="server" ID="btnUpdate" CssClass="btn btn-success" OnClick="btnUpdate_Click" />
 							</div>
 							<!-- hack to make on-server-generated buttons work -->
 							<asp:HiddenField runat="server" ID="lblNdbno" ClientIDMode="Static"></asp:HiddenField>

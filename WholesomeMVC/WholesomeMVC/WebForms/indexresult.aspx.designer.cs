@@ -148,6 +148,15 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.Label txtiron;
         
         /// <summary>
+        /// ddlFBCategories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFBCategories;
+        
+        /// <summary>
         /// sook control.
         /// </summary>
         /// <remarks>
@@ -200,6 +209,15 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveItem;
+        
+        /// <summary>
+        /// btnUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
         
         /// <summary>
         /// lblNdbno control.
