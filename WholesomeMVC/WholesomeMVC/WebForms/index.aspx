@@ -17,6 +17,7 @@
                             runat="server"
                             CssClass="selectpicker equal-height"
 							data-width="100%"
+							data-live-search="true"
 							title="Select a category"
                             AppendDataBoundItems="True"
                             OnSelectedIndexChanged="Page_Load"
