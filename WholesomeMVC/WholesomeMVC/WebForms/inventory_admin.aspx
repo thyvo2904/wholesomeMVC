@@ -69,10 +69,13 @@
 									<asp:DropDownList
 										ID="ddlCereItem"
 										runat="server"
+										CssClass="selectpicker equal-height"
+										data-width="100%"
+										data-live-search="true"
+										title="Select a category"
 										DataSourceID="SqlDataSource1"
 										DataTextField="Description"
-										DataValueField="Description"
-										CssClass="form-control">
+										DataValueField="Description">
 									</asp:DropDownList>
 									<asp:SqlDataSource
 										ID="SqlDataSource1"
@@ -87,10 +90,13 @@
 									<asp:DropDownList
 										ID="ddlFBGroup"
 										runat="server"
+										CssClass="selectpicker equal-height"
+										data-width="100%"
+										data-live-search="true"
+										title="Select a category"
 										DataSourceID="SqlDataSource2"
 										DataTextField="FBC_CODE"
-										DataValueField="FBC_CODE"
-										CssClass="form-control">
+										DataValueField="FBC_CODE">
 									</asp:DropDownList>
 									<asp:SqlDataSource
 										ID="SqlDataSource2"
