@@ -74,18 +74,19 @@ footer img {
 }
 
 /* footer links */
-.footer-link {
+.footer-link,
+.footer-link ul {
 	display: block;
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
 }
 
-.footer-link > li {
+.footer-link li {
 	display: inline-block;
 }
 
-.footer-link > li > a {
+.footer-link li > a {
 	display: block;
 	padding: 5px;
 	text-decoration: none;

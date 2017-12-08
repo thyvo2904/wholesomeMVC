@@ -191,10 +191,10 @@
 												<asp:ListItem>Beverage</asp:ListItem>
 												<asp:ListItem>Bread</asp:ListItem>
 												<asp:ListItem>Cereal/Brk</asp:ListItem>
-												<asp:ListItem>complete</asp:ListItem>
+												<asp:ListItem>Complete</asp:ListItem>
 												<asp:ListItem>Condiment</asp:ListItem>
-												<asp:ListItem>dairy</asp:ListItem>
-												<asp:ListItem>dessert</asp:ListItem>
+												<asp:ListItem>Dairy</asp:ListItem>
+												<asp:ListItem>Dessert</asp:ListItem>
 												<asp:ListItem>Dough</asp:ListItem>
 												<asp:ListItem>Dressing</asp:ListItem>
 												<asp:ListItem>Entree</asp:ListItem>
@@ -264,6 +264,7 @@
 									<h4>
 										<strong>Ceres Name:
 										<asp:Literal ID="lblNewCeresName" runat="server"></asp:Literal>
+
 										</strong>
 									</h4>
 									<h4>

@@ -41,6 +41,18 @@ namespace WholesomeMVC.WebForms
 				image_farmers_market.ImageUrl = "/Content/Images/icons8-near-me-100.png";
 				link_farmers_market.NavigateUrl = "farmers_market.aspx";
 				link_farmers_market.Text = "Farmers Market Finder";
+
+				image_advanced_search.ImageUrl = "/Content/Images/icons8-search-property-100.png";
+				link_advanced_search.NavigateUrl = "advanced_search.aspx";
+				link_advanced_search.Text = "Advanced Search";
+
+				image_update_item.ImageUrl = "/Content/Images/icons8-renew-100.png";
+				link_update_item.NavigateUrl = "update_item.aspx";
+				link_update_item.Text = "Update Item";
+
+				image_inventory_projection.ImageUrl = "/Content/Images/icons8-increase-100.png";
+				link_inventory_projection.NavigateUrl = "inventory_admin.aspx";
+				link_inventory_projection.Text = "Inventory Projection";
 			}       
         }
 
