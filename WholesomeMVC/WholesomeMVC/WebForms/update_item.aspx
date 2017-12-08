@@ -53,7 +53,9 @@
 		<asp:HiddenField runat="server" ID="hidden_ceresid" ClientIDMode="Static"></asp:HiddenField>
 		<asp:HiddenField runat="server" ID="hidden_ceres_name" ClientIDMode="Static"></asp:HiddenField>
 		<asp:HiddenField runat="server" ID="hidden_ndbno" ClientIDMode="Static"></asp:HiddenField>
+        <asp:HiddenField runat="server" ID="hidden_nrf6" ClientIDMode="Static"></asp:HiddenField>
 		<asp:HiddenField runat="server" ID="hidden_view_mode" ClientIDMode="Static"></asp:HiddenField>
+        
 		<asp:Button runat="server" ID="button_expand_item" OnClick="ExpandItem" ClientIDMode="Static" CssClass="hidden" />
 		
 		<!-- dependency for ajax, need to be placed before UpdatePanels -->
