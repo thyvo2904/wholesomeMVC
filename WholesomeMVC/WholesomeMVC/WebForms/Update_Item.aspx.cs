@@ -864,81 +864,161 @@ namespace WholesomeMVC.WebForms
             string ceresid = hidden_ceresid.Value;           
             string ceres_name = hidden_ceres_name.Value;           
             string ndbno = hidden_ndbno.Value;
+            string nrf6 = hidden_nrf6.Value;
 			string view_mode = hidden_view_mode.Value;
 
-            
-            if(ndbno != "") { }
-            FoodItem.findNdbno(ndbno);
+            // To manage records with matched USDA items 
+            if (ndbno != "")
+            {
+                FoodItem.findNdbno(ndbno);
 
-            double score = FoodItem.newFood.NRF6;
-            String colorScaleStyle = "";
-            if (score <= 4.65)
-            {
-                colorScaleStyle = GradientColors.getColor1();
+
+                double score = FoodItem.newFood.NRF6;
+                String colorScaleStyle = "";
+                if (score <= 4.65)
+                {
+                    colorScaleStyle = GradientColors.getColor1();
+                }
+                else if ((score >= 4.66) && (score <= 27.99))
+                {
+                    colorScaleStyle = GradientColors.getColor2();
+                }
+                else if (score >= 28)
+                {
+                    colorScaleStyle = GradientColors.getColor3();
+                }
+                else
+                {
+                    // do nothing
+                }
+                colorScaleStyle = "background-color: " + colorScaleStyle;
+
+                switch (view_mode)
+                {
+                    case "old":
+                        nd_old_score_panel.Attributes["style"] = colorScaleStyle;
+
+                        lblOldFoodName.Text = FoodItem.newFood.name;
+                        lblOldIndexResult.Text = Convert.ToString(Math.Round(score, 2));
+
+                        txtOldKCal.Text = FoodItem.newFood.kCal.ToString();
+                        txtOldSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
+                        txtOldSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
+                        txtOldFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
+                        txtOldTotalSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
+                        txtOldProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
+                        txtOldVitaminA.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
+                        txtOldVitaminC.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
+                        txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
+                        txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+                        lblNewCeresNumber.Text = ceresid;
+
+                        break;
+                    case "new":
+                        nd_new_score_panel.Attributes["style"] = colorScaleStyle;
+
+                        lblNewFoodName.Text = FoodItem.newFood.name;
+                        lblNewIndexResult.Text = Convert.ToString(Math.Round(score, 2));
+
+                        txtNewKCal.Text = FoodItem.newFood.kCal.ToString();
+                        txtNewSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
+                        txtNewSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
+                        txtNewFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
+                        txtNewAddedSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
+                        txtNewProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
+                        txtNewVitaminD.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
+                        txtNewCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
+                        txtNewIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+                        txtNewPotassium.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
+                        break;
+                    default:
+                        break;
+                }
+
+                // re-render bootstrap-select component
+                ddlFBCategories.CssClass = "selectpicker";
+                ddlFBCategories.Attributes["title"] = "Select a category";
+                ddlFBCategories.Attributes["data-width"] = "100%";
+                ddlFBCategories.Attributes["data-live-search"] = "true";
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "rerender", "$('.selectpicker').selectpicker('render');", true);
+
             }
-            else if ((score >= 4.66) && (score <= 27.99))
-            {
-                colorScaleStyle = GradientColors.getColor2();
-            }
-            else if (score >= 28)
-            {
-                colorScaleStyle = GradientColors.getColor3();
-            }
+
+            // To manage manually inputted items
             else
             {
-                // do nothing
+                double score = Double.Parse(hidden_nrf6.Value);
+                String colorScaleStyle = "";
+                if (score <= 4.65)
+                {
+                    colorScaleStyle = GradientColors.getColor1();
+                }
+                else if ((score >= 4.66) && (score <= 27.99))
+                {
+                    colorScaleStyle = GradientColors.getColor2();
+                }
+                else if (score >= 28)
+                {
+                    colorScaleStyle = GradientColors.getColor3();
+                }
+                else
+                {
+                    // do nothing
+                }
+                colorScaleStyle = "background-color: " + colorScaleStyle;
+
+                switch (view_mode)
+                {
+                    case "old":
+                        nd_old_score_panel.Attributes["style"] = colorScaleStyle;
+
+                        //lblOldFoodName.Text = FoodItem.newFood.name;
+                        lblOldIndexResult.Text = Convert.ToString(Math.Round(score, 2));
+
+                        //txtOldKCal.Text = FoodItem.newFood.kCal.ToString();
+                        //txtOldSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
+                        //txtOldSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
+                        //txtOldFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
+                        //txtOldTotalSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
+                        //txtOldProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
+                        //txtOldVitaminA.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
+                        //txtOldVitaminC.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
+                        //txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
+                        //txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+                        lblNewCeresNumber.Text = ceresid;
+
+                        break;
+                    case "new":
+                        nd_new_score_panel.Attributes["style"] = colorScaleStyle;
+
+                        //lblNewFoodName.Text = FoodItem.newFood.name;
+                        lblNewIndexResult.Text = Convert.ToString(Math.Round(score, 2));
+
+                        //txtNewKCal.Text = FoodItem.newFood.kCal.ToString();
+                        //txtNewSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
+                        //txtNewSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
+                        //txtNewFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
+                        //txtNewAddedSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
+                        //txtNewProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
+                        //txtNewVitaminD.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
+                        //txtNewCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
+                        //txtNewIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+                        //txtNewPotassium.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
+                        break;
+                    default:
+                        break;
+                }
+
+                // re-render bootstrap-select component
+                ddlFBCategories.CssClass = "selectpicker";
+                ddlFBCategories.Attributes["title"] = "Select a category";
+                ddlFBCategories.Attributes["data-width"] = "100%";
+                ddlFBCategories.Attributes["data-live-search"] = "true";
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "rerender", "$('.selectpicker').selectpicker('render');", true);
+
+
             }
-			colorScaleStyle = "background-color: " + colorScaleStyle;
-
-			switch (view_mode)
-			{
-				case "old":
-					nd_old_score_panel.Attributes["style"] = colorScaleStyle;
-
-					lblOldFoodName.Text = FoodItem.newFood.name;
-					lblOldIndexResult.Text = Convert.ToString(Math.Round(score, 2));
-
-					txtOldKCal.Text = FoodItem.newFood.kCal.ToString();
-					txtOldSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
-					txtOldSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
-					txtOldFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
-					txtOldTotalSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
-					txtOldProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
-					txtOldVitaminA.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
-					txtOldVitaminC.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
-					txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
-					txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
-                    lblNewCeresNumber.Text = ceresid;
-
-					break;
-				case "new":
-					nd_new_score_panel.Attributes["style"] = colorScaleStyle;
-
-					lblNewFoodName.Text = FoodItem.newFood.name;
-					lblNewIndexResult.Text = Convert.ToString(Math.Round(score, 2));
-
-					txtNewKCal.Text = FoodItem.newFood.kCal.ToString();
-					txtNewSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
-					txtNewSodium.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
-					txtNewFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
-					txtNewAddedSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
-					txtNewProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
-					txtNewVitaminD.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
-					txtNewCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
-					txtNewIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
-					txtNewPotassium.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
-					break;
-				default:
-					break;
-			}
-
-			// re-render bootstrap-select component
-			ddlFBCategories.CssClass = "selectpicker";
-			ddlFBCategories.Attributes["title"] = "Select a category";
-			ddlFBCategories.Attributes["data-width"] = "100%";
-			ddlFBCategories.Attributes["data-live-search"] = "true";
-			ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "rerender", "$('.selectpicker').selectpicker('render');", true);
-		}
+        }
 
         protected void btnCalculateOldNRF6_Click(object sender, EventArgs e)
         {
