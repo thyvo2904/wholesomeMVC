@@ -13,7 +13,7 @@ $(document).ready(function () {
 
 		$("#add_manual_view").hide();
 		$("#add_usda_match_view").show();
-	})
+	});
 	// set up default add view
 	$("#link_add_manual").click();
 
@@ -29,7 +29,7 @@ $(document).ready(function () {
 		$(this).parent().siblings().removeClass("active");
 
 		$("#hidden_view_mode").val("new");
-	})
+	});
 	// set up default edit view
 	$("#link_old_view").click();
 
@@ -50,7 +50,7 @@ $(document).ready(function () {
 			"enabled": true,
 			"delay": 0,
 			"dropdownTitle": "Search in:",
-			"position": "right",
+			"position": "right"
 		},
 		"editing": {
 			"enabled": true,
@@ -77,24 +77,3 @@ $(document).ready(function () {
 		}
 	});
 });
-
-function showDiv(elem) {
-    if (elem.value === 0) {
-        $("#divold").style.display = "block";
-        $("#divnew").style.display = "none";
-        $("#divgridview").style.display = "none";
-    } else if (elem.value === 1) {
-        $("#divnew").style.display = "block";
-        $("#divold").style.display = "none";
-        $("#divnew").style.display = "none";
-    } else if (elem.value === 2) {
-        $("#divnew").style.display = "none";
-        $("#divold").style.display = "none";
-        $("#divgridview").style.display = "block";
-
-    } else {
-        $("#divold").style.display = "block";
-        $("#divnew").style.display = "none";
-        $("#divgridview").style.display = "block";
-    }
-}

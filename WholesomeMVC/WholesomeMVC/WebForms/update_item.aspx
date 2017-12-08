@@ -155,11 +155,11 @@
 												<asp:TextBox ID="txtOldIron" runat="server" CssClass="form-control"></asp:TextBox>
 											</td>
 											<td>mg</td>
-                                            </tr>
+                                        </tr>
 										<tr>
                                             <th>Category</th>
 											<td>
-												<asp:DropDownList ID="ddlFBCategories" runat="server">
+												<asp:DropDownList ID="ddlFBCategories" runat="server" ClientIDMode="Static">
 													<asp:ListItem>Baby</asp:ListItem>
 													<asp:ListItem>Beverage</asp:ListItem>
 													<asp:ListItem>Bread</asp:ListItem>
