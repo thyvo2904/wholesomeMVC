@@ -65,11 +65,11 @@ namespace WholesomeMVC.WebForms
 			double score = newFoodArray[intItemIndex].NRF6;
 
             if (score <= 4.65) {
-                colorScaleStyle = GradientColors.getColor1() + "; color: white;";
+                colorScaleStyle += GradientColors.getColor1() + "; color: white;";
             } else if ((score >= 4.66) && (score <= 27.99)) {
-                colorScaleStyle = GradientColors.getColor2() + "; color: black;";
+                colorScaleStyle += GradientColors.getColor2() + "; color: black;";
             } else if (score >= 28) {
-                colorScaleStyle = GradientColors.getColor3() + "; color: white;";
+                colorScaleStyle += GradientColors.getColor3() + "; color: white;";
             } else {
                 // do nothing
             }
