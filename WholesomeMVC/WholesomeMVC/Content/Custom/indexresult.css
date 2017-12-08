@@ -11,3 +11,7 @@
 	transform: translate3d(25%, 0, 0);
 }
 
+.search_results {
+	list-style: none;
+	padding: 0;
+}
