@@ -50,13 +50,3 @@
 		});
 	});
 });
-
-$("#log_in_out").click(function () {
-	if ($("#generatedToken").val() === "") {
-		// do nothing
-	} else {
-        $("#
-            ").val($("#generatedToken").val());
-		$("#logoutForm").submit();
-	}
-});

@@ -30,6 +30,13 @@ namespace WholesomeMVC.WebForms
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (!IsPostBack)
+            {
+                txtCeresNumber.Text = (string)Session["sharedCeresID"];
+                txtCeresDescription.Text = (string)Session["sharedCeresDescription"];
+            }
+
             if (HttpContext.Current.User.IsInRole("Admin"))
             {
                 btnCompare.Visible = true;
