@@ -267,15 +267,15 @@ namespace WholesomeMVC.WebForms
             String ConnectionString = ConfigurationManager.ConnectionStrings["constr2"].ConnectionString;
             String gradientEntry = "";
 
-            if (oldNRF6 <= 4.65)
+            if (FoodItem.newFood.NRF6 <= 4.65)
             {
                 gradientEntry = "1";
             }
-            else if ((oldNRF6 >= 4.66) && (oldNRF6 <= 27.99))
+            else if ((FoodItem.newFood.NRF6 >= 4.66) && (FoodItem.newFood.NRF6 <= 27.99))
             {
                 gradientEntry = "2";
             }
-            else if (oldNRF6 >= 28)
+            else if (FoodItem.newFood.NRF6 >= 28)
             {
                 gradientEntry = "3";
             }
