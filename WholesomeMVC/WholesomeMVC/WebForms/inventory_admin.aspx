@@ -49,12 +49,17 @@
                     var divElement = document.getElementById('viz1512711035664');
                     var vizElement = divElement.getElementsByTagName('object')[0];
                     vizElement.style.width = '100%';
-                    vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+                    //vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+                    vizElement.style.height = '1000px';
                     var scriptElement = document.createElement('script');
                     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
                     vizElement.parentNode.insertBefore(scriptElement, vizElement);     
 
+					var container = document.getElementById('viz-client-container');
+					container.style.width = '100%';
+					container.style.height = '100%';
                 </script>
+			</div>
            
 
 			<div class="row">
@@ -118,10 +123,6 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- chart #2 -->
-			<%--<h4><asp:Label ID="chart_2_header" runat="server" /></h4>
-			<div></div>--%>
 		</section>
 	
 </asp:Content>
