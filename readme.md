@@ -1,11 +1,11 @@
 # wholesomeMVC
 1. ~facelift all pages~
 2. check validations
-3. login session (AntiForgeryToken)
+3. ~login session (AntiForgeryToken)~ log in and out from manage account instead
 4. ~make form in manual_input match with other pages~
 5. verify all links
 6. ~add add_item to update_item~
-7. boostrap-select
+7. ~boostrap-select~
 8. vegas bg
 9. ~paginate indexresult~
 
