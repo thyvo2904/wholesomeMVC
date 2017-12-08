@@ -34,15 +34,14 @@ namespace WholesomeMVC.WebForms
                             CommandType = System.Data.CommandType.Text,
 
                             CommandText = @"
-						INSERT INTO [wholesomeDB].[dbo].[Session] (
-							[ID],
-							[LastUpdated],
-                            [LastUpdatedBy]
-						) VALUES (
-							@ID,
-							@LastUpdated,
-							@LastUpdatedBy)
-					"
+							INSERT INTO [wholesomeDB].[dbo].[Session] (
+								[ID],
+								[LastUpdated],
+								[LastUpdatedBy]
+							) VALUES (
+								@ID,
+								@LastUpdated,
+								@LastUpdatedBy)"
                         };
 
                         command1.Parameters.Add("@ID", SqlDbType.NVarChar, 128).Value = HttpContext.Current.User.Identity.GetUserId();
