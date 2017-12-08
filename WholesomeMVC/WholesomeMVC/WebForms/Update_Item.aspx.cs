@@ -397,6 +397,9 @@ namespace WholesomeMVC.WebForms
                     case "old":
                         nd_old_score_panel.Attributes["style"] = colorScaleStyle;
 
+                        lblOldNdbno.Text = FoodItem.newFood.ndbNo;
+                        lblOldCeresId.Text = ceresid;
+                        lblOldCeresName.Text = ceres_name;
                         lblOldFoodName.Text = FoodItem.newFood.name;
                         lblOldIndexResult.Text = Convert.ToString(Math.Round(score, 2));
 

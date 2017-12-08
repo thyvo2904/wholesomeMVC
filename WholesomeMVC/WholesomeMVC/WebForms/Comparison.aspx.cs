@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -34,13 +35,15 @@ namespace WholesomeMVC.WebForms
         //generate comaprsion table columns
         protected int GenerateCols()
         {
-            string stmt = "SELECT COUNT(*) FROM dbo.Comparison_Item";
+            string stmt = "SELECT COUNT(*) FROM dbo.Comparison_Item INNER JOIN SESSION  ON SESSION.LoginID=COMPARISON_ITEM.loginID WHERE SESSION.Id=@id";
+
             int count = 0;
             string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlCommand cmdCount = new SqlCommand(stmt, con))
                 {
+                    cmdCount.Parameters.Add("@ID", SqlDbType.NVarChar, 128).Value = HttpContext.Current.User.Identity.GetUserId();
                     con.Open();
                     count = (int)cmdCount.ExecuteScalar();
                     con.Close();
@@ -49,15 +52,17 @@ namespace WholesomeMVC.WebForms
             return count;
         }
 
-		//generate dataset from Comaprison_Item Table
-		private DataTable GetData()
+        //generate dataset from Comaprison_Item Table
+        private DataTable GetData()
 		{
 			string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 			using (SqlConnection con = new SqlConnection(constr))
 			{
-				using (SqlCommand cmd = new SqlCommand("SELECT ndb_no,FoodName,nrf6,KCal,SaturatedFat,Sodium,fiber,TotalSugar,protein,VitaminA,VitaminC,Iron,Calcium FROM dbo.Comparison_Item"))
+				using (SqlCommand cmd = new SqlCommand("SELECT ndb_no,FoodName,nrf6,KCal,SaturatedFat,Sodium,fiber,TotalSugar,protein,VitaminA,VitaminC,Iron,Calcium FROM dbo.Comparison_Item "+
+                    "INNER JOIN SESSION ON SESSION.LoginID=COMPARISON_ITEM.loginID WHERE SESSION.Id=@id"))
 				{
-					using (SqlDataAdapter sda = new SqlDataAdapter())
+                    cmd.Parameters.Add("@ID", SqlDbType.NVarChar, 128).Value = HttpContext.Current.User.Identity.GetUserId();
+                    using (SqlDataAdapter sda = new SqlDataAdapter())
 					{
 						cmd.Connection = con;
 						sda.SelectCommand = cmd;

@@ -47,19 +47,43 @@
 		<div class="container">
 			<hr />
 			<ul class="text-center footer-link">
-				<li><a href="index.aspx">Home</a></li>
-				<li>&bull;</li>
-				<li><a href="manual_input.aspx">Nutrient Calculator</a></li>
-				<li>&bull;</li>
-				<li><a href="recent.aspx">Recent</a></li>
-				<li>&bull;</li>
-				<li><a href="comparison.aspx">Comparison Tool</a></li>
-				<li>&bull;</li>
-				<li><a href="update_item.aspx">Update Item</a></li>
-				<li>&bull;</li>
-				<li><a href="inventory_admin.aspx">Inventory Projection</a></li>
-				<li>&bull;</li>
-				<li><a href="farmers_market.aspx">Farmers Market Finder</a></li>
+				<li><a href="~/WebForms/index.aspx">Home</a></li>
+				<li>
+					<ul>
+						<li>&bull;</li>
+						<li><a href="~/WebForms/manual_input.aspx">Nutrient Calculator</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>&bull;</li>
+						<li><a href="~/WebForms/recent.aspx">Recent</a></li>
+					</ul>
+				</li>
+				<li class="authenticated purchasing">
+					<ul>
+						<li>&bull;</li>
+						<li><a href="~/WebForms/comparison.aspx">Comparison Tool</a></li>
+					</ul>
+				</li>
+				<li class="authenticated">
+					<ul>
+						<li>&bull;</li>
+						<li><a href="~/WebForms/update_item.aspx">Update Item</a></li>
+					</ul>
+				</li>
+				<li class="authenticated purchasing">
+					<ul>
+						<li>&bull;</li>
+						<li><a href="~/WebForms/inventory_admin.aspx">Inventory Projection</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>&bull;</li>
+						<li><a href="~/WebForms/farmers_market.aspx">Farmers Market Finder</a></li>
+					</ul>
+				</li>
 			</ul>
 			<br />
 			<p class="text-center">&copy; @DateTime.Now.Year - Wholesome Inc. All rights reserved.</p>
