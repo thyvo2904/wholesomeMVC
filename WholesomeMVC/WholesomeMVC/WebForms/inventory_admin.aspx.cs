@@ -44,7 +44,15 @@ namespace WholesomeMVC.WebForms
                 SqlCommand myCommand = new SqlCommand("Pull_Weight_WhatIf", sc)
                 {
                     CommandType = CommandType.StoredProcedure
+                   
                 };
+                System.Data.SqlClient.SqlParameter LastUpdated = new System.Data.SqlClient.SqlParameter();
+                LastUpdated.ParameterName = "@LastUpdated";
+                LastUpdated.Value = DateTime.Now;
+                myCommand.Parameters.Add(LastUpdated); System.Data.SqlClient.SqlParameter LastUpdatedBy = new System.Data.SqlClient.SqlParameter();
+                LastUpdatedBy.ParameterName = "@LastUpdatedBy";
+                LastUpdatedBy.Value = HttpContext.Current.User.Identity.GetUserName();
+                myCommand.Parameters.Add(LastUpdatedBy);
                 myCommand.ExecuteNonQuery();
                 sc.Close();
 
@@ -120,6 +128,7 @@ namespace WholesomeMVC.WebForms
                 }
                 con.Close();
             }
+            scenarioID.Clear();
         }
     }
 }
