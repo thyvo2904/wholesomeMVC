@@ -62,7 +62,8 @@ $(document).ready(function () {
 				// get data
 				$("#hidden_ceresid").val(row.value["col1"]);
 				$("#hidden_ceres_name").val(row.value["col2"]);
-				$("#hidden_ndbno").val(row.value["col3"]);
+                $("#hidden_ndbno").val(row.value["col3"]);
+                $("#hidden_nrf6").val(row.value["col4"]);
 
 				// trigger ajax
 				$("#button_expand_item").click();

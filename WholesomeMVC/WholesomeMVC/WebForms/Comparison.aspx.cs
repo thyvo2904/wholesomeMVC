@@ -18,8 +18,7 @@ namespace WholesomeMVC.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
+           
 				// set page variables
 				String strTitle = "Comparison Tool";
 
@@ -29,7 +28,7 @@ namespace WholesomeMVC.WebForms
 				body_title.Text = strTitle;
 
 				createTable();
-            }
+            
         }
 
         //generate comaprsion table columns
