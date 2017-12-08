@@ -6,19 +6,7 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
-	<section>
-		<div class="row">
-			<div class="col-sm-offset-3 col-sm-6">
-				<div class="input-group">
-					<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
-					<span class="input-group-btn">
-						<asp:Button ID="btnSearch" OnClick="btnSearch_Click"
-                            runat="server" Text="Search USDA" CssClass="btn btn-default" />
-					</span>
-				</div>
-			</div>
-		</div>
-	</section>
+
 
 	<section>
 		<!-- nav to change between old/new/usda view -->
@@ -69,6 +57,21 @@
 						<ContentTemplate>
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <section>
+		<div class="row">
+			<div class="col-sm-offset-3 col-sm-6">
+				<div class="input-group">
+					<asp:TextBox ID="txtUSDA" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
+                         	<span class="input-group-btn">
+					  <asp:Button ID="btnSearchUSDA" OnClick="btnSearchUSDA_Click" runat="server" Text="Search USDA" CssClass="btn btn-success" type="button"/>
+					</span>
+				
+				</div>
+			</div>
+		</div>
+	</section>
+                                <br />
+                                <br />
 								<div class='panel-title equal-height'>
 									<h4>
 										<strong>USDA Description:
@@ -236,7 +239,7 @@
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
-								<asp:Button ID="btnSaveOldItem" OnClick="btnOldSaveItem_Click" runat="server" Text="Save" CssClass="btn btn-success" type="button" />
+								<asp:Button ID="btnOldSaveItem" onclick ="btnSearchUSDA_Click"  runat="server" Text="Save" CssClass="btn btn-success" type="button" />
 							</div>
 						</ContentTemplate>
 						<Triggers>
@@ -387,6 +390,7 @@
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal"  ClientIDMode="Static" type="button" />
 								<asp:Button ID="btnSaveNewItem"  runat="server" Text="Save" CssClass="btn btn-success new_buttons" />
+                           
 							</div>
 						</ContentTemplate>
 						<Triggers>
@@ -446,6 +450,7 @@
 					<div class="modal-footer">
 						<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
 						<asp:Button ID="btnAddItem" runat="server" Text="Add Item" CssClass="btn btn-success" type="button" />
+                      
 					</div>
 				</div>
 			</div>

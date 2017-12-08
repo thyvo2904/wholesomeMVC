@@ -568,19 +568,20 @@ namespace WholesomeMVC.WebForms
 
 
                     CommandText = @"UPDATE Wholesome_Item SET"
-                        + " nrf6 = @nrf6, Loginid = @loginid, GradientEntry = @GradientEntry,"
+                        + " nrf6 = @nrf6, Loginid = @loginid, GradientEntry = @GradientEntry, ndb_no = @ndbno,"
                         + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [description 2] = @description2, FBC_Code = @FBC_Code " +
-                        "WHERE ndb_no = @ndbno"
+                        "WHERE No_ = @no_"
                 };
 
                 command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = FoodItem.newFood.NRF6;
                 command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getloginid();
                 command1.Parameters.Add("@GradientEntry", SqlDbType.Int).Value = gradientEntry;
-                command1.Parameters.Add("@description2", SqlDbType.NVarChar, 50).Value = FoodItem.newFood.name;
+                command1.Parameters.Add("@description2", SqlDbType.NVarChar, 500).Value = FoodItem.newFood.name;
                 command1.Parameters.Add("@LastUpdatedBy", SqlDbType.NVarChar, 50).Value = HttpContext.Current.User.Identity.GetUserName();
                 command1.Parameters.Add("@lastupdated", SqlDbType.DateTime).Value = DateTime.Now;
-                command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
+                command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value =FoodItem.newFood.ndbNo;
                 command1.Parameters.Add("@FBC_Code", SqlDbType.NVarChar, 10).Value = ddlFBCategories.SelectedValue;
+                command1.Parameters.Add("@no_", SqlDbType.NVarChar, 10).Value = update_item.updateCeresNo;
                 connection.Open();
                 command1.ExecuteNonQuery();
                 connection.Close();

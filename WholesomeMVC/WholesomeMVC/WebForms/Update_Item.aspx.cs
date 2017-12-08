@@ -20,7 +20,7 @@ namespace WholesomeMVC.WebForms
 {
     public partial class update_item : System.Web.UI.Page
     {
-
+        public static string updateCeresNo;
         private static double oldNRF6 = 0;
 
         public static DataTable matchedCeresIDS = new DataTable();
@@ -862,7 +862,7 @@ namespace WholesomeMVC.WebForms
             string ndbno = hidden_ndbno.Value;
             string nrf6 = hidden_nrf6.Value;
 			string view_mode = hidden_view_mode.Value;
-
+            updateCeresNo = hidden_ceresid.Value;
             // To manage records with matched USDA items 
             if (ndbno != "")
             {
@@ -1105,16 +1105,18 @@ namespace WholesomeMVC.WebForms
             return getid;
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
+        protected void btnSearchUSDA_Click(object sender, EventArgs e)
         {
-            String foodSearch = txtSearch.Text;
-            string ceresid = hidden_ceresid.Value;
-            string ceresDescription = hidden_ceres_name.Value;
-            Session["sharedCeresID"] = ceresid;
-            Session["sharedCeresDescription"] = ceresDescription;
-
-            WebForms.FoodItem.findNdbno(foodSearch);
             Server.Transfer("/WebForms/indexresult.aspx");
+            //String foodSearch = txtUSDA.Text;
+            //string ceresid = hidden_ceresid.Value;
+            //string ceresDescription = hidden_ceres_name.Value;
+            //updateCeresNo = ceresid;
+            //Session["sharedCeresID"] = ceresid;
+            //Session["sharedCeresDescription"] = ceresDescription;
+
+            //WebForms.FoodItem.findNdbno(foodSearch);
+            //Server.Transfer("/WebForms/indexresult.aspx");
             
         }
 
