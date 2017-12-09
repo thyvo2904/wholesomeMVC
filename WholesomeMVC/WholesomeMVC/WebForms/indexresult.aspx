@@ -80,7 +80,7 @@
 										<tr>
 											<th>Vitamin C</th>
 											<td><asp:Label ID="txtvc" runat="server" /></td>
-											<td>IU</td>
+											<td>mg</td>
 										</tr>
 										<tr>
 											<th>Calcium</th>
