@@ -6,7 +6,12 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
-
+	<section>
+		<div class="row">
+			<div class="col-sm-offset-3 col-sm-6">
+			</div>
+		</div>
+	</section>
 
 	<section>
 		<!-- nav to change between old/new/usda view -->
@@ -57,21 +62,6 @@
 						<ContentTemplate>
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <section>
-		<div class="row">
-			<div class="col-sm-offset-3 col-sm-6">
-				<div class="input-group">
-					<asp:TextBox ID="txtUSDA" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
-                         	<span class="input-group-btn">
-					  <asp:Button ID="btnSearchUSDA" OnClick="btnSearchUSDA_Click" runat="server" Text="Search USDA" CssClass="btn btn-success" type="button"/>
-					</span>
-				
-				</div>
-			</div>
-		</div>
-	</section>
-                                <br />
-                                <br />
 								<div class='panel-title equal-height'>
 									<h4>
 										<strong>USDA Description:
@@ -235,6 +225,17 @@
 											<asp:TextBox ID="txtOldCeresDescription" runat="server" CssClass="form-control"></asp:TextBox>
 										</p>
 									</div>
+									<div class="form-group">
+										<label for="txtUSDA">
+											<asp:Literal Text="Search USDA" runat="server" />
+										</label>
+										<div class="input-group">
+											<asp:TextBox ID="txtUSDA" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
+											<span class="input-group-btn">
+												<asp:Button ID="btnSearchUSDA" OnClick="btnSearchUSDA_Click" runat="server" Text="Search" CssClass="btn btn-success" type="button" />
+											</span>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="modal-footer">
@@ -244,6 +245,7 @@
 						</ContentTemplate>
 						<Triggers>
 							<asp:AsyncPostBackTrigger ControlID="button_expand_item" EventName="Click" />
+							<asp:PostBackTrigger ControlID="btnSearchUSDA" />
 						</Triggers>
 					</asp:UpdatePanel>
 				</div>

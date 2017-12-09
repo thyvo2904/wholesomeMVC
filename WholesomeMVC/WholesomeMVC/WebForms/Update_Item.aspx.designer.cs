@@ -103,24 +103,6 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.Button button_expand_item;
         
         /// <summary>
-        /// txtUSDA control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUSDA;
-        
-        /// <summary>
-        /// btnSearchUSDA control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearchUSDA;
-        
-        /// <summary>
         /// lblOldFoodName control.
         /// </summary>
         /// <remarks>
@@ -290,6 +272,24 @@ namespace WholesomeMVC.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOldCeresDescription;
+        
+        /// <summary>
+        /// txtUSDA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUSDA;
+        
+        /// <summary>
+        /// btnSearchUSDA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearchUSDA;
         
         /// <summary>
         /// btnOldSaveItem control.
