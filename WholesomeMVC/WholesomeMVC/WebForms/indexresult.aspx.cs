@@ -38,7 +38,8 @@ namespace WholesomeMVC.WebForms
             }
 
             if (HttpContext.Current.User.IsInRole("Purchasing_Staff")
-               || HttpContext.Current.User.IsInRole("Warehouse_Staff"))
+               || HttpContext.Current.User.IsInRole("Warehouse_Staff")
+               || HttpContext.Current.User.IsInRole("Admin"))
             {
                 btnCompare.Visible = true;
                 sook.Visible = true;
