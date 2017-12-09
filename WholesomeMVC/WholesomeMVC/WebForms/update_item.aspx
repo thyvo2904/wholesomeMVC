@@ -111,7 +111,7 @@
 										<tr class='fatter'>
 											<th>Calories</th>
 											<td>
-												<asp:Literal ID="txtOldKCal" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtOldKCal" runat="server"></asp:TextBox>
                                                 <%--<asp:RequiredFieldValidator ID="reqOldKCal" ControlToValidate="txtOldKCal" ValidationGroup="OldLabel" runat="server" ErrorMessage="(Required)"></asp:RequiredFieldValidator>--%>
 											</td>
 											<td></td>
@@ -119,7 +119,7 @@
 										<tr class='fat'>
 											<th>Saturated Fat</th>
 											<td>
-												<asp:Literal ID="txtOldSaturatedFat" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtOldSaturatedFat" runat="server"></asp:TextBox>
                                                 
 											</td>
 											<td>g</td>
@@ -127,7 +127,7 @@
 										<tr>
 											<th>Sodium</th>
 											<td>
-												<asp:Literal ID="txtOldSodium" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtOldSodium" runat="server"></asp:TextBox>
                                                 
 											</td>
 											<td>g</td>
@@ -135,7 +135,7 @@
 										<tr>
 											<th>Dietary Fiber</th>
 											<td>
-												<asp:Literal ID="txtOldFiber" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtOldFiber" runat="server"></asp:TextBox>
                                                 
 											</td>
 											<td>g</td>
@@ -143,7 +143,7 @@
 										<tr>
 											<th>Total Sugars</th>
 											<td>
-												<asp:Literal ID="txtOldTotalSugar" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtOldTotalSugar" runat="server"></asp:TextBox>
                                                 
 											</td>
 											<td>g</td>
@@ -151,7 +151,7 @@
 										<tr>
 											<th>Protein</th>
 											<td>
-												<asp:Literal ID="txtOldProtein" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtOldProtein" runat="server"></asp:TextBox>
                                                 
 											</td>
 											<td>g</td>
@@ -159,7 +159,7 @@
 										<tr class='fatter'>
 											<th>Vitamin A</th>
 											<td>
-												<asp:Literal ID="txtOldVitaminA" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtOldVitaminA" runat="server"></asp:TextBox>
                                                 
 											</td>
 											<td>IU</td>
@@ -167,7 +167,7 @@
 										<tr>
 											<th>Vitamin C</th>
 											<td>
-												<asp:Literal ID="txtOldVitaminC" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtOldVitaminC" runat="server"></asp:TextBox>
                                                 
 											</td>
 											<td>IU</td>
@@ -175,7 +175,7 @@
 										<tr>
 											<th>Calcium</th>
 											<td>
-												<asp:Literal ID="txtOldCalcium" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtOldCalcium" runat="server"></asp:TextBox>
                                                 
 											</td>
 											<td>mg</td>
@@ -183,7 +183,7 @@
 										<tr>
 											<th>Iron</th>
 											<td>
-												<asp:Literal ID="txtOldIron" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtOldIron" runat="server"></asp:TextBox>
                                                 
 											</td>
 											<td>mg</td>
@@ -308,70 +308,71 @@
 										<tr class='fatter'>
 											<th>Calories</th>
 											<td>
-												<asp:Literal ID="txtNewKCal" runat="server"></asp:Literal>
+												
+                                                <asp:Textbox ID="txtNewCalories" runat="server"></asp:Textbox>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr class='fat'>
 											<th>Saturated Fat</th>
 											<td>
-												<asp:Literal ID="txtNewSaturatedFat" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtNewSaturatFat" runat="server"></asp:TextBox>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Sodium</th>
 											<td>
-												<asp:Literal ID="txtNewSodium" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtSodiumNew" runat="server"></asp:TextBox>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Dietary Fiber</th>
 											<td>
-												<asp:Literal ID="txtNewFiber" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtFiberNew" runat="server"></asp:TextBox>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Added Sugars</th>
 											<td>
-												<asp:Literal ID="txtNewAddedSugar" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtAddedSugarNew" runat="server"></asp:TextBox>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Protein</th>
 											<td>
-												<asp:Literal ID="txtNewProtein" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtProteinNew" runat="server"></asp:TextBox>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr class='fatter'>
 											<th>Vitamin D</th>
 											<td>
-												<asp:Literal ID="txtNewVitaminD" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtVitaminDNew" runat="server"></asp:TextBox>
 											</td>
 											<td>%</td>
 										</tr>
 										<tr>
 											<th>Calcium</th>
 											<td>
-												<asp:Literal ID="txtNewCalcium" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtCalciumNew" runat="server"></asp:TextBox>
 											</td>
 											<td>%</td>
 										</tr>
 										<tr>
 											<th>Iron</th>
 											<td>
-												<asp:Literal ID="txtNewIron" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtIronNew" runat="server"></asp:TextBox>
 											</td>
 											<td>%</td>
 										</tr>
 										<tr>
 											<th>Potassium</th>
 											<td>
-												<asp:Literal ID="txtNewPotassium" runat="server"></asp:Literal>
+												<asp:TextBox ID="txtPotassiumNew" runat="server"></asp:TextBox>
 											</td>
 											<td>%</td>
 										</tr>
@@ -400,8 +401,10 @@
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal"  ClientIDMode="Static" type="button" />
-								<asp:Button ID="btnSaveNewItem"  runat="server" Text="Save" CssClass="btn btn-success new_buttons" />
-							</div>
+                                
+								<asp:Button ID="btnSaveNewItem" data-dismiss="modal" UseSubmitBehavior="false"  onclick="btnSaveNewItem_Click" runat="server" Text="Save" CssClass="btn btn-success new_buttons" type="button"/>
+							
+                                    </div>
 						</ContentTemplate>
 						<Triggers>
 							<asp:AsyncPostBackTrigger ControlID="button_expand_item" EventName="Click" />
