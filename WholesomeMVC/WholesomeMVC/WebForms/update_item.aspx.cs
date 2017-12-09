@@ -22,7 +22,8 @@ namespace WholesomeMVC.WebForms
 {
     public partial class update_item : System.Web.UI.Page
     {
-        
+        public static string ceresUpdate;
+        public static string ceresNdbno;
         private static double oldNRF6 = 0;
 
         public static DataTable matchedCeresIDS = new DataTable();
@@ -595,14 +596,15 @@ namespace WholesomeMVC.WebForms
 
         protected void btnSearchUSDA_Click(object sender, EventArgs e)
         {
-            //String foodSearch = txtUSDA.Text;
-            //string ceresid = hidden_ceresid.Value;
-            //string ceresDescription = hidden_ceres_name.Value;
-            //Session["sharedCeresID"] = ceresid;
-            //Session["sharedCeresDescription"] = ceresDescription;
+            String foodSearch = txtUSDA.Text;
+            string ceresid = hidden_ceresid.Value;
+            string ceresDescription = hidden_ceres_name.Value;
+            ceresUpdate = ceresid;
+            Session["sharedCeresID"] = ceresid;
+            Session["sharedCeresDescription"] = ceresDescription;
 
-            //WebForms.FoodItem.findNdbno(foodSearch);
-            Server.Transfer("/WebForms/indexresult.aspx");
+            WebForms.FoodItem.findNdbno(foodSearch);
+            Response.Redirect("/WebForms/indexresult.aspx");
             
         }
 
