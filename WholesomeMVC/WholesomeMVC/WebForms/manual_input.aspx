@@ -49,70 +49,70 @@
 							<th>Calories</th>
 							<td></td>
 							<td>
-								<asp:TextBox ID="txtKcal0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtKcal0" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr class='fat'>
 							<th>Saturated Fat</th>
 							<td>g</td>
 							<td>
-								<asp:TextBox ID="txtsatfat0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtsatfat0" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr>
 							<th>Sodium</th>
 							<td>g</td>
 							<td>
-								<asp:TextBox ID="txtsodium0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtsodium0" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr>
 							<th>Dietary Fiber</th>
 							<td>g</td>
 							<td>
-								<asp:TextBox ID="txtfiber0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtfiber0" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr>
 							<th>Total Sugars</th>
 							<td>g</td>
 							<td>
-								<asp:TextBox ID="txtsugar0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtsugar0" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr>
 							<th>Protein</th>
 							<td>g</td>
 							<td>
-								<asp:TextBox ID="txtprotein0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtprotein0" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr class='fatter'>
 							<th>Vitamin A</th>
 							<td>IU</td>
 							<td>
-								<asp:TextBox ID="txtva0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtva0" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr>
 							<th>Vitamin C</th>
 							<td>mg</td>
 							<td>
-								<asp:TextBox ID="txtvc0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtvc0" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr>
 							<th>Calcium</th>
 							<td>mg</td>
 							<td>
-								<asp:TextBox ID="txtcalcium0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtcalcium0" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr>
 							<th>Iron</th>
 							<td>mg</td>
 							<td>
-								<asp:TextBox ID="txtiron0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtiron0" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 					</tbody>
@@ -153,70 +153,70 @@
 							<th>Calories</th>
 							<td></td>
 							<td>
-								<asp:TextBox ID="txtKcal1" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtKcal1" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr class='fat'>
 							<th>Saturated Fat</th>
 							<td>g</td>
 							<td>
-								<asp:TextBox ID="txtsatfat1" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtsatfat1" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr>
 							<th>Sodium</th>
 							<td>g</td>
 							<td>
-								<asp:TextBox ID="txtsodium1" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtsodium1" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr>
 							<th>Dietary Fiber</th>
 							<td>g</td>
 							<td>
-								<asp:TextBox ID="txtfiber1" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtfiber1" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr>
 							<th>Added Sugars</th>
 							<td>g</td>
 							<td>
-								<asp:TextBox ID="txtsugar1" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtsugar1" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr>
 							<th>Protein</th>
 							<td>g</td>
 							<td>
-								<asp:TextBox ID="txtprotein1" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtprotein1" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr class='fatter'>
 							<th>Vitamin D</th>
 							<td>%</td>
 							<td>
-								<asp:TextBox ID="txtvd1" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtvd1" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr>
 							<th>Calcium</th>
 							<td>%</td>
 							<td>
-								<asp:TextBox ID="txtcalcium1" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtcalcium1" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr>
 							<th>Iron</th>
 							<td>%</td>
 							<td>
-								<asp:TextBox ID="txtiron1" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtiron1" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 						<tr>
 							<th>Potassium</th>
 							<td>%</td>
 							<td>
-								<asp:TextBox ID="txtpotassium" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+								<asp:TextBox ID="txtpotassium" runat="server" CssClass="form-control" TextMode="Number" step="any"></asp:TextBox>
 							</td>
 						</tr>
 					</tbody>
