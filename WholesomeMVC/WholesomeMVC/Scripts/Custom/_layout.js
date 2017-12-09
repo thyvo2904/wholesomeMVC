@@ -49,29 +49,21 @@
 		remove: false
 	});
 
-	// set visibility for authenticated users
-	if ($("#authentication").val() === "authenticated") {
-		$(".authenticated").show();
-	} else {
-		$(".authenticated").hide();
-	}
-
-	// set visibility for different authorization
 	let authorization = $("#authorization").val().toLowerCase();
 	console.log(authorization);
-	if (authorization.indexOf("admin") !== -1) {
-		$(".admin").show();
-	} else {
-		$(".admin").hide();
-	}
+	console.log($("#authentication").val());
+	// set visibility for authenticated users
+	if ($("#authentication").val() !== "authenticated") {
+		$(".ban_public").hide();
+	} 
+	// set visibility for different authorization
 	if (authorization.indexOf("warehouse_staff") !== -1) {
-		$(".warehouse").show();
-	} else {
-		$(".warehouse").hide();
+		$(".ban_warehouse").hide();
 	}
 	if (authorization.indexOf("purchasing_staff") !== -1) {
-		$(".purchasing").show();
-	} else {
-		$(".purchasing").hide();
+		$(".ban_purchasing").hide();
+	}
+	if (authorization.indexOf("admin") !== -1) {
+		$(".ban_admin").hide();
 	}
 });

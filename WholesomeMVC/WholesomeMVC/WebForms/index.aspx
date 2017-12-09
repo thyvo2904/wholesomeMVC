@@ -51,49 +51,49 @@
     </section>
 
     <div class="row">
-        <div class="col-sm-6 col-lg-3 text-center">
+        <div class="col-sm-6 col-lg-4 text-center">
             <div class="panel panel-default text-center banner-button">
                 <asp:Image ID="image_nutrient_calculator" runat="server" />
                 <asp:HyperLink ID="link_nutrient_calculator" runat="server" CssClass="btn btn-success btn-lg btn-block" />
             </div>
         </div>
 
-        <div class="col-sm-6 col-lg-3 text-center">
+        <div class="col-sm-6 col-lg-4 text-center">
             <div class="panel panel-default text-center banner-button">
                 <asp:Image ID="image_recent" runat="server" />
                 <asp:HyperLink ID="link_recent" runat="server" CssClass="btn btn-success btn-lg btn-block" />
             </div>
         </div>
 
-        <div class="col-sm-6 col-lg-3 text-center">
+        <div class="col-sm-6 col-lg-4 text-center ban_public ban_warehouse">
             <div class="panel panel-default text-center banner-button">
                 <asp:Image ID="image_comparison" runat="server" />
                 <asp:HyperLink ID="link_comparison" runat="server" CssClass="btn btn-success btn-lg btn-block" />
             </div>
         </div>
 
-        <div class="col-sm-6 col-lg-3 text-center">
+        <div class="col-sm-6 col-lg-4 text-center">
             <div class="panel panel-default text-center banner-button">
                 <asp:Image ID="image_farmers_market" runat="server" />
                 <asp:HyperLink ID="link_farmers_market" runat="server" CssClass="btn btn-success btn-lg btn-block" />
             </div>
         </div>
 
-        <div class="col-sm-6 col-lg-3 text-center">
+        <div class="col-sm-6 col-lg-4 text-center ban_public">
             <div class="panel panel-default text-center banner-button">
                 <asp:Image ID="image_advanced_search" runat="server" />
                 <asp:HyperLink ID="link_advanced_search" runat="server" CssClass="btn btn-success btn-lg btn-block" />
             </div>
         </div>
 
-        <div class="col-sm-6 col-lg-3 text-center">
+        <div class="col-sm-6 col-lg-4 text-center ban_public">
             <div class="panel panel-default text-center banner-button">
                 <asp:Image ID="image_update_item" runat="server" />
                 <asp:HyperLink ID="link_update_item" runat="server" CssClass="btn btn-success btn-lg btn-block" />
             </div>
         </div>
 
-        <div class="col-sm-6 col-lg-3 text-center">
+        <div class="col-sm-6 col-lg-4 text-center ban_public ban_warehouse">
             <div class="panel panel-default text-center banner-button">
                 <asp:Image ID="image_inventory_projection" runat="server" />
                 <asp:HyperLink ID="link_inventory_projection" runat="server" CssClass="btn btn-success btn-lg btn-block" />
