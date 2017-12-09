@@ -355,13 +355,13 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.Label lblNewIndexResult;
         
         /// <summary>
-        /// txtNewKCal control.
+        /// txtNewCalories control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal txtNewKCal;
+        protected global::System.Web.UI.WebControls.TextBox txtNewCalories;
         
         /// <summary>
         /// txtNewSaturatedFat control.
@@ -370,79 +370,79 @@ namespace WholesomeMVC.WebForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal txtNewSaturatedFat;
+        protected global::System.Web.UI.WebControls.TextBox txtNewSaturatedFat;
         
         /// <summary>
-        /// txtNewSodium control.
+        /// txtSodiumNew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal txtNewSodium;
+        protected global::System.Web.UI.WebControls.TextBox txtSodiumNew;
         
         /// <summary>
-        /// txtNewFiber control.
+        /// txtFiberNew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal txtNewFiber;
+        protected global::System.Web.UI.WebControls.TextBox txtFiberNew;
         
         /// <summary>
-        /// txtNewAddedSugar control.
+        /// txtAddedSugarNew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal txtNewAddedSugar;
+        protected global::System.Web.UI.WebControls.TextBox txtAddedSugarNew;
         
         /// <summary>
-        /// txtNewProtein control.
+        /// txtProteinNew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal txtNewProtein;
+        protected global::System.Web.UI.WebControls.TextBox txtProteinNew;
         
         /// <summary>
-        /// txtNewVitaminD control.
+        /// txtVitaminDNew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal txtNewVitaminD;
+        protected global::System.Web.UI.WebControls.Literal txtVitaminDNew;
         
         /// <summary>
-        /// txtNewCalcium control.
+        /// txtCalciumNew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal txtNewCalcium;
+        protected global::System.Web.UI.WebControls.Literal txtCalciumNew;
         
         /// <summary>
-        /// txtNewIron control.
+        /// txtIronNew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal txtNewIron;
+        protected global::System.Web.UI.WebControls.TextBox txtIronNew;
         
         /// <summary>
-        /// txtNewPotassium control.
+        /// txtPotassiumNew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal txtNewPotassium;
+        protected global::System.Web.UI.WebControls.TextBox txtPotassiumNew;
         
         /// <summary>
         /// literalCeresID control.
@@ -472,13 +472,13 @@ namespace WholesomeMVC.WebForms {
         protected global::System.Web.UI.WebControls.TextBox txtNewCeresDescription;
         
         /// <summary>
-        /// btnSaveNewItem control.
+        /// btnNewSaveItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveNewItem;
+        protected global::System.Web.UI.WebControls.Button btnNewSaveItem;
         
         /// <summary>
         /// lblAddItem control.
