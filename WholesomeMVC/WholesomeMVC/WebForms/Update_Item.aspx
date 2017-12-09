@@ -395,6 +395,7 @@
 						</ContentTemplate>
 						<Triggers>
 							<asp:AsyncPostBackTrigger ControlID="button_expand_item" EventName="Click" />
+                            <asp:PostBackTrigger ControlID="btnSearchUSDA" />
 						</Triggers>
 					</asp:UpdatePanel>
 				</div>
