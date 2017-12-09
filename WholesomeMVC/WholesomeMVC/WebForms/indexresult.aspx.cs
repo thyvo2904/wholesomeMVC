@@ -205,7 +205,7 @@ namespace WholesomeMVC.WebForms
             if (!checkndbno(ndbno))
             {
 
-                if (HttpContext.Current.User.IsInRole("Purchasing_Staff")
+                if (HttpContext.Current.User.IsInRole("Admin")|| HttpContext.Current.User.IsInRole("Purchasing_Staff")
                || HttpContext.Current.User.IsInRole("Warehouse_Staff"))
                 {
                     using (SqlConnection connection = new SqlConnection(ConnectionString))
