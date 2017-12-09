@@ -101,7 +101,7 @@
 							<ul class="dropdown-menu">
 								<li><a href="index.aspx">Home</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="manual_input.aspx">Nutrient Calculator</a></li>
+								<li><a href="manual_input.aspx">Nutrition Calculator</a></li>
 								<li><a href="recent.aspx">Recent</a></li>
 								<li class="ban_public ban_warehouse"><a href="comparison.aspx">Comparison</a></li>
                                 <li class="ban_public"><a href="advanced_search.aspx">Advance Search</a></li>
