@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="True" MasterPageFile="~/WebForms/_layout.Master" CodeBehind="update_item.aspx.cs" Inherits="WholesomeMVC.WebForms.update_item" %>
          
 <asp:Content ContentPlaceHolderID="style" runat="server">
-	<link href="/Content/Vendor/footable.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/Vendor/footable.bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="/Content/Custom/update_item.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 
@@ -497,7 +497,7 @@
 </asp:Content>
     
  <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
-<%--	
+     <%--	
 	 <script src="Fb_categories.js"></script>
 
 	 <link href="/css/additem.css" rel="stylesheet" type="text/css" runat="server" />
