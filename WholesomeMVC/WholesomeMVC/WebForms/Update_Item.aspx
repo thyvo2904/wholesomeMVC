@@ -6,7 +6,7 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
-	<section>
+    <section>
 		<div class="row">
 			<div class="col-sm-offset-3 col-sm-6">
 			</div>
@@ -299,42 +299,42 @@
 										<tr class='fatter'>
 											<th>Calories</th>
 											<td>
-												<asp:TextBox ID="txtNewCalories" runat="server"></asp:TextBox>
+												<asp:Literal ID="txtNewCalories" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr class='fat'>
 											<th>Saturated Fat</th>
 											<td>
-												<asp:TextBox ID="txtNewSaturatedFat" runat="server"></asp:TextBox>
+												<asp:Literal ID="txtNewSaturatedFat" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Sodium</th>
 											<td>
-												<asp:TextBox ID="txtSodiumNew" runat="server"></asp:TextBox>
+												<asp:Literal ID="txtSodiumNew" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Dietary Fiber</th>
 											<td>
-												<asp:TextBox ID="txtFiberNew" runat="server"></asp:TextBox>
+												<asp:Literal ID="txtFiberNew" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Added Sugars</th>
 											<td>
-												<asp:TextBox ID="txtAddedSugarNew" runat="server"></asp:TextBox>
+												<asp:Literal ID="txtAddedSugarNew" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Protein</th>
 											<td>
-												<asp:TextBox ID="txtProteinNew" runat="server"></asp:TextBox>
+												<asp:Literal ID="txtProteinNew" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
@@ -355,14 +355,14 @@
 										<tr>
 											<th>Iron</th>
 											<td>
-												<asp:Textbox ID="txtIronNew" runat="server"></asp:Textbox>
+												<asp:Literal ID="txtIronNew" runat="server"></asp:Literal>
 											</td>
 											<td>%</td>
 										</tr>
 										<tr>
 											<th>Potassium</th>
 											<td>
-												<asp:TextBox ID="txtPotassiumNew" runat="server"></asp:TextBox>
+												<asp:Literal ID="txtPotassiumNew" runat="server"></asp:Literal>
 											</td>
 											<td>%</td>
 										</tr>
