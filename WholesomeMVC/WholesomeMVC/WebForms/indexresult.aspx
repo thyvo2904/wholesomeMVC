@@ -159,6 +159,7 @@
 							<!-- hack to make on-server-generated buttons work -->
 							<asp:HiddenField runat="server" ID="lblNdbno" ClientIDMode="Static"></asp:HiddenField>
 							<asp:HiddenField runat="server" ID="lblName" ClientIDMode="Static"></asp:HiddenField>
+                            
 							<asp:Button runat="server" ID="button_expand_item" OnClick="ExpandItem" ClientIDMode="Static" CssClass="hidden" />
 						</ContentTemplate>
 						<Triggers>

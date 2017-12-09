@@ -51,6 +51,7 @@ namespace WholesomeMVC.WebForms
                 sook.Visible = false;
                 txtCeresStatus.Visible = false;
                 btnSaveItem.Visible = false;
+               
             }
             if (IsPostBack)
             {
@@ -195,7 +196,7 @@ namespace WholesomeMVC.WebForms
                 {
                     btnSaveItem.Visible = true;
                     txtCeresStatus.Text = "Unmatched";
-                    btnUpdate.Visible = false;
+                    btnUpdate.Visible = true;
                 }
                 connection.Close();
             }
@@ -205,7 +206,7 @@ namespace WholesomeMVC.WebForms
             if (!checkndbno(ndbno))
             {
 
-                if (HttpContext.Current.User.IsInRole("Purchasing_Staff")
+                if (HttpContext.Current.User.IsInRole("Admin")|| HttpContext.Current.User.IsInRole("Purchasing_Staff")
                || HttpContext.Current.User.IsInRole("Warehouse_Staff"))
                 {
                     using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -497,10 +498,10 @@ namespace WholesomeMVC.WebForms
                     CommandType = System.Data.CommandType.Text,
 
 
-                    CommandText = @"UPDATE Wholesome_Item SET"
+                    CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndbno,"
                         + " nrf6 = @nrf6, Loginid = @loginid, GradientEntry = @GradientEntry,"
                         + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [description 2] = @description2, FBC_Code = @FBC_Code " +
-                        "WHERE ndb_no = @ndbno"
+                        "WHERE No_ = @no_"
                 };
 
                 command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = FoodItem.newFood.NRF6;
@@ -511,6 +512,7 @@ namespace WholesomeMVC.WebForms
                 command1.Parameters.Add("@lastupdated", SqlDbType.DateTime).Value = DateTime.Now;
                 command1.Parameters.Add("@ndbno", SqlDbType.NVarChar, 8).Value = FoodItem.newFood.ndbNo;
                 command1.Parameters.Add("@FBC_Code", SqlDbType.NVarChar, 10).Value = ddlFBCategories.SelectedValue;
+                command1.Parameters.Add("@no_", SqlDbType.NVarChar, 20).Value = update_item.ceresUpdate;
                 connection.Open();
                 command1.ExecuteNonQuery();
                 connection.Close();
