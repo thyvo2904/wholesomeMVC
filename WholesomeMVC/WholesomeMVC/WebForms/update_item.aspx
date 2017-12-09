@@ -6,7 +6,7 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
-	<section>
+    <section>
 		<div class="row">
 			<div class="col-sm-offset-3 col-sm-6">
 			</div>
@@ -299,7 +299,7 @@
 										<tr class='fatter'>
 											<th>Calories</th>
 											<td>
-												<asp:Literal ID="txtNewKCal" runat="server"></asp:Literal>
+												<asp:Literal ID="txtNewCalories" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
@@ -313,56 +313,56 @@
 										<tr>
 											<th>Sodium</th>
 											<td>
-												<asp:Literal ID="txtNewSodium" runat="server"></asp:Literal>
+												<asp:Literal ID="txtSodiumNew" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Dietary Fiber</th>
 											<td>
-												<asp:Literal ID="txtNewFiber" runat="server"></asp:Literal>
+												<asp:Literal ID="txtFiberNew" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Added Sugars</th>
 											<td>
-												<asp:Literal ID="txtNewAddedSugar" runat="server"></asp:Literal>
+												<asp:Literal ID="txtAddedSugarNew" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Protein</th>
 											<td>
-												<asp:Literal ID="txtNewProtein" runat="server"></asp:Literal>
+												<asp:Literal ID="txtProteinNew" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr class='fatter'>
 											<th>Vitamin D</th>
 											<td>
-												<asp:Literal ID="txtNewVitaminD" runat="server"></asp:Literal>
+												<asp:Literal ID="txtVitaminDNew" runat="server"></asp:Literal>
 											</td>
 											<td>%</td>
 										</tr>
 										<tr>
 											<th>Calcium</th>
 											<td>
-												<asp:Literal ID="txtNewCalcium" runat="server"></asp:Literal>
+												<asp:Literal ID="txtCalciumNew" runat="server"></asp:Literal>
 											</td>
 											<td>%</td>
 										</tr>
 										<tr>
 											<th>Iron</th>
 											<td>
-												<asp:Literal ID="txtNewIron" runat="server"></asp:Literal>
+												<asp:Literal ID="txtIronNew" runat="server"></asp:Literal>
 											</td>
 											<td>%</td>
 										</tr>
 										<tr>
 											<th>Potassium</th>
 											<td>
-												<asp:Literal ID="txtNewPotassium" runat="server"></asp:Literal>
+												<asp:Literal ID="txtPotassiumNew" runat="server"></asp:Literal>
 											</td>
 											<td>%</td>
 										</tr>
@@ -391,13 +391,13 @@
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal"  ClientIDMode="Static" type="button" />
-								<asp:Button ID="btnSaveNewItem"  runat="server" Text="Save" CssClass="btn btn-success new_buttons" />
+								<asp:Button ID="btnNewSaveItem" onclick="btnNewSaveItem_Click" runat="server" Text="Save" CssClass="btn btn-success new_buttons" />
                            
 							</div>
 						</ContentTemplate>
 						<Triggers>
 							<asp:AsyncPostBackTrigger ControlID="button_expand_item" EventName="Click" />
-                            <asp:PostBackTrigger ControlID="btnSearchUSDA" />
+                            <asp:AsyncPostBackTrigger ControlID="btnNewSaveItem" EventName="Click" />
 						</Triggers>
 					</asp:UpdatePanel>
 				</div>
