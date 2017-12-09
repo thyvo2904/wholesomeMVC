@@ -210,22 +210,6 @@
 										</p>
 									</div>
 									<div class="form-group">
-										<label for="txtOldCeresNumber">
-											<asp:Literal Text="Ceres Number" runat="server" />
-										</label>
-										<p>
-											<asp:TextBox ID="txtOldCeresNumber" runat="server" CssClass="form-control"></asp:TextBox>
-										</p>
-									</div>
-									<div class="form-group">
-										<label for="txtOldCeresDescription">
-											<asp:Literal Text="Ceres Description" runat="server" />
-										</label>
-										<p>
-											<asp:TextBox ID="txtOldCeresDescription" runat="server" CssClass="form-control"></asp:TextBox>
-										</p>
-									</div>
-									<div class="form-group">
 										<label for="txtUSDA">
 											<asp:Literal Text="Search USDA" runat="server" />
 										</label>
