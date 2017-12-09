@@ -13,59 +13,61 @@ using WholesomeMVC.WebForms;
 
 namespace WholesomeMVC.WebForms
 {
-	public partial class inventory_admin : System.Web.UI.Page
-	{
+    public partial class inventory_admin : System.Web.UI.Page
+    {
         ArrayList scenarioID = new ArrayList();
-		protected void Page_Load(object sender, EventArgs e)
-		{
-          //  this.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            this.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
 
-            if (IsPostBack) {
+            if (IsPostBack)
+            {
 
             }
-            else {
-				
-				String strTitle = "Current Inventory";
+            else
+            {
 
-				Literal page_title = (Literal) Master.FindControl("page_title");
-				page_title.Text = strTitle;
-				Label body_title = (Label) Master.FindControl("body_title");
-				body_title.Text = strTitle;
+                String strTitle = "Current Inventory";
+
+                Literal page_title = (Literal)Master.FindControl("page_title");
+                page_title.Text = strTitle;
+                Label body_title = (Label)Master.FindControl("body_title");
+                body_title.Text = strTitle;
 
                 ddlCereItem.DataBind();
                 ddlFBGroup.DataBind();
 
                 String strChart1Header = "Purchased Item Overview";
-				chart_1_header.Text = strChart1Header;
-				String strWhatIfHeader = "What-If Scenario";
-				whatif_header.Text = strWhatIfHeader;
-                if (CheckWhatIf() == true)
-                {
-                    System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
-                    {
-                        ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
-                    };
+                chart_1_header.Text = strChart1Header;
+                String strWhatIfHeader = "What-If Scenario";
+                whatif_header.Text = strWhatIfHeader;
+                //if (CheckWhatIf() == true)
+                //{
+                //    System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection
+                //    {
+                //        ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString
+                //    };
 
-                    sc.Open();
-                    SqlCommand myCommand = new SqlCommand("Pull_Weight_WhatIf", sc)
-                    {
-                        CommandType = CommandType.StoredProcedure
+                //    sc.Open();
+                //    SqlCommand myCommand = new SqlCommand("Pull_Weight_WhatIf", sc)
+                //    {
+                //        CommandType = CommandType.StoredProcedure
 
-                    };
-                    System.Data.SqlClient.SqlParameter LastUpdated = new System.Data.SqlClient.SqlParameter();
-                    LastUpdated.ParameterName = "@LastUpdated";
-                    LastUpdated.Value = DateTime.Now;
-                    myCommand.Parameters.Add(LastUpdated); System.Data.SqlClient.SqlParameter LastUpdatedBy = new System.Data.SqlClient.SqlParameter();
-                    LastUpdatedBy.ParameterName = "@LastUpdatedBy";
-                    LastUpdatedBy.Value = HttpContext.Current.User.Identity.GetUserName();
-                    myCommand.Parameters.Add(LastUpdatedBy);
-                    myCommand.ExecuteNonQuery();
-                    sc.Close();
-                }
+                //    };
+                //    System.Data.SqlClient.SqlParameter LastUpdated = new System.Data.SqlClient.SqlParameter();
+                //    LastUpdated.ParameterName = "@LastUpdated";
+                //    LastUpdated.Value = DateTime.Now;
+                //    myCommand.Parameters.Add(LastUpdated); System.Data.SqlClient.SqlParameter LastUpdatedBy = new System.Data.SqlClient.SqlParameter();
+                //    LastUpdatedBy.ParameterName = "@LastUpdatedBy";
+                //    LastUpdatedBy.Value = HttpContext.Current.User.Identity.GetUserName();
+                //    myCommand.Parameters.Add(LastUpdatedBy);
+                //    myCommand.ExecuteNonQuery();
+                //    sc.Close();
+                //}
             }
 
         }
-        
+
         protected void btnWhatif_Click(object sender, EventArgs e)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["constr2"].ConnectionString))
@@ -131,7 +133,7 @@ namespace WholesomeMVC.WebForms
                 SqlDataReader readIn = go.ExecuteReader();
                 while (readIn.Read())
                 {
-                    if(readIn["COUNTER"].Equals(0))
+                    if (readIn["COUNTER"].Equals(0))
                         return true;
                 }
                 con.Close();
@@ -141,7 +143,7 @@ namespace WholesomeMVC.WebForms
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
-            if (scenarioID.Count != 0)
+            //    if (scenarioID.Count != 0)
             {
                 try
                 {
@@ -150,12 +152,16 @@ namespace WholesomeMVC.WebForms
                         System.Data.SqlClient.SqlCommand go = new System.Data.SqlClient.SqlCommand();
                         con.Open();
                         go.Connection = con;
-                        for (int i = 0; i < scenarioID.Count; i++)
+                        //  for (int i = 0; i < scenarioID.Count; i++)
                         {
-                            go.CommandText = "Delete from Whatif_scenario where ScrenarioID=@ScenarioID";
-                            go.Parameters.Add("@ScenarioID", SqlDbType.Int).Value = scenarioID[i];
+                            go.CommandText = "Truncate table Whatif_scenario";
+                            //    go.Parameters.Add("@ScenarioID", SqlDbType.Int).Value = scenarioID[i];
                             go.ExecuteNonQuery();
-                        }
+                            go.CommandText = " insert into Whatif_Scenario( [Item_ID],[NetWeight],[ReceivedDate],[LastUpdated],[LastUpdatedBy])" +
+                                " select[ITEM_ID],[NetWeight],[ReceivedDate],[LastUpdated],[LastUpdatedBy] from Item_NetWeight;";
+                            go.ExecuteNonQuery();
+                           
+    }
                         con.Close();
                     }
                     scenarioID.Clear();
@@ -164,6 +170,7 @@ namespace WholesomeMVC.WebForms
                 {
 
                 }
+                //  }
             }
         }
     }
