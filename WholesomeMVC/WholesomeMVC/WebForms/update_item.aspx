@@ -9,15 +9,6 @@
 	<section>
 		<div class="row">
 			<div class="col-sm-offset-3 col-sm-6">
-				<div class="input-group">
-					<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
-                    
-					<span class="input-group-btn">
-						<asp:Button ID="btnSearch" OnClick="btnSearch_Click"
-                            runat="server" Text="Search USDA" ValidationGroup="UpdateSearch" CssClass="btn btn-default" />
-                        <asp:RequiredFieldValidator ControlToValidate="txtSearch" ID="reqTxtSearch" ValidationGroup="UpdateSearch" runat="server" ErrorMessage="(Invalid Submission)"></asp:RequiredFieldValidator>
-					</span>
-				</div>
 			</div>
 		</div>
 	</section>
@@ -99,7 +90,6 @@
 								<h4>
 									<strong>ND_Score:
 									<asp:Label runat="server" ID="lblOldIndexResult"></asp:Label>
-
 									</strong>
 								</h4>
 							</div>
@@ -111,80 +101,70 @@
 										<tr class='fatter'>
 											<th>Calories</th>
 											<td>
-												<asp:Literal ID="txtOldKCal" Text="" runat="server"></asp:Literal>
-                                                <%--<asp:RequiredFieldValidator ID="reqOldKCal" ControlToValidate="txtOldKCal" ValidationGroup="OldLabel" runat="server" ErrorMessage="(Required)"></asp:RequiredFieldValidator>--%>
+												<asp:Literal ID="txtOldKCal" runat="server"></asp:Literal>
 											</td>
 											<td></td>
 										</tr>
 										<tr class='fat'>
 											<th>Saturated Fat</th>
 											<td>
-												<asp:Literal ID="txtOldSaturatedFat" Text="" runat="server"></asp:Literal>
-                                                
+												<asp:Literal ID="txtOldSaturatedFat" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Sodium</th>
 											<td>
-												<asp:Literal ID="txtOldSodium" Text="" runat="server"></asp:Literal>
-                                                
+												<asp:Literal ID="txtOldSodium" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Dietary Fiber</th>
 											<td>
-												<asp:Literal ID="txtOldFiber" Text="" runat="server"></asp:Literal>
-                                                
+												<asp:Literal ID="txtOldFiber" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Total Sugars</th>
 											<td>
-												<asp:Literal ID="txtOldTotalSugar" Text="" runat="server"></asp:Literal>
-                                                
+												<asp:Literal ID="txtOldTotalSugar" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr>
 											<th>Protein</th>
 											<td>
-												<asp:Literal ID="txtOldProtein" Text="" runat="server"></asp:Literal>
-                                                
+												<asp:Literal ID="txtOldProtein" runat="server"></asp:Literal>
 											</td>
 											<td>g</td>
 										</tr>
 										<tr class='fatter'>
 											<th>Vitamin A</th>
 											<td>
-												<asp:Literal ID="txtOldVitaminA" Text="" runat="server"></asp:Literal>
-                                                
+												<asp:Literal ID="txtOldVitaminA" runat="server"></asp:Literal>
 											</td>
 											<td>IU</td>
 										</tr>
 										<tr>
 											<th>Vitamin C</th>
 											<td>
-												<asp:Literal ID="txtOldVitaminC" Text="" runat="server"></asp:Literal>
-                                                
+												<asp:Literal ID="txtOldVitaminC" runat="server"></asp:Literal>
 											</td>
 											<td>IU</td>
 										</tr>
 										<tr>
 											<th>Calcium</th>
 											<td>
-												<asp:Literal ID="txtOldCalcium" Text="" runat="server"></asp:Literal>
-                                                
+												<asp:Literal ID="txtOldCalcium" runat="server"></asp:Literal>
 											</td>
 											<td>mg</td>
 										</tr>
 										<tr>
 											<th>Iron</th>
 											<td>
-												<asp:Literal ID="txtOldIron" Text="" runat="server"></asp:Literal>
-                                                
+												<asp:Literal ID="txtOldIron" runat="server"></asp:Literal>
 											</td>
 											<td>mg</td>
                                         </tr>
@@ -204,10 +184,10 @@
 												<asp:ListItem>Beverage</asp:ListItem>
 												<asp:ListItem>Bread</asp:ListItem>
 												<asp:ListItem>Cereal/Brk</asp:ListItem>
-												<asp:ListItem>Complete</asp:ListItem>
+												<asp:ListItem>complete</asp:ListItem>
 												<asp:ListItem>Condiment</asp:ListItem>
-												<asp:ListItem>Dairy</asp:ListItem>
-												<asp:ListItem>Dessert</asp:ListItem>
+												<asp:ListItem>dairy</asp:ListItem>
+												<asp:ListItem>dessert</asp:ListItem>
 												<asp:ListItem>Dough</asp:ListItem>
 												<asp:ListItem>Dressing</asp:ListItem>
 												<asp:ListItem>Entree</asp:ListItem>
@@ -245,15 +225,27 @@
 											<asp:TextBox ID="txtOldCeresDescription" runat="server" CssClass="form-control"></asp:TextBox>
 										</p>
 									</div>
+									<div class="form-group">
+										<label for="txtUSDA">
+											<asp:Literal Text="Search USDA" runat="server" />
+										</label>
+										<div class="input-group">
+											<asp:TextBox ID="txtUSDA" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
+											<span class="input-group-btn">
+												<asp:Button ID="btnSearchUSDA" OnClick="btnSearchUSDA_Click" runat="server" Text="Search" CssClass="btn btn-success" type="button" />
+											</span>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
-								<asp:Button ID="btnSaveOldItem" ValidationGroup="OldLabel" OnClick="btnOldSaveItem_Click" runat="server" Text="Save" CssClass="btn btn-success" type="button" />
+								<asp:Button ID="btnOldSaveItem" onclick ="btnOldSaveItem_Click"  runat="server" Text="Save" CssClass="btn btn-success" type="button" />
 							</div>
 						</ContentTemplate>
 						<Triggers>
 							<asp:AsyncPostBackTrigger ControlID="button_expand_item" EventName="Click" />
+							<asp:PostBackTrigger ControlID="btnSearchUSDA" />
 						</Triggers>
 					</asp:UpdatePanel>
 				</div>
@@ -277,7 +269,6 @@
 									<h4>
 										<strong>Ceres Name:
 										<asp:Literal ID="lblNewCeresName" runat="server"></asp:Literal>
-
 										</strong>
 									</h4>
 									<h4>
@@ -401,6 +392,7 @@
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal"  ClientIDMode="Static" type="button" />
 								<asp:Button ID="btnSaveNewItem"  runat="server" Text="Save" CssClass="btn btn-success new_buttons" />
+                           
 							</div>
 						</ContentTemplate>
 						<Triggers>
@@ -460,6 +452,7 @@
 					<div class="modal-footer">
 						<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
 						<asp:Button ID="btnAddItem" runat="server" Text="Add Item" CssClass="btn btn-success" type="button" />
+                      
 					</div>
 				</div>
 			</div>
@@ -506,7 +499,7 @@
 </asp:Content>
     
  <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
-     <%--	
+<%--	
 	 <script src="Fb_categories.js"></script>
 
 	 <link href="/css/additem.css" rel="stylesheet" type="text/css" runat="server" />
