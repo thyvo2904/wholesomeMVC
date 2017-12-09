@@ -62,11 +62,13 @@ namespace WholesomeMVC.WebForms
 
         public static void findNdbno(String foodSearch)
         {
+
+            newFood = new FoodItem();
             try
             {
                 names.Clear();
                 ndbnoList.Clear();
-
+                
 
                 String urlPartOne = "https://api.nal.usda.gov/ndb/search/?format=json&q=";
                 String urlPartTwo = "&sort=r&max=50&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
