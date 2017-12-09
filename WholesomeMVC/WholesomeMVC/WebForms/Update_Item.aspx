@@ -6,7 +6,12 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
-
+	<section>
+		<div class="row">
+			<div class="col-sm-offset-3 col-sm-6">
+			</div>
+		</div>
+	</section>
 
 	<section>
 		<!-- nav to change between old/new/usda view -->
@@ -57,21 +62,6 @@
 						<ContentTemplate>
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <section>
-		<div class="row">
-			<div class="col-sm-offset-3 col-sm-6">
-				<div class="input-group">
-					<asp:TextBox ID="txtUSDA" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
-                         	<span class="input-group-btn">
-					  <asp:Button ID="btnSearchUSDA" OnServerClick="btnSearchUSDA_Click" runat="server" Text="Search USDA" CssClass="btn btn-success" type="button"/>
-					</span>
-				
-				</div>
-			</div>
-		</div>
-	</section>
-                                <br />
-                                <br />
 								<div class='panel-title equal-height'>
 									<h4>
 										<strong>USDA Description:
@@ -193,11 +183,11 @@
 												<asp:ListItem>Baby</asp:ListItem>
 												<asp:ListItem>Beverage</asp:ListItem>
 												<asp:ListItem>Bread</asp:ListItem>
-												<asp:ListItem>Cereal/B</asp:ListItem>
-												<asp:ListItem>Complete</asp:ListItem>
+												<asp:ListItem>Cereal/Brk</asp:ListItem>
+												<asp:ListItem>complete</asp:ListItem>
 												<asp:ListItem>Condiment</asp:ListItem>
-												<asp:ListItem>Dairy</asp:ListItem>
-												<asp:ListItem>Dessert</asp:ListItem>
+												<asp:ListItem>dairy</asp:ListItem>
+												<asp:ListItem>dessert</asp:ListItem>
 												<asp:ListItem>Dough</asp:ListItem>
 												<asp:ListItem>Dressing</asp:ListItem>
 												<asp:ListItem>Entree</asp:ListItem>
@@ -235,15 +225,27 @@
 											<asp:TextBox ID="txtOldCeresDescription" runat="server" CssClass="form-control"></asp:TextBox>
 										</p>
 									</div>
+									<div class="form-group">
+										<label for="txtUSDA">
+											<asp:Literal Text="Search USDA" runat="server" />
+										</label>
+										<div class="input-group">
+											<asp:TextBox ID="txtUSDA" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
+											<span class="input-group-btn">
+												<asp:Button ID="btnSearchUSDA" OnClick="btnSearchUSDA_Click" runat="server" Text="Search" CssClass="btn btn-success" type="button" />
+											</span>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
-								<asp:Button ID="btnOldSaveItem" onclick ="btnSearch_Click"  runat="server" Text="Save" CssClass="btn btn-success" type="button" />
+								<asp:Button ID="btnOldSaveItem" onclick ="btnOldSaveItem_Click"  runat="server" Text="Save" CssClass="btn btn-success" type="button" />
 							</div>
 						</ContentTemplate>
 						<Triggers>
 							<asp:AsyncPostBackTrigger ControlID="button_expand_item" EventName="Click" />
+							<asp:PostBackTrigger ControlID="btnSearchUSDA" />
 						</Triggers>
 					</asp:UpdatePanel>
 				</div>

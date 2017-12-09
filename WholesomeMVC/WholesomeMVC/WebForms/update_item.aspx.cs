@@ -593,17 +593,16 @@ namespace WholesomeMVC.WebForms
             return getid;
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
+        protected void btnSearchUSDA_Click(object sender, EventArgs e)
         {
-            String foodSearch = txtSearch.Text;
+            String foodSearch = txtUSDA.Text;
             string ceresid = hidden_ceresid.Value;
             string ceresDescription = hidden_ceres_name.Value;
             Session["sharedCeresID"] = ceresid;
             Session["sharedCeresDescription"] = ceresDescription;
 
             WebForms.FoodItem.findNdbno(foodSearch);
-            Server.Transfer("/WebForms/indexresult.aspx");
-            
+            Server.Transfer("~/WebForms/indexresult.aspx");
         }
 
         protected void btnCalculateNewNRF6_Click(object sender, EventArgs e)
