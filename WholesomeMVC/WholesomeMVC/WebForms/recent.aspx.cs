@@ -236,7 +236,7 @@ namespace WholesomeMVC.WebForms
                 ORDER BY Recent_Index.LastUpdated DESC
 			";
 			SqlCommand myCommand = new SqlCommand(strCommand, sc);
-            if (HttpContext.Current.User.IsInRole("Admin")|| HttpContext.Current.User.IsInRole("purchasing_staff")|| HttpContext.Current.User.IsInRole("warehouse_staff"))
+            if (HttpContext.Current.User.IsInRole("Admin")|| HttpContext.Current.User.IsInRole("Purchasing_Staff")|| HttpContext.Current.User.IsInRole("Warehouse_Staff"))
                 myCommand.Parameters.Add("@ID", SqlDbType.NVarChar,128).Value = HttpContext.Current.User.Identity.GetUserId();
             else
                 myCommand.Parameters.Add("@ID", SqlDbType.NVarChar, 128).Value = DBNull.Value;
