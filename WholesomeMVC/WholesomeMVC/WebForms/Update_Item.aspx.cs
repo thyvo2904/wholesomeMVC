@@ -425,6 +425,9 @@ namespace WholesomeMVC.WebForms
                     case "new":
                         nd_new_score_panel.Attributes["style"] = colorScaleStyle;
 
+                        lblNewNdbno.Text = ndbno;
+                        lblNewCeresId.Text = ceresid;
+                        lblNewCeresName.Text = ceres_name;
                         lblNewFoodName.Text = FoodItem.newFood.name;
                         lblNewIndexResult.Text = Convert.ToString(Math.Round(score, 2));
 
