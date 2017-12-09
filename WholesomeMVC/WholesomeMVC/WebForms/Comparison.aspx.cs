@@ -264,7 +264,7 @@ namespace WholesomeMVC.WebForms
 
         protected void ExportCompareTableToExcel()
         {
-            Response.ContentType = "application/x-msexcel";
+            Response.ContentType = "application/vnd.ms-excel";
             string FileName = "FB_COMPARISON" + DateTime.Now + ".xls";
             Response.AddHeader("Content-Disposition", "attachment;filename = " + FileName);
             Response.ContentEncoding = Encoding.UTF8;

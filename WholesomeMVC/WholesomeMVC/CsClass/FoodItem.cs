@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Web.UI;
 
 namespace WholesomeMVC.WebForms
 {
@@ -61,44 +62,45 @@ namespace WholesomeMVC.WebForms
 
         public static void findNdbno(String foodSearch)
         {
-
-            names.Clear();
-            ndbnoList.Clear();
-
-
-            String urlPartOne = "https://api.nal.usda.gov/ndb/search/?format=json&q=";
-            String urlPartTwo = "&sort=r&max=50&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
-
-
-            String url = urlPartOne + foodSearch + urlPartTwo;
-
-            var json = new WebClient().DownloadString(url);
-            var result = JsonConvert.DeserializeObject<Search>(json);
-
-            if (!indexresult.dataSearchResults.Columns.Contains("NDBno") && !indexresult.dataSearchResults.Columns.Contains("Name")
-                && !indexresult.dataSearchResults.Columns.Contains("ND Score"))
+            try
             {
-                indexresult.dataSearchResults.Columns.Add("NDBno", typeof(string));
-                indexresult.dataSearchResults.Columns.Add("Name", typeof(string));
-                indexresult.dataSearchResults.Columns.Add("ND Score", typeof(double));
-            }
+                names.Clear();
+                ndbnoList.Clear();
 
-            else
-            {
-                indexresult.dataSearchResults.Clear();
-            }
 
-            //check usda api first, if result null, use second api
-           
+                String urlPartOne = "https://api.nal.usda.gov/ndb/search/?format=json&q=";
+                String urlPartTwo = "&sort=r&max=50&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
+
+
+                String url = urlPartOne + foodSearch + urlPartTwo;
+
+                var json = new WebClient().DownloadString(url);
+                var result = JsonConvert.DeserializeObject<Search>(json);
+
+                if (!indexresult.dataSearchResults.Columns.Contains("NDBno") && !indexresult.dataSearchResults.Columns.Contains("Name")
+                    && !indexresult.dataSearchResults.Columns.Contains("ND Score"))
+                {
+                    indexresult.dataSearchResults.Columns.Add("NDBno", typeof(string));
+                    indexresult.dataSearchResults.Columns.Add("Name", typeof(string));
+                    indexresult.dataSearchResults.Columns.Add("ND Score", typeof(double));
+                }
+
+                else
+                {
+                    indexresult.dataSearchResults.Clear();
+                }
+
+                //check usda api first, if result null, use second api
+
                 for (int i = 0; i < result.list.item.Count; i++)
                 {
 
                     newFood.ndbNo = result.list.item[i].ndbno;
-					newFood.name = result.list.item[i].name;
+                    newFood.name = result.list.item[i].name;
 
-					//row[0] = newFood.ndbNo;
-					//row[1] = newFood.name;
-					ndbnoList.Add(newFood.ndbNo);
+                    //row[0] = newFood.ndbNo;
+                    //row[1] = newFood.name;
+                    ndbnoList.Add(newFood.ndbNo);
                 }
 
                 String food = "";
@@ -172,12 +174,12 @@ namespace WholesomeMVC.WebForms
                         else if (Int32.Parse(item.nutrient_id) == 301)
                         {
                             newFood.calcium = Double.Parse(item.value);
-                           // newFood.calcium = Math.Round(newFood.calcium, 2);
+                            // newFood.calcium = Math.Round(newFood.calcium, 2);
                         }
                         else if (Int32.Parse(item.nutrient_id) == 303)
                         {
                             newFood.iron = Double.Parse(item.value);
-                           // newFood.iron = Math.Round(newFood.iron, 2);
+                            // newFood.iron = Math.Round(newFood.iron, 2);
                         }
                         else if (Int32.Parse(item.nutrient_id) == 606)
                         {
@@ -226,24 +228,24 @@ namespace WholesomeMVC.WebForms
                         double vitaminC = newFood.vitaminC / 60;
                         double calcium = newFood.calcium / 1000;
                         double iron = newFood.iron / 18;
-                          
+
                         //if any of the good value ratios are > 1, set them equal to 1 to follow algorithm rule 
                         if (protein > 1)
                         {
                             protein = 1;
                         }
 
-                        if(fiber > 1)
+                        if (fiber > 1)
                         {
                             fiber = 1;
                         }
 
-                        if(vitaminA > 1)
+                        if (vitaminA > 1)
                         {
                             vitaminA = 1;
                         }
 
-                        if(vitaminC > 1)
+                        if (vitaminC > 1)
                         {
                             vitaminC = 1;
                         }
@@ -253,12 +255,12 @@ namespace WholesomeMVC.WebForms
                             calcium = 1;
                         }
 
-                        if(iron > 1)
+                        if (iron > 1)
                         {
                             iron = 1;
                         }
-                         
-                       
+
+
 
                         newFood.nR6 = (protein) + (fiber) + (vitaminA) + (vitaminC) + (calcium) + (iron);
                         newFood.liMT = (newFood.satFat / 20) + (newFood.totalSugar / 125) + (newFood.sodium / 2400);
@@ -281,21 +283,24 @@ namespace WholesomeMVC.WebForms
                 indexresult.savedItemName = newFood.name;
                 indexresult.savedFoodGroup = newFood.foodGroup;
                 indexresult.savedNrf6 = newFood.NRF6;
+            }catch(Exception ex)
+            {
+                // response write opps! item cant be found
+            }
 
-            
             //else
             //{
             //    string api2 = System.Web.HttpUtility.UrlPathEncode(foodSearch);
             //   // String urlAPI2pt1 = "https://api.edamam.com/api/food-database/parser?ingr=";
             //   // String urlAPI2pt2 = "&app_id ={cd27db7d} &app_key ={9d149ec2802f86f42a15dcbd16891ff9}&page = 0";
-                
+
 
 
             //    String apiRequest = urlPartOne + api2 + urlPartTwo;
 
             //    var json2 = new WebClient().DownloadString(apiRequest);
             //    var result2 = JsonConvert.DeserializeObject<Search>(json2);
-            
+
             //}
 
         }

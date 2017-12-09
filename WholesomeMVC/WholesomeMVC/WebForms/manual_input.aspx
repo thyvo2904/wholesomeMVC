@@ -96,7 +96,7 @@
 						</tr>
 						<tr>
 							<th>Vitamin C</th>
-							<td>IU</td>
+							<td>mg</td>
 							<td>
 								<asp:TextBox ID="txtvc0" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
 							</td>
