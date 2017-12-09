@@ -466,9 +466,15 @@ namespace WholesomeMVC.WebForms
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             String description2 = FoodItem.newFood.name;
+            String description = FoodItem.newFood.name;
             if (description2.Length > 48)
             {
                 description2 = description2.Substring(0, 48);
+            }
+
+            if (description2.Length > 48)
+            {
+                description = description.Substring(0, 48);
             }
 
 
@@ -500,10 +506,10 @@ namespace WholesomeMVC.WebForms
 
                     CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndbno,"
                         + " nrf6 = @nrf6, Loginid = @loginid, GradientEntry = @GradientEntry,"
-                        + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [description 2] = @description2, FBC_Code = @FBC_Code " +
+                        + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [description 2] = @description2, FBC_Code = @FBC_Code, Description = @name," +
                         "WHERE No_ = @no_"
                 };
-
+                command1.Parameters.Add("@name", SqlDbType.Decimal, 18).Value = FoodItem.newFood.name;
                 command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = FoodItem.newFood.NRF6;
                 command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getloginid();
                 command1.Parameters.Add("@GradientEntry", SqlDbType.Int).Value = gradientEntry;
