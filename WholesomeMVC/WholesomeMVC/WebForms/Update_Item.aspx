@@ -240,7 +240,7 @@
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
-								<asp:Button ID="btnOldSaveItem" onclick ="btnSearchUSDA_Click"  runat="server" Text="Save" CssClass="btn btn-success" type="button" />
+								<asp:Button ID="btnOldSaveItem" onclick ="btnOldSaveItem_Click"  runat="server" Text="Save" CssClass="btn btn-success" type="button" />
 							</div>
 						</ContentTemplate>
 						<Triggers>
