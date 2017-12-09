@@ -36,7 +36,8 @@
 		$(".typeahead").typeahead({
 			source: data,
 			// more options can be appended here
-			fitToElement: false
+			fitToElement: false,
+			autoSelect: false
 		});
 	}, 'json');
 

@@ -17,9 +17,9 @@
 		<!-- nav to change between old/new/usda view -->
 		<h3><asp:Literal ID="view_mode" runat="server" /></h3>
 		<ul class="nav nav-pills" id="view_nav">
-			<li role="presentation"><a id="link_old_view">Manual: Old Label</a></li>
-			<li role="presentation"><a id="link_new_view">Manual: New Label</a></li>
-			<li role="presentation"><a id="link_usda_view">USDA</a></li>
+			<li role="presentation"><a id="link_old_view">Old Label</a></li>
+			<li role="presentation"><a id="link_new_view">New Label</a></li>
+			
 		</ul>
 
 		<!-- Search items will show here -->
@@ -224,7 +224,7 @@
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
-								<asp:Button ID="btnOldSaveItem" onclick ="btnOldSaveItem_Click"  runat="server" Text="Save" CssClass="btn btn-success" type="button" />
+								<asp:Button ID="btnOldSaveItem" Visible="false" onclick ="btnOldSaveItem_Click"  runat="server" Text="Save" CssClass="btn btn-success" type="button" />
 							</div>
 						</ContentTemplate>
 						<Triggers>
@@ -375,7 +375,7 @@
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal"  ClientIDMode="Static" type="button" />
-								<asp:Button ID="btnNewSaveItem" onclick="btnNewSaveItem_Click" runat="server" Text="Save" CssClass="btn btn-success new_buttons" />
+								<asp:Button ID="btnNewSaveItem" Visible="false" onclick="btnNewSaveItem_Click" runat="server" Text="Save" CssClass="btn btn-success new_buttons" />
                            
 							</div>
 						</ContentTemplate>
