@@ -85,12 +85,12 @@ namespace WholesomeMVC.WebForms
 
                 go.Parameters.Clear();
 
-                go.CommandText = "Select max(ScenarioID) from whatif_scenario;";
+                go.CommandText = "Select max(ScenarioID) as ID from whatif_scenario;";
                 go.ExecuteNonQuery();
                 SqlDataReader readIn = go.ExecuteReader();
                 while (readIn.Read())
                 {
-                    scenarioID.Add(readIn["ScenarioID"].ToString());
+                    scenarioID.Add(readIn["ID"].ToString());
                 }
                 con.Close();
 
