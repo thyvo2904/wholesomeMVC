@@ -62,11 +62,13 @@ namespace WholesomeMVC.WebForms
 
         public static void findNdbno(String foodSearch)
         {
+
+         
             try
             {
                 names.Clear();
                 ndbnoList.Clear();
-
+                
 
                 String urlPartOne = "https://api.nal.usda.gov/ndb/search/?format=json&q=";
                 String urlPartTwo = "&sort=r&max=50&offset=0&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
@@ -95,188 +97,168 @@ namespace WholesomeMVC.WebForms
                 for (int i = 0; i < result.list.item.Count; i++)
                 {
 
-                    newFood.ndbNo = result.list.item[i].ndbno;
-                    newFood.name = result.list.item[i].name;
-
-                    //row[0] = newFood.ndbNo;
-                    //row[1] = newFood.name;
-                    ndbnoList.Add(newFood.ndbNo);
-                }
-
-                String food = "";
-
-                for (int i = 0; i < ndbnoList.Count; i++)
-                {
-                    if (ndbnoList[i] != null)
-                    {
-                        if (i == 0)
-                        {
-                            food += ndbnoList[i].ToString();
-                        }
-
-                        else
-                        {
-                            food += "&ndbno=";
-                            food += ndbnoList[i].ToString();
-                        }
-                    }
-                }
-
-
-                // End this for loop. Make a string array to hold the ndbno's. Do a for loop like recent items to build the food
-                // part of the report url. copy the for each loop
-
-
+                    newFood = new FoodItem();
+                    newFood.ndbNo = Convert.ToString(result.list.item[i].ndbno);
+                    newFood.name = Convert.ToString(result.list.item[i].name);
+        
+           
 
                 String urlPartOne2 = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=";
                 String urlPartTwo2 = "&type=b&format=json&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
 
-                //String urlPartOne = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=";
-                //String urlPartTwo = "&type=b&format=json&api_key=m37cNkiJMin6FLxPuq6wDMqtFekEJYB6HJpbLrYb";
+             
 
-                String url2 = urlPartOne2 + food + urlPartTwo2;
+                    String url2 = urlPartOne2 + newFood.ndbNo + urlPartTwo2;
 
                 var json2 = new WebClient().DownloadString(url2);
 
                 var result2 = JsonConvert.DeserializeObject<RootObject>(json2);
 
-                for (int i = 0; i < result2.foods.Count; i++)
-                {
-                    DataRow row = indexresult.dataSearchResults.NewRow();
-                    // SOME OF THE NUTRIENT ID'S ARE CHANGED W/ VERSION TWO, I FIXED THEM
-                    foreach (Nutrient item in result2.foods[i].food.nutrients)
+                    for (int j = 0; j < result2.foods.Count; j++)
                     {
-                        if (Int32.Parse(item.nutrient_id) == 203)
+                        
+                      
+                        // SOME OF THE NUTRIENT ID'S ARE CHANGED W/ VERSION TWO, I FIXED THEM
+                        foreach (Nutrient item in result2.foods[j].food.nutrients)
                         {
-                            newFood.protein = Double.Parse(item.value);
-                            newFood.protein = Math.Round(newFood.protein, 2);
-                        }
-                        else if (Int32.Parse(item.nutrient_id) == 208)
-                        {
-                            newFood.kCal = Double.Parse(item.value);
-                            newFood.kCal = Math.Round(newFood.kCal);
-                        }
-                        else if (Int32.Parse(item.nutrient_id) == 291)
-                        {
-                            newFood.fiber = Double.Parse(item.value);
-                            newFood.fiber = Math.Round(newFood.fiber, 2);
-                        }
-                        else if (Int32.Parse(item.nutrient_id) == 318)
-                        {
-                            newFood.vitaminA = Double.Parse(item.value);
-                            newFood.vitaminA = Math.Round(newFood.vitaminA, 2);
-                        }
-                        else if (Int32.Parse(item.nutrient_id) == 401)
-                        {
-                            newFood.vitaminC = Double.Parse(item.value);
-                            newFood.vitaminC = Math.Round(newFood.vitaminC, 2);
-                        }
-                        else if (Int32.Parse(item.nutrient_id) == 301)
-                        {
-                            newFood.calcium = Double.Parse(item.value);
-                            // newFood.calcium = Math.Round(newFood.calcium, 2);
-                        }
-                        else if (Int32.Parse(item.nutrient_id) == 303)
-                        {
-                            newFood.iron = Double.Parse(item.value);
-                            // newFood.iron = Math.Round(newFood.iron, 2);
-                        }
-                        else if (Int32.Parse(item.nutrient_id) == 606)
-                        {
-                            newFood.satFat = Double.Parse(item.value);
-                            newFood.satFat = Math.Round(newFood.satFat, 2);
-                        }
-                        else if (Int32.Parse(item.nutrient_id) == 269)
-                        {
-                            newFood.totalSugar = Double.Parse(item.value);
-                            newFood.totalSugar = Math.Round(newFood.totalSugar, 2);
-                        }
-                        else if (Int32.Parse(item.nutrient_id) == 307)
-                        {
-                            newFood.sodium = Double.Parse(item.value);
-                            newFood.sodium = Math.Round(newFood.sodium, 2);
-                        }
-                        else if (Int32.Parse(item.nutrient_id) == 204)
-                        {
-                            newFood.totalFat = Double.Parse(item.value);
-                            newFood.totalFat = Math.Round(newFood.totalFat, 2);
-                        }
-                        else if (Int32.Parse(item.nutrient_id) == 605)
-                        {
-                            newFood.transFat = Double.Parse(item.value);
-                            newFood.transFat = Math.Round(newFood.transFat, 2);
-                        }
-                        else if (Int32.Parse(item.nutrient_id) == 601)
-                        {
-                            newFood.cholesterol = Double.Parse(item.value);
-                            newFood.cholesterol = Math.Round(newFood.cholesterol, 2);
-                        }
-                        else if (Int32.Parse(item.nutrient_id) == 205)
-                        {
-                            newFood.carbohydrates = Double.Parse(item.value);
-                            newFood.carbohydrates = Math.Round(newFood.carbohydrates, 2);
-                        }
-                        if (result2.foods[0].food.ing != null)
-                        {
-                            newFood.ingredients = result2.foods[0].food.ing.desc;
-                        }
+                            if (Int32.Parse(item.nutrient_id) == 203)
+                            {
+                                newFood.protein = Double.Parse(item.value);
+                                newFood.protein = Math.Round(newFood.protein, 2);
+                            }
+                            else if (Int32.Parse(item.nutrient_id) == 208)
+                            {
+                                newFood.kCal = Double.Parse(item.value);
+                                newFood.kCal = Math.Round(newFood.kCal);
+                            }
+                            else if (Int32.Parse(item.nutrient_id) == 291)
+                            {
+                                newFood.fiber = Double.Parse(item.value);
+                                newFood.fiber = Math.Round(newFood.fiber, 2);
+                            }
+                            else if (Int32.Parse(item.nutrient_id) == 318)
+                            {
+                                newFood.vitaminA = Double.Parse(item.value);
+                                newFood.vitaminA = Math.Round(newFood.vitaminA, 2);
+                            }
+                            else if (Int32.Parse(item.nutrient_id) == 401)
+                            {
+                                newFood.vitaminC = Double.Parse(item.value);
+                                newFood.vitaminC = Math.Round(newFood.vitaminC, 2);
+                            }
+                            else if (Int32.Parse(item.nutrient_id) == 301)
+                            {
+                                newFood.calcium = Double.Parse(item.value);
+                                // newFood.calcium = Math.Round(newFood.calcium, 2);
+                            }
+                            else if (Int32.Parse(item.nutrient_id) == 303)
+                            {
+                                newFood.iron = Double.Parse(item.value);
+                                // newFood.iron = Math.Round(newFood.iron, 2);
+                            }
+                            else if (Int32.Parse(item.nutrient_id) == 606)
+                            {
+                                newFood.satFat = Double.Parse(item.value);
+                                newFood.satFat = Math.Round(newFood.satFat, 2);
+                            }
+                            else if (Int32.Parse(item.nutrient_id) == 269)
+                            {
+                                newFood.totalSugar = Double.Parse(item.value);
+                                newFood.totalSugar = Math.Round(newFood.totalSugar, 2);
+                            }
+                            else if (Int32.Parse(item.nutrient_id) == 307)
+                            {
+                                newFood.sodium = Double.Parse(item.value);
+                                newFood.sodium = Math.Round(newFood.sodium, 2);
+                            }
+                            else if (Int32.Parse(item.nutrient_id) == 204)
+                            {
+                                newFood.totalFat = Double.Parse(item.value);
+                                newFood.totalFat = Math.Round(newFood.totalFat, 2);
+                            }
+                            else if (Int32.Parse(item.nutrient_id) == 605)
+                            {
+                                newFood.transFat = Double.Parse(item.value);
+                                newFood.transFat = Math.Round(newFood.transFat, 2);
+                            }
+                            else if (Int32.Parse(item.nutrient_id) == 601)
+                            {
+                                newFood.cholesterol = Double.Parse(item.value);
+                                newFood.cholesterol = Math.Round(newFood.cholesterol, 2);
+                            }
+                            else if (Int32.Parse(item.nutrient_id) == 205)
+                            {
+                                newFood.carbohydrates = Double.Parse(item.value);
+                                newFood.carbohydrates = Math.Round(newFood.carbohydrates, 2);
+                            }
+                            if (result2.foods[0].food.ing != null)
+                            {
+                                newFood.ingredients = result2.foods[0].food.ing.desc;
+                            }
 
 
-                        double protein = newFood.protein / 50;
-                        double fiber = newFood.fiber / 25;
-                        double vitaminA = newFood.vitaminA / 5000;
-                        double vitaminC = newFood.vitaminC / 60;
-                        double calcium = newFood.calcium / 1000;
-                        double iron = newFood.iron / 18;
+                            double protein = newFood.protein / 50;
+                            double fiber = newFood.fiber / 25;
+                            double vitaminA = newFood.vitaminA / 5000;
+                            double vitaminC = newFood.vitaminC / 60;
+                            double calcium = newFood.calcium / 1000;
+                            double iron = newFood.iron / 18;
 
-                        //if any of the good value ratios are > 1, set them equal to 1 to follow algorithm rule 
-                        if (protein > 1)
-                        {
-                            protein = 1;
+                            //if any of the good value ratios are > 1, set them equal to 1 to follow algorithm rule 
+                            if (protein > 1)
+                            {
+                                protein = 1;
+                            }
+
+                            if (fiber > 1)
+                            {
+                                fiber = 1;
+                            }
+
+                            if (vitaminA > 1)
+                            {
+                                vitaminA = 1;
+                            }
+
+                            if (vitaminC > 1)
+                            {
+                                vitaminC = 1;
+                            }
+
+                            if (calcium > 1)
+                            {
+                                calcium = 1;
+                            }
+
+                            if (iron > 1)
+                            {
+                                iron = 1;
+                            }
+
+
+
+                            newFood.nR6 = (protein) + (fiber) + (vitaminA) + (vitaminC) + (calcium) + (iron);
+                            newFood.liMT = (newFood.satFat / 20) + (newFood.totalSugar / 125) + (newFood.sodium / 2400);
+
+
+                            double good = ((newFood.nR6 * 100) / newFood.kCal) * 100;
+                            double bad = ((newFood.liMT * 100) / newFood.kCal) * 100;
+
+                            newFood.NRF6 = good - bad;
+                            newFood.NRF6 = Math.Round(newFood.NRF6, 5);
+
+                            
+
+
                         }
+                        
 
-                        if (fiber > 1)
-                        {
-                            fiber = 1;
-                        }
-
-                        if (vitaminA > 1)
-                        {
-                            vitaminA = 1;
-                        }
-
-                        if (vitaminC > 1)
-                        {
-                            vitaminC = 1;
-                        }
-
-                        if (calcium > 1)
-                        {
-                            calcium = 1;
-                        }
-
-                        if (iron > 1)
-                        {
-                            iron = 1;
-                        }
-
-
-
-                        newFood.nR6 = (protein) + (fiber) + (vitaminA) + (vitaminC) + (calcium) + (iron);
-                        newFood.liMT = (newFood.satFat / 20) + (newFood.totalSugar / 125) + (newFood.sodium / 2400);
-
-
-                        double good = ((newFood.nR6 * 100) / newFood.kCal) * 100;
-                        double bad = ((newFood.liMT * 100) / newFood.kCal) * 100;
-
-                        newFood.NRF6 = good - bad;
-                        newFood.NRF6 = Math.Round(newFood.NRF6, 5);
-
-                        row[2] = newFood.NRF6;
 
                     }
-                    row[0] = result2.foods[i].food.desc.ndbno;
-                    row[1] = result2.foods[i].food.desc.name;
+                    DataRow row = indexresult.dataSearchResults.NewRow();
+                    row[0] = newFood.ndbNo;
+                    row[1] = newFood.name;
+                    row[2] = newFood.NRF6;
                     indexresult.dataSearchResults.Rows.Add(row);
                 }
                 indexresult.savedNdb_no = newFood.ndbNo;

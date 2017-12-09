@@ -52,6 +52,9 @@ $(document).ready(function () {
 			"dropdownTitle": "Search in:",
 			"position": "right"
 		},
+		"state": {
+			"enabled": true
+		},
 		"editing": {
 			"enabled": true,
 			"allowDelete": false,

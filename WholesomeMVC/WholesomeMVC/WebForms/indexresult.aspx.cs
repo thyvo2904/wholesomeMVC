@@ -506,10 +506,9 @@ namespace WholesomeMVC.WebForms
 
                     CommandText = @"UPDATE Wholesome_Item SET ndb_no = @ndbno,"
                         + " nrf6 = @nrf6, Loginid = @loginid, GradientEntry = @GradientEntry,"
-                        + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [description 2] = @description2, FBC_Code = @FBC_Code, Description = @name," +
-                        "WHERE No_ = @no_"
+                        + " lastUpdatedBy = @LastUpdatedBy, LastUpdated = @LastUpdated, [description 2] = @description2, FBC_Code = @FBC_Code, Description = @name WHERE No_ = @no_"
                 };
-                command1.Parameters.Add("@name", SqlDbType.Decimal, 18).Value = FoodItem.newFood.name;
+                command1.Parameters.Add("@name", SqlDbType.NVarChar, 50).Value = FoodItem.newFood.name;
                 command1.Parameters.Add("@nrf6", SqlDbType.Decimal, 18).Value = FoodItem.newFood.NRF6;
                 command1.Parameters.Add("@loginid", SqlDbType.Int).Value = getloginid();
                 command1.Parameters.Add("@GradientEntry", SqlDbType.Int).Value = gradientEntry;
