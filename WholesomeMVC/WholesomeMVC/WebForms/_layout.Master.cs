@@ -79,6 +79,7 @@ namespace WholesomeMVC.WebForms
 				// clear authentication and authorization
 				authentication.Value = "";
 				authorization.Value = "";
+                
 			}
 		}
 

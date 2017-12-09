@@ -236,10 +236,10 @@ namespace WholesomeMVC.WebForms
                 ORDER BY Recent_Index.LastUpdated DESC
 			";
 			SqlCommand myCommand = new SqlCommand(strCommand, sc);
-            if (HttpContext.Current.User.IsInRole("Admin"))
+            if (HttpContext.Current.User.IsInRole("Admin")|| HttpContext.Current.User.IsInRole("purchasing_staff")|| HttpContext.Current.User.IsInRole("warehouse_staff"))
                 myCommand.Parameters.Add("@ID", SqlDbType.NVarChar,128).Value = HttpContext.Current.User.Identity.GetUserId();
             else
-                myCommand.Parameters.Add("@ID", SqlDbType.NVarChar,128).Value = DBNull.Value;
+                myCommand.Parameters.Add("@ID", SqlDbType.NVarChar, 128).Value = DBNull.Value;
 
             SqlDataReader newReader = null;
 			newReader = myCommand.ExecuteReader();
@@ -256,17 +256,6 @@ namespace WholesomeMVC.WebForms
 			}
 
 			sc.Close();
-
-			//// hard-coded to test, remove when there're real data
-			//ndbnoArray[0] = "45136115";
-			//ndbnoArray[1] = "45186303";
-			//ndbnoArray[2] = "45169417";
-			//ndbnoArray[3] = "45169419";
-			//ndbnoArray[4] = "45253484";
-			//ndbnoArray[5] = "45169416";
-			//ndbnoArray[6] = "45094214";
-			//ndbnoArray[7] = "45156252";
-			//returnValue = true;
 
 			return returnValue;
 		}
@@ -325,57 +314,6 @@ namespace WholesomeMVC.WebForms
 			}
 		}
 
-        /***
-		 * Save item to SavedItems table.
-		 */
-        //	protected void SaveItem(object sender, EventArgs e)
-        //	{
-        //		int intItemIndex = int.Parse(hidden_item_index.Value);
-
-        //		String ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-
-        //		try
-        //		{
-        //			using (SqlConnection connection = new SqlConnection(ConnectionString))
-        //			{
-        //                   SqlCommand command1 = new SqlCommand
-        //                   {
-        //                       Connection = connection,
-        //                       CommandType = System.Data.CommandType.Text,
-
-        //                       CommandText = @"
-        //					INSERT INTO [wholesomeDB].[dbo].[SavedItems] (
-        //						[ndb_no],
-        //						[name],
-        //						[ND_Score],
-        //						[saved by],
-        //						[date saved]
-        //					) VALUES (
-        //						@ndb_no,
-        //						@name,
-        //						@NRF6,
-        //						@savedby,
-        //						@savedate)
-        //				"
-        //                   };
-
-        //                   command1.Parameters.Add("@ndb_no", SqlDbType.NVarChar, 8).Value = newFoodArray[intItemIndex].ndbNo;
-        //				command1.Parameters.Add("@name", SqlDbType.NVarChar, 500).Value = newFoodArray[intItemIndex].name;
-        //				command1.Parameters.Add("@NRF6", SqlDbType.Decimal).Value = newFoodArray[intItemIndex].NRF6;
-        //				command1.Parameters.Add("@savedby", SqlDbType.VarChar, 50).Value = "Nathan Hamrick";
-        //				command1.Parameters.Add("@savedate", SqlDbType.Date).Value = DateTime.Now;
-
-        //				connection.Open();
-        //				command1.ExecuteNonQuery();
-        //				connection.Close();
-        //			}
-
-        //			success_message.Value = String.Format("Successfully saved {0}", newFoodArray[intItemIndex].name);
-        //		} catch (Exception q)
-        //		{
-        //			error_message.Value = String.Format("{0} is already saved!", newFoodArray[intItemIndex].name);
-        //			Console.WriteLine(q.ToString());
-        //		}
-        //	}
+       
     }
 }

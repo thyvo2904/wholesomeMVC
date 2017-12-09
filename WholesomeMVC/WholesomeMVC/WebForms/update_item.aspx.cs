@@ -22,7 +22,8 @@ namespace WholesomeMVC.WebForms
 {
     public partial class update_item : System.Web.UI.Page
     {
-        
+        public static string ceresUpdate;
+        public static string ceresNdbno;
         private static double oldNRF6 = 0;
 
         public static DataTable matchedCeresIDS = new DataTable();
@@ -402,7 +403,7 @@ namespace WholesomeMVC.WebForms
                     case "old":
                         nd_old_score_panel.Attributes["style"] = colorScaleStyle;
 
-                        lblOldNdbno.Text = FoodItem.newFood.ndbNo;
+                        lblOldNdbno.Text = ndbno;
                         lblOldCeresId.Text = ceresid;
                         lblOldCeresName.Text = ceres_name;
                         lblOldFoodName.Text = FoodItem.newFood.name;
@@ -414,10 +415,10 @@ namespace WholesomeMVC.WebForms
                         txtOldFiber.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
                         txtOldTotalSugar.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
                         txtOldProtein.Text = Math.Round(FoodItem.newFood.protein, 2).ToString();
-                        txtOldVitaminA.Text = Math.Round((FoodItem.newFood.vitaminA / 5000) * 100).ToString();
-                        txtOldVitaminC.Text = Math.Round((FoodItem.newFood.vitaminC / 60) * 100).ToString();
-                        txtOldCalcium.Text = Math.Round((FoodItem.newFood.calcium / 1000) * 100).ToString();
-                        txtOldIron.Text = Math.Round((FoodItem.newFood.iron / 18) * 100).ToString();
+                        txtOldVitaminA.Text = Math.Round(FoodItem.newFood.vitaminA).ToString();
+                        txtOldVitaminC.Text = Math.Round(FoodItem.newFood.vitaminC).ToString();
+                        txtOldCalcium.Text = Math.Round(FoodItem.newFood.calcium).ToString();
+                        txtOldIron.Text = Math.Round(FoodItem.newFood.iron).ToString();
                         lblNewCeresNumber.Text = ceresid;
 
                         break;
@@ -593,16 +594,17 @@ namespace WholesomeMVC.WebForms
             return getid;
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
+        protected void btnSearchUSDA_Click(object sender, EventArgs e)
         {
-            String foodSearch = txtSearch.Text;
+            String foodSearch = txtUSDA.Text;
             string ceresid = hidden_ceresid.Value;
             string ceresDescription = hidden_ceres_name.Value;
+            ceresUpdate = ceresid;
             Session["sharedCeresID"] = ceresid;
             Session["sharedCeresDescription"] = ceresDescription;
 
             WebForms.FoodItem.findNdbno(foodSearch);
-            Server.Transfer("/WebForms/indexresult.aspx");
+            Server.Transfer("~/WebForms/indexresult.aspx");
             
         }
 
