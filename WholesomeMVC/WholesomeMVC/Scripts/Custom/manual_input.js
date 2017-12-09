@@ -7,7 +7,7 @@
 		$("#new_view").hide();
 		$("#old_view").show();
 
-        $("#view_mode").val("new");
+        $("#view_mode").val("old");
 	});
 	$("#new_li").click(function () {
 		$(this).parent().addClass("active");
@@ -16,10 +16,14 @@
 		$("#old_view").hide();
 		$("#new_view").show();
 
-        $("#view_mode").val("old");
+        $("#view_mode").val("new");
 	})
-	// set up default view
-	$("#old_li").click();
+	if ($("#view_mode").val() === "old") {
+		$("#old_li").click();
+	}
+	if ($("#view_mode").val() === "new") {
+		$("#new_li").click();
+	}
 
     // create error message box when an error message exists
     if ($("#error_message").val()) {
