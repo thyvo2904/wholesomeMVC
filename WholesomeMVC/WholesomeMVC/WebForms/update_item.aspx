@@ -63,7 +63,7 @@
 				<div class="input-group">
 					<asp:TextBox ID="txtUSDA" runat="server" CssClass="form-control" placeholder="Search"></asp:TextBox>
                          	<span class="input-group-btn">
-					  <asp:Button ID="btnSearchUSDA" OnClick="btnSearchUSDA_Click" runat="server" Text="Search USDA" CssClass="btn btn-success" type="button"/>
+					  <asp:Button ID="btnSearchUSDA" OnServerClick="btnSearchUSDA_Click" runat="server" Text="Search USDA" CssClass="btn btn-success" type="button"/>
 					</span>
 				
 				</div>
@@ -193,11 +193,11 @@
 												<asp:ListItem>Baby</asp:ListItem>
 												<asp:ListItem>Beverage</asp:ListItem>
 												<asp:ListItem>Bread</asp:ListItem>
-												<asp:ListItem>Cereal/Brk</asp:ListItem>
-												<asp:ListItem>complete</asp:ListItem>
+												<asp:ListItem>Cereal/B</asp:ListItem>
+												<asp:ListItem>Complete</asp:ListItem>
 												<asp:ListItem>Condiment</asp:ListItem>
-												<asp:ListItem>dairy</asp:ListItem>
-												<asp:ListItem>dessert</asp:ListItem>
+												<asp:ListItem>Dairy</asp:ListItem>
+												<asp:ListItem>Dessert</asp:ListItem>
 												<asp:ListItem>Dough</asp:ListItem>
 												<asp:ListItem>Dressing</asp:ListItem>
 												<asp:ListItem>Entree</asp:ListItem>
@@ -239,7 +239,7 @@
 							</div>
 							<div class="modal-footer">
 								<asp:Button Text="Close" runat="server" CssClass="btn btn-default" data-dismiss="modal" type="button" />
-								<asp:Button ID="btnOldSaveItem" onclick ="btnSearchUSDA_Click"  runat="server" Text="Save" CssClass="btn btn-success" type="button" />
+								<asp:Button ID="btnOldSaveItem" onclick ="btnSearch_Click"  runat="server" Text="Save" CssClass="btn btn-success" type="button" />
 							</div>
 						</ContentTemplate>
 						<Triggers>
