@@ -593,7 +593,7 @@ namespace WholesomeMVC.WebForms
             return getid;
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
+        protected void btnSearchUSDA_Click(object sender, EventArgs e)
         {
             //String foodSearch = txtUSDA.Text;
             //string ceresid = hidden_ceresid.Value;
