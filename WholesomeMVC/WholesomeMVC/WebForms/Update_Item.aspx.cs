@@ -429,7 +429,7 @@ namespace WholesomeMVC.WebForms
                         lblNewIndexResult.Text = Convert.ToString(Math.Round(score, 2));
 
                         txtNewCalories.Text = FoodItem.newFood.kCal.ToString();
-                        txtNewSaturatFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
+                        txtNewSaturatedFat.Text = Math.Round(FoodItem.newFood.satFat, 2).ToString();
                         txtSodiumNew.Text = Math.Round(FoodItem.newFood.sodium, 2).ToString();
                         txtFiberNew.Text = Math.Round(FoodItem.newFood.fiber, 2).ToString();
                         txtAddedSugarNew.Text = Math.Round(FoodItem.newFood.totalSugar, 2).ToString();
@@ -704,7 +704,7 @@ namespace WholesomeMVC.WebForms
                 double potassium = Double.Parse(txtPotassiumNew.Text);
                 double calcium = Double.Parse(txtCalciumNew.Text);
                 double iron = Double.Parse(txtIronNew.Text);
-                double satFat = Double.Parse(txtNewSaturatFat.Text);
+                double satFat = Double.Parse(txtNewSaturatedFat.Text);
                 double addedSugar = Double.Parse(txtAddedSugarNew.Text);
                 double sodium = Double.Parse(txtSodiumNew.Text);
                 // Multiply the percentage by the daily value
