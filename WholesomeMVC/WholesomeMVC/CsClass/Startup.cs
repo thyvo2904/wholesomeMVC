@@ -38,7 +38,7 @@ namespace WholesomeMVC
                 var user = new ApplicationUser
                 {
                     UserName = "wholesome_admin",
-                    Email = "wholesome@gmail.com"
+                    Email = "moore3cd@dukes.jmu.edu"
                 };
 
                 string userPWD = "Cis484!!";
